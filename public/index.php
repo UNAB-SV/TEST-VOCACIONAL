@@ -5,8 +5,12 @@ declare(strict_types=1);
 use App\Controllers\HomeController;
 use App\Helpers\Router;
 use App\Helpers\ServiceContainer;
+use App\Repositories\QuestionsBlockRepository;
+use App\Services\CalculationEngine;
 use App\Services\ParticipantSessionStore;
+use App\Services\TestSessionStore;
 use App\Validators\ParticipantDataValidator;
+use App\Validators\TestResponseValidator;
 
 define('BASE_PATH', dirname(__DIR__));
 
@@ -30,9 +34,17 @@ if (($config['session']['enabled'] ?? false) === true) {
 $container = new ServiceContainer();
 $container->set('participant_validator', static fn (): ParticipantDataValidator => new ParticipantDataValidator());
 $container->set('participant_session_store', static fn (): ParticipantSessionStore => new ParticipantSessionStore());
+$container->set('questions_block_repository', static fn (): QuestionsBlockRepository => new QuestionsBlockRepository());
+$container->set('test_session_store', static fn (): TestSessionStore => new TestSessionStore());
+$container->set('test_response_validator', static fn (): TestResponseValidator => new TestResponseValidator());
+$container->set('calculation_engine', static fn (): CalculationEngine => new CalculationEngine());
 $container->set('home_controller', static fn (ServiceContainer $c): HomeController => new HomeController(
     $c->get('participant_validator'),
-    $c->get('participant_session_store')
+    $c->get('participant_session_store'),
+    $c->get('questions_block_repository'),
+    $c->get('test_session_store'),
+    $c->get('test_response_validator'),
+    $c->get('calculation_engine')
 ));
 
 $router = new Router();
@@ -60,6 +72,16 @@ $router->get('/prueba', static function () use ($container): void {
     /** @var HomeController $controller */
     $controller = $container->get('home_controller');
     $controller->test();
+});
+$router->post('/prueba/bloque/guardar', static function () use ($container): void {
+    /** @var HomeController $controller */
+    $controller = $container->get('home_controller');
+    $controller->saveTestBlock();
+});
+$router->post('/prueba/finalizar', static function () use ($container): void {
+    /** @var HomeController $controller */
+    $controller = $container->get('home_controller');
+    $controller->finishTest();
 });
 
 $router->dispatch($_SERVER['REQUEST_METHOD'] ?? 'GET', $_SERVER['REQUEST_URI'] ?? '/');
