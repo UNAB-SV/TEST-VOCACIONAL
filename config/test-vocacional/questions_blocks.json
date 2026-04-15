@@ -1,0 +1,141 @@
+{
+  "blocks": [
+    {
+      "id": "B001",
+      "orden": 1,
+      "actividades": [
+        {
+          "id": "A0001",
+          "texto": "Reparar una motocicleta con herramientas manuales.",
+          "bloque": "B001",
+          "claves": {
+            "mas": {
+              "mecanico": 1
+            },
+            "menos": {
+              "mecanico": 1
+            }
+          }
+        },
+        {
+          "id": "A0002",
+          "texto": "Escribir un cuento breve para una revista escolar.",
+          "bloque": "B001",
+          "claves": {
+            "mas": {
+              "literario": 1
+            },
+            "menos": {
+              "literario": 1
+            }
+          }
+        },
+        {
+          "id": "A0003",
+          "texto": "Organizar una campaña para convencer a otras personas.",
+          "bloque": "B001",
+          "claves": {
+            "mas": {
+              "persuasivo": 1
+            },
+            "menos": {
+              "persuasivo": 1
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "B002",
+      "orden": 2,
+      "actividades": [
+        {
+          "id": "A0004",
+          "texto": "Llevar registros numéricos de gastos y presupuestos.",
+          "bloque": "B002",
+          "claves": {
+            "mas": {
+              "calculo": 1,
+              "oficina": 1
+            },
+            "menos": {
+              "calculo": 1,
+              "oficina": 1
+            }
+          }
+        },
+        {
+          "id": "A0005",
+          "texto": "Realizar experimentos de laboratorio siguiendo un protocolo.",
+          "bloque": "B002",
+          "claves": {
+            "mas": {
+              "cientifico": 1
+            },
+            "menos": {
+              "cientifico": 1
+            }
+          }
+        },
+        {
+          "id": "A0006",
+          "texto": "Coordinar actividades de apoyo para una comunidad.",
+          "bloque": "B002",
+          "claves": {
+            "mas": {
+              "servicio_social": 1
+            },
+            "menos": {
+              "servicio_social": 1
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "B003",
+      "orden": 3,
+      "actividades": [
+        {
+          "id": "A0007",
+          "texto": "Trabajar en proyectos de campo en zonas naturales.",
+          "bloque": "B003",
+          "claves": {
+            "mas": {
+              "aire_libre": 1
+            },
+            "menos": {
+              "aire_libre": 1
+            }
+          }
+        },
+        {
+          "id": "A0008",
+          "texto": "Componer o interpretar una pieza musical.",
+          "bloque": "B003",
+          "claves": {
+            "mas": {
+              "musical": 1
+            },
+            "menos": {
+              "musical": 1
+            }
+          }
+        },
+        {
+          "id": "A0009",
+          "texto": "Diseñar una ilustración o concepto visual.",
+          "bloque": "B003",
+          "claves": {
+            "mas": {
+              "artistico": 1
+            },
+            "menos": {
+              "artistico": 1
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

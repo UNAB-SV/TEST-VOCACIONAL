@@ -1,0 +1,20 @@
+{
+  "sexo": "M",
+  "percentiles": {
+    "aire_libre": [
+      { "bruto": -4, "percentil": 10 },
+      { "bruto": 0, "percentil": 50 },
+      { "bruto": 4, "percentil": 90 }
+    ],
+    "mecanico": [
+      { "bruto": -3, "percentil": 15 },
+      { "bruto": 1, "percentil": 55 },
+      { "bruto": 5, "percentil": 92 }
+    ],
+    "calculo": [
+      { "bruto": -2, "percentil": 20 },
+      { "bruto": 2, "percentil": 60 },
+      { "bruto": 6, "percentil": 95 }
+    ]
+  }
+}

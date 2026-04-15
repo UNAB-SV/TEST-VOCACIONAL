@@ -1,0 +1,46 @@
+{
+  "validity_rules": {
+    "requerimientos_base": {
+      "mas_por_bloque": 1,
+      "menos_por_bloque": 1,
+      "permitir_duplicado_en_bloque": false
+    },
+    "metricas": [
+      {
+        "id": "omisiones",
+        "descripcion": "Cantidad de bloques sin respuesta completa.",
+        "formula": "count(bloque where mas is null or menos is null)",
+        "umbral_invalido": 1
+      },
+      {
+        "id": "colision_mas_menos",
+        "descripcion": "Misma actividad marcada como mas y menos dentro del mismo bloque.",
+        "formula": "count(bloque where actividad_mas == actividad_menos)",
+        "umbral_invalido": 1
+      },
+      {
+        "id": "indice_validez",
+        "descripcion": "Puntaje bruto de la escala de validez.",
+        "formula": "score('validez')",
+        "rango_valido": {
+          "min": -3,
+          "max": 3
+        }
+      }
+    ],
+    "decision": [
+      {
+        "si": "omisiones >= 1 or colision_mas_menos >= 1",
+        "estado": "invalido"
+      },
+      {
+        "si": "indice_validez < -3 or indice_validez > 3",
+        "estado": "dudoso"
+      },
+      {
+        "si": "default",
+        "estado": "valido"
+      }
+    ]
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "scales": [
+    {
+      "id": "aire_libre",
+      "nombre": "Interés por trabajo al aire libre",
+      "grupo": "intereses"
+    },
+    {
+      "id": "mecanico",
+      "nombre": "Interés mecánico",
+      "grupo": "intereses"
+    },
+    {
+      "id": "calculo",
+      "nombre": "Interés por cálculo",
+      "grupo": "intereses"
+    },
+    {
+      "id": "cientifico",
+      "nombre": "Interés científico",
+      "grupo": "intereses"
+    },
+    {
+      "id": "persuasivo",
+      "nombre": "Interés persuasivo",
+      "grupo": "intereses"
+    },
+    {
+      "id": "artistico",
+      "nombre": "Interés artístico",
+      "grupo": "intereses"
+    },
+    {
+      "id": "literario",
+      "nombre": "Interés literario",
+      "grupo": "intereses"
+    },
+    {
+      "id": "musical",
+      "nombre": "Interés musical",
+      "grupo": "intereses"
+    },
+    {
+      "id": "servicio_social",
+      "nombre": "Interés por servicio social",
+      "grupo": "intereses"
+    },
+    {
+      "id": "oficina",
+      "nombre": "Interés de oficina",
+      "grupo": "intereses"
+    },
+    {
+      "id": "validez",
+      "nombre": "Índice de validez",
+      "grupo": "control"
+    }
+  ]
+}

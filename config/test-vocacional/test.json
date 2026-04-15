@@ -1,0 +1,36 @@
+{
+  "test": {
+    "id": "kuder_vocacional",
+    "version": "2026.04",
+    "nombre": "Inventario de Intereses Vocacionales",
+    "idioma": "es",
+    "pais": "MX",
+    "modo_respuesta": "mas_menos_por_bloque",
+    "tamano_bloque": 3,
+    "bloques_totales": 3,
+    "escalas": [
+      "aire_libre",
+      "mecanico",
+      "calculo",
+      "cientifico",
+      "persuasivo",
+      "artistico",
+      "literario",
+      "musical",
+      "servicio_social",
+      "oficina",
+      "validez"
+    ],
+    "fuente_datos": {
+      "tipo": "excel",
+      "archivo_referencia": "data/origen/test_vocacional.xlsx",
+      "hojas": [
+        "Preguntas",
+        "Claves",
+        "Percentiles_H",
+        "Percentiles_M",
+        "Validez"
+      ]
+    }
+  }
+}
