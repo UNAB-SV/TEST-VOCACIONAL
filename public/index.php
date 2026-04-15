@@ -51,5 +51,15 @@ $router->get('/instrucciones', static function () use ($container): void {
     $controller = $container->get('home_controller');
     $controller->instructions();
 });
+$router->post('/instrucciones/iniciar', static function () use ($container): void {
+    /** @var HomeController $controller */
+    $controller = $container->get('home_controller');
+    $controller->startTest();
+});
+$router->get('/prueba', static function () use ($container): void {
+    /** @var HomeController $controller */
+    $controller = $container->get('home_controller');
+    $controller->test();
+});
 
 $router->dispatch($_SERVER['REQUEST_METHOD'] ?? 'GET', $_SERVER['REQUEST_URI'] ?? '/');
