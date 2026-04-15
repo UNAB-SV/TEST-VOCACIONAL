@@ -66,4 +66,35 @@ final class HomeController
             'participant' => $participant,
         ]);
     }
+
+    public function startTest(): void
+    {
+        if (!$this->sessionStore->hasData()) {
+            header('Location: /');
+            exit;
+        }
+
+        $this->sessionStore->allowTestStart();
+
+        header('Location: /prueba');
+        exit;
+    }
+
+    public function test(): void
+    {
+        if (!$this->sessionStore->hasData()) {
+            header('Location: /');
+            exit;
+        }
+
+        if (!$this->sessionStore->canStartTest()) {
+            header('Location: /instrucciones');
+            exit;
+        }
+
+        View::render('home/test', [
+            'title' => 'Prueba vocacional',
+            'participant' => $this->sessionStore->get(),
+        ]);
+    }
 }

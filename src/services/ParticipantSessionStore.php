@@ -7,6 +7,7 @@ namespace App\Services;
 final class ParticipantSessionStore
 {
     private const SESSION_KEY = 'participant_data';
+    private const FLOW_KEY = 'test_flow';
 
     /**
      * @param array<string, mixed> $data
@@ -21,6 +22,8 @@ final class ParticipantSessionStore
             'sexo' => trim((string) ($data['sexo'] ?? '')),
             'grupo' => trim((string) ($data['grupo'] ?? '')),
         ];
+
+        $this->resetFlow();
     }
 
     /**
@@ -43,5 +46,24 @@ final class ParticipantSessionStore
     public function hasData(): bool
     {
         return !empty($_SESSION[self::SESSION_KEY]);
+    }
+
+    public function allowTestStart(): void
+    {
+        $_SESSION[self::FLOW_KEY] = [
+            'instructions_confirmed' => true,
+        ];
+    }
+
+    public function canStartTest(): bool
+    {
+        return $this->hasData() && (bool) ($_SESSION[self::FLOW_KEY]['instructions_confirmed'] ?? false);
+    }
+
+    private function resetFlow(): void
+    {
+        $_SESSION[self::FLOW_KEY] = [
+            'instructions_confirmed' => false,
+        ];
     }
 }
