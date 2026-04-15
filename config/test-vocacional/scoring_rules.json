@@ -1,0 +1,30 @@
+{
+  "scoring_rules": {
+    "respuesta_por_bloque": {
+      "mas": {
+        "requerido": 1,
+        "multiplicador": 1
+      },
+      "menos": {
+        "requerido": 1,
+        "multiplicador": -1
+      }
+    },
+    "formula": "puntaje_bruto_escala = suma(claves_mas * 1) + suma(claves_menos * -1)",
+    "normalizacion": {
+      "minimo": -100,
+      "maximo": 100,
+      "redondeo": 0
+    },
+    "overrides": [
+      {
+        "descripcion": "Ejemplo de regla especial: validez solo suma en 'mas'.",
+        "si_escala": "validez",
+        "aplicar": {
+          "mas": 1,
+          "menos": 0
+        }
+      }
+    ]
+  }
+}
