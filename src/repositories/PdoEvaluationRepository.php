@@ -102,6 +102,159 @@ SQL;
         return $rows;
     }
 
+    public function findEvaluations(array $filters, int $page = 1, int $perPage = 10): array
+    {
+        $page = max(1, $page);
+        $perPage = max(1, min($perPage, 100));
+        $offset = ($page - 1) * $perPage;
+
+        $where = [];
+        $bindings = [];
+
+        $search = trim((string) ($filters['nombre'] ?? ''));
+        if ($search !== '') {
+            $where[] = 'CONCAT_WS(\' \', p.first_name, p.last_name, p.middle_name) LIKE :nombre';
+            $bindings[':nombre'] = '%' . $search . '%';
+        }
+
+        $group = trim((string) ($filters['grupo'] ?? ''));
+        if ($group !== '') {
+            $where[] = 'e.group_name = :grupo';
+            $bindings[':grupo'] = $group;
+        }
+
+        $date = trim((string) ($filters['fecha'] ?? ''));
+        if ($date !== '' && preg_match('/^\d{4}-\d{2}-\d{2}$/', $date) === 1) {
+            $where[] = 'DATE(e.applied_at) = :fecha';
+            $bindings[':fecha'] = $date;
+        }
+
+        $whereSql = $where === [] ? '' : 'WHERE ' . implode(' AND ', $where);
+
+        $countSql = <<<SQL
+SELECT COUNT(*)
+FROM evaluations e
+INNER JOIN participants p ON p.id = e.participant_id
+{$whereSql}
+SQL;
+        $countStatement = $this->pdo->prepare($countSql);
+        foreach ($bindings as $name => $value) {
+            $countStatement->bindValue($name, $value);
+        }
+        $countStatement->execute();
+        $total = (int) $countStatement->fetchColumn();
+
+        $listSql = <<<SQL
+SELECT
+    e.id,
+    e.applied_at,
+    e.group_name,
+    e.validity_state,
+    p.first_name,
+    p.last_name,
+    p.middle_name
+FROM evaluations e
+INNER JOIN participants p ON p.id = e.participant_id
+{$whereSql}
+ORDER BY e.applied_at DESC, e.id DESC
+LIMIT :limit OFFSET :offset
+SQL;
+        $listStatement = $this->pdo->prepare($listSql);
+        foreach ($bindings as $name => $value) {
+            $listStatement->bindValue($name, $value);
+        }
+        $listStatement->bindValue(':limit', $perPage, PDO::PARAM_INT);
+        $listStatement->bindValue(':offset', $offset, PDO::PARAM_INT);
+        $listStatement->execute();
+
+        $items = $listStatement->fetchAll(PDO::FETCH_ASSOC);
+        if (!is_array($items)) {
+            $items = [];
+        }
+
+        return [
+            'items' => $items,
+            'total' => $total,
+            'page' => $page,
+            'per_page' => $perPage,
+        ];
+    }
+
+    public function listGroups(): array
+    {
+        $statement = $this->pdo->query('SELECT DISTINCT group_name FROM evaluations WHERE group_name <> \'\' ORDER BY group_name ASC');
+        $rows = $statement->fetchAll(PDO::FETCH_COLUMN);
+
+        if (!is_array($rows)) {
+            return [];
+        }
+
+        return array_values(array_filter(array_map('strval', $rows), static fn (string $group): bool => $group !== ''));
+    }
+
+    public function findEvaluationDetailById(int $evaluationId): ?array
+    {
+        $sql = <<<SQL
+SELECT
+    e.id,
+    e.applied_at,
+    e.sex,
+    e.group_name,
+    e.validity_score,
+    e.validity_state,
+    e.raw_scores_json,
+    p.first_name,
+    p.last_name,
+    p.middle_name,
+    p.age
+FROM evaluations e
+INNER JOIN participants p ON p.id = e.participant_id
+WHERE e.id = :id
+LIMIT 1
+SQL;
+        $statement = $this->pdo->prepare($sql);
+        $statement->bindValue(':id', $evaluationId, PDO::PARAM_INT);
+        $statement->execute();
+
+        $evaluation = $statement->fetch(PDO::FETCH_ASSOC);
+        if (!is_array($evaluation)) {
+            return null;
+        }
+
+        $scalesStatement = $this->pdo->prepare(
+            'SELECT ess.scale_id, ess.raw_score, COALESCE(ep.percentile_value, 0) AS percentile
+             FROM evaluation_scale_scores ess
+             LEFT JOIN evaluation_percentiles ep
+               ON ep.evaluation_id = ess.evaluation_id
+              AND ep.scale_id = ess.scale_id
+             WHERE ess.evaluation_id = :id'
+        );
+        $scalesStatement->bindValue(':id', $evaluationId, PDO::PARAM_INT);
+        $scalesStatement->execute();
+        $scales = $scalesStatement->fetchAll(PDO::FETCH_ASSOC);
+        if (!is_array($scales)) {
+            $scales = [];
+        }
+
+        $answersStatement = $this->pdo->prepare(
+            'SELECT block_id, selected_mas_activity_id AS mas, selected_menos_activity_id AS menos
+             FROM evaluation_answers
+             WHERE evaluation_id = :id
+             ORDER BY block_id ASC'
+        );
+        $answersStatement->bindValue(':id', $evaluationId, PDO::PARAM_INT);
+        $answersStatement->execute();
+        $answers = $answersStatement->fetchAll(PDO::FETCH_ASSOC);
+        if (!is_array($answers)) {
+            $answers = [];
+        }
+
+        $evaluation['scales'] = $scales;
+        $evaluation['answers'] = $answers;
+
+        return $evaluation;
+    }
+
     /**
      * @param array<string, string> $participant
      */

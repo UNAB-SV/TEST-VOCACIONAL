@@ -15,4 +15,24 @@ final class NullEvaluationRepository implements EvaluationRepository
     {
         return [];
     }
+
+    public function findEvaluations(array $filters, int $page = 1, int $perPage = 10): array
+    {
+        return [
+            'items' => [],
+            'total' => 0,
+            'page' => max(1, $page),
+            'per_page' => max(1, $perPage),
+        ];
+    }
+
+    public function listGroups(): array
+    {
+        return [];
+    }
+
+    public function findEvaluationDetailById(int $evaluationId): ?array
+    {
+        return null;
+    }
 }

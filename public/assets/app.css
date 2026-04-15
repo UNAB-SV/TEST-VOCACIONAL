@@ -375,6 +375,41 @@ select:focus {
     gap: 0.8rem;
 }
 
+.admin-card {
+    max-width: 980px;
+}
+
+.admin-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.admin-actions {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+}
+
+.admin-actions a {
+    font-weight: 700;
+    color: #1f4fa2;
+    text-decoration: none;
+}
+
+.pagination {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #d7deea;
+    padding-top: 0.8rem;
+}
+
+.pagination a {
+    text-decoration: none;
+    color: #1f4fa2;
+    font-weight: 700;
+}
+
 @media (max-width: 768px) {
     .result-meta-grid {
         grid-template-columns: 1fr;
@@ -387,6 +422,15 @@ select:focus {
 
     .chart-value {
         text-align: left;
+    }
+
+    .admin-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .pagination {
+        flex-direction: column;
+        gap: 0.5rem;
     }
 }
 

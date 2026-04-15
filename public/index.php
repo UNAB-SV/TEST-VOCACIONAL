@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Controllers\HomeController;
+use App\Controllers\AdminController;
 use App\Helpers\Router;
 use App\Helpers\ServiceContainer;
 use App\Helpers\TestResultPresenter;
@@ -73,6 +74,10 @@ $container->set('home_controller', static fn (ServiceContainer $c): HomeControll
     $c->get('test_result_presenter'),
     $c->get('evaluation_repository')
 ));
+$container->set('admin_controller', static fn (ServiceContainer $c): AdminController => new AdminController(
+    $c->get('evaluation_repository'),
+    $c->get('test_result_presenter')
+));
 
 $router = new Router();
 $router->get('/', static function () use ($container): void {
@@ -114,6 +119,21 @@ $router->get('/evaluaciones/anteriores', static function () use ($container): vo
     /** @var HomeController $controller */
     $controller = $container->get('home_controller');
     $controller->previousEvaluations();
+});
+$router->get('/admin/evaluaciones', static function () use ($container): void {
+    /** @var AdminController $controller */
+    $controller = $container->get('admin_controller');
+    $controller->evaluations();
+});
+$router->get('/admin/evaluaciones/detalle', static function () use ($container): void {
+    /** @var AdminController $controller */
+    $controller = $container->get('admin_controller');
+    $controller->evaluationDetail();
+});
+$router->get('/admin/evaluaciones/reimprimir', static function () use ($container): void {
+    /** @var AdminController $controller */
+    $controller = $container->get('admin_controller');
+    $controller->reprintEvaluation();
 });
 
 $router->dispatch($_SERVER['REQUEST_METHOD'] ?? 'GET', $_SERVER['REQUEST_URI'] ?? '/');
