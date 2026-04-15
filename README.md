@@ -58,3 +58,12 @@ $container->set('home_controller', static fn (ServiceContainer $c): HomeControll
 ```
 
 Con esto los servicios se crean de forma perezosa (lazy) cuando se piden con `$container->get(...)`.
+
+
+## Persistencia MySQL (historial)
+
+Se agregó persistencia opcional con PDO para guardar evaluaciones, respuestas, puntajes y percentiles.
+
+- Script SQL: `database_schema_mysql.sql`
+- Guía de uso: `docs/mysql-persistencia-evaluaciones.md`
+- Endpoint de consulta: `GET /evaluaciones/anteriores`

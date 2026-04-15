@@ -6,6 +6,10 @@ use App\Controllers\HomeController;
 use App\Helpers\Router;
 use App\Helpers\ServiceContainer;
 use App\Helpers\TestResultPresenter;
+use App\Repositories\EvaluationRepository;
+use App\Repositories\NullEvaluationRepository;
+use App\Repositories\PdoConnectionFactory;
+use App\Repositories\PdoEvaluationRepository;
 use App\Repositories\QuestionsBlockRepository;
 use App\Services\CalculationEngine;
 use App\Services\ParticipantSessionStore;
@@ -47,6 +51,18 @@ $container->set('calculation_engine', static fn (ServiceContainer $c): Calculati
 $container->set('test_result_presenter', static fn (): TestResultPresenter => new TestResultPresenter(
     BASE_PATH . '/config/test-vocacional/catalog.php'
 ));
+$container->set('evaluation_repository', static function () use ($config): EvaluationRepository {
+    $dbConfig = is_array($config['database'] ?? null) ? $config['database'] : [];
+    $enabled = (bool) ($dbConfig['enabled'] ?? false);
+
+    if (!$enabled) {
+        return new NullEvaluationRepository();
+    }
+
+    $pdo = PdoConnectionFactory::create($dbConfig);
+
+    return new PdoEvaluationRepository($pdo);
+});
 $container->set('home_controller', static fn (ServiceContainer $c): HomeController => new HomeController(
     $c->get('participant_validator'),
     $c->get('participant_session_store'),
@@ -54,7 +70,8 @@ $container->set('home_controller', static fn (ServiceContainer $c): HomeControll
     $c->get('test_session_store'),
     $c->get('test_response_validator'),
     $c->get('calculation_engine'),
-    $c->get('test_result_presenter')
+    $c->get('test_result_presenter'),
+    $c->get('evaluation_repository')
 ));
 
 $router = new Router();
@@ -92,6 +109,11 @@ $router->post('/prueba/finalizar', static function () use ($container): void {
     /** @var HomeController $controller */
     $controller = $container->get('home_controller');
     $controller->finishTest();
+});
+$router->get('/evaluaciones/anteriores', static function () use ($container): void {
+    /** @var HomeController $controller */
+    $controller = $container->get('home_controller');
+    $controller->previousEvaluations();
 });
 
 $router->dispatch($_SERVER['REQUEST_METHOD'] ?? 'GET', $_SERVER['REQUEST_URI'] ?? '/');

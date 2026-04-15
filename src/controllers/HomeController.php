@@ -6,6 +6,7 @@ namespace App\Controllers;
 
 use App\Helpers\TestResultPresenter;
 use App\Helpers\View;
+use App\Repositories\EvaluationRepository;
 use App\Repositories\QuestionsBlockRepository;
 use App\Services\CalculationEngine;
 use App\Services\ParticipantSessionStore;
@@ -22,7 +23,8 @@ final class HomeController
         private readonly TestSessionStore $testSessionStore,
         private readonly TestResponseValidator $testResponseValidator,
         private readonly CalculationEngine $calculationEngine,
-        private readonly TestResultPresenter $resultPresenter
+        private readonly TestResultPresenter $resultPresenter,
+        private readonly EvaluationRepository $evaluationRepository
     ) {
     }
 
@@ -178,14 +180,43 @@ final class HomeController
             return;
         }
 
+        $participant = $this->sessionStore->get();
         $result = $this->calculationEngine->submitResponses([
-            'participant' => $this->sessionStore->get(),
+            'participant' => $participant,
             'answers' => $answers,
         ]);
 
+        $appliedAt = gmdate('Y-m-d H:i:s');
+        $this->evaluationRepository->saveEvaluation(
+            $participant,
+            $answers,
+            is_array($result['resultado'] ?? null) ? $result['resultado'] : [],
+            $appliedAt
+        );
+
         View::render('home/test-finished', [
             'title' => 'Prueba finalizada',
-            'report' => $this->resultPresenter->present($this->sessionStore->get(), $result),
+            'report' => $this->resultPresenter->present($participant, $result),
+        ]);
+    }
+
+    public function previousEvaluations(): void
+    {
+        if (!$this->sessionStore->hasData()) {
+            $this->jsonResponse(403, [
+                'status' => 'error',
+                'message' => 'No existe un evaluado activo para consultar historial.',
+            ]);
+            return;
+        }
+
+        $participant = $this->sessionStore->get();
+        $history = $this->evaluationRepository->findPreviousEvaluationsByParticipant($participant, 25);
+
+        $this->jsonResponse(200, [
+            'status' => 'ok',
+            'participant' => $participant,
+            'evaluations' => $history,
         ]);
     }
 
