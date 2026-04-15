@@ -29,13 +29,19 @@ final class ScoreService
 
         $blockIndex = $this->buildBlockIndex($questionsDefinition);
         $scaleIds = $this->collectScaleIds($questionsDefinition);
-        $rawScores = $this->calculateRawScores($answers, $blockIndex, $scaleIds, $scoringRules);
+        $rawScoreResult = $this->calculateRawScores($answers, $blockIndex, $scaleIds, $scoringRules);
+        $rawScores = $rawScoreResult['scores'];
+        $scoringTrace = $rawScoreResult['trace'];
+
+        $specialRulesTrace = [];
+        $rawScores = $this->applySpecialRules($rawScores, $scoringRules, $specialRulesTrace);
 
         $validityScore = (int) ($rawScores['validez'] ?? 0);
         $validityMetrics = $this->calculateValidityMetrics($answers, $validityScore, $validityRules);
         $validityState = $this->resolveValidityState($validityMetrics, $validityRules);
 
-        $percentiles = $this->calculatePercentiles($rawScores, $percentilesBySex);
+        $percentileTrace = [];
+        $percentiles = $this->calculatePercentiles($rawScores, $percentilesBySex, $percentileTrace);
 
         return [
             'puntajes_brutos' => $rawScores,
@@ -45,6 +51,11 @@ final class ScoreService
             'escalas_ordenadas_de_mayor_a_menor' => $this->sortScalesByRawScore($rawScores),
             'detalles_validez' => $validityMetrics,
             'sexo_evaluado' => strtoupper($sex),
+            'traza_calculo' => [
+                'asignacion_puntajes_por_escala' => $scoringTrace,
+                'reglas_especiales' => $specialRulesTrace,
+                'conversion_percentiles' => $percentileTrace,
+            ],
         ];
     }
 
@@ -182,11 +193,12 @@ final class ScoreService
      * @param array<string, array<string, mixed>> $blockIndex
      * @param array<int, string> $scaleIds
      * @param array<string, mixed> $scoringRules
-     * @return array<string, int>
+     * @return array{scores: array<string, int>, trace: array<int, array<string, mixed>>}
      */
     private function calculateRawScores(array $answers, array $blockIndex, array $scaleIds, array $scoringRules): array
     {
         $scores = [];
+        $trace = [];
         foreach ($scaleIds as $scaleId) {
             $scores[$scaleId] = 0;
         }
@@ -196,24 +208,26 @@ final class ScoreService
                 throw new InvalidArgumentException(sprintf('No existe el bloque "%s" en la definición de preguntas.', $blockId));
             }
 
-            $this->applySideScore((string) $answer['mas'], 'mas', $blockIndex[$blockId], $scores, $scoringRules);
-            $this->applySideScore((string) $answer['menos'], 'menos', $blockIndex[$blockId], $scores, $scoringRules);
+            $this->applySideScore((string) $answer['mas'], 'mas', $blockIndex[$blockId], $scores, $scoringRules, $trace);
+            $this->applySideScore((string) $answer['menos'], 'menos', $blockIndex[$blockId], $scores, $scoringRules, $trace);
         }
 
-        return $scores;
+        return ['scores' => $scores, 'trace' => $trace];
     }
 
     /**
      * @param array<string, mixed> $block
      * @param array<string, int> $scores
      * @param array<string, mixed> $scoringRules
+     * @param array<int, array<string, mixed>> $trace
      */
     private function applySideScore(
         string $activityId,
         string $side,
         array $block,
         array &$scores,
-        array $scoringRules
+        array $scoringRules,
+        array &$trace
     ): void {
         $activities = $block['actividades'] ?? [];
         if (!is_array($activities) || !isset($activities[$activityId]) || !is_array($activities[$activityId])) {
@@ -232,25 +246,38 @@ final class ScoreService
 
         foreach ($keys as $scaleId => $keyWeight) {
             $weight = (int) $keyWeight;
-            $multiplier = $this->resolveMultiplier((string) $scaleId, $side, $scoringRules);
+            $ruleSource = 'default';
+            $multiplier = $this->resolveMultiplier((string) $scaleId, $side, $scoringRules, $ruleSource);
             if (!array_key_exists((string) $scaleId, $scores)) {
                 $scores[(string) $scaleId] = 0;
             }
 
-            $scores[(string) $scaleId] += (int) round($weight * $multiplier);
+            $delta = (int) round($weight * $multiplier);
+            $scores[(string) $scaleId] += $delta;
+            $trace[] = [
+                'bloque' => (string) ($block['id'] ?? ''),
+                'actividad' => $activityId,
+                'lado' => $side,
+                'escala' => (string) $scaleId,
+                'peso' => $weight,
+                'multiplicador' => $multiplier,
+                'delta' => $delta,
+                'regla_aplicada' => $ruleSource,
+            ];
         }
     }
 
     /**
      * @param array<string, mixed> $scoringRules
      */
-    private function resolveMultiplier(string $scaleId, string $side, array $scoringRules): float
+    private function resolveMultiplier(string $scaleId, string $side, array $scoringRules, string &$ruleSource): float
     {
         $rules = $scoringRules['scoring_rules'] ?? [];
         $defaultMultiplier = (float) (($rules['respuesta_por_bloque'][$side]['multiplicador'] ?? 0));
 
         $overrides = $rules['overrides'] ?? [];
         if (!is_array($overrides)) {
+            $ruleSource = 'default';
             return $defaultMultiplier;
         }
 
@@ -265,11 +292,68 @@ final class ScoreService
 
             $overrideValue = $override['aplicar'][$side] ?? null;
             if ($overrideValue !== null) {
+                $ruleSource = sprintf('override:%s', (string) ($override['si_escala'] ?? ''));
                 return (float) $overrideValue;
             }
         }
 
+        $ruleSource = 'default';
         return $defaultMultiplier;
+    }
+
+    /**
+     * @param array<string, int> $rawScores
+     * @param array<string, mixed> $scoringRules
+     * @param array<int, array<string, mixed>> $trace
+     * @return array<string, int>
+     */
+    private function applySpecialRules(array $rawScores, array $scoringRules, array &$trace): array
+    {
+        $rules = $scoringRules['scoring_rules']['special_rules'] ?? [];
+        if (!is_array($rules)) {
+            return $rawScores;
+        }
+
+        foreach ($rules as $rule) {
+            if (!is_array($rule)) {
+                continue;
+            }
+
+            $when = trim((string) ($rule['when'] ?? ''));
+            if ($when !== '' && !$this->evaluateCondition($when, $rawScores)) {
+                continue;
+            }
+
+            $action = $rule['action'] ?? null;
+            if (!is_array($action)) {
+                continue;
+            }
+
+            $scaleId = (string) ($action['scale'] ?? '');
+            if ($scaleId === '') {
+                continue;
+            }
+
+            $type = (string) ($action['type'] ?? '');
+            if ($type === 'set') {
+                $rawScores[$scaleId] = (int) ($action['value'] ?? 0);
+            } elseif ($type === 'add') {
+                $rawScores[$scaleId] = (int) ($rawScores[$scaleId] ?? 0) + (int) ($action['value'] ?? 0);
+            } else {
+                // TODO(Excel): confirmar todos los tipos de acción especiales presentes en la hoja original.
+                continue;
+            }
+
+            $trace[] = [
+                'regla' => (string) ($rule['id'] ?? ''),
+                'descripcion' => (string) ($rule['description'] ?? ''),
+                'when' => $when,
+                'accion' => $action,
+                'resultado_escala' => $rawScores[$scaleId],
+            ];
+        }
+
+        return $rawScores;
     }
 
     /**
@@ -438,9 +522,11 @@ final class ScoreService
      * @param array<string, mixed> $percentilesBySex
      * @return array<string, int|null>
      */
-    private function calculatePercentiles(array $rawScores, array $percentilesBySex): array
+    private function calculatePercentiles(array $rawScores, array $percentilesBySex, array &$trace): array
     {
         $tables = $percentilesBySex['percentiles'] ?? [];
+        $lookupMethod = (string) ($percentilesBySex['lookup_method'] ?? 'nearest');
+        // TODO(Excel): validar si la planilla usa BUSCARV aproximado (floor) o una interpolación distinta.
         $result = [];
 
         foreach ($rawScores as $scaleId => $rawScore) {
@@ -449,7 +535,14 @@ final class ScoreService
                 continue;
             }
 
-            $result[$scaleId] = $this->resolvePercentile((int) $rawScore, $tables[$scaleId]);
+            $resolved = $this->resolvePercentile((int) $rawScore, $tables[$scaleId], $lookupMethod);
+            $result[$scaleId] = $resolved;
+            $trace[] = [
+                'escala' => $scaleId,
+                'bruto' => (int) $rawScore,
+                'metodo' => $lookupMethod,
+                'percentil' => $resolved,
+            ];
         }
 
         return $result;
@@ -458,8 +551,14 @@ final class ScoreService
     /**
      * @param array<int, mixed> $rows
      */
-    private function resolvePercentile(int $rawScore, array $rows): ?int
+    private function resolvePercentile(int $rawScore, array $rows, string $lookupMethod): ?int
     {
+        usort($rows, static fn (array $a, array $b): int => ((int) ($a['bruto'] ?? 0)) <=> ((int) ($b['bruto'] ?? 0)));
+
+        if ($lookupMethod === 'floor') {
+            return $this->resolvePercentileFloor($rawScore, $rows);
+        }
+
         $bestDistance = null;
         $bestPercentile = null;
 
@@ -480,6 +579,38 @@ final class ScoreService
         }
 
         return $bestPercentile;
+    }
+
+    /**
+     * @param array<int, mixed> $rows
+     */
+    private function resolvePercentileFloor(int $rawScore, array $rows): ?int
+    {
+        $matched = null;
+        foreach ($rows as $row) {
+            if (!is_array($row) || !isset($row['bruto'], $row['percentil'])) {
+                continue;
+            }
+
+            if ((int) $row['bruto'] <= $rawScore) {
+                $matched = (int) $row['percentil'];
+                continue;
+            }
+
+            break;
+        }
+
+        if ($matched !== null) {
+            return $matched;
+        }
+
+        foreach ($rows as $row) {
+            if (is_array($row) && isset($row['percentil'])) {
+                return (int) $row['percentil'];
+            }
+        }
+
+        return null;
     }
 
     /**

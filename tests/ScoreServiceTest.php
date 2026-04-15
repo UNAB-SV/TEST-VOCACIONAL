@@ -55,5 +55,38 @@ assertSameValue(60, $result['percentiles']['calculo'] ?? null, 'Percentil cálcu
 assertSameValue('valido', $result['validez_estado'] ?? null, 'Estado de validez incorrecto');
 assertSameValue(0, $result['validez_puntaje'] ?? null, 'Puntaje de validez incorrecto');
 assertSameValue('aire_libre', $result['escalas_ordenadas_de_mayor_a_menor'][0]['escala'] ?? null, 'Orden de escalas incorrecto');
+assertSameValue('default', $result['traza_calculo']['asignacion_puntajes_por_escala'][0]['regla_aplicada'] ?? null, 'Traza de regla aplicada incorrecta');
+
+/**
+ * @param array<string, mixed> $basePercentiles
+ * @return array<string, mixed>
+ */
+function withLookupMethod(array $basePercentiles, string $method): array
+{
+    $basePercentiles['lookup_method'] = $method;
+    return $basePercentiles;
+}
+
+$femaleResult = $service->calculate(
+    $answers,
+    loadJson('config/test-vocacional/questions_blocks.json'),
+    loadJson('config/test-vocacional/scoring_rules.json'),
+    withLookupMethod(loadJson('config/test-vocacional/percentiles/female.json'), 'floor'),
+    'F',
+    loadJson('config/test-vocacional/validity_rules.json')
+);
+
+assertSameValue(60, $femaleResult['percentiles']['calculo'] ?? null, 'Percentil cálculo femenino incorrecto con floor');
+
+$nearestResult = $service->calculate(
+    $answers,
+    loadJson('config/test-vocacional/questions_blocks.json'),
+    loadJson('config/test-vocacional/scoring_rules.json'),
+    withLookupMethod(loadJson('config/test-vocacional/percentiles/female.json'), 'nearest'),
+    'F',
+    loadJson('config/test-vocacional/validity_rules.json')
+);
+
+assertSameValue(50, $nearestResult['percentiles']['aire_libre'] ?? null, 'Percentil aire libre incorrecto con nearest');
 
 echo "ScoreServiceTest OK\n";
