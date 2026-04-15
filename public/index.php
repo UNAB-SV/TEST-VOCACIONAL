@@ -8,6 +8,7 @@ use App\Helpers\ServiceContainer;
 use App\Repositories\QuestionsBlockRepository;
 use App\Services\CalculationEngine;
 use App\Services\ParticipantSessionStore;
+use App\Services\ScoreService;
 use App\Services\TestSessionStore;
 use App\Validators\ParticipantDataValidator;
 use App\Validators\TestResponseValidator;
@@ -37,7 +38,11 @@ $container->set('participant_session_store', static fn (): ParticipantSessionSto
 $container->set('questions_block_repository', static fn (): QuestionsBlockRepository => new QuestionsBlockRepository());
 $container->set('test_session_store', static fn (): TestSessionStore => new TestSessionStore());
 $container->set('test_response_validator', static fn (): TestResponseValidator => new TestResponseValidator());
-$container->set('calculation_engine', static fn (): CalculationEngine => new CalculationEngine());
+$container->set('score_service', static fn (): ScoreService => new ScoreService());
+$container->set('calculation_engine', static fn (ServiceContainer $c): CalculationEngine => new CalculationEngine(
+    $c->get('score_service'),
+    BASE_PATH . '/config/test-vocacional/catalog.php'
+));
 $container->set('home_controller', static fn (ServiceContainer $c): HomeController => new HomeController(
     $c->get('participant_validator'),
     $c->get('participant_session_store'),
