@@ -12,4 +12,13 @@ return [
         'enabled' => true,
         'name' => 'test_vocacional_session',
     ],
+    'database' => [
+        'enabled' => false,
+        'host' => '127.0.0.1',
+        'port' => 3306,
+        'database' => 'test_vocacional',
+        'username' => 'root',
+        'password' => '',
+        'charset' => 'utf8mb4',
+    ],
 ];
