@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
+use App\Helpers\TestResultPresenter;
 use App\Helpers\View;
 use App\Repositories\QuestionsBlockRepository;
 use App\Services\CalculationEngine;
@@ -20,7 +21,8 @@ final class HomeController
         private readonly QuestionsBlockRepository $questionsRepository,
         private readonly TestSessionStore $testSessionStore,
         private readonly TestResponseValidator $testResponseValidator,
-        private readonly CalculationEngine $calculationEngine
+        private readonly CalculationEngine $calculationEngine,
+        private readonly TestResultPresenter $resultPresenter
     ) {
     }
 
@@ -183,8 +185,7 @@ final class HomeController
 
         View::render('home/test-finished', [
             'title' => 'Prueba finalizada',
-            'result' => $result,
-            'totalBlocks' => count($blocks),
+            'report' => $this->resultPresenter->present($this->sessionStore->get(), $result),
         ]);
     }
 

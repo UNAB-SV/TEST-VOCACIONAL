@@ -5,6 +5,7 @@ declare(strict_types=1);
 use App\Controllers\HomeController;
 use App\Helpers\Router;
 use App\Helpers\ServiceContainer;
+use App\Helpers\TestResultPresenter;
 use App\Repositories\QuestionsBlockRepository;
 use App\Services\CalculationEngine;
 use App\Services\ParticipantSessionStore;
@@ -43,13 +44,17 @@ $container->set('calculation_engine', static fn (ServiceContainer $c): Calculati
     $c->get('score_service'),
     BASE_PATH . '/config/test-vocacional/catalog.php'
 ));
+$container->set('test_result_presenter', static fn (): TestResultPresenter => new TestResultPresenter(
+    BASE_PATH . '/config/test-vocacional/catalog.php'
+));
 $container->set('home_controller', static fn (ServiceContainer $c): HomeController => new HomeController(
     $c->get('participant_validator'),
     $c->get('participant_session_store'),
     $c->get('questions_block_repository'),
     $c->get('test_session_store'),
     $c->get('test_response_validator'),
-    $c->get('calculation_engine')
+    $c->get('calculation_engine'),
+    $c->get('test_result_presenter')
 ));
 
 $router = new Router();

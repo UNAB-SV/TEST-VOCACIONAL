@@ -261,3 +261,160 @@ select:focus {
     background: #ebfaee;
     color: #1f6b3a;
 }
+
+.alert-danger {
+    border-color: #d44f4f;
+    background: #ffe9e9;
+    color: #7e1f1f;
+}
+
+.result-card h3 {
+    margin-top: 1.5rem;
+    margin-bottom: 0.7rem;
+}
+
+.result-meta-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem 1rem;
+    border: 1px solid #d7deea;
+    border-radius: 6px;
+    background: #f8faff;
+    padding: 0.9rem;
+}
+
+.result-meta-grid p {
+    margin: 0;
+}
+
+.badge {
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.badge-valido {
+    background: #dff4e5;
+    color: #1e6b3b;
+}
+
+.badge-dudoso {
+    background: #fff3cf;
+    color: #7c5800;
+}
+
+.badge-invalido {
+    background: #ffd9d9;
+    color: #8f1f1f;
+}
+
+.results-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.results-table th,
+.results-table td {
+    border: 1px solid #e0e6f2;
+    padding: 0.55rem 0.6rem;
+    text-align: left;
+}
+
+.results-table thead th {
+    background: #f2f6ff;
+}
+
+.ranking-list {
+    margin-top: 0;
+    line-height: 1.6;
+}
+
+.results-chart {
+    border: 1px solid #d7deea;
+    border-radius: 8px;
+    padding: 0.8rem;
+    background: #fcfdff;
+}
+
+.chart-row {
+    display: grid;
+    grid-template-columns: 230px 1fr 45px;
+    gap: 0.7rem;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.chart-label {
+    font-size: 0.88rem;
+}
+
+.chart-track {
+    width: 100%;
+    background: #e8eefb;
+    border-radius: 999px;
+    height: 12px;
+    overflow: hidden;
+}
+
+.chart-bar {
+    display: block;
+    height: 100%;
+    background: #2a62c9;
+}
+
+.chart-value {
+    font-weight: 700;
+    text-align: right;
+}
+
+.result-actions {
+    margin-top: 1.4rem;
+    display: flex;
+    gap: 0.8rem;
+}
+
+@media (max-width: 768px) {
+    .result-meta-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .chart-row {
+        grid-template-columns: 1fr;
+        gap: 0.2rem;
+    }
+
+    .chart-value {
+        text-align: left;
+    }
+}
+
+@media print {
+    body {
+        background: #ffffff;
+    }
+
+    header,
+    footer,
+    .no-print {
+        display: none !important;
+    }
+
+    main {
+        max-width: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .card {
+        box-shadow: none;
+        border: 0;
+        padding: 0;
+    }
+
+    .results-table th,
+    .results-table td {
+        font-size: 12px;
+    }
+}
