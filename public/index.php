@@ -5,7 +5,8 @@ declare(strict_types=1);
 use App\Controllers\HomeController;
 use App\Helpers\Router;
 use App\Helpers\ServiceContainer;
-use App\Services\HealthService;
+use App\Services\ParticipantSessionStore;
+use App\Validators\ParticipantDataValidator;
 
 define('BASE_PATH', dirname(__DIR__));
 
@@ -27,11 +28,11 @@ if (($config['session']['enabled'] ?? false) === true) {
 }
 
 $container = new ServiceContainer();
-
-// Registro de servicios (factory + lazy load)
-$container->set('health_service', static fn (): HealthService => new HealthService());
+$container->set('participant_validator', static fn (): ParticipantDataValidator => new ParticipantDataValidator());
+$container->set('participant_session_store', static fn (): ParticipantSessionStore => new ParticipantSessionStore());
 $container->set('home_controller', static fn (ServiceContainer $c): HomeController => new HomeController(
-    $c->get('health_service')
+    $c->get('participant_validator'),
+    $c->get('participant_session_store')
 ));
 
 $router = new Router();
@@ -39,6 +40,16 @@ $router->get('/', static function () use ($container): void {
     /** @var HomeController $controller */
     $controller = $container->get('home_controller');
     $controller->index();
+});
+$router->post('/', static function () use ($container): void {
+    /** @var HomeController $controller */
+    $controller = $container->get('home_controller');
+    $controller->submit();
+});
+$router->get('/instrucciones', static function () use ($container): void {
+    /** @var HomeController $controller */
+    $controller = $container->get('home_controller');
+    $controller->instructions();
 });
 
 $router->dispatch($_SERVER['REQUEST_METHOD'] ?? 'GET', $_SERVER['REQUEST_URI'] ?? '/');
