@@ -18,4 +18,25 @@ interface EvaluationRepository
      * @return array<int, array<string, mixed>>
      */
     public function findPreviousEvaluationsByParticipant(array $participant, int $limit = 20): array;
+
+    /**
+     * @param array<string, scalar|null> $filters
+     * @return array{
+     *     items: array<int, array<string, mixed>>,
+     *     total: int,
+     *     page: int,
+     *     per_page: int
+     * }
+     */
+    public function findEvaluations(array $filters, int $page = 1, int $perPage = 10): array;
+
+    /**
+     * @return array<int, string>
+     */
+    public function listGroups(): array;
+
+    /**
+     * @return array<string, mixed>|null
+     */
+    public function findEvaluationDetailById(int $evaluationId): ?array;
 }
