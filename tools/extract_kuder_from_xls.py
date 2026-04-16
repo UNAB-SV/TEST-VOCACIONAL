@@ -53,6 +53,21 @@ class Ambiguity(Exception):
     pass
 
 
+HEADER_EXCLUSION_PATTERNS = [
+    "prueba",
+    "instrucciones",
+    "marca",
+    "mas",
+    "menos",
+    "nombre",
+    "fecha",
+    "edad",
+    "sexo",
+    "ocupacion",
+    "pagina",
+]
+
+
 def normalize_header(value: Any) -> str:
     text = str(value or "").strip().lower()
     text = re.sub(r"\s+", " ", text)
@@ -88,28 +103,83 @@ def detect_prueba_sheet(book: "xlrd.book.Book") -> "xlrd.sheet.Sheet":
     raise Ambiguity("No se encontró hoja 'PRUEBA'.")
 
 
-def parse_prueba(sheet: "xlrd.sheet.Sheet", ambiguities: list[str]) -> list[Activity]:
-    # Estrategia: detectar triples consecutivos de textos largos por fila,
-    # preservando orden natural del Excel.
-    candidate_cells: list[tuple[int, int, str]] = []
-    for r in range(sheet.nrows):
-        for c in range(sheet.ncols):
-            text = cell_text(sheet, r, c)
-            if len(text) >= 15 and not text.isdigit():
-                candidate_cells.append((r, c, text))
+def clean_activity_text(value: str) -> str:
+    text = str(value or "").replace("\n", " ").strip()
+    text = re.sub(r"\s+", " ", text)
+    text = re.sub(r"^\s*[\(\[]?\d{1,3}[\)\].:-]?\s*", "", text)
+    return text.strip(" .;:-")
 
-    if len(candidate_cells) < 504:
-        raise Ambiguity(
-            f"No se pudieron detectar 504 actividades en PRUEBA (detectadas={len(candidate_cells)})."
+
+def looks_like_activity_text(text: str) -> tuple[bool, str]:
+    normalized = normalize_header(text)
+    if not normalized:
+        return False, "empty"
+    if normalized.isdigit():
+        return False, "numeric_only"
+    if len(normalized) < 8:
+        return False, "too_short"
+    if not re.search(r"[a-záéíóúñ]", text, flags=re.IGNORECASE):
+        return False, "no_letters"
+    if any(pattern in normalized for pattern in HEADER_EXCLUSION_PATTERNS):
+        return False, "header_or_instruction"
+    return True, ""
+
+
+def detect_activity_start_row(rows_candidates: list[list[tuple[int, str]]]) -> int:
+    for idx in range(len(rows_candidates)):
+        window = rows_candidates[idx : idx + 12]
+        total = sum(len(row) for row in window)
+        rich_rows = sum(1 for row in window if len(row) >= 2)
+        if total >= 18 and rich_rows >= 6:
+            return idx
+    return 0
+
+
+def parse_prueba(
+    sheet: "xlrd.sheet.Sheet", ambiguities: list[str], debug: bool = False
+) -> tuple[list[Activity], dict[str, Any], list[dict[str, Any]]]:
+    rows_candidates: list[list[tuple[int, str]]] = []
+    debug_rows: list[dict[str, Any]] = []
+
+    for r in range(sheet.nrows):
+        raw_values = [cell_text(sheet, r, c) for c in range(sheet.ncols)]
+        row_candidates: list[tuple[int, str]] = []
+        row_discard_reasons: list[str] = []
+        dedupe_seen: set[str] = set()
+
+        for c, raw in enumerate(raw_values):
+            cleaned = clean_activity_text(raw)
+            accepted, reason = looks_like_activity_text(cleaned)
+            if accepted:
+                dedupe_key = normalize_header(cleaned)
+                if dedupe_key in dedupe_seen:
+                    row_discard_reasons.append(f"col={c+1}: duplicated_text")
+                    continue
+                dedupe_seen.add(dedupe_key)
+                row_candidates.append((c, cleaned))
+            elif cleaned:
+                row_discard_reasons.append(f"col={c+1}: {reason}")
+
+        row_candidates.sort(key=lambda item: item[0])
+        rows_candidates.append(row_candidates)
+        debug_rows.append(
+            {
+                "row_index": r + 1,
+                "raw_values": raw_values,
+                "detected_text": [text for _, text in row_candidates],
+                "accepted_as_activity": len(row_candidates) > 0,
+                "discard_reason": "; ".join(row_discard_reasons) if row_discard_reasons else "",
+            }
         )
 
-    # Mantener solo primeras 504 actividades en orden top-left para evitar
-    # capturar textos auxiliares fuera del instrumento.
-    candidate_cells.sort(key=lambda x: (x[0], x[1]))
-    selected = candidate_cells[:504]
+    start_row = detect_activity_start_row(rows_candidates)
+    candidate_cells: list[tuple[int, int, str]] = []
+    for r in range(start_row, len(rows_candidates)):
+        for c, text in rows_candidates[r]:
+            candidate_cells.append((r, c, text))
 
     activities: list[Activity] = []
-    for idx, (r, c, text) in enumerate(selected, start=1):
+    for idx, (r, c, text) in enumerate(candidate_cells, start=1):
         block_num = ((idx - 1) // 3) + 1
         activity_id = f"A{idx:04d}"
         block_id = f"B{block_num:03d}"
@@ -144,17 +214,53 @@ def parse_prueba(sheet: "xlrd.sheet.Sheet", ambiguities: list[str]) -> list[Acti
             )
         )
 
-    if len(activities) != 504:
-        raise Ambiguity(f"Total de actividades inesperado: {len(activities)} (esperado=504)")
+    discarded_rows: list[dict[str, Any]] = []
+    for row in debug_rows:
+        if not row["accepted_as_activity"] and row["discard_reason"]:
+            discarded_rows.append(
+                {
+                    "row_index": row["row_index"],
+                    "raw_values": row["raw_values"],
+                    "discard_reason": row["discard_reason"],
+                }
+            )
+        if len(discarded_rows) >= 10:
+            break
 
-    return activities
+    diagnostics = {
+        "sheet_name": sheet.name,
+        "total_rows_read": sheet.nrows,
+        "total_cols_read": sheet.ncols,
+        "activity_detection_start_row": start_row + 1,
+        "detected_activities": len(activities),
+        "first_15_activities": [a.text for a in activities[:15]],
+        "discarded_rows_examples": discarded_rows,
+    }
+
+    if len(activities) != 504:
+        ambiguities.append(
+            "Conteo de actividades distinto a 504 en PRUEBA. "
+            f"Detectadas={len(activities)}; filas_leidas={sheet.nrows}; inicio_detectado_fila={start_row + 1}."
+        )
+
+    if debug:
+        print(f"[DEBUG] Hoja usada: {sheet.name}")
+        print(f"[DEBUG] Columnas totales: {sheet.ncols}")
+        print("[DEBUG] Índices de columnas relevantes (con texto detectado):", sorted({c + 1 for _, c, _ in candidate_cells}))
+        print(f"[DEBUG] Filas detectadas como actividad (desde fila {start_row + 1}):")
+        print([r + 1 for r, _, _ in candidate_cells[:120]])
+        omitted = [row["row_index"] for row in debug_rows if not row["accepted_as_activity"]]
+        print("[DEBUG] Filas omitidas:", omitted[:120])
+
+    return activities, diagnostics, debug_rows
 
 
 def build_questions_blocks(activities: list[Activity]) -> dict[str, Any]:
     blocks: list[dict[str, Any]] = []
-    for block_num in range(1, 169):
+    total_blocks = len(activities) // 3
+    for block_num in range(1, total_blocks + 1):
         block_id = f"B{block_num:03d}"
-        chunk = [a for a in activities if a.block_id == block_id]
+        chunk = activities[(block_num - 1) * 3 : block_num * 3]
         blocks.append(
             {
                 "id": block_id,
@@ -320,6 +426,7 @@ def main() -> int:
     parser.add_argument("--xls", default="test.xls")
     parser.add_argument("--config-dir", default="config/test-vocacional")
     parser.add_argument("--report", default="storage/logs/extraction_report.json")
+    parser.add_argument("--debug", action="store_true")
     args = parser.parse_args()
 
     xls_path = Path(args.xls)
@@ -327,19 +434,31 @@ def main() -> int:
         raise SystemExit(f"No existe el archivo XLS: {xls_path}")
 
     ambiguities: list[str] = []
+    diagnostics: dict[str, Any] = {}
+    debug_rows: list[dict[str, Any]] = []
     try:
         book = xlrd.open_workbook(str(xls_path), formatting_info=False)
         prueba = detect_prueba_sheet(book)
-        activities = parse_prueba(prueba, ambiguities)
+        activities, diagnostics, debug_rows = parse_prueba(prueba, ambiguities, debug=args.debug)
         male, female = parse_percentiles(book, ambiguities)
     except Ambiguity as exc:
         ambiguities.append(str(exc))
         activities = []
+        diagnostics = {
+            "sheet_name": "PRUEBA",
+            "total_rows_read": 0,
+            "total_cols_read": 0,
+            "activity_detection_start_row": None,
+            "detected_activities": 0,
+            "first_15_activities": [],
+            "discarded_rows_examples": [],
+        }
         male, female = {"sexo": "M", "percentiles": {}}, {"sexo": "F", "percentiles": {}}
         book = xlrd.open_workbook(str(xls_path), formatting_info=False)
 
     config_dir = Path(args.config_dir)
-    write_json(config_dir / "questions_blocks.json", build_questions_blocks(activities))
+    complete_activities = activities[: (len(activities) // 3) * 3]
+    write_json(config_dir / "questions_blocks.json", build_questions_blocks(complete_activities))
     write_json(config_dir / "scoring_rules.json", build_scoring_rules())
     write_json(config_dir / "validity_rules.json", build_validity_rules())
     write_json(config_dir / "percentiles" / "male.json", male)
@@ -350,18 +469,20 @@ def main() -> int:
     report = {
         "archivo_origen": str(xls_path),
         "total_hojas_leidas": len(book.sheet_names()),
-        "total_actividades": len(activities),
-        "total_bloques": len(activities) // 3 if activities else 0,
+        "total_actividades": len(complete_activities),
+        "total_bloques": len(complete_activities) // 3 if complete_activities else 0,
+        "diagnostico_prueba": diagnostics,
         "escalas_detectadas": sorted(
-            set().union(*(a.mas.keys() for a in activities), *(a.menos.keys() for a in activities))
+            set().union(*(a.mas.keys() for a in complete_activities), *(a.menos.keys() for a in complete_activities))
         ),
         "reglas_por_escala": {
-            "mas": rules_count(activities, "mas"),
-            "menos": rules_count(activities, "menos"),
+            "mas": rules_count(complete_activities, "mas"),
+            "menos": rules_count(complete_activities, "menos"),
         },
         "ambiguedades": ambiguities,
     }
     write_json(Path(args.report), report)
+    write_json(Path("storage/logs/debug_prueba_rows.json"), {"rows": debug_rows})
 
     print(json.dumps(report, ensure_ascii=False, indent=2))
     return 0
