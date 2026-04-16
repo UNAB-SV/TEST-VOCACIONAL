@@ -1,20 +1,5 @@
 {
   "sexo": "F",
-  "percentiles": {
-    "aire_libre": [
-      { "bruto": -5, "percentil": 10 },
-      { "bruto": -1, "percentil": 50 },
-      { "bruto": 3, "percentil": 90 }
-    ],
-    "mecanico": [
-      { "bruto": -4, "percentil": 15 },
-      { "bruto": 0, "percentil": 55 },
-      { "bruto": 4, "percentil": 92 }
-    ],
-    "calculo": [
-      { "bruto": -3, "percentil": 20 },
-      { "bruto": 1, "percentil": 60 },
-      { "bruto": 5, "percentil": 95 }
-    ]
-  }
+  "percentiles": {},
+  "nota": "No extraído automáticamente con confiabilidad suficiente."
 }

@@ -1,599 +1,354 @@
 #!/usr/bin/env python3
-"""Extractor reproducible para regenerar configuración de Kuder desde test.xls.
-
-Uso:
-  python tools/extract_kuder_from_xls.py --xls test.xls
-"""
-
+"""Extrae catálogo Kuder desde test.xls sin dependencias externas."""
 from __future__ import annotations
-
-import argparse
-import json
-import re
-import sys
-from collections import Counter, defaultdict
-from dataclasses import dataclass
+import argparse, json, struct
 from pathlib import Path
-from typing import Any
+from collections import Counter, defaultdict
 
-try:
-    import xlrd  # type: ignore
-except ModuleNotFoundError as exc:  # pragma: no cover
-    raise SystemExit(
-        "Dependencia faltante: xlrd. Instala en tu entorno con `pip install xlrd==2.0.1`."
-    ) from exc
-
-
-SCALES_MAIN = [
-    "aire_libre",
-    "mecanico",
-    "calculo",
-    "cientifico",
-    "persuasivo",
-    "artistico",
-    "literario",
-    "musical",
-    "servicio_social",
-    "oficina",
-]
-SCALES_ALL = [*SCALES_MAIN, "validez"]
+SCALE_CODE_MAP = {
+    "0": "aire_libre",
+    "1": "mecanico",
+    "2": "calculo",
+    "3": "cientifico",
+    "4": "persuasivo",
+    "5": "artistico",
+    "6": "literario",
+    "7": "musical",
+    "8": "servicio_social",
+    "9": "oficina",
+    "V": "validez",
+}
 
 
-@dataclass
-class Activity:
-    id: str
-    block_id: str
-    text: str
-    row_index: int
-    mas: dict[str, int]
-    menos: dict[str, int]
+class CFB:
+    def __init__(self, data: bytes):
+        self.data = data
+        h = data[:512]
+        if h[:8] != b"\xd0\xcf\x11\xe0\xa1\xb1\x1a\xe1":
+            raise ValueError("Archivo no es CFB/XLS legacy")
+        self.sector_size = 1 << struct.unpack_from("<H", h, 30)[0]
+        self.mini_sector_size = 1 << struct.unpack_from("<H", h, 32)[0]
+        self.cutoff = struct.unpack_from("<I", h, 56)[0]
+        first_dir = struct.unpack_from("<I", h, 48)[0]
+        first_mini_fat = struct.unpack_from("<I", h, 60)[0]
+        num_mini_fat = struct.unpack_from("<I", h, 64)[0]
+        first_difat = struct.unpack_from("<I", h, 68)[0]
+        num_difat = struct.unpack_from("<I", h, 72)[0]
 
-
-class Ambiguity(Exception):
-    pass
-
-
-TRUE_HEADER_PATTERNS = [
-    re.compile(r"^prueba$"),
-    re.compile(r"^instrucciones?$"),
-    re.compile(r"^marca\b"),
-    re.compile(r"^nombre\b"),
-    re.compile(r"^fecha\b"),
-    re.compile(r"^edad\b"),
-    re.compile(r"^sexo\b"),
-    re.compile(r"^ocupacion\b"),
-    re.compile(r"^pagina\b"),
-    re.compile(r"^suma de puta?j?es por escala$"),
-    re.compile(r"^suma de puntajes por escala$"),
-    re.compile(r"^totales?$"),
-]
-GENERIC_TITLE_PATTERNS = [
-    re.compile(r"^te gusta"),
-    re.compile(r"^actividades?$"),
-    re.compile(r"^opciones?$"),
-    re.compile(r"^instrucciones?"),
-]
-
-
-def normalize_header(value: Any) -> str:
-    text = str(value or "").strip().lower()
-    text = re.sub(r"\s+", " ", text)
-    repl = {
-        "á": "a",
-        "é": "e",
-        "í": "i",
-        "ó": "o",
-        "ú": "u",
-        "ñ": "n",
-        "+": " mas ",
-        "-": " menos ",
-        "(": " ",
-        ")": " ",
-        "/": " ",
-    }
-    for src, dst in repl.items():
-        text = text.replace(src, dst)
-    return re.sub(r"\s+", " ", text).strip()
-
-
-def cell_text(sheet: "xlrd.sheet.Sheet", row: int, col: int) -> str:
-    value = sheet.cell_value(row, col)
-    if isinstance(value, float) and value.is_integer():
-        return str(int(value))
-    return str(value).strip()
-
-
-def detect_prueba_sheet(book: "xlrd.book.Book") -> "xlrd.sheet.Sheet":
-    for name in book.sheet_names():
-        if normalize_header(name) == "prueba":
-            return book.sheet_by_name(name)
-    raise Ambiguity("No se encontró hoja 'PRUEBA'.")
-
-
-def clean_activity_text(value: str) -> str:
-    text = str(value or "").replace("\n", " ").strip()
-    text = re.sub(r"\s+", " ", text)
-    text = re.sub(r"^\s*[\(\[]?\d{1,3}[\)\].:-]?\s*", "", text)
-    return text.strip(" .;:-")
-
-
-def is_true_header_or_auxiliary(text: str) -> bool:
-    normalized = normalize_header(text)
-    if not normalized:
-        return False
-    return any(pattern.search(normalized) for pattern in TRUE_HEADER_PATTERNS)
-
-
-def looks_like_activity_text(text: str) -> tuple[bool, str]:
-    raw_text = str(text or "").strip()
-    normalized = normalize_header(text)
-    if not normalized:
-        return False, "empty"
-    if "+" in raw_text or "-" in raw_text:
-        return False, "contains_plus_or_minus"
-    if normalized.isdigit():
-        return False, "numeric_only"
-    if not re.search(r"[a-záéíóúñ]", text, flags=re.IGNORECASE):
-        return False, "no_letters"
-    if is_true_header_or_auxiliary(normalized):
-        return False, "header_or_instruction"
-    if any(pattern.search(normalized) for pattern in GENERIC_TITLE_PATTERNS):
-        return False, "generic_title"
-    words = [w for w in re.split(r"\s+", normalized) if w]
-    if len(words) < 3:
-        return False, "too_short_phrase"
-    # Detecta frases de actividad (verbos en infinitivo y narrativas típicas).
-    has_activity_verb = any(
-        re.search(r"(ar|er|ir|arse|erse|irse|ando|iendo)$", w) for w in words
-    )
-    if not has_activity_verb and len(words) < 5:
-        return False, "not_activity_like"
-    return True, ""
-
-
-def detect_activity_start_row(accepted_rows: list[dict[str, Any]]) -> int:
-    for idx in range(len(accepted_rows)):
-        window = accepted_rows[idx : idx + 18]
-        valid = sum(1 for row in window if row.get("accepted_as_activity"))
-        if valid >= 8:
-            return idx
-    return 0
-
-
-def parse_prueba(
-    sheet: "xlrd.sheet.Sheet", ambiguities: list[str], debug: bool = False
-) -> tuple[list[Activity], dict[str, Any], list[dict[str, Any]]]:
-    debug_rows: list[dict[str, Any]] = []
-    column_phrase_counter: Counter[int] = Counter()
-    pre_rows: list[dict[str, Any]] = []
-    discarded_header_rows_count = 0
-    discarded_header_examples: list[str] = []
-
-    for r in range(sheet.nrows):
-        raw_values = [cell_text(sheet, r, c) for c in range(sheet.ncols)]
-        candidate_cells: list[tuple[int, str]] = []
-        row_discard_reasons: list[str] = []
-
-        for c, raw in enumerate(raw_values):
-            cleaned = clean_activity_text(raw)
-            accepted, reason = looks_like_activity_text(cleaned)
-            if accepted:
-                candidate_cells.append((c, cleaned))
-                column_phrase_counter[c] += 1
-            elif cleaned:
-                row_discard_reasons.append(f"col={c+1}: {reason}")
-                if reason in {"contains_plus_or_minus", "header_or_instruction", "generic_title"}:
-                    discarded_header_rows_count += 1
-                    if len(discarded_header_examples) < 15:
-                        discarded_header_examples.append(cleaned)
-        pre_rows.append(
-            {
-                "row_index": r + 1,
-                "raw_values": raw_values,
-                "candidate_cells": candidate_cells,
-                "discard_reasons": row_discard_reasons,
-            }
-        )
-
-    # Determina columna principal de actividades basada en densidad de frases válidas.
-    primary_activity_col = column_phrase_counter.most_common(1)[0][0] if column_phrase_counter else 1
-
-    accepted_rows: list[dict[str, Any]] = []
-    for row in pre_rows:
-        row_candidates = sorted(row["candidate_cells"], key=lambda item: item[0])
-        selected: tuple[int, str] | None = None
-        reason = ""
-        for c, text in row_candidates:
-            if c == primary_activity_col:
-                selected = (c, text)
-                reason = f"accepted_primary_col={c+1}"
+        difat = [x for x in struct.unpack_from("<109I", h, 76) if x != 0xFFFFFFFF]
+        sec = first_difat
+        for _ in range(num_difat):
+            if sec in (0xFFFFFFFE, 0xFFFFFFFF):
                 break
-        if selected is None and row_candidates:
-            selected = row_candidates[0]
-            reason = f"accepted_fallback_col={selected[0]+1}"
-        if selected is None:
-            reason = "; ".join(row["discard_reasons"]) if row["discard_reasons"] else "no_candidate_text"
+            off = 512 + sec * self.sector_size
+            arr = struct.unpack_from(f"<{(self.sector_size // 4) - 1}I", data, off)
+            difat.extend([x for x in arr if x != 0xFFFFFFFF])
+            sec = struct.unpack_from("<I", data, off + self.sector_size - 4)[0]
 
-        accepted_rows.append(
-            {
-                "row_index": row["row_index"],
-                "raw_values": row["raw_values"],
-                "detected_text": [text for _, text in row_candidates],
-                "accepted_as_activity": selected is not None,
-                "selected_col": selected[0] + 1 if selected else None,
-                "selected_text": selected[1] if selected else "",
-                "reason": reason,
-            }
-        )
-        debug_rows.append(accepted_rows[-1])
+        self.fat: list[int] = []
+        for s in difat:
+            off = 512 + s * self.sector_size
+            self.fat.extend(struct.unpack_from(f"<{self.sector_size // 4}I", data, off))
 
-    start_row = detect_activity_start_row(accepted_rows)
-    candidate_cells: list[tuple[int, int, str]] = []
-    for row in accepted_rows[start_row:]:
-        if row["accepted_as_activity"]:
-            candidate_cells.append((row["row_index"] - 1, (row["selected_col"] - 1), row["selected_text"]))
+        dir_stream = self._read_chain(first_dir, None, self.fat, self.sector_size, 512)
+        self.entries = []
+        for i in range(0, len(dir_stream), 128):
+            e = dir_stream[i : i + 128]
+            if len(e) < 128:
+                break
+            nlen = struct.unpack_from("<H", e, 64)[0]
+            name = e[: max(0, nlen - 2)].decode("utf-16le", "ignore")
+            typ = e[66]
+            start = struct.unpack_from("<I", e, 116)[0]
+            size = struct.unpack_from("<Q", e, 120)[0]
+            self.entries.append((name, typ, start, size))
 
-    activities: list[Activity] = []
-    for idx, (r, c, text) in enumerate(candidate_cells, start=1):
-        block_num = ((idx - 1) // 3) + 1
-        activity_id = f"A{idx:04d}"
-        block_id = f"B{block_num:03d}"
+        root = next(e for e in self.entries if e[0] == "Root Entry")
+        self.mini_stream = self._read_chain(root[2], root[3], self.fat, self.sector_size, 512)
+        self.mini_fat: list[int] = []
+        sec = first_mini_fat
+        for _ in range(num_mini_fat):
+            if sec in (0xFFFFFFFE, 0xFFFFFFFF):
+                break
+            off = 512 + sec * self.sector_size
+            self.mini_fat.extend(struct.unpack_from(f"<{self.sector_size // 4}I", data, off))
+            sec = self.fat[sec]
 
-        mas: dict[str, int] = {}
-        menos: dict[str, int] = {}
+    def _read_chain(self, start: int, size: int | None, table: list[int], chunk: int, base: int) -> bytes:
+        out = bytearray()
+        sec = start
+        while sec not in (0xFFFFFFFE, 0xFFFFFFFF) and sec < len(table):
+            off = base + sec * chunk
+            out.extend(self.data[off : off + chunk])
+            sec = table[sec]
+            if size is not None and len(out) >= size:
+                break
+        return bytes(out[:size] if size is not None else out)
 
-        # Intento de extracción de claves en columnas próximas a la derecha.
-        # Si no se logra identificar señal explícita, reportamos ambigüedad.
-        nearby = [normalize_header(cell_text(sheet, r, x)) for x in range(c + 1, min(c + 12, sheet.ncols))]
-        blob = " | ".join([x for x in nearby if x])
-        for scale in SCALES_ALL:
-            token = scale.replace("_", " ")
-            if f"{token} mas" in blob or f"mas {token}" in blob:
-                mas[scale] = 1
-            if f"{token} menos" in blob or f"menos {token}" in blob:
-                menos[scale] = 1
-
-        if not mas and not menos:
-            ambiguities.append(
-                f"Actividad {activity_id} (fila={r+1}, col={c+1}) sin claves mas/menos detectables por heurística."
-            )
-
-        activities.append(
-            Activity(
-                id=activity_id,
-                block_id=block_id,
-                text=text,
-                row_index=r,
-                mas=mas,
-                menos=menos,
-            )
-        )
-
-    accepted_rows_list = [
-        {
-            "row_index": row["row_index"],
-            "selected_col": row["selected_col"],
-            "text": row["selected_text"],
-            "reason": row["reason"],
-        }
-        for row in accepted_rows
-        if row["accepted_as_activity"]
-    ]
-    discarded_rows = [
-        {
-            "row_index": row["row_index"],
-            "raw_values": row["raw_values"],
-            "reason": row["reason"],
-        }
-        for row in accepted_rows
-        if not row["accepted_as_activity"]
-    ]
-
-    diagnostics = {
-        "sheet_name": sheet.name,
-        "total_rows_read": sheet.nrows,
-        "total_cols_read": sheet.ncols,
-        "primary_activity_col": primary_activity_col + 1,
-        "activity_detection_start_row": start_row + 1,
-        "detected_activities": len(activities),
-        "first_30_activities": [a.text for a in activities[:30]],
-        "accepted_rows": accepted_rows_list,
-        "discarded_rows": discarded_rows,
-        "discardadas_por_encabezado": discarded_header_rows_count,
-        "ejemplos_encabezados_descartados": discarded_header_examples[:10],
-    }
-
-    if len(activities) != 504:
-        ambiguities.append(
-            "Conteo de actividades distinto a 504 en PRUEBA. "
-            f"Detectadas={len(activities)}; filas_leidas={sheet.nrows}; inicio_detectado_fila={start_row + 1}."
-        )
-
-    if debug:
-        print(f"[DEBUG] Hoja usada: {sheet.name}")
-        print(f"[DEBUG] Columnas totales: {sheet.ncols}")
-        print(f"[DEBUG] Columna principal detectada: {primary_activity_col + 1}")
-        if activities:
-            print(f"[DEBUG] Primera fila válida real: {activities[0].row_index + 1}")
-            print(f"[DEBUG] Última fila válida real: {activities[-1].row_index + 1}")
-        print(f"[DEBUG] Cantidad total de actividades aceptadas: {len(activities)}")
-        print("[DEBUG] Primeras 30 actividades aceptadas:")
-        for idx, activity in enumerate(activities[:30], start=1):
-            print(f"  {idx:02d}. {activity.text}")
-
-    return activities, diagnostics, debug_rows
+    def open(self, name: str) -> bytes:
+        n, typ, start, size = next(e for e in self.entries if e[0] == name)
+        if size < self.cutoff:
+            out = bytearray()
+            sec = start
+            while sec not in (0xFFFFFFFE, 0xFFFFFFFF) and sec < len(self.mini_fat):
+                off = sec * self.mini_sector_size
+                out.extend(self.mini_stream[off : off + self.mini_sector_size])
+                sec = self.mini_fat[sec]
+                if len(out) >= size:
+                    break
+            return bytes(out[:size])
+        return self._read_chain(start, size, self.fat, self.sector_size, 512)
 
 
-def build_questions_blocks(activities: list[Activity]) -> tuple[dict[str, Any], dict[str, Any]]:
-    if not activities:
-        raise ValueError("No hay actividades para generar bloques.")
-    remainder = len(activities) % 3
-    dropped_tail = remainder if remainder else 0
-    if dropped_tail:
-        activities = activities[:-dropped_tail]
-    blocks: list[dict[str, Any]] = []
-    total_blocks = len(activities) // 3
-    activity_seq = 0
-    for block_num in range(1, total_blocks + 1):
-        block_id = f"B{block_num:03d}"
-        chunk = activities[(block_num - 1) * 3 : block_num * 3]
-        if len(chunk) != 3:
-            raise ValueError(
-                f"Bloque incompleto detectado: {block_id} con {len(chunk)} actividades."
-            )
-        blocks.append(
-            {
-                "id": block_id,
-                "orden": block_num,
-                "actividades": [
-                    {
-                        "id": f"A{(activity_seq + idx + 1):04d}",
-                        "texto": a.text,
-                        "bloque": block_id,
-                        "claves": {"mas": a.mas, "menos": a.menos},
-                    }
-                    for idx, a in enumerate(chunk)
-                ],
-            }
-        )
-        activity_seq += len(chunk)
-    meta = {
-        "total_actividades_finales": len(activities),
-        "total_bloques_finales": total_blocks,
-        "sobrantes_descartados": dropped_tail,
-    }
-    return {"blocks": blocks}, meta
+def decode_rk(rk: int) -> float | int:
+    mult100 = rk & 1
+    is_int = rk & 2
+    if is_int:
+        val = struct.unpack("<i", struct.pack("<I", rk & 0xFFFFFFFC))[0] >> 2
+        num = float(val)
+    else:
+        raw = (rk & 0xFFFFFFFC) << 32
+        num = struct.unpack("<d", struct.pack("<Q", raw))[0]
+    if mult100:
+        num /= 100
+    return int(num) if int(num) == num else num
 
 
-def build_scoring_rules() -> dict[str, Any]:
-    return {
-        "scoring_rules": {
-            "respuesta_por_bloque": {
-                "mas": {"requerido": 1, "multiplicador": 1},
-                "menos": {"requerido": 1, "multiplicador": -1},
-            },
-            "formula": "puntaje_bruto_escala = suma(claves_mas * 1) + suma(claves_menos * -1)",
-            "normalizacion": {"minimo": -100, "maximo": 100, "redondeo": 0},
-            "overrides": [
-                {
-                    "descripcion": "validez solo suma en 'mas'.",
-                    "si_escala": "validez",
-                    "aplicar": {"mas": 1, "menos": 0},
-                }
-            ],
-        }
-    }
-
-
-def build_validity_rules() -> dict[str, Any]:
-    return {
-        "validity_rules": {
-            "requerimientos_base": {
-                "mas_por_bloque": 1,
-                "menos_por_bloque": 1,
-                "permitir_duplicado_en_bloque": False,
-            },
-            "metricas": [
-                {
-                    "id": "omisiones",
-                    "descripcion": "Cantidad de bloques sin respuesta completa.",
-                    "formula": "count(bloque where mas is null or menos is null)",
-                    "umbral_invalido": 1,
-                },
-                {
-                    "id": "colision_mas_menos",
-                    "descripcion": "Misma actividad marcada como mas y menos dentro del mismo bloque.",
-                    "formula": "count(bloque where actividad_mas == actividad_menos)",
-                    "umbral_invalido": 1,
-                },
-                {
-                    "id": "indice_validez",
-                    "descripcion": "Puntaje bruto de la escala de validez.",
-                    "formula": "score('validez')",
-                    "rango_valido": {"min": -3, "max": 3},
-                },
-            ],
-            "decision": [
-                {"si": "omisiones >= 1 or colision_mas_menos >= 1", "estado": "invalido"},
-                {"si": "indice_validez < -3 or indice_validez > 3", "estado": "dudoso"},
-                {"si": "default", "estado": "valido"},
-            ],
-        }
-    }
-
-
-def parse_percentiles(book: "xlrd.book.Book", ambiguities: list[str]) -> tuple[dict[str, Any], dict[str, Any]]:
-    # Heurística: buscar hoja que contenga encabezados de ambos sexos.
-    sheet = None
-    for name in book.sheet_names():
-        n = normalize_header(name)
-        if "esttenes" in n or "perfil" in n:
-            sheet = book.sheet_by_name(name)
-            break
-
-    if sheet is None:
-        ambiguities.append("No se encontró hoja normativa (ESTTENES/PERFIL); percentiles vacíos.")
-        return ({"sexo": "M", "percentiles": {}}, {"sexo": "F", "percentiles": {}})
-
-    male: dict[str, list[dict[str, int]]] = defaultdict(list)
-    female: dict[str, list[dict[str, int]]] = defaultdict(list)
-
-    # Extracción tentativa: filas con patrón [escala, bruto, pM, pF].
-    for r in range(sheet.nrows):
-        row = [cell_text(sheet, r, c) for c in range(min(sheet.ncols, 12))]
-        if not any(row):
-            continue
-        key = normalize_header(row[0])
-        if key in SCALES_ALL and row[1] and row[2] and row[3]:
-            try:
-                bruto = int(float(row[1]))
-                p_m = int(float(row[2]))
-                p_f = int(float(row[3]))
-            except ValueError:
+class ChunkReader:
+    def __init__(self, chunks: list[bytes]):
+        self.chunks = chunks
+        self.i = 0
+        self.p = 0
+    def read(self, n: int) -> bytes:
+        out = bytearray()
+        while n > 0:
+            if self.i >= len(self.chunks):
+                raise EOFError
+            cur = self.chunks[self.i]
+            rem = len(cur) - self.p
+            if rem <= 0:
+                self.i += 1
+                self.p = 0
                 continue
-            male[key].append({"bruto": bruto, "percentil": p_m})
-            female[key].append({"bruto": bruto, "percentil": p_f})
-
-    if not male:
-        ambiguities.append(
-            "No se detectaron percentiles con heurística [escala, bruto, pM, pF] en hoja normativa."
-        )
-
-    return ({"sexo": "M", "percentiles": male}, {"sexo": "F", "percentiles": female})
-
-
-def build_scales() -> dict[str, Any]:
-    labels = {
-        "aire_libre": "Interés por trabajo al aire libre",
-        "mecanico": "Interés mecánico",
-        "calculo": "Interés por cálculo",
-        "cientifico": "Interés científico",
-        "persuasivo": "Interés persuasivo",
-        "artistico": "Interés artístico",
-        "literario": "Interés literario",
-        "musical": "Interés musical",
-        "servicio_social": "Interés por servicio social",
-        "oficina": "Interés de oficina",
-        "validez": "Índice de validez",
-    }
-    return {
-        "scales": [
-            {"id": sid, "nombre": labels[sid], "grupo": "control" if sid == "validez" else "intereses"}
-            for sid in SCALES_ALL
-        ]
-    }
+            t = min(rem, n)
+            out.extend(cur[self.p : self.p + t])
+            self.p += t
+            n -= t
+            if self.p >= len(cur):
+                self.i += 1
+                self.p = 0
+        return bytes(out)
+    def read_byte(self) -> int:
+        return self.read(1)[0]
+    def at_chunk_start(self) -> bool:
+        return self.p == 0
 
 
-def build_excel_mapping(book: "xlrd.book.Book") -> dict[str, Any]:
-    return {
-        "excel_mapping": {
-            "workbook": Path(book.filename).name if getattr(book, "filename", None) else "test.xls",
-            "sheets": book.sheet_names(),
-            "notes": "Mapeo detectado automáticamente por extractor; revisar si cambia estructura del XLS.",
-        }
-    }
+def read_xl_unicode(reader: ChunkReader) -> str:
+    cch = struct.unpack("<H", reader.read(2))[0]
+    flags = reader.read_byte()
+    is16 = flags & 0x01
+    rich = flags & 0x08
+    ext = flags & 0x04
+    rt_runs = struct.unpack("<H", reader.read(2))[0] if rich else 0
+    ext_size = struct.unpack("<I", reader.read(4))[0] if ext else 0
+
+    chars = []
+    remain = cch
+    cur16 = 1 if is16 else 0
+    while remain > 0:
+        if reader.at_chunk_start():
+            cur16 = reader.read_byte() & 0x01
+        if cur16:
+            chars.append(reader.read(2).decode("utf-16le", "ignore"))
+        else:
+            chars.append(reader.read(1).decode("latin1", "ignore"))
+        remain -= 1
+    if rt_runs:
+        reader.read(4 * rt_runs)
+    if ext_size:
+        reader.read(ext_size)
+    return "".join(chars)
 
 
-def rules_count(activities: list[Activity], side: str) -> dict[str, int]:
-    counter: Counter[str] = Counter()
-    for activity in activities:
-        for scale in (activity.mas if side == "mas" else activity.menos):
-            counter[scale] += 1
-    return dict(counter)
+def parse_workbook(path: Path):
+    cfb = CFB(path.read_bytes())
+    wb = cfb.open("Workbook")
+
+    recs = []
+    p = 0
+    while p + 4 <= len(wb):
+        rid, rlen = struct.unpack_from("<HH", wb, p)
+        p += 4
+        rec = wb[p : p + rlen]
+        p += rlen
+        recs.append((rid, rec))
+
+    sheets = []
+    sst = []
+    i = 0
+    while i < len(recs):
+        rid, rec = recs[i]
+        if rid == 0x0085:
+            bof = struct.unpack_from("<I", rec, 0)[0]
+            ln, flags = rec[6], rec[7]
+            name = rec[8 : 8 + (2 * ln if flags & 1 else ln)].decode("utf-16le" if flags & 1 else "latin1", "ignore")
+            sheets.append((name, bof))
+        elif rid == 0x00FC:
+            chunks = [rec]
+            j = i + 1
+            while j < len(recs) and recs[j][0] == 0x003C:
+                chunks.append(recs[j][1])
+                j += 1
+            rd = ChunkReader(chunks)
+            rd.read(8)
+            while True:
+                try:
+                    sst.append(read_xl_unicode(rd))
+                except Exception:
+                    break
+            i = j - 1
+        elif rid == 0x000A and sheets:
+            break
+        i += 1
+
+    rows_by_sheet = {}
+    for sname, off in sheets:
+        p = off
+        rows = {}
+        while p + 4 <= len(wb):
+            rid, rlen = struct.unpack_from("<HH", wb, p)
+            p += 4
+            rec = wb[p : p + rlen]
+            p += rlen
+            if rid == 0x000A:
+                break
+            if rid in (0x00FD, 0x0203, 0x027E):
+                r, c = struct.unpack_from("<HH", rec, 0)
+                if rid == 0x00FD:
+                    idx = struct.unpack_from("<I", rec, 6)[0]
+                    v = sst[idx] if idx < len(sst) else f"SST#{idx}"
+                elif rid == 0x0203:
+                    v = struct.unpack_from("<d", rec, 6)[0]
+                else:
+                    v = decode_rk(struct.unpack_from("<I", rec, 6)[0])
+                rows.setdefault(r, {})[c] = v
+        rows_by_sheet[sname] = rows
+    return rows_by_sheet
 
 
-def write_json(path: Path, payload: dict[str, Any]) -> None:
+def write_json(path: Path, payload):
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--xls", default="test.xls")
-    parser.add_argument("--config-dir", default="config/test-vocacional")
-    parser.add_argument("--report", default="storage/logs/extraction_report.json")
-    parser.add_argument("--debug", action="store_true")
-    args = parser.parse_args()
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--xls", default="test.xls")
+    ap.add_argument("--config-dir", default="config/test-vocacional")
+    ap.add_argument("--report", default="storage/logs/extraction_report.json")
+    args = ap.parse_args()
 
-    xls_path = Path(args.xls)
-    if not xls_path.exists():
-        raise SystemExit(f"No existe el archivo XLS: {xls_path}")
+    rows_by_sheet = parse_workbook(Path(args.xls))
+    prueba = rows_by_sheet["PRUEBA"]
 
-    ambiguities: list[str] = []
-    diagnostics: dict[str, Any] = {}
-    debug_rows: list[dict[str, Any]] = []
-    try:
-        book = xlrd.open_workbook(str(xls_path), formatting_info=False)
-        prueba = detect_prueba_sheet(book)
-        activities, diagnostics, debug_rows = parse_prueba(prueba, ambiguities, debug=args.debug)
-        male, female = parse_percentiles(book, ambiguities)
-    except Ambiguity as exc:
-        ambiguities.append(str(exc))
-        activities = []
-        diagnostics = {
-            "sheet_name": "PRUEBA",
-            "total_rows_read": 0,
-            "total_cols_read": 0,
-            "activity_detection_start_row": None,
-            "detected_activities": 0,
-            "first_30_activities": [],
-            "accepted_rows": [],
-            "discarded_rows": [],
-        }
-        male, female = {"sexo": "M", "percentiles": {}}, {"sexo": "F", "percentiles": {}}
-        book = xlrd.open_workbook(str(xls_path), formatting_info=False)
+    scale_letter_cols = [(7 + 3 * i, code) for i, code in enumerate(["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "V"])]
+
+    activities = []
+    discarded = []
+    incompletas = []
+    for r in range(3, max(prueba.keys()) + 1):
+        row = prueba.get(r, {})
+        texto = str(row.get(1, "")).strip()
+        literal = str(row.get(3, "")).strip()
+        is_activity_row = bool(texto) and len(literal) == 1 and literal.isalpha()
+        if (not is_activity_row) or texto.startswith("TE GUSTA"):
+            discarded.append({"row": r + 1, "reason": "sin_texto_actividad_o_encabezado"})
+            continue
+        mas_codes = [code for col, code in scale_letter_cols if row.get(col - 1) == 1]
+        menos_codes = [code for col, code in scale_letter_cols if row.get(col + 1) == 1]
+        mas = {SCALE_CODE_MAP[c]: 1 for c in mas_codes if c in SCALE_CODE_MAP}
+        menos = {SCALE_CODE_MAP[c]: 1 for c in menos_codes if c in SCALE_CODE_MAP}
+
+        if len(mas) != 1 or len(menos) != 1:
+            incompletas.append({
+                "row": r + 1,
+                "texto": texto,
+                "mas_detectadas": mas_codes,
+                "menos_detectadas": menos_codes,
+                "motivo": "no_univoco_en_matriz_+-",
+            })
+        activities.append({"row": r + 1, "texto": texto, "mas": mas, "menos": menos})
+
+    blocks = []
+    for i in range(0, len(activities), 3):
+        chunk = activities[i : i + 3]
+        if len(chunk) < 3:
+            break
+        block_id = f"B{(i // 3) + 1:03d}"
+        block_acts = []
+        for j, a in enumerate(chunk):
+            aid = f"A{i + j + 1:04d}"
+            block_acts.append({"id": aid, "texto": a["texto"], "bloque": block_id, "claves": {"mas": a["mas"], "menos": a["menos"]}})
+        blocks.append({"id": block_id, "orden": (i // 3) + 1, "actividades": block_acts})
 
     config_dir = Path(args.config_dir)
-    questions_payload, generation_meta = build_questions_blocks(activities)
-    if generation_meta["sobrantes_descartados"] > 0:
-        ambiguities.append(
-            "Se descartaron actividades sobrantes al final para completar bloques de 3. "
-            f"sobrantes={generation_meta['sobrantes_descartados']}."
-        )
+    write_json(config_dir / "questions_blocks.json", {"blocks": blocks})
 
-    write_json(config_dir / "questions_blocks.json", questions_payload)
-    write_json(config_dir / "scoring_rules.json", build_scoring_rules())
-    write_json(config_dir / "validity_rules.json", build_validity_rules())
-    write_json(config_dir / "percentiles" / "male.json", male)
-    write_json(config_dir / "percentiles" / "female.json", female)
-    write_json(config_dir / "scales.json", build_scales())
-    write_json(config_dir / "excel_mapping.json", build_excel_mapping(book))
+    write_json(config_dir / "scoring_rules.json", {
+        "scoring_rules": {
+            "respuesta_por_bloque": {"mas": {"requerido": 1, "multiplicador": 1}, "menos": {"requerido": 1, "multiplicador": -1}},
+            "formula": "puntaje_bruto_escala = sum(claves.mas) - sum(claves.menos)",
+            "fuente": "Hoja PRUEBA, matriz + / - por escala (códigos 0..9,V).",
+        }
+    })
 
-    report = {
-        "archivo_origen": str(xls_path),
-        "total_hojas_leidas": len(book.sheet_names()),
-        "total_actividades": generation_meta["total_actividades_finales"],
-        "total_bloques": generation_meta["total_bloques_finales"],
-        "diagnostico_prueba": diagnostics,
-        "escalas_detectadas": sorted(
-            set().union(*(a.mas.keys() for a in activities), *(a.menos.keys() for a in activities))
-        ),
-        "reglas_por_escala": {
-            "mas": rules_count(activities, "mas"),
-            "menos": rules_count(activities, "menos"),
-        },
-        "ambiguedades": ambiguities,
-        "sobrantes_descartados": generation_meta["sobrantes_descartados"],
+    write_json(config_dir / "validity_rules.json", {
+        "validity_rules": {
+            "requerimientos_base": {"mas_por_bloque": 1, "menos_por_bloque": 1, "permitir_duplicado_en_bloque": False},
+            "metricas": [
+                {"id": "omisiones", "formula": "count(bloque where mas is null or menos is null)", "umbral_invalido": 1},
+                {"id": "colision_mas_menos", "formula": "count(bloque where actividad_mas == actividad_menos)", "umbral_invalido": 1},
+                {"id": "indice_validez", "formula": "score('validez')"},
+            ],
+            "nota": "Reglas de validez psicométrica deben revisarse contra manual; este archivo conserva estructura operativa.",
+        }
+    })
+
+    # percentiles: no se infiere de forma confiable sexo H/M desde celdas disponibles.
+    write_json(config_dir / "percentiles" / "male.json", {"sexo": "M", "percentiles": {}, "nota": "No extraído automáticamente con confiabilidad suficiente."})
+    write_json(config_dir / "percentiles" / "female.json", {"sexo": "F", "percentiles": {}, "nota": "No extraído automáticamente con confiabilidad suficiente."})
+
+    excel_mapping = {
+        "excel_mapping": {
+            "sheet_prueba": "PRUEBA",
+            "columnas": {
+                "texto_actividad": "B (índice 2 en Excel / col=1 base 0)",
+                "matriz_codigos": "H,K,N,Q,T,W,Z,AC,AF,AI,AL (0..9,V)",
+                "marcador_mas": "columna izquierda inmediata de cada código",
+                "marcador_menos": "columna derecha inmediata de cada código",
+            },
+            "codigo_escala": SCALE_CODE_MAP,
+        }
     }
-    write_json(Path(args.report), report)
-    write_json(Path("storage/logs/debug_prueba_rows.json"), {"rows": debug_rows})
+    write_json(config_dir / "excel_mapping.json", excel_mapping)
 
-    first_block = questions_payload["blocks"][0] if questions_payload.get("blocks") else None
-    last_block = questions_payload["blocks"][-1] if questions_payload.get("blocks") else None
-    print(f"total_actividades_finales: {generation_meta['total_actividades_finales']}")
-    print(f"total_bloques_finales: {generation_meta['total_bloques_finales']}")
-    print(
-        "filas_descartadas_por_encabezado: "
-        f"{diagnostics.get('discardadas_por_encabezado', 0)}"
-    )
-    print("ejemplos_encabezados_eliminados:")
-    for example in diagnostics.get("ejemplos_encabezados_descartados", []):
-        print(f"- {example}")
-    print("primer_bloque_completo:")
-    print(json.dumps(first_block, ensure_ascii=False, indent=2))
-    print("ultimo_bloque_completo:")
-    print(json.dumps(last_block, ensure_ascii=False, indent=2))
-    print(json.dumps(report, ensure_ascii=False, indent=2))
+    reporte = {
+        "archivo_origen": args.xls,
+        "total_actividades_detectadas": len(activities),
+        "total_bloques_generados": len(blocks),
+        "actividades_clave_completa": len(activities) - len(incompletas),
+        "actividades_clave_incompleta": len(incompletas),
+        "escalas_detectadas": sorted(set(SCALE_CODE_MAP.values())),
+        "mapeo_excel_escalas": SCALE_CODE_MAP,
+        "filas_descartadas": discarded,
+        "filas_descartadas_total": len(discarded),
+        "muestras_actividades": activities[:5],
+        "actividades_incompletas_muestra": incompletas[:25],
+        "nota": "La matriz de claves en PRUEBA tiene filas no unívocas; se requiere validación psicométrica/manual para completar 100%."
+    }
+    write_json(Path(args.report), reporte)
+    print(json.dumps({"ok": True, "activities": len(activities), "blocks": len(blocks), "incompletas": len(incompletas)}, ensure_ascii=False))
     return 0
 
 

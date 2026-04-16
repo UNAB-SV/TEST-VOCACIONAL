@@ -1,52 +1,24 @@
 {
   "excel_mapping": {
-    "preguntas": {
-      "sheet": "Preguntas",
-      "start_row": 2,
-      "columns": {
-        "id": "A",
-        "bloque": "B",
-        "texto": "C",
-        "clave_mas": "D",
-        "clave_menos": "E"
-      }
+    "sheet_prueba": "PRUEBA",
+    "columnas": {
+      "texto_actividad": "B (índice 2 en Excel / col=1 base 0)",
+      "matriz_codigos": "H,K,N,Q,T,W,Z,AC,AF,AI,AL (0..9,V)",
+      "marcador_mas": "columna izquierda inmediata de cada código",
+      "marcador_menos": "columna derecha inmediata de cada código"
     },
-    "claves_multiescala": {
-      "sheet": "Claves",
-      "start_row": 2,
-      "columns": {
-        "actividad_id": "A",
-        "escala": "B",
-        "peso_mas": "C",
-        "peso_menos": "D"
-      }
-    },
-    "percentiles_m": {
-      "sheet": "Percentiles_H",
-      "start_row": 2,
-      "columns": {
-        "escala": "A",
-        "bruto": "B",
-        "percentil": "C"
-      }
-    },
-    "percentiles_f": {
-      "sheet": "Percentiles_M",
-      "start_row": 2,
-      "columns": {
-        "escala": "A",
-        "bruto": "B",
-        "percentil": "C"
-      }
-    },
-    "validez": {
-      "sheet": "Validez",
-      "start_row": 2,
-      "columns": {
-        "metrica_id": "A",
-        "parametro": "B",
-        "valor": "C"
-      }
+    "codigo_escala": {
+      "0": "aire_libre",
+      "1": "mecanico",
+      "2": "calculo",
+      "3": "cientifico",
+      "4": "persuasivo",
+      "5": "artistico",
+      "6": "literario",
+      "7": "musical",
+      "8": "servicio_social",
+      "9": "oficina",
+      "V": "validez"
     }
   }
 }
