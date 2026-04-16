@@ -1,0 +1,14 @@
+{
+  "archivo_origen": "test.xls",
+  "total_hojas_leidas": 0,
+  "total_actividades": 0,
+  "total_bloques": 0,
+  "escalas_detectadas": [],
+  "reglas_por_escala": {
+    "mas": {},
+    "menos": {}
+  },
+  "ambiguedades": [
+    "No se pudo ejecutar extracción automática en este entorno porque falta la dependencia `xlrd` y la política de red bloquea instalación de paquetes externos (HTTP 403)."
+  ]
+}
