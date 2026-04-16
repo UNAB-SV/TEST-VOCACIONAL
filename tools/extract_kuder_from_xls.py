@@ -251,6 +251,88 @@ def to_excel_col_name(col_idx_zero_based: int) -> str:
     return result
 
 
+def is_number(value) -> bool:
+    return isinstance(value, (int, float)) and not isinstance(value, bool)
+
+
+def extract_percentiles(rows_by_sheet: dict) -> tuple[dict, dict, dict]:
+    perfil = rows_by_sheet.get("ESTTENES Y PERFIL", {})
+    if not perfil:
+        raise ValueError("No se encontró la hoja 'ESTTENES Y PERFIL' para extraer percentiles.")
+
+    # Cabeceras observadas en test.xls:
+    # - Códigos de escala (male): D,G,J,...,AE
+    # - Percentiles (male):      E,H,K,...,AF
+    # - Códigos de escala (female): AI,AL,AO,...,BJ
+    # - Percentiles (female):       AJ,AM,AP,...,BK
+    header_row = perfil.get(0, {})
+    scale_codes_male = [str(header_row.get(3 + (3 * i), "")).strip() for i in range(10)]
+    scale_codes_female = [str(header_row.get(34 + (3 * i), "")).strip() for i in range(10)]
+
+    scale_ids_male = [SCALE_CODE_MAP.get(code, "") for code in scale_codes_male]
+    scale_ids_female = [SCALE_CODE_MAP.get(code, "") for code in scale_codes_female]
+    if any(not sid for sid in scale_ids_male + scale_ids_female):
+        raise ValueError("No se pudieron resolver todos los códigos de escala de percentiles.")
+
+    start_row = None
+    for r in sorted(perfil.keys()):
+        row = perfil.get(r, {})
+        if str(row.get(0, "")).strip().lower() == "muj" and row.get(1) == 0:
+            start_row = r
+            break
+    if start_row is None:
+        raise ValueError("No se encontró la fila de inicio esperada ('muj' con puntaje 0).")
+
+    male = {scale_id: [] for scale_id in scale_ids_male}
+    female = {scale_id: [] for scale_id in scale_ids_female}
+
+    max_row = max(perfil.keys())
+    for r in range(start_row, max_row + 1):
+        row = perfil.get(r, {})
+        raw = r - start_row
+        row_has_any = False
+
+        for i, scale_id in enumerate(scale_ids_male):
+            percentile_col = 4 + (3 * i)
+            value = row.get(percentile_col)
+            if is_number(value):
+                male[scale_id].append({"bruto": raw, "percentil": int(value)})
+                row_has_any = True
+
+        for i, scale_id in enumerate(scale_ids_female):
+            percentile_col = 35 + (3 * i)
+            value = row.get(percentile_col)
+            if is_number(value):
+                female[scale_id].append({"bruto": raw, "percentil": int(value)})
+                row_has_any = True
+
+        # Corta al detectar tramo completamente vacío después del inicio.
+        if not row_has_any and r > start_row + 5:
+            break
+
+    extraction_report = {
+        "sheet": "ESTTENES Y PERFIL",
+        "base_row_excel_1_indexed": start_row + 1,
+        "raw_formula": "bruto = fila_actual - fila_base",
+        "male_scales": {k: len(v) for k, v in male.items()},
+        "female_scales": {k: len(v) for k, v in female.items()},
+    }
+
+    male_payload = {
+        "sexo": "M",
+        "fuente": "test.xls::ESTTENES Y PERFIL",
+        "lookup_method": "floor",
+        "percentiles": male,
+    }
+    female_payload = {
+        "sexo": "F",
+        "fuente": "test.xls::ESTTENES Y PERFIL",
+        "lookup_method": "floor",
+        "percentiles": female,
+    }
+    return male_payload, female_payload, extraction_report
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--xls", default="test.xls")
@@ -347,9 +429,9 @@ def main() -> int:
         }
     })
 
-    # percentiles: no se infiere de forma confiable sexo H/M desde celdas disponibles.
-    write_json(config_dir / "percentiles" / "male.json", {"sexo": "M", "percentiles": {}, "nota": "No extraído automáticamente con confiabilidad suficiente."})
-    write_json(config_dir / "percentiles" / "female.json", {"sexo": "F", "percentiles": {}, "nota": "No extraído automáticamente con confiabilidad suficiente."})
+    male_percentiles, female_percentiles, percentile_report = extract_percentiles(rows_by_sheet)
+    write_json(config_dir / "percentiles" / "male.json", male_percentiles)
+    write_json(config_dir / "percentiles" / "female.json", female_percentiles)
 
     excel_mapping = {
         "excel_mapping": {
@@ -377,7 +459,8 @@ def main() -> int:
         "filas_descartadas_total": len(discarded),
         "muestras_actividades": activities[:5],
         "actividades_incompletas_muestra": [],
-        "nota": "La matriz de scoring se exporta por bloque/posición/respuesta usando PRUEBA como única fuente de verdad."
+        "nota": "La matriz de scoring se exporta por bloque/posición/respuesta usando PRUEBA como única fuente de verdad.",
+        "percentiles_extraccion": percentile_report,
     }
     write_json(Path(args.report), reporte)
     print(json.dumps({"ok": True, "activities": len(activities), "blocks": len(blocks), "modelo": "por_bloque_indice_respuesta"}, ensure_ascii=False))

@@ -5,6 +5,8 @@ $evaluado = is_array($report['evaluado'] ?? null) ? $report['evaluado'] : [];
 $validezEstado = is_array($report['validez_estado'] ?? null) ? $report['validez_estado'] : [];
 $escalas = is_array($report['escalas'] ?? null) ? $report['escalas'] : [];
 $ranking = is_array($report['ranking'] ?? null) ? $report['ranking'] : [];
+$alertasTecnicas = is_array($report['alertas_tecnicas'] ?? null) ? $report['alertas_tecnicas'] : [];
+$escalasSinPercentil = is_array($alertasTecnicas['escalas_sin_percentil'] ?? null) ? $alertasTecnicas['escalas_sin_percentil'] : [];
 $estadoCodigo = (string) ($validezEstado['codigo'] ?? 'invalido');
 $estadoEtiqueta = (string) ($validezEstado['etiqueta'] ?? 'Prueba no válida');
 $esValida = (bool) ($validezEstado['es_valida'] ?? false);
@@ -19,6 +21,13 @@ $chartData = json_encode($ranking, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASH
         <div class="alert alert-danger" role="alert">
             <strong>Advertencia:</strong> <?= htmlspecialchars($estadoEtiqueta, ENT_QUOTES, 'UTF-8'); ?>.
             Revisa la interpretación del reporte antes de tomar decisiones.
+        </div>
+    <?php endif; ?>
+
+    <?php if ($escalasSinPercentil !== []): ?>
+        <div class="alert alert-danger" role="alert">
+            <strong>Advertencia técnica:</strong> faltan percentiles para:
+            <?= htmlspecialchars(implode(', ', array_map('strval', $escalasSinPercentil)), ENT_QUOTES, 'UTF-8'); ?>.
         </div>
     <?php endif; ?>
 
@@ -45,7 +54,7 @@ $chartData = json_encode($ranking, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASH
             <tr>
                 <td><?= htmlspecialchars((string) ($escala['nombre'] ?? ''), ENT_QUOTES, 'UTF-8'); ?></td>
                 <td><?= (int) ($escala['puntaje_bruto'] ?? 0); ?></td>
-                <td><?= (int) ($escala['percentil'] ?? 0); ?></td>
+                <td><?= is_int($escala['percentil'] ?? null) ? (string) $escala['percentil'] : 'N/D'; ?></td>
             </tr>
         <?php endforeach; ?>
         </tbody>
@@ -56,7 +65,7 @@ $chartData = json_encode($ranking, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASH
         <?php foreach ($ranking as $escala): ?>
             <li>
                 <?= htmlspecialchars((string) ($escala['nombre'] ?? ''), ENT_QUOTES, 'UTF-8'); ?>
-                <span>(bruto: <?= (int) ($escala['puntaje_bruto'] ?? 0); ?>, percentil: <?= (int) ($escala['percentil'] ?? 0); ?>)</span>
+                <span>(bruto: <?= (int) ($escala['puntaje_bruto'] ?? 0); ?>, percentil: <?= is_int($escala['percentil'] ?? null) ? (string) $escala['percentil'] : 'N/D'; ?>)</span>
             </li>
         <?php endforeach; ?>
     </ol>
