@@ -11,6 +11,19 @@
       }
     },
     "formula": "puntaje_bruto_escala = sum(claves.mas) - sum(claves.menos)",
-    "fuente": "Hoja PRUEBA, matriz + / - por escala (códigos 0..9,V)."
+    "fuente": "Hoja PRUEBA, matriz + / - por escala (códigos 0..9,V).",
+    "auditoria_claves_excel": {
+      "archivo_reporte": "storage/logs/scoring_key_audit.json",
+      "conteos": {
+        "actividades": 504,
+        "con_mas": 320,
+        "con_menos": 386,
+        "sin_claves": 33,
+        "solo_mas": 85,
+        "solo_menos": 151,
+        "ambas": 235
+      },
+      "nota": "Existen actividades con solo MAS o solo MENOS porque la fila correspondiente en PRUEBA contiene únicamente ese marcador; y 33 filas no tienen marcadores en ninguna de las dos columnas."
+    }
   }
 }
