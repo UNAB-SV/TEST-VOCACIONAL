@@ -1,14 +1,343 @@
 {
   "archivo_origen": "test.xls",
-  "total_hojas_leidas": 0,
-  "total_actividades": 0,
-  "total_bloques": 0,
-  "escalas_detectadas": [],
-  "reglas_por_escala": {
-    "mas": {},
-    "menos": {}
+  "total_actividades_detectadas": 504,
+  "total_bloques_generados": 168,
+  "actividades_clave_completa": 98,
+  "actividades_clave_incompleta": 406,
+  "escalas_detectadas": [
+    "aire_libre",
+    "artistico",
+    "calculo",
+    "cientifico",
+    "literario",
+    "mecanico",
+    "musical",
+    "oficina",
+    "persuasivo",
+    "servicio_social",
+    "validez"
+  ],
+  "mapeo_excel_escalas": {
+    "0": "aire_libre",
+    "1": "mecanico",
+    "2": "calculo",
+    "3": "cientifico",
+    "4": "persuasivo",
+    "5": "artistico",
+    "6": "literario",
+    "7": "musical",
+    "8": "servicio_social",
+    "9": "oficina",
+    "V": "validez"
   },
-  "ambiguedades": [
-    "No se pudo ejecutar extracción automática en este entorno porque falta la dependencia `xlrd` y la política de red bloquea instalación de paquetes externos (HTTP 403)."
-  ]
+  "filas_descartadas": [
+    {
+      "row": 508,
+      "reason": "sin_texto_actividad_o_encabezado"
+    },
+    {
+      "row": 509,
+      "reason": "sin_texto_actividad_o_encabezado"
+    }
+  ],
+  "filas_descartadas_total": 2,
+  "muestras_actividades": [
+    {
+      "row": 4,
+      "texto": "En sus viajes observar de preferencia la gente",
+      "mas": {
+        "validez": 1
+      },
+      "menos": {
+        "aire_libre": 1
+      }
+    },
+    {
+      "row": 5,
+      "texto": "En sus viajes observar de preferencia los paisajes",
+      "mas": {
+        "aire_libre": 1,
+        "validez": 1
+      },
+      "menos": {}
+    },
+    {
+      "row": 6,
+      "texto": "En sus viajes observar de preferencia los cultivos",
+      "mas": {
+        "aire_libre": 1
+      },
+      "menos": {}
+    },
+    {
+      "row": 7,
+      "texto": "Ayudarse económicamente dedicando varias horas a un ciego",
+      "mas": {
+        "servicio_social": 1
+      },
+      "menos": {
+        "calculo": 1,
+        "persuasivo": 1
+      }
+    },
+    {
+      "row": 8,
+      "texto": "Ayudarse económicamente llevando la estadística de vehiculos que pasan por un retén",
+      "mas": {
+        "calculo": 1
+      },
+      "menos": {
+        "persuasivo": 1,
+        "servicio_social": 1
+      }
+    }
+  ],
+  "actividades_incompletas_muestra": [
+    {
+      "row": 5,
+      "texto": "En sus viajes observar de preferencia los paisajes",
+      "mas_detectadas": [
+        "0",
+        "V"
+      ],
+      "menos_detectadas": [],
+      "motivo": "no_univoco_en_matriz_+-"
+    },
+    {
+      "row": 6,
+      "texto": "En sus viajes observar de preferencia los cultivos",
+      "mas_detectadas": [
+        "0"
+      ],
+      "menos_detectadas": [],
+      "motivo": "no_univoco_en_matriz_+-"
+    },
+    {
+      "row": 7,
+      "texto": "Ayudarse económicamente dedicando varias horas a un ciego",
+      "mas_detectadas": [
+        "8"
+      ],
+      "menos_detectadas": [
+        "2",
+        "4"
+      ],
+      "motivo": "no_univoco_en_matriz_+-"
+    },
+    {
+      "row": 8,
+      "texto": "Ayudarse económicamente llevando la estadística de vehiculos que pasan por un retén",
+      "mas_detectadas": [
+        "2"
+      ],
+      "menos_detectadas": [
+        "4",
+        "8"
+      ],
+      "motivo": "no_univoco_en_matriz_+-"
+    },
+    {
+      "row": 9,
+      "texto": "Ayudarse económicamente haciendo encuestas entre el público",
+      "mas_detectadas": [
+        "4"
+      ],
+      "menos_detectadas": [
+        "2",
+        "8"
+      ],
+      "motivo": "no_univoco_en_matriz_+-"
+    },
+    {
+      "row": 11,
+      "texto": "Visitar la exposición de productos alimenticios caseros en una feria de pueblo",
+      "mas_detectadas": [],
+      "menos_detectadas": [
+        "0"
+      ],
+      "motivo": "no_univoco_en_matriz_+-"
+    },
+    {
+      "row": 12,
+      "texto": "Visitar la exposición de ganado en una feria de pueblo",
+      "mas_detectadas": [
+        "0",
+        "V"
+      ],
+      "menos_detectadas": [],
+      "motivo": "no_univoco_en_matriz_+-"
+    },
+    {
+      "row": 13,
+      "texto": "Hacer ejercicios de atletismo",
+      "mas_detectadas": [],
+      "menos_detectadas": [
+        "0"
+      ],
+      "motivo": "no_univoco_en_matriz_+-"
+    },
+    {
+      "row": 14,
+      "texto": "Ir a pescar",
+      "mas_detectadas": [
+        "0"
+      ],
+      "menos_detectadas": [],
+      "motivo": "no_univoco_en_matriz_+-"
+    },
+    {
+      "row": 15,
+      "texto": "Jugar fútbol",
+      "mas_detectadas": [],
+      "menos_detectadas": [
+        "0"
+      ],
+      "motivo": "no_univoco_en_matriz_+-"
+    },
+    {
+      "row": 16,
+      "texto": "Hojear libros y revistas en una librería",
+      "mas_detectadas": [
+        "6"
+      ],
+      "menos_detectadas": [],
+      "motivo": "no_univoco_en_matriz_+-"
+    },
+    {
+      "row": 17,
+      "texto": "Presenciar el ensayo de una orquesta",
+      "mas_detectadas": [],
+      "menos_detectadas": [
+        "6"
+      ],
+      "motivo": "no_univoco_en_matriz_+-"
+    },
+    {
+      "row": 18,
+      "texto": "Visitar un jardin zoológico",
+      "mas_detectadas": [],
+      "menos_detectadas": [
+        "6"
+      ],
+      "motivo": "no_univoco_en_matriz_+-"
+    },
+    {
+      "row": 19,
+      "texto": "Coleccionar autógrafos de personajes célebres",
+      "mas_detectadas": [],
+      "menos_detectadas": [
+        "0"
+      ],
+      "motivo": "no_univoco_en_matriz_+-"
+    },
+    {
+      "row": 20,
+      "texto": "Coleccionar mariposas",
+      "mas_detectadas": [
+        "0"
+      ],
+      "menos_detectadas": [],
+      "motivo": "no_univoco_en_matriz_+-"
+    },
+    {
+      "row": 21,
+      "texto": "Coleccionar muestras de maderas",
+      "mas_detectadas": [
+        "0"
+      ],
+      "menos_detectadas": [],
+      "motivo": "no_univoco_en_matriz_+-"
+    },
+    {
+      "row": 22,
+      "texto": "Visitar una exposición de cuadros famosos",
+      "mas_detectadas": [],
+      "menos_detectadas": [
+        "3"
+      ],
+      "motivo": "no_univoco_en_matriz_+-"
+    },
+    {
+      "row": 23,
+      "texto": "Visitar una exposición de distintos medios de transporte",
+      "mas_detectadas": [],
+      "menos_detectadas": [
+        "3"
+      ],
+      "motivo": "no_univoco_en_matriz_+-"
+    },
+    {
+      "row": 24,
+      "texto": "Visitar una exposición de equipos de laboratorio",
+      "mas_detectadas": [
+        "3"
+      ],
+      "menos_detectadas": [],
+      "motivo": "no_univoco_en_matriz_+-"
+    },
+    {
+      "row": 25,
+      "texto": "Vender frutas",
+      "mas_detectadas": [
+        "4"
+      ],
+      "menos_detectadas": [
+        "0",
+        "7"
+      ],
+      "motivo": "no_univoco_en_matriz_+-"
+    },
+    {
+      "row": 26,
+      "texto": "Ser un pianista profesional",
+      "mas_detectadas": [
+        "7"
+      ],
+      "menos_detectadas": [
+        "0",
+        "4"
+      ],
+      "motivo": "no_univoco_en_matriz_+-"
+    },
+    {
+      "row": 27,
+      "texto": "Cultivar hortalizas",
+      "mas_detectadas": [
+        "0"
+      ],
+      "menos_detectadas": [
+        "4",
+        "7"
+      ],
+      "motivo": "no_univoco_en_matriz_+-"
+    },
+    {
+      "row": 28,
+      "texto": "Dirigir la organización de una fiesta en un club social",
+      "mas_detectadas": [],
+      "menos_detectadas": [
+        "9"
+      ],
+      "motivo": "no_univoco_en_matriz_+-"
+    },
+    {
+      "row": 29,
+      "texto": "Decorar el salón para la fiesta",
+      "mas_detectadas": [],
+      "menos_detectadas": [
+        "9"
+      ],
+      "motivo": "no_univoco_en_matriz_+-"
+    },
+    {
+      "row": 30,
+      "texto": "Repartir las invitaciones para la fiesta",
+      "mas_detectadas": [
+        "9"
+      ],
+      "menos_detectadas": [],
+      "motivo": "no_univoco_en_matriz_+-"
+    }
+  ],
+  "nota": "La matriz de claves en PRUEBA tiene filas no unívocas; se requiere validación psicométrica/manual para completar 100%."
 }
