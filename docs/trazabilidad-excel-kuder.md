@@ -22,11 +22,15 @@ Este documento registra cómo se refleja la lógica de la hoja de cálculo en el
 
 ## 3) Lógica de validez
 
-- **Excel (fuente):** reglas de omisiones, colisiones y rango de índice de validez.
+- **Excel (fuente):** hoja `Grafica de Resultados`, fórmula en `D7` con el texto final de validez.
+- **Fórmula Excel (lógica):** `SI(B7<32,"PRUEBA NO VÁLIDA",SI(B7>35,"PRUEBA VÁLIDA","PRUEBA DUDOSA"))`.
+- **Umbrales exactos derivados del Excel:**
+  - `indice_validez < 32` → `PRUEBA NO VÁLIDA`
+  - `32 <= indice_validez <= 35` → `PRUEBA DUDOSA`
+  - `indice_validez > 35` → `PRUEBA VÁLIDA`
 - **PHP:**
   - `calculateValidityMetrics()` calcula métricas configuradas.
-  - `resolveValidityState()` evalúa reglas declarativas (`and` / `or`) en el orden definido.
-- **Estado actual de decisión:** configuración **PROVISIONAL** documentada en `docs/reporte-tecnico-normativas.md` hasta contar con umbrales psicométricos oficiales del manual.
+  - `resolveValidityState()` evalúa `decision` en orden, sin cambio estructural en `ScoreService`.
 - **Resultado:** `validez_puntaje`, `detalles_validez` y `validez_estado`.
 
 ## 4) Conversión a percentiles por sexo
