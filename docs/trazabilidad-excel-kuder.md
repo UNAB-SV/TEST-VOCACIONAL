@@ -2,14 +2,17 @@
 
 Este documento registra cómo se refleja la lógica de la hoja de cálculo en el código del motor (`ScoreService`).
 
-## 1) Asignación de puntajes por escala
+## 1) Asignación de puntajes por escala (modelo actual)
 
-- **Excel (fuente):** columnas de claves por actividad para `más` y `menos`.
-- **PHP:** `applySideScore()` aplica cada clave por actividad/escala usando:
-  - `peso` de la actividad.
-  - `multiplicador` de `scoring_rules.json` (`más=+1`, `menos=-1` por defecto).
-  - `overrides` por escala (por ejemplo `validez`).
-- **Auditoría:** se agrega una entrada en `traza_calculo.asignacion_puntajes_por_escala` por cada suma parcial.
+- **Excel (fuente única):** hoja `PRUEBA`, matriz de columnas `+/-` por escala.
+- **Regla de lectura:** el puntaje depende de `(bloque, índice_en_bloque, respuesta)`:
+  - `bloque`: `B001..B168`
+  - `índice_en_bloque`: `1..3`
+  - `respuesta`: `mas` / `menos`
+- **PHP:** `applySideScore()` ya no usa `claves` por actividad. Busca en `scoring_rules.json` la ruta:
+  - `scoring_rules.matriz_por_bloque.{bloque}.{indice}.{mas|menos}.scales`.
+- **Traducción a puntaje:** por cada escala marcada en esa celda de la matriz se suma `+1` (sin multiplicador global).
+- **Auditoría:** cada suma queda en `traza_calculo.asignacion_puntajes_por_escala`, incluyendo `indice_en_bloque`.
 
 ## 2) Suma de puntajes
 
@@ -37,6 +40,22 @@ Este documento registra cómo se refleja la lógica de la hoja de cálculo en el
 - TODOs explícitos en código para aclarar:
   - método final de lookup percentilar usado en `test.xls`.
   - tipos adicionales de acciones especiales si aparecen en la matriz final.
+
+## 6) Columnas de escala en el Excel (`PRUEBA`)
+
+Definidas en `scoring_rules.escalas_columnas_excel`:
+
+- `aire_libre` → código `0`: `MAS=G`, `CÓDIGO=H`, `MENOS=I`
+- `mecanico` → código `1`: `MAS=J`, `CÓDIGO=K`, `MENOS=L`
+- `calculo` → código `2`: `MAS=M`, `CÓDIGO=N`, `MENOS=O`
+- `cientifico` → código `3`: `MAS=P`, `CÓDIGO=Q`, `MENOS=R`
+- `persuasivo` → código `4`: `MAS=S`, `CÓDIGO=T`, `MENOS=U`
+- `artistico` → código `5`: `MAS=V`, `CÓDIGO=W`, `MENOS=X`
+- `literario` → código `6`: `MAS=Y`, `CÓDIGO=Z`, `MENOS=AA`
+- `musical` → código `7`: `MAS=AB`, `CÓDIGO=AC`, `MENOS=AD`
+- `servicio_social` → código `8`: `MAS=AE`, `CÓDIGO=AF`, `MENOS=AG`
+- `oficina` → código `9`: `MAS=AH`, `CÓDIGO=AI`, `MENOS=AJ`
+- `validez` → código `V`: `MAS=AK`, `CÓDIGO=AL`, `MENOS=AM`
 
 ## 6) Trazabilidad/auditoría del cálculo
 

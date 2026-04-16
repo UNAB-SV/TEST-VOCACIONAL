@@ -1,55 +1,59 @@
-# Ejemplo de entrada y salida del `ScoreService`
+# Ejemplo de cálculo del nuevo modelo de scoring
 
-## Entrada de ejemplo
+El motor ahora califica con la tupla:
 
-```php
-$answers = [
-  'B001' => ['mas' => 'A0001', 'menos' => 'A0002'],
-  'B002' => ['mas' => 'A0004', 'menos' => 'A0005'],
-  'B003' => ['mas' => 'A0007', 'menos' => 'A0008'],
-];
+`(bloque, índice_en_bloque, respuesta)`
 
-$result = $scoreService->calculate(
-  $answers,
-  $questionsDefinition,
-  $scoringRules,
-  $percentilesBySex,
-  'M',
-  $validityRules
-);
-```
+Sin usar claves por texto de actividad.
 
-## Salida de ejemplo (resumen)
+## Ejemplo puntual (fuente: `test.xls` hoja `PRUEBA`)
+
+Supongamos:
+
+- Bloque: `B002`
+- Actividad elegida como `MAS`: `A0004`
+- `A0004` tiene `indice_en_bloque = 1`
+
+El motor consulta:
+
+- `scoring_rules.matriz_por_bloque.B002.1.mas.scales`
+
+Valor configurado:
 
 ```json
 {
-  "puntajes_brutos": {
-    "aire_libre": 1,
-    "mecanico": 1,
-    "calculo": 1,
-    "cientifico": -1,
-    "persuasivo": 0,
-    "artistico": 0,
-    "literario": -1,
-    "musical": -1,
-    "servicio_social": 0,
-    "oficina": 1,
-    "validez": 0
-  },
-  "percentiles": {
-    "aire_libre": 50,
-    "mecanico": 55,
-    "calculo": 60,
-    "cientifico": null
-  },
-  "validez_puntaje": 0,
-  "validez_estado": "valido",
-  "escalas_ordenadas_de_mayor_a_menor": [
-    {"escala": "aire_libre", "puntaje_bruto": 1},
-    {"escala": "calculo", "puntaje_bruto": 1},
-    {"escala": "mecanico", "puntaje_bruto": 1}
-  ]
+  "servicio_social": 1
 }
 ```
 
-> Nota: la lógica de puntuación, validez y percentiles se toma de los JSON de configuración, no está codificada de forma rígida en el servicio.
+### Resultado de puntuación
+
+- Se suma `+1` a la escala `servicio_social`.
+- No hay inversión global por `MAS/MENOS`.
+- Si la matriz trae más de una escala en esa celda, se suma `+1` a cada una.
+
+## Ejemplo MENOS del mismo bloque
+
+Si en el mismo bloque `B002` el usuario marca `MENOS = A0005`:
+
+- `A0005` tiene `indice_en_bloque = 2`
+- Ruta consultada: `scoring_rules.matriz_por_bloque.B002.2.menos.scales`
+- Valor:
+
+```json
+{
+  "persuasivo": 1,
+  "servicio_social": 1
+}
+```
+
+### Resultado
+
+- `persuasivo += 1`
+- `servicio_social += 1`
+
+## Fórmula aplicada
+
+`puntaje_bruto_escala = suma(pesos de la matriz para cada respuesta seleccionada)`
+
+Donde cada marcador en el Excel vale `1`.

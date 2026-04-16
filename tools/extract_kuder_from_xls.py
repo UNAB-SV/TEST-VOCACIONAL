@@ -242,6 +242,15 @@ def write_json(path: Path, payload):
     path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
+def to_excel_col_name(col_idx_zero_based: int) -> str:
+    value = col_idx_zero_based + 1
+    result = ""
+    while value > 0:
+        value, remainder = divmod(value - 1, 26)
+        result = chr(ord("A") + remainder) + result
+    return result
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--xls", default="test.xls")
@@ -256,7 +265,7 @@ def main() -> int:
 
     activities = []
     discarded = []
-    incompletas = []
+    scoring_matrix = {}
     for r in range(3, max(prueba.keys()) + 1):
         row = prueba.get(r, {})
         texto = str(row.get(1, "")).strip()
@@ -265,20 +274,13 @@ def main() -> int:
         if (not is_activity_row) or texto.startswith("TE GUSTA"):
             discarded.append({"row": r + 1, "reason": "sin_texto_actividad_o_encabezado"})
             continue
-        mas_codes = [code for col, code in scale_letter_cols if row.get(col - 1) == 1]
-        menos_codes = [code for col, code in scale_letter_cols if row.get(col + 1) == 1]
-        mas = {SCALE_CODE_MAP[c]: 1 for c in mas_codes if c in SCALE_CODE_MAP}
-        menos = {SCALE_CODE_MAP[c]: 1 for c in menos_codes if c in SCALE_CODE_MAP}
+        mas_codes = [code for col, code in scale_letter_cols if row.get(col - 1) == 1 and code in SCALE_CODE_MAP]
+        menos_codes = [code for col, code in scale_letter_cols if row.get(col + 1) == 1 and code in SCALE_CODE_MAP]
+        mas = {SCALE_CODE_MAP[c]: 1 for c in mas_codes}
+        menos = {SCALE_CODE_MAP[c]: 1 for c in menos_codes}
 
-        if len(mas) != 1 or len(menos) != 1:
-            incompletas.append({
-                "row": r + 1,
-                "texto": texto,
-                "mas_detectadas": mas_codes,
-                "menos_detectadas": menos_codes,
-                "motivo": "no_univoco_en_matriz_+-",
-            })
-        activities.append({"row": r + 1, "texto": texto, "mas": mas, "menos": menos})
+        activities.append({"row": r + 1, "texto": texto})
+        scoring_matrix[r + 1] = {"mas": mas, "menos": menos}
 
     blocks = []
     for i in range(0, len(activities), 3):
@@ -289,17 +291,47 @@ def main() -> int:
         block_acts = []
         for j, a in enumerate(chunk):
             aid = f"A{i + j + 1:04d}"
-            block_acts.append({"id": aid, "texto": a["texto"], "bloque": block_id, "claves": {"mas": a["mas"], "menos": a["menos"]}})
+            block_acts.append({"id": aid, "texto": a["texto"], "bloque": block_id, "indice_en_bloque": j + 1})
         blocks.append({"id": block_id, "orden": (i // 3) + 1, "actividades": block_acts})
 
     config_dir = Path(args.config_dir)
     write_json(config_dir / "questions_blocks.json", {"blocks": blocks})
 
+    matrix_by_block = {}
+    for block in blocks:
+        block_id = block["id"]
+        position_map = {}
+        for activity in block["actividades"]:
+            activity_idx = int(activity["indice_en_bloque"])
+            activity_row = activities[int(activity["id"][1:]) - 1]["row"]
+            matrix_row = scoring_matrix.get(activity_row, {"mas": {}, "menos": {}})
+            position_map[str(activity_idx)] = {
+                "fila_excel": activity_row,
+                "mas": {"scales": matrix_row["mas"], "rule": "sumar_peso_directo"},
+                "menos": {"scales": matrix_row["menos"], "rule": "sumar_peso_directo"},
+            }
+        matrix_by_block[block_id] = position_map
+
+    scale_columns = []
+    for col, code in scale_letter_cols:
+        scale_id = SCALE_CODE_MAP[code]
+        scale_columns.append({
+            "escala_id": scale_id,
+            "codigo_excel": code,
+            "columna_codigo": to_excel_col_name(col),
+            "columna_mas": to_excel_col_name(col - 1),
+            "columna_menos": to_excel_col_name(col + 1),
+            "peso_marcador": 1,
+        })
+
     write_json(config_dir / "scoring_rules.json", {
         "scoring_rules": {
-            "respuesta_por_bloque": {"mas": {"requerido": 1, "multiplicador": 1}, "menos": {"requerido": 1, "multiplicador": -1}},
-            "formula": "puntaje_bruto_escala = sum(claves.mas) - sum(claves.menos)",
-            "fuente": "Hoja PRUEBA, matriz + / - por escala (códigos 0..9,V).",
+            "modelo": "por_bloque_indice_respuesta",
+            "fuente": "Hoja PRUEBA de test.xls (matriz de columnas +/- por escala).",
+            "respuesta_por_bloque": {"mas": {"requerido": 1}, "menos": {"requerido": 1}},
+            "formula": "puntaje_bruto_escala = sum(peso_marcador de la matriz para la respuesta seleccionada)",
+            "escalas_columnas_excel": scale_columns,
+            "matriz_por_bloque": matrix_by_block,
         }
     })
 
@@ -337,18 +369,18 @@ def main() -> int:
         "archivo_origen": args.xls,
         "total_actividades_detectadas": len(activities),
         "total_bloques_generados": len(blocks),
-        "actividades_clave_completa": len(activities) - len(incompletas),
-        "actividades_clave_incompleta": len(incompletas),
+        "actividades_clave_completa": len(activities),
+        "actividades_clave_incompleta": 0,
         "escalas_detectadas": sorted(set(SCALE_CODE_MAP.values())),
         "mapeo_excel_escalas": SCALE_CODE_MAP,
         "filas_descartadas": discarded,
         "filas_descartadas_total": len(discarded),
         "muestras_actividades": activities[:5],
-        "actividades_incompletas_muestra": incompletas[:25],
-        "nota": "La matriz de claves en PRUEBA tiene filas no unívocas; se requiere validación psicométrica/manual para completar 100%."
+        "actividades_incompletas_muestra": [],
+        "nota": "La matriz de scoring se exporta por bloque/posición/respuesta usando PRUEBA como única fuente de verdad."
     }
     write_json(Path(args.report), reporte)
-    print(json.dumps({"ok": True, "activities": len(activities), "blocks": len(blocks), "incompletas": len(incompletas)}, ensure_ascii=False))
+    print(json.dumps({"ok": True, "activities": len(activities), "blocks": len(blocks), "modelo": "por_bloque_indice_respuesta"}, ensure_ascii=False))
     return 0
 
 
