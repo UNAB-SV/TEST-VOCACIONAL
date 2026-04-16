@@ -67,6 +67,12 @@ TRUE_HEADER_PATTERNS = [
     re.compile(r"^suma de puntajes por escala$"),
     re.compile(r"^totales?$"),
 ]
+GENERIC_TITLE_PATTERNS = [
+    re.compile(r"^te gusta"),
+    re.compile(r"^actividades?$"),
+    re.compile(r"^opciones?$"),
+    re.compile(r"^instrucciones?"),
+]
 
 
 def normalize_header(value: Any) -> str:
@@ -119,15 +125,20 @@ def is_true_header_or_auxiliary(text: str) -> bool:
 
 
 def looks_like_activity_text(text: str) -> tuple[bool, str]:
+    raw_text = str(text or "").strip()
     normalized = normalize_header(text)
     if not normalized:
         return False, "empty"
+    if "+" in raw_text or "-" in raw_text:
+        return False, "contains_plus_or_minus"
     if normalized.isdigit():
         return False, "numeric_only"
     if not re.search(r"[a-záéíóúñ]", text, flags=re.IGNORECASE):
         return False, "no_letters"
     if is_true_header_or_auxiliary(normalized):
         return False, "header_or_instruction"
+    if any(pattern.search(normalized) for pattern in GENERIC_TITLE_PATTERNS):
+        return False, "generic_title"
     words = [w for w in re.split(r"\s+", normalized) if w]
     if len(words) < 3:
         return False, "too_short_phrase"
@@ -155,6 +166,8 @@ def parse_prueba(
     debug_rows: list[dict[str, Any]] = []
     column_phrase_counter: Counter[int] = Counter()
     pre_rows: list[dict[str, Any]] = []
+    discarded_header_rows_count = 0
+    discarded_header_examples: list[str] = []
 
     for r in range(sheet.nrows):
         raw_values = [cell_text(sheet, r, c) for c in range(sheet.ncols)]
@@ -169,6 +182,10 @@ def parse_prueba(
                 column_phrase_counter[c] += 1
             elif cleaned:
                 row_discard_reasons.append(f"col={c+1}: {reason}")
+                if reason in {"contains_plus_or_minus", "header_or_instruction", "generic_title"}:
+                    discarded_header_rows_count += 1
+                    if len(discarded_header_examples) < 15:
+                        discarded_header_examples.append(cleaned)
         pre_rows.append(
             {
                 "row_index": r + 1,
@@ -282,6 +299,8 @@ def parse_prueba(
         "first_30_activities": [a.text for a in activities[:30]],
         "accepted_rows": accepted_rows_list,
         "discarded_rows": discarded_rows,
+        "discardadas_por_encabezado": discarded_header_rows_count,
+        "ejemplos_encabezados_descartados": discarded_header_examples[:10],
     }
 
     if len(activities) != 504:
@@ -305,17 +324,16 @@ def parse_prueba(
     return activities, diagnostics, debug_rows
 
 
-def build_questions_blocks(activities: list[Activity]) -> dict[str, Any]:
+def build_questions_blocks(activities: list[Activity]) -> tuple[dict[str, Any], dict[str, Any]]:
     if not activities:
         raise ValueError("No hay actividades para generar bloques.")
     remainder = len(activities) % 3
-    if remainder != 0:
-        raise ValueError(
-            "Total de actividades no divisible entre 3. "
-            f"Detectadas={len(activities)}; sobrantes={remainder}."
-        )
+    dropped_tail = remainder if remainder else 0
+    if dropped_tail:
+        activities = activities[:-dropped_tail]
     blocks: list[dict[str, Any]] = []
     total_blocks = len(activities) // 3
+    activity_seq = 0
     for block_num in range(1, total_blocks + 1):
         block_id = f"B{block_num:03d}"
         chunk = activities[(block_num - 1) * 3 : block_num * 3]
@@ -329,16 +347,22 @@ def build_questions_blocks(activities: list[Activity]) -> dict[str, Any]:
                 "orden": block_num,
                 "actividades": [
                     {
-                        "id": a.id,
+                        "id": f"A{(activity_seq + idx + 1):04d}",
                         "texto": a.text,
-                        "bloque": a.block_id,
+                        "bloque": block_id,
                         "claves": {"mas": a.mas, "menos": a.menos},
                     }
-                    for a in chunk
+                    for idx, a in enumerate(chunk)
                 ],
             }
         )
-    return {"blocks": blocks}
+        activity_seq += len(chunk)
+    meta = {
+        "total_actividades_finales": len(activities),
+        "total_bloques_finales": total_blocks,
+        "sobrantes_descartados": dropped_tail,
+    }
+    return {"blocks": blocks}, meta
 
 
 def build_scoring_rules() -> dict[str, Any]:
@@ -520,27 +544,14 @@ def main() -> int:
         book = xlrd.open_workbook(str(xls_path), formatting_info=False)
 
     config_dir = Path(args.config_dir)
-    if len(activities) % 3 != 0:
+    questions_payload, generation_meta = build_questions_blocks(activities)
+    if generation_meta["sobrantes_descartados"] > 0:
         ambiguities.append(
-            "Error de extracción: el total de actividades no es múltiplo de 3. "
-            f"Total={len(activities)}."
+            "Se descartaron actividades sobrantes al final para completar bloques de 3. "
+            f"sobrantes={generation_meta['sobrantes_descartados']}."
         )
-        report = {
-            "archivo_origen": str(xls_path),
-            "total_hojas_leidas": len(book.sheet_names()),
-            "total_actividades": len(activities),
-            "total_bloques": 0,
-            "diagnostico_prueba": diagnostics,
-            "escalas_detectadas": [],
-            "reglas_por_escala": {"mas": {}, "menos": {}},
-            "ambiguedades": ambiguities,
-        }
-        write_json(Path(args.report), report)
-        write_json(Path("storage/logs/debug_prueba_rows.json"), {"rows": debug_rows})
-        print(json.dumps(report, ensure_ascii=False, indent=2))
-        return 1
 
-    write_json(config_dir / "questions_blocks.json", build_questions_blocks(activities))
+    write_json(config_dir / "questions_blocks.json", questions_payload)
     write_json(config_dir / "scoring_rules.json", build_scoring_rules())
     write_json(config_dir / "validity_rules.json", build_validity_rules())
     write_json(config_dir / "percentiles" / "male.json", male)
@@ -551,8 +562,8 @@ def main() -> int:
     report = {
         "archivo_origen": str(xls_path),
         "total_hojas_leidas": len(book.sheet_names()),
-        "total_actividades": len(activities),
-        "total_bloques": len(activities) // 3 if activities else 0,
+        "total_actividades": generation_meta["total_actividades_finales"],
+        "total_bloques": generation_meta["total_bloques_finales"],
         "diagnostico_prueba": diagnostics,
         "escalas_detectadas": sorted(
             set().union(*(a.mas.keys() for a in activities), *(a.menos.keys() for a in activities))
@@ -562,10 +573,26 @@ def main() -> int:
             "menos": rules_count(activities, "menos"),
         },
         "ambiguedades": ambiguities,
+        "sobrantes_descartados": generation_meta["sobrantes_descartados"],
     }
     write_json(Path(args.report), report)
     write_json(Path("storage/logs/debug_prueba_rows.json"), {"rows": debug_rows})
 
+    first_block = questions_payload["blocks"][0] if questions_payload.get("blocks") else None
+    last_block = questions_payload["blocks"][-1] if questions_payload.get("blocks") else None
+    print(f"total_actividades_finales: {generation_meta['total_actividades_finales']}")
+    print(f"total_bloques_finales: {generation_meta['total_bloques_finales']}")
+    print(
+        "filas_descartadas_por_encabezado: "
+        f"{diagnostics.get('discardadas_por_encabezado', 0)}"
+    )
+    print("ejemplos_encabezados_eliminados:")
+    for example in diagnostics.get("ejemplos_encabezados_descartados", []):
+        print(f"- {example}")
+    print("primer_bloque_completo:")
+    print(json.dumps(first_block, ensure_ascii=False, indent=2))
+    print("ultimo_bloque_completo:")
+    print(json.dumps(last_block, ensure_ascii=False, indent=2))
     print(json.dumps(report, ensure_ascii=False, indent=2))
     return 0
 
