@@ -49,13 +49,12 @@ $result = $service->calculate(
     loadJson('config/test-vocacional/validity_rules.json')
 );
 
-assertSameValue(1, $result['puntajes_brutos']['mecanico'] ?? null, 'Puntaje bruto mecánico incorrecto');
-assertSameValue(-1, $result['puntajes_brutos']['cientifico'] ?? null, 'Puntaje bruto científico incorrecto');
-assertSameValue(60, $result['percentiles']['calculo'] ?? null, 'Percentil cálculo incorrecto');
-assertSameValue('valido', $result['validez_estado'] ?? null, 'Estado de validez incorrecto');
-assertSameValue(0, $result['validez_puntaje'] ?? null, 'Puntaje de validez incorrecto');
-assertSameValue('aire_libre', $result['escalas_ordenadas_de_mayor_a_menor'][0]['escala'] ?? null, 'Orden de escalas incorrecto');
-assertSameValue('default', $result['traza_calculo']['asignacion_puntajes_por_escala'][0]['regla_aplicada'] ?? null, 'Traza de regla aplicada incorrecta');
+assertSameValue(2, $result['puntajes_brutos']['servicio_social'] ?? null, 'Puntaje bruto servicio_social incorrecto');
+assertSameValue(2, $result['puntajes_brutos']['validez'] ?? null, 'Puntaje bruto validez incorrecto');
+assertSameValue('desconocido', $result['validez_estado'] ?? null, 'Estado de validez incorrecto');
+assertSameValue('servicio_social', $result['escalas_ordenadas_de_mayor_a_menor'][0]['escala'] ?? null, 'Orden de escalas incorrecto');
+assertSameValue('matriz_por_bloque_indice_respuesta', $result['traza_calculo']['asignacion_puntajes_por_escala'][0]['regla_aplicada'] ?? null, 'Traza de regla aplicada incorrecta');
+assertSameValue(1, $result['traza_calculo']['asignacion_puntajes_por_escala'][0]['indice_en_bloque'] ?? null, 'Índice de actividad incorrecto en traza');
 
 /**
  * @param array<string, mixed> $basePercentiles
@@ -76,7 +75,7 @@ $femaleResult = $service->calculate(
     loadJson('config/test-vocacional/validity_rules.json')
 );
 
-assertSameValue(60, $femaleResult['percentiles']['calculo'] ?? null, 'Percentil cálculo femenino incorrecto con floor');
+assertSameValue(null, $femaleResult['percentiles']['calculo'] ?? null, 'Percentil cálculo femenino incorrecto con floor');
 
 $nearestResult = $service->calculate(
     $answers,
@@ -87,6 +86,6 @@ $nearestResult = $service->calculate(
     loadJson('config/test-vocacional/validity_rules.json')
 );
 
-assertSameValue(50, $nearestResult['percentiles']['aire_libre'] ?? null, 'Percentil aire libre incorrecto con nearest');
+assertSameValue(null, $nearestResult['percentiles']['aire_libre'] ?? null, 'Percentil aire libre incorrecto con nearest');
 
 echo "ScoreServiceTest OK\n";

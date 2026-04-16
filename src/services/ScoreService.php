@@ -28,7 +28,7 @@ final class ScoreService
         $this->validateInputs($answers, $questionsDefinition, $scoringRules, $percentilesBySex, $sex, $validityRules);
 
         $blockIndex = $this->buildBlockIndex($questionsDefinition);
-        $scaleIds = $this->collectScaleIds($questionsDefinition);
+        $scaleIds = $this->collectScaleIdsFromRules($scoringRules);
         $rawScoreResult = $this->calculateRawScores($answers, $blockIndex, $scaleIds, $scoringRules);
         $rawScores = $rawScoreResult['scores'];
         $scoringTrace = $rawScoreResult['trace'];
@@ -128,6 +128,7 @@ final class ScoreService
 
                     $activityId = (string) ($activity['id'] ?? '');
                     if ($activityId !== '') {
+                        $activity['indice_en_bloque'] = (int) ($activity['indice_en_bloque'] ?? 0);
                         $activitiesById[$activityId] = $activity;
                     }
                 }
@@ -147,45 +148,29 @@ final class ScoreService
     }
 
     /**
-     * @param array<string, mixed> $questionsDefinition
+     * @param array<string, mixed> $scoringRules
      * @return array<int, string>
      */
-    private function collectScaleIds(array $questionsDefinition): array
+    private function collectScaleIdsFromRules(array $scoringRules): array
     {
         $scaleIds = [];
+        $definitions = $scoringRules['scoring_rules']['escalas_columnas_excel'] ?? [];
+        if (!is_array($definitions)) {
+            return $scaleIds;
+        }
 
-        foreach ($questionsDefinition['blocks'] as $block) {
-            if (!is_array($block)) {
+        foreach ($definitions as $definition) {
+            if (!is_array($definition)) {
                 continue;
             }
 
-            $activities = $block['actividades'] ?? [];
-            if (!is_array($activities)) {
-                continue;
-            }
-
-            foreach ($activities as $activity) {
-                if (!is_array($activity)) {
-                    continue;
-                }
-
-                $keys = $activity['claves'] ?? [];
-                foreach (['mas', 'menos'] as $side) {
-                    $scales = $keys[$side] ?? [];
-                    if (!is_array($scales)) {
-                        continue;
-                    }
-
-                    foreach (array_keys($scales) as $scaleId) {
-                        $scaleIds[] = (string) $scaleId;
-                    }
-                }
+            $scaleId = trim((string) ($definition['escala_id'] ?? ''));
+            if ($scaleId !== '') {
+                $scaleIds[] = $scaleId;
             }
         }
 
-        $scaleIds[] = 'validez';
-
-        return array_values(array_unique(array_filter($scaleIds, static fn (string $id): bool => $id !== '')));
+        return array_values(array_unique($scaleIds));
     }
 
     /**
@@ -239,66 +224,40 @@ final class ScoreService
         }
 
         $activity = $activities[$activityId];
-        $keys = $activity['claves'][$side] ?? null;
-        if (!is_array($keys)) {
+        $blockId = (string) ($block['id'] ?? '');
+        $positionInBlock = (int) ($activity['indice_en_bloque'] ?? 0);
+        if ($positionInBlock < 1) {
+            throw new InvalidArgumentException(sprintf(
+                'La actividad "%s" del bloque "%s" no tiene índice válido dentro del bloque.',
+                $activityId,
+                $blockId
+            ));
+        }
+
+        $positionRules = $scoringRules['scoring_rules']['matriz_por_bloque'][$blockId][(string) $positionInBlock][$side]['scales'] ?? null;
+        if (!is_array($positionRules)) {
             return;
         }
 
-        foreach ($keys as $scaleId => $keyWeight) {
+        foreach ($positionRules as $scaleId => $keyWeight) {
             $weight = (int) $keyWeight;
-            $ruleSource = 'default';
-            $multiplier = $this->resolveMultiplier((string) $scaleId, $side, $scoringRules, $ruleSource);
             if (!array_key_exists((string) $scaleId, $scores)) {
                 $scores[(string) $scaleId] = 0;
             }
 
-            $delta = (int) round($weight * $multiplier);
+            $delta = $weight;
             $scores[(string) $scaleId] += $delta;
             $trace[] = [
-                'bloque' => (string) ($block['id'] ?? ''),
+                'bloque' => $blockId,
                 'actividad' => $activityId,
+                'indice_en_bloque' => $positionInBlock,
                 'lado' => $side,
                 'escala' => (string) $scaleId,
                 'peso' => $weight,
-                'multiplicador' => $multiplier,
                 'delta' => $delta,
-                'regla_aplicada' => $ruleSource,
+                'regla_aplicada' => 'matriz_por_bloque_indice_respuesta',
             ];
         }
-    }
-
-    /**
-     * @param array<string, mixed> $scoringRules
-     */
-    private function resolveMultiplier(string $scaleId, string $side, array $scoringRules, string &$ruleSource): float
-    {
-        $rules = $scoringRules['scoring_rules'] ?? [];
-        $defaultMultiplier = (float) (($rules['respuesta_por_bloque'][$side]['multiplicador'] ?? 0));
-
-        $overrides = $rules['overrides'] ?? [];
-        if (!is_array($overrides)) {
-            $ruleSource = 'default';
-            return $defaultMultiplier;
-        }
-
-        foreach ($overrides as $override) {
-            if (!is_array($override)) {
-                continue;
-            }
-
-            if (($override['si_escala'] ?? null) !== $scaleId) {
-                continue;
-            }
-
-            $overrideValue = $override['aplicar'][$side] ?? null;
-            if ($overrideValue !== null) {
-                $ruleSource = sprintf('override:%s', (string) ($override['si_escala'] ?? ''));
-                return (float) $overrideValue;
-            }
-        }
-
-        $ruleSource = 'default';
-        return $defaultMultiplier;
     }
 
     /**

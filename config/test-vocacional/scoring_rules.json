@@ -1,29 +1,7628 @@
 {
   "scoring_rules": {
+    "modelo": "por_bloque_indice_respuesta",
+    "fuente": "Hoja PRUEBA de test.xls (matriz de columnas +/- por escala).",
     "respuesta_por_bloque": {
       "mas": {
-        "requerido": 1,
-        "multiplicador": 1
+        "requerido": 1
       },
       "menos": {
-        "requerido": 1,
-        "multiplicador": -1
+        "requerido": 1
       }
     },
-    "formula": "puntaje_bruto_escala = sum(claves.mas) - sum(claves.menos)",
-    "fuente": "Hoja PRUEBA, matriz + / - por escala (códigos 0..9,V).",
-    "auditoria_claves_excel": {
-      "archivo_reporte": "storage/logs/scoring_key_audit.json",
-      "conteos": {
-        "actividades": 504,
-        "con_mas": 320,
-        "con_menos": 386,
-        "sin_claves": 33,
-        "solo_mas": 85,
-        "solo_menos": 151,
-        "ambas": 235
+    "formula": "puntaje_bruto_escala = sum(peso_marcador de la matriz para la respuesta seleccionada)",
+    "escalas_columnas_excel": [
+      {
+        "escala_id": "aire_libre",
+        "codigo_excel": "0",
+        "columna_codigo": "H",
+        "columna_mas": "G",
+        "columna_menos": "I",
+        "peso_marcador": 1
       },
-      "nota": "Existen actividades con solo MAS o solo MENOS porque la fila correspondiente en PRUEBA contiene únicamente ese marcador; y 33 filas no tienen marcadores en ninguna de las dos columnas."
+      {
+        "escala_id": "mecanico",
+        "codigo_excel": "1",
+        "columna_codigo": "K",
+        "columna_mas": "J",
+        "columna_menos": "L",
+        "peso_marcador": 1
+      },
+      {
+        "escala_id": "calculo",
+        "codigo_excel": "2",
+        "columna_codigo": "N",
+        "columna_mas": "M",
+        "columna_menos": "O",
+        "peso_marcador": 1
+      },
+      {
+        "escala_id": "cientifico",
+        "codigo_excel": "3",
+        "columna_codigo": "Q",
+        "columna_mas": "P",
+        "columna_menos": "R",
+        "peso_marcador": 1
+      },
+      {
+        "escala_id": "persuasivo",
+        "codigo_excel": "4",
+        "columna_codigo": "T",
+        "columna_mas": "S",
+        "columna_menos": "U",
+        "peso_marcador": 1
+      },
+      {
+        "escala_id": "artistico",
+        "codigo_excel": "5",
+        "columna_codigo": "W",
+        "columna_mas": "V",
+        "columna_menos": "X",
+        "peso_marcador": 1
+      },
+      {
+        "escala_id": "literario",
+        "codigo_excel": "6",
+        "columna_codigo": "Z",
+        "columna_mas": "Y",
+        "columna_menos": "AA",
+        "peso_marcador": 1
+      },
+      {
+        "escala_id": "musical",
+        "codigo_excel": "7",
+        "columna_codigo": "AC",
+        "columna_mas": "AB",
+        "columna_menos": "AD",
+        "peso_marcador": 1
+      },
+      {
+        "escala_id": "servicio_social",
+        "codigo_excel": "8",
+        "columna_codigo": "AF",
+        "columna_mas": "AE",
+        "columna_menos": "AG",
+        "peso_marcador": 1
+      },
+      {
+        "escala_id": "oficina",
+        "codigo_excel": "9",
+        "columna_codigo": "AI",
+        "columna_mas": "AH",
+        "columna_menos": "AJ",
+        "peso_marcador": 1
+      },
+      {
+        "escala_id": "validez",
+        "codigo_excel": "V",
+        "columna_codigo": "AL",
+        "columna_mas": "AK",
+        "columna_menos": "AM",
+        "peso_marcador": 1
+      }
+    ],
+    "matriz_por_bloque": {
+      "B001": {
+        "1": {
+          "fila_excel": 4,
+          "mas": {
+            "scales": {
+              "validez": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 5,
+          "mas": {
+            "scales": {
+              "aire_libre": 1,
+              "validez": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 6,
+          "mas": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B002": {
+        "1": {
+          "fila_excel": 7,
+          "mas": {
+            "scales": {
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "calculo": 1,
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 8,
+          "mas": {
+            "scales": {
+              "calculo": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "persuasivo": 1,
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 9,
+          "mas": {
+            "scales": {
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "calculo": 1,
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B003": {
+        "1": {
+          "fila_excel": 10,
+          "mas": {
+            "scales": {
+              "validez": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 11,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 12,
+          "mas": {
+            "scales": {
+              "aire_libre": 1,
+              "validez": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B004": {
+        "1": {
+          "fila_excel": 13,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 14,
+          "mas": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 15,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B005": {
+        "1": {
+          "fila_excel": 16,
+          "mas": {
+            "scales": {
+              "literario": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 17,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "literario": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 18,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "literario": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B006": {
+        "1": {
+          "fila_excel": 19,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 20,
+          "mas": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 21,
+          "mas": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B007": {
+        "1": {
+          "fila_excel": 22,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "cientifico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 23,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "cientifico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 24,
+          "mas": {
+            "scales": {
+              "cientifico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B008": {
+        "1": {
+          "fila_excel": 25,
+          "mas": {
+            "scales": {
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1,
+              "musical": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 26,
+          "mas": {
+            "scales": {
+              "musical": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1,
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 27,
+          "mas": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "persuasivo": 1,
+              "musical": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B009": {
+        "1": {
+          "fila_excel": 28,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 29,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 30,
+          "mas": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B010": {
+        "1": {
+          "fila_excel": 31,
+          "mas": {
+            "scales": {
+              "cientifico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "mecanico": 1,
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 32,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "mecanico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 33,
+          "mas": {
+            "scales": {
+              "mecanico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "cientifico": 1,
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B011": {
+        "1": {
+          "fila_excel": 34,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "mecanico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 35,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "mecanico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 36,
+          "mas": {
+            "scales": {
+              "mecanico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B012": {
+        "1": {
+          "fila_excel": 37,
+          "mas": {
+            "scales": {
+              "artistico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "mecanico": 1,
+              "cientifico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 38,
+          "mas": {
+            "scales": {
+              "cientifico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "mecanico": 1,
+              "artistico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 39,
+          "mas": {
+            "scales": {
+              "mecanico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "cientifico": 1,
+              "artistico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B013": {
+        "1": {
+          "fila_excel": 40,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "artistico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 41,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "artistico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 42,
+          "mas": {
+            "scales": {
+              "artistico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B014": {
+        "1": {
+          "fila_excel": 43,
+          "mas": {
+            "scales": {
+              "mecanico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "artistico": 1,
+              "musical": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 44,
+          "mas": {
+            "scales": {
+              "musical": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "mecanico": 1,
+              "artistico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 45,
+          "mas": {
+            "scales": {
+              "artistico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "mecanico": 1,
+              "musical": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B015": {
+        "1": {
+          "fila_excel": 46,
+          "mas": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 47,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 48,
+          "mas": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B016": {
+        "1": {
+          "fila_excel": 49,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 50,
+          "mas": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 51,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B017": {
+        "1": {
+          "fila_excel": 52,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1,
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 53,
+          "mas": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 54,
+          "mas": {
+            "scales": {
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B018": {
+        "1": {
+          "fila_excel": 55,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 56,
+          "mas": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 57,
+          "mas": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B019": {
+        "1": {
+          "fila_excel": 58,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 59,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 60,
+          "mas": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B020": {
+        "1": {
+          "fila_excel": 61,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1,
+              "cientifico": 1,
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 62,
+          "mas": {
+            "scales": {
+              "aire_libre": 1,
+              "cientifico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 63,
+          "mas": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1,
+              "cientifico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B021": {
+        "1": {
+          "fila_excel": 64,
+          "mas": {
+            "scales": {
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "cientifico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 65,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "cientifico": 1,
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 66,
+          "mas": {
+            "scales": {
+              "cientifico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B022": {
+        "1": {
+          "fila_excel": 67,
+          "mas": {
+            "scales": {
+              "validez": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 68,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 69,
+          "mas": {
+            "scales": {
+              "validez": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B023": {
+        "1": {
+          "fila_excel": 70,
+          "mas": {
+            "scales": {
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 71,
+          "mas": {
+            "scales": {
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 72,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "persuasivo": 1,
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B024": {
+        "1": {
+          "fila_excel": 73,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "persuasivo": 1,
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 74,
+          "mas": {
+            "scales": {
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 75,
+          "mas": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B025": {
+        "1": {
+          "fila_excel": 76,
+          "mas": {
+            "scales": {
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "artistico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 77,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "persuasivo": 1,
+              "artistico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 78,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B026": {
+        "1": {
+          "fila_excel": 79,
+          "mas": {
+            "scales": {
+              "artistico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "cientifico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 80,
+          "mas": {
+            "scales": {
+              "cientifico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "artistico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 81,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "cientifico": 1,
+              "artistico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B027": {
+        "1": {
+          "fila_excel": 82,
+          "mas": {
+            "scales": {
+              "cientifico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "musical": 1,
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 83,
+          "mas": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "cientifico": 1,
+              "musical": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 84,
+          "mas": {
+            "scales": {
+              "musical": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "cientifico": 1,
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B028": {
+        "1": {
+          "fila_excel": 85,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "cientifico": 1,
+              "musical": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 86,
+          "mas": {
+            "scales": {
+              "cientifico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "musical": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 87,
+          "mas": {
+            "scales": {
+              "musical": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "cientifico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B029": {
+        "1": {
+          "fila_excel": 88,
+          "mas": {
+            "scales": {
+              "literario": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "persuasivo": 1,
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 89,
+          "mas": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "persuasivo": 1,
+              "literario": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 90,
+          "mas": {
+            "scales": {
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "literario": 1,
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B030": {
+        "1": {
+          "fila_excel": 91,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 92,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 93,
+          "mas": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B031": {
+        "1": {
+          "fila_excel": 94,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 95,
+          "mas": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 96,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B032": {
+        "1": {
+          "fila_excel": 97,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 98,
+          "mas": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 99,
+          "mas": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B033": {
+        "1": {
+          "fila_excel": 100,
+          "mas": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 101,
+          "mas": {
+            "scales": {
+              "validez": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 102,
+          "mas": {
+            "scales": {
+              "aire_libre": 1,
+              "validez": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B034": {
+        "1": {
+          "fila_excel": 103,
+          "mas": {
+            "scales": {
+              "cientifico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "literario": 1,
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 104,
+          "mas": {
+            "scales": {
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "cientifico": 1,
+              "literario": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 105,
+          "mas": {
+            "scales": {
+              "literario": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "cientifico": 1,
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B035": {
+        "1": {
+          "fila_excel": 106,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "cientifico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 107,
+          "mas": {
+            "scales": {
+              "cientifico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 108,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "cientifico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B036": {
+        "1": {
+          "fila_excel": 109,
+          "mas": {
+            "scales": {
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 110,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "servicio_social": 1,
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 111,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B037": {
+        "1": {
+          "fila_excel": 112,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "cientifico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 113,
+          "mas": {
+            "scales": {
+              "cientifico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "servicio_social": 1,
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 114,
+          "mas": {
+            "scales": {
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "cientifico": 1,
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B038": {
+        "1": {
+          "fila_excel": 115,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "cientifico": 1,
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 116,
+          "mas": {
+            "scales": {
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "cientifico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 117,
+          "mas": {
+            "scales": {
+              "cientifico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B039": {
+        "1": {
+          "fila_excel": 118,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 119,
+          "mas": {
+            "scales": {
+              "validez": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 120,
+          "mas": {
+            "scales": {
+              "validez": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B040": {
+        "1": {
+          "fila_excel": 121,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "cientifico": 1,
+              "servicio_social": 1,
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 122,
+          "mas": {
+            "scales": {
+              "cientifico": 1,
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 123,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "cientifico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B041": {
+        "1": {
+          "fila_excel": 124,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "cientifico": 1,
+              "musical": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 125,
+          "mas": {
+            "scales": {
+              "musical": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "cientifico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 126,
+          "mas": {
+            "scales": {
+              "cientifico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "musical": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B042": {
+        "1": {
+          "fila_excel": 127,
+          "mas": {
+            "scales": {
+              "cientifico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 128,
+          "mas": {
+            "scales": {
+              "cientifico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 129,
+          "mas": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "cientifico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B043": {
+        "1": {
+          "fila_excel": 130,
+          "mas": {
+            "scales": {
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 131,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 132,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B044": {
+        "1": {
+          "fila_excel": 133,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 134,
+          "mas": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 135,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B045": {
+        "1": {
+          "fila_excel": 136,
+          "mas": {
+            "scales": {
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "literario": 1,
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 137,
+          "mas": {
+            "scales": {
+              "literario": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "persuasivo": 1,
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 138,
+          "mas": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "persuasivo": 1,
+              "literario": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B046": {
+        "1": {
+          "fila_excel": 139,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "literario": 1,
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 140,
+          "mas": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "literario": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 141,
+          "mas": {
+            "scales": {
+              "literario": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B047": {
+        "1": {
+          "fila_excel": 142,
+          "mas": {
+            "scales": {
+              "literario": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 143,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "literario": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 144,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "literario": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B048": {
+        "1": {
+          "fila_excel": 145,
+          "mas": {
+            "scales": {
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1,
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 146,
+          "mas": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1,
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 147,
+          "mas": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "persuasivo": 1,
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B049": {
+        "1": {
+          "fila_excel": 148,
+          "mas": {
+            "scales": {
+              "literario": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "cientifico": 1,
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 149,
+          "mas": {
+            "scales": {
+              "cientifico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "literario": 1,
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 150,
+          "mas": {
+            "scales": {
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "cientifico": 1,
+              "literario": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B050": {
+        "1": {
+          "fila_excel": 151,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 152,
+          "mas": {
+            "scales": {
+              "validez": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 153,
+          "mas": {
+            "scales": {
+              "validez": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B051": {
+        "1": {
+          "fila_excel": 154,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 155,
+          "mas": {
+            "scales": {
+              "cientifico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "persuasivo": 1,
+              "servicio_social": 1,
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 156,
+          "mas": {
+            "scales": {
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "cientifico": 1,
+              "persuasivo": 1,
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B052": {
+        "1": {
+          "fila_excel": 157,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "persuasivo": 1,
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 158,
+          "mas": {
+            "scales": {
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 159,
+          "mas": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B053": {
+        "1": {
+          "fila_excel": 160,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 161,
+          "mas": {
+            "scales": {
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1,
+              "artistico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 162,
+          "mas": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "persuasivo": 1,
+              "artistico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B054": {
+        "1": {
+          "fila_excel": 163,
+          "mas": {
+            "scales": {
+              "cientifico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "artistico": 1,
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 164,
+          "mas": {
+            "scales": {
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "cientifico": 1,
+              "artistico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 165,
+          "mas": {
+            "scales": {
+              "artistico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "cientifico": 1,
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B055": {
+        "1": {
+          "fila_excel": 166,
+          "mas": {
+            "scales": {
+              "cientifico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 167,
+          "mas": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "cientifico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 168,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "cientifico": 1,
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B056": {
+        "1": {
+          "fila_excel": 169,
+          "mas": {
+            "scales": {
+              "artistico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "mecanico": 1,
+              "cientifico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 170,
+          "mas": {
+            "scales": {
+              "mecanico": 1,
+              "cientifico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "artistico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 171,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "mecanico": 1,
+              "cientifico": 1,
+              "artistico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B057": {
+        "1": {
+          "fila_excel": 172,
+          "mas": {
+            "scales": {
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "calculo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 173,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "calculo": 1,
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 174,
+          "mas": {
+            "scales": {
+              "calculo": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B058": {
+        "1": {
+          "fila_excel": 175,
+          "mas": {
+            "scales": {
+              "calculo": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "persuasivo": 1,
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 176,
+          "mas": {
+            "scales": {
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "calculo": 1,
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 177,
+          "mas": {
+            "scales": {
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "calculo": 1,
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B059": {
+        "1": {
+          "fila_excel": 178,
+          "mas": {
+            "scales": {
+              "calculo": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "literario": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 179,
+          "mas": {
+            "scales": {
+              "literario": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "calculo": 1,
+              "servicio_social": 1,
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 180,
+          "mas": {
+            "scales": {
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "calculo": 1,
+              "literario": 1,
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B060": {
+        "1": {
+          "fila_excel": 181,
+          "mas": {
+            "scales": {
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1,
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 182,
+          "mas": {
+            "scales": {
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1,
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 183,
+          "mas": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "persuasivo": 1,
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B061": {
+        "1": {
+          "fila_excel": 184,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 185,
+          "mas": {
+            "scales": {
+              "validez": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 186,
+          "mas": {
+            "scales": {
+              "validez": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B062": {
+        "1": {
+          "fila_excel": 187,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 188,
+          "mas": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "cientifico": 1,
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 189,
+          "mas": {
+            "scales": {
+              "aire_libre": 1,
+              "cientifico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B063": {
+        "1": {
+          "fila_excel": 190,
+          "mas": {
+            "scales": {
+              "cientifico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 191,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "cientifico": 1,
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 192,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B064": {
+        "1": {
+          "fila_excel": 193,
+          "mas": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 194,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 195,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B065": {
+        "1": {
+          "fila_excel": 196,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "cientifico": 1,
+              "musical": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 197,
+          "mas": {
+            "scales": {
+              "cientifico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "musical": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 198,
+          "mas": {
+            "scales": {
+              "musical": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "cientifico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B066": {
+        "1": {
+          "fila_excel": 199,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "mecanico": 1,
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 200,
+          "mas": {
+            "scales": {
+              "persuasivo": 1,
+              "musical": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "mecanico": 1,
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 201,
+          "mas": {
+            "scales": {
+              "mecanico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "persuasivo": 1,
+              "musical": 1,
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B067": {
+        "1": {
+          "fila_excel": 202,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "cientifico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 203,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "artistico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 204,
+          "mas": {
+            "scales": {
+              "cientifico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "persuasivo": 1,
+              "artistico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B068": {
+        "1": {
+          "fila_excel": 205,
+          "mas": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "mecanico": 1,
+              "cientifico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 206,
+          "mas": {
+            "scales": {
+              "mecanico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "cientifico": 1,
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 207,
+          "mas": {
+            "scales": {
+              "cientifico": 1,
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "mecanico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B069": {
+        "1": {
+          "fila_excel": 208,
+          "mas": {
+            "scales": {
+              "servicio_social": 1,
+              "validez": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "cientifico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 209,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "cientifico": 1,
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 210,
+          "mas": {
+            "scales": {
+              "cientifico": 1,
+              "validez": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B070": {
+        "1": {
+          "fila_excel": 211,
+          "mas": {
+            "scales": {
+              "mecanico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 212,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "mecanico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 213,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "mecanico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B071": {
+        "1": {
+          "fila_excel": 214,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "literario": 1,
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 215,
+          "mas": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "literario": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 216,
+          "mas": {
+            "scales": {
+              "literario": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B072": {
+        "1": {
+          "fila_excel": 217,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 218,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 219,
+          "mas": {
+            "scales": {
+              "validez": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B073": {
+        "1": {
+          "fila_excel": 220,
+          "mas": {
+            "scales": {
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "calculo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 221,
+          "mas": {
+            "scales": {
+              "calculo": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 222,
+          "mas": {
+            "scales": {
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "calculo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B074": {
+        "1": {
+          "fila_excel": 223,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 224,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 225,
+          "mas": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B075": {
+        "1": {
+          "fila_excel": 226,
+          "mas": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "cientifico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 227,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1,
+              "cientifico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 228,
+          "mas": {
+            "scales": {
+              "cientifico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B076": {
+        "1": {
+          "fila_excel": 229,
+          "mas": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "cientifico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 230,
+          "mas": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "cientifico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 231,
+          "mas": {
+            "scales": {
+              "cientifico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B077": {
+        "1": {
+          "fila_excel": 232,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "cientifico": 1,
+              "literario": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 233,
+          "mas": {
+            "scales": {
+              "cientifico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "literario": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 234,
+          "mas": {
+            "scales": {
+              "literario": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "cientifico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B078": {
+        "1": {
+          "fila_excel": 235,
+          "mas": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 236,
+          "mas": {
+            "scales": {
+              "mecanico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "calculo": 1,
+              "persuasivo": 1,
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 237,
+          "mas": {
+            "scales": {
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "mecanico": 1,
+              "calculo": 1,
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B079": {
+        "1": {
+          "fila_excel": 238,
+          "mas": {
+            "scales": {
+              "mecanico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "persuasivo": 1,
+              "musical": 1,
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 239,
+          "mas": {
+            "scales": {
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "mecanico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 240,
+          "mas": {
+            "scales": {
+              "musical": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "mecanico": 1,
+              "persuasivo": 1,
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B080": {
+        "1": {
+          "fila_excel": 241,
+          "mas": {
+            "scales": {
+              "mecanico": 1,
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "calculo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 242,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 243,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B081": {
+        "1": {
+          "fila_excel": 244,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 245,
+          "mas": {
+            "scales": {
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 246,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "servicio_social": 1,
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B082": {
+        "1": {
+          "fila_excel": 247,
+          "mas": {
+            "scales": {
+              "mecanico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 248,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "mecanico": 1,
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 249,
+          "mas": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "mecanico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B083": {
+        "1": {
+          "fila_excel": 250,
+          "mas": {
+            "scales": {
+              "musical": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "mecanico": 1,
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 251,
+          "mas": {
+            "scales": {
+              "mecanico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "musical": 1,
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 252,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "mecanico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B084": {
+        "1": {
+          "fila_excel": 253,
+          "mas": {
+            "scales": {
+              "mecanico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 254,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "mecanico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 255,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "mecanico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B085": {
+        "1": {
+          "fila_excel": 256,
+          "mas": {
+            "scales": {
+              "calculo": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 257,
+          "mas": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "calculo": 1,
+              "servicio_social": 1,
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 258,
+          "mas": {
+            "scales": {
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1,
+              "calculo": 1,
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B086": {
+        "1": {
+          "fila_excel": 259,
+          "mas": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 260,
+          "mas": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 261,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B087": {
+        "1": {
+          "fila_excel": 262,
+          "mas": {
+            "scales": {
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "persuasivo": 1,
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 263,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 264,
+          "mas": {
+            "scales": {
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "servicio_social": 1,
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B088": {
+        "1": {
+          "fila_excel": 265,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 266,
+          "mas": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 267,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B089": {
+        "1": {
+          "fila_excel": 268,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 269,
+          "mas": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 270,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B090": {
+        "1": {
+          "fila_excel": 271,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "literario": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 272,
+          "mas": {
+            "scales": {
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 273,
+          "mas": {
+            "scales": {
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "artistico": 1,
+              "literario": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B091": {
+        "1": {
+          "fila_excel": 274,
+          "mas": {
+            "scales": {
+              "cientifico": 1,
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "artistico": 1,
+              "literario": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 275,
+          "mas": {
+            "scales": {
+              "artistico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "cientifico": 1,
+              "literario": 1,
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 276,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "cientifico": 1,
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B092": {
+        "1": {
+          "fila_excel": 277,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "mecanico": 1,
+              "calculo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 278,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 279,
+          "mas": {
+            "scales": {
+              "mecanico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "calculo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B093": {
+        "1": {
+          "fila_excel": 280,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 281,
+          "mas": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 282,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B094": {
+        "1": {
+          "fila_excel": 283,
+          "mas": {
+            "scales": {
+              "oficina": 1,
+              "validez": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 284,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 285,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B095": {
+        "1": {
+          "fila_excel": 286,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "mecanico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 287,
+          "mas": {
+            "scales": {
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "mecanico": 1,
+              "artistico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 288,
+          "mas": {
+            "scales": {
+              "mecanico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "persuasivo": 1,
+              "artistico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B096": {
+        "1": {
+          "fila_excel": 289,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "mecanico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 290,
+          "mas": {
+            "scales": {
+              "mecanico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 291,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "mecanico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B097": {
+        "1": {
+          "fila_excel": 292,
+          "mas": {
+            "scales": {
+              "cientifico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 293,
+          "mas": {
+            "scales": {
+              "cientifico": 1,
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 294,
+          "mas": {
+            "scales": {
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "cientifico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B098": {
+        "1": {
+          "fila_excel": 295,
+          "mas": {
+            "scales": {
+              "artistico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "mecanico": 1,
+              "cientifico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 296,
+          "mas": {
+            "scales": {
+              "cientifico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "mecanico": 1,
+              "artistico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 297,
+          "mas": {
+            "scales": {
+              "mecanico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "cientifico": 1,
+              "artistico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B099": {
+        "1": {
+          "fila_excel": 298,
+          "mas": {
+            "scales": {
+              "calculo": 1,
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1,
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 299,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1,
+              "calculo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 300,
+          "mas": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "calculo": 1,
+              "servicio_social": 1,
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B100": {
+        "1": {
+          "fila_excel": 301,
+          "mas": {
+            "scales": {
+              "persuasivo": 1,
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 302,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "persuasivo": 1,
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 303,
+          "mas": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B101": {
+        "1": {
+          "fila_excel": 304,
+          "mas": {
+            "scales": {
+              "calculo": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 305,
+          "mas": {
+            "scales": {
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "calculo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 306,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "calculo": 1,
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B102": {
+        "1": {
+          "fila_excel": 307,
+          "mas": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 308,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "persuasivo": 1,
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 309,
+          "mas": {
+            "scales": {
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B103": {
+        "1": {
+          "fila_excel": 310,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 311,
+          "mas": {
+            "scales": {
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 312,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B104": {
+        "1": {
+          "fila_excel": 313,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 314,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 315,
+          "mas": {
+            "scales": {
+              "validez": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B105": {
+        "1": {
+          "fila_excel": 316,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 317,
+          "mas": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 318,
+          "mas": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B106": {
+        "1": {
+          "fila_excel": 319,
+          "mas": {
+            "scales": {
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "calculo": 1,
+              "artistico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 320,
+          "mas": {
+            "scales": {
+              "artistico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "calculo": 1,
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 321,
+          "mas": {
+            "scales": {
+              "calculo": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "artistico": 1,
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B107": {
+        "1": {
+          "fila_excel": 322,
+          "mas": {
+            "scales": {
+              "mecanico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "calculo": 1,
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 323,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 324,
+          "mas": {
+            "scales": {
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "mecanico": 1,
+              "calculo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B108": {
+        "1": {
+          "fila_excel": 325,
+          "mas": {
+            "scales": {
+              "artistico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "calculo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 326,
+          "mas": {
+            "scales": {
+              "calculo": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "artistico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 327,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "calculo": 1,
+              "artistico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B109": {
+        "1": {
+          "fila_excel": 328,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "mecanico": 1,
+              "calculo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 329,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "mecanico": 1,
+              "calculo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 330,
+          "mas": {
+            "scales": {
+              "mecanico": 1,
+              "calculo": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B110": {
+        "1": {
+          "fila_excel": 331,
+          "mas": {
+            "scales": {
+              "validez": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 332,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 333,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B111": {
+        "1": {
+          "fila_excel": 334,
+          "mas": {
+            "scales": {
+              "musical": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "artistico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 335,
+          "mas": {
+            "scales": {
+              "artistico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "musical": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 336,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "artistico": 1,
+              "musical": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B112": {
+        "1": {
+          "fila_excel": 337,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "mecanico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 338,
+          "mas": {
+            "scales": {
+              "mecanico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 339,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "mecanico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B113": {
+        "1": {
+          "fila_excel": 340,
+          "mas": {
+            "scales": {
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "persuasivo": 1,
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 341,
+          "mas": {
+            "scales": {
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "servicio_social": 1,
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 342,
+          "mas": {
+            "scales": {
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B114": {
+        "1": {
+          "fila_excel": 343,
+          "mas": {
+            "scales": {
+              "calculo": 1,
+              "literario": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1,
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 344,
+          "mas": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "calculo": 1,
+              "persuasivo": 1,
+              "literario": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 345,
+          "mas": {
+            "scales": {
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1,
+              "calculo": 1,
+              "literario": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B115": {
+        "1": {
+          "fila_excel": 346,
+          "mas": {
+            "scales": {
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "calculo": 1,
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 347,
+          "mas": {
+            "scales": {
+              "calculo": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "persuasivo": 1,
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 348,
+          "mas": {
+            "scales": {
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "calculo": 1,
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B116": {
+        "1": {
+          "fila_excel": 349,
+          "mas": {
+            "scales": {
+              "literario": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "persuasivo": 1,
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 350,
+          "mas": {
+            "scales": {
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "literario": 1,
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 351,
+          "mas": {
+            "scales": {
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "persuasivo": 1,
+              "literario": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B117": {
+        "1": {
+          "fila_excel": 352,
+          "mas": {
+            "scales": {
+              "validez": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 353,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 354,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B118": {
+        "1": {
+          "fila_excel": 355,
+          "mas": {
+            "scales": {
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "artistico": 1,
+              "literario": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 356,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 357,
+          "mas": {
+            "scales": {
+              "artistico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "literario": 1,
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B119": {
+        "1": {
+          "fila_excel": 358,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "artistico": 1,
+              "literario": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 359,
+          "mas": {
+            "scales": {
+              "artistico": 1,
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "literario": 1,
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 360,
+          "mas": {
+            "scales": {
+              "artistico": 1,
+              "literario": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "servicio_social": 1,
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B120": {
+        "1": {
+          "fila_excel": 361,
+          "mas": {
+            "scales": {
+              "validez": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 362,
+          "mas": {
+            "scales": {
+              "validez": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 363,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B121": {
+        "1": {
+          "fila_excel": 364,
+          "mas": {
+            "scales": {
+              "mecanico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "calculo": 1,
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 365,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 366,
+          "mas": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "mecanico": 1,
+              "calculo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B122": {
+        "1": {
+          "fila_excel": 367,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "calculo": 1,
+              "artistico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 368,
+          "mas": {
+            "scales": {
+              "calculo": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "artistico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 369,
+          "mas": {
+            "scales": {
+              "artistico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "calculo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B123": {
+        "1": {
+          "fila_excel": 370,
+          "mas": {
+            "scales": {
+              "mecanico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "calculo": 1,
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 371,
+          "mas": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "mecanico": 1,
+              "calculo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 372,
+          "mas": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B124": {
+        "1": {
+          "fila_excel": 373,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 374,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 375,
+          "mas": {
+            "scales": {
+              "validez": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B125": {
+        "1": {
+          "fila_excel": 376,
+          "mas": {
+            "scales": {
+              "cientifico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "mecanico": 1,
+              "artistico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 377,
+          "mas": {
+            "scales": {
+              "mecanico": 1,
+              "cientifico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "artistico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 378,
+          "mas": {
+            "scales": {
+              "artistico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "mecanico": 1,
+              "cientifico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B126": {
+        "1": {
+          "fila_excel": 379,
+          "mas": {
+            "scales": {
+              "cientifico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 380,
+          "mas": {
+            "scales": {
+              "musical": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "cientifico": 1,
+              "servicio_social": 1,
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 381,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "cientifico": 1,
+              "musical": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B127": {
+        "1": {
+          "fila_excel": 382,
+          "mas": {
+            "scales": {
+              "validez": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 383,
+          "mas": {
+            "scales": {
+              "aire_libre": 1,
+              "validez": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 384,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B128": {
+        "1": {
+          "fila_excel": 385,
+          "mas": {
+            "scales": {
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 386,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 387,
+          "mas": {
+            "scales": {
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B129": {
+        "1": {
+          "fila_excel": 388,
+          "mas": {
+            "scales": {
+              "calculo": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 389,
+          "mas": {
+            "scales": {
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "calculo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 390,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "calculo": 1,
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B130": {
+        "1": {
+          "fila_excel": 391,
+          "mas": {
+            "scales": {
+              "literario": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 392,
+          "mas": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "literario": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 393,
+          "mas": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "literario": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B131": {
+        "1": {
+          "fila_excel": 394,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 395,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 396,
+          "mas": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B132": {
+        "1": {
+          "fila_excel": 397,
+          "mas": {
+            "scales": {
+              "artistico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "literario": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 398,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 399,
+          "mas": {
+            "scales": {
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "artistico": 1,
+              "literario": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B133": {
+        "1": {
+          "fila_excel": 400,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 401,
+          "mas": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 402,
+          "mas": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B134": {
+        "1": {
+          "fila_excel": 403,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 404,
+          "mas": {
+            "scales": {
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 405,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B135": {
+        "1": {
+          "fila_excel": 406,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "mecanico": 1,
+              "calculo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 407,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 408,
+          "mas": {
+            "scales": {
+              "mecanico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "calculo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B136": {
+        "1": {
+          "fila_excel": 409,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "mecanico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 410,
+          "mas": {
+            "scales": {
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "mecanico": 1,
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 411,
+          "mas": {
+            "scales": {
+              "mecanico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "servicio_social": 1,
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B137": {
+        "1": {
+          "fila_excel": 412,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "mecanico": 1,
+              "calculo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 413,
+          "mas": {
+            "scales": {
+              "mecanico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "calculo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 414,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B138": {
+        "1": {
+          "fila_excel": 415,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 416,
+          "mas": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 417,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B139": {
+        "1": {
+          "fila_excel": 418,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "musical": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 419,
+          "mas": {
+            "scales": {
+              "musical": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "servicio_social": 1,
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 420,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B140": {
+        "1": {
+          "fila_excel": 421,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "mecanico": 1,
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 422,
+          "mas": {
+            "scales": {
+              "mecanico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 423,
+          "mas": {
+            "scales": {
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "mecanico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B141": {
+        "1": {
+          "fila_excel": 424,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 425,
+          "mas": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 426,
+          "mas": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B142": {
+        "1": {
+          "fila_excel": 427,
+          "mas": {
+            "scales": {
+              "validez": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 428,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 429,
+          "mas": {
+            "scales": {
+              "aire_libre": 1,
+              "validez": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B143": {
+        "1": {
+          "fila_excel": 430,
+          "mas": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 431,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1,
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 432,
+          "mas": {
+            "scales": {
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B144": {
+        "1": {
+          "fila_excel": 433,
+          "mas": {
+            "scales": {
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1,
+              "literario": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 434,
+          "mas": {
+            "scales": {
+              "literario": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1,
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 435,
+          "mas": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "persuasivo": 1,
+              "literario": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B145": {
+        "1": {
+          "fila_excel": 436,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 437,
+          "mas": {
+            "scales": {
+              "validez": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 438,
+          "mas": {
+            "scales": {
+              "validez": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B146": {
+        "1": {
+          "fila_excel": 439,
+          "mas": {
+            "scales": {
+              "calculo": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 440,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "calculo": 1,
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 441,
+          "mas": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "calculo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B147": {
+        "1": {
+          "fila_excel": 442,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "artistico": 1,
+              "literario": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 443,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 444,
+          "mas": {
+            "scales": {
+              "artistico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "literario": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B148": {
+        "1": {
+          "fila_excel": 445,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 446,
+          "mas": {
+            "scales": {
+              "validez": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 447,
+          "mas": {
+            "scales": {
+              "validez": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B149": {
+        "1": {
+          "fila_excel": 448,
+          "mas": {
+            "scales": {
+              "musical": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "servicio_social": 1,
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 449,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "musical": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 450,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B150": {
+        "1": {
+          "fila_excel": 451,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "mecanico": 1,
+              "calculo": 1,
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 452,
+          "mas": {
+            "scales": {
+              "mecanico": 1,
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "calculo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 453,
+          "mas": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B151": {
+        "1": {
+          "fila_excel": 454,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "musical": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 455,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "musical": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 456,
+          "mas": {
+            "scales": {
+              "musical": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B152": {
+        "1": {
+          "fila_excel": 457,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 458,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "servicio_social": 1,
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 459,
+          "mas": {
+            "scales": {
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B153": {
+        "1": {
+          "fila_excel": 460,
+          "mas": {
+            "scales": {
+              "mecanico": 1,
+              "validez": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 461,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "mecanico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 462,
+          "mas": {
+            "scales": {
+              "validez": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "mecanico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B154": {
+        "1": {
+          "fila_excel": 463,
+          "mas": {
+            "scales": {
+              "mecanico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 464,
+          "mas": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "mecanico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 465,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "mecanico": 1,
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B155": {
+        "1": {
+          "fila_excel": 466,
+          "mas": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "calculo": 1,
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 467,
+          "mas": {
+            "scales": {
+              "calculo": 1,
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 468,
+          "mas": {
+            "scales": {
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "calculo": 1,
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B156": {
+        "1": {
+          "fila_excel": 469,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 470,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 471,
+          "mas": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B157": {
+        "1": {
+          "fila_excel": 472,
+          "mas": {
+            "scales": {
+              "oficina": 1,
+              "validez": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1,
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 473,
+          "mas": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 474,
+          "mas": {
+            "scales": {
+              "persuasivo": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1,
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B158": {
+        "1": {
+          "fila_excel": 475,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 476,
+          "mas": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 477,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B159": {
+        "1": {
+          "fila_excel": 478,
+          "mas": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 479,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1,
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 480,
+          "mas": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B160": {
+        "1": {
+          "fila_excel": 481,
+          "mas": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "artistico": 1,
+              "literario": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 482,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 483,
+          "mas": {
+            "scales": {
+              "persuasivo": 1,
+              "artistico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "literario": 1,
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B161": {
+        "1": {
+          "fila_excel": 484,
+          "mas": {
+            "scales": {
+              "calculo": 1,
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 485,
+          "mas": {
+            "scales": {
+              "aire_libre": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "calculo": 1,
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 486,
+          "mas": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "aire_libre": 1,
+              "calculo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B162": {
+        "1": {
+          "fila_excel": 487,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 488,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 489,
+          "mas": {
+            "scales": {
+              "oficina": 1,
+              "validez": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B163": {
+        "1": {
+          "fila_excel": 490,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "artistico": 1,
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 491,
+          "mas": {
+            "scales": {
+              "artistico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 492,
+          "mas": {
+            "scales": {
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "artistico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B164": {
+        "1": {
+          "fila_excel": 493,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 494,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "mecanico": 1,
+              "calculo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 495,
+          "mas": {
+            "scales": {
+              "mecanico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "calculo": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B165": {
+        "1": {
+          "fila_excel": 496,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "artistico": 1,
+              "musical": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 497,
+          "mas": {
+            "scales": {
+              "artistico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "musical": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 498,
+          "mas": {
+            "scales": {
+              "musical": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "artistico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B166": {
+        "1": {
+          "fila_excel": 499,
+          "mas": {
+            "scales": {
+              "validez": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 500,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 501,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B167": {
+        "1": {
+          "fila_excel": 502,
+          "mas": {
+            "scales": {
+              "mecanico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "cientifico": 1,
+              "artistico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 503,
+          "mas": {
+            "scales": {
+              "artistico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "mecanico": 1,
+              "cientifico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 504,
+          "mas": {
+            "scales": {
+              "cientifico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "mecanico": 1,
+              "artistico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      },
+      "B168": {
+        "1": {
+          "fila_excel": 505,
+          "mas": {
+            "scales": {
+              "mecanico": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "servicio_social": 1,
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "2": {
+          "fila_excel": 506,
+          "mas": {
+            "scales": {
+              "servicio_social": 1
+            },
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "mecanico": 1,
+              "oficina": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        },
+        "3": {
+          "fila_excel": 507,
+          "mas": {
+            "scales": {},
+            "rule": "sumar_peso_directo"
+          },
+          "menos": {
+            "scales": {
+              "mecanico": 1
+            },
+            "rule": "sumar_peso_directo"
+          }
+        }
+      }
     }
   }
 }

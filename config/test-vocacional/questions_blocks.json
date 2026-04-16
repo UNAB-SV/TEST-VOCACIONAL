@@ -8,37 +8,19 @@
           "id": "A0001",
           "texto": "En sus viajes observar de preferencia la gente",
           "bloque": "B001",
-          "claves": {
-            "mas": {
-              "validez": 1
-            },
-            "menos": {
-              "aire_libre": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0002",
           "texto": "En sus viajes observar de preferencia los paisajes",
           "bloque": "B001",
-          "claves": {
-            "mas": {
-              "aire_libre": 1,
-              "validez": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0003",
           "texto": "En sus viajes observar de preferencia los cultivos",
           "bloque": "B001",
-          "claves": {
-            "mas": {
-              "aire_libre": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -50,43 +32,19 @@
           "id": "A0004",
           "texto": "Ayudarse económicamente dedicando varias horas a un ciego",
           "bloque": "B002",
-          "claves": {
-            "mas": {
-              "servicio_social": 1
-            },
-            "menos": {
-              "calculo": 1,
-              "persuasivo": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0005",
           "texto": "Ayudarse económicamente llevando la estadística de vehiculos que pasan por un retén",
           "bloque": "B002",
-          "claves": {
-            "mas": {
-              "calculo": 1
-            },
-            "menos": {
-              "persuasivo": 1,
-              "servicio_social": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0006",
           "texto": "Ayudarse económicamente haciendo encuestas entre el público",
           "bloque": "B002",
-          "claves": {
-            "mas": {
-              "persuasivo": 1
-            },
-            "menos": {
-              "calculo": 1,
-              "servicio_social": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -98,37 +56,19 @@
           "id": "A0007",
           "texto": "Visitar lugares de diversión en una feria de pueblo",
           "bloque": "B003",
-          "claves": {
-            "mas": {
-              "validez": 1
-            },
-            "menos": {
-              "aire_libre": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0008",
           "texto": "Visitar la exposición de productos alimenticios caseros en una feria de pueblo",
           "bloque": "B003",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "aire_libre": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0009",
           "texto": "Visitar la exposición de ganado en una feria de pueblo",
           "bloque": "B003",
-          "claves": {
-            "mas": {
-              "aire_libre": 1,
-              "validez": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -140,34 +80,19 @@
           "id": "A0010",
           "texto": "Hacer ejercicios de atletismo",
           "bloque": "B004",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "aire_libre": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0011",
           "texto": "Ir a pescar",
           "bloque": "B004",
-          "claves": {
-            "mas": {
-              "aire_libre": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0012",
           "texto": "Jugar fútbol",
           "bloque": "B004",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "aire_libre": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -179,34 +104,19 @@
           "id": "A0013",
           "texto": "Hojear libros y revistas en una librería",
           "bloque": "B005",
-          "claves": {
-            "mas": {
-              "literario": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0014",
           "texto": "Presenciar el ensayo de una orquesta",
           "bloque": "B005",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "literario": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0015",
           "texto": "Visitar un jardin zoológico",
           "bloque": "B005",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "literario": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -218,34 +128,19 @@
           "id": "A0016",
           "texto": "Coleccionar autógrafos de personajes célebres",
           "bloque": "B006",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "aire_libre": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0017",
           "texto": "Coleccionar mariposas",
           "bloque": "B006",
-          "claves": {
-            "mas": {
-              "aire_libre": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0018",
           "texto": "Coleccionar muestras de maderas",
           "bloque": "B006",
-          "claves": {
-            "mas": {
-              "aire_libre": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -257,34 +152,19 @@
           "id": "A0019",
           "texto": "Visitar una exposición de cuadros famosos",
           "bloque": "B007",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "cientifico": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0020",
           "texto": "Visitar una exposición de distintos medios de transporte",
           "bloque": "B007",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "cientifico": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0021",
           "texto": "Visitar una exposición de equipos de laboratorio",
           "bloque": "B007",
-          "claves": {
-            "mas": {
-              "cientifico": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -296,43 +176,19 @@
           "id": "A0022",
           "texto": "Vender frutas",
           "bloque": "B008",
-          "claves": {
-            "mas": {
-              "persuasivo": 1
-            },
-            "menos": {
-              "aire_libre": 1,
-              "musical": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0023",
           "texto": "Ser un pianista profesional",
           "bloque": "B008",
-          "claves": {
-            "mas": {
-              "musical": 1
-            },
-            "menos": {
-              "aire_libre": 1,
-              "persuasivo": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0024",
           "texto": "Cultivar hortalizas",
           "bloque": "B008",
-          "claves": {
-            "mas": {
-              "aire_libre": 1
-            },
-            "menos": {
-              "persuasivo": 1,
-              "musical": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -344,34 +200,19 @@
           "id": "A0025",
           "texto": "Dirigir la organización de una fiesta en un club social",
           "bloque": "B009",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0026",
           "texto": "Decorar el salón para la fiesta",
           "bloque": "B009",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0027",
           "texto": "Repartir las invitaciones para la fiesta",
           "bloque": "B009",
-          "claves": {
-            "mas": {
-              "oficina": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -383,40 +224,19 @@
           "id": "A0028",
           "texto": "Visitar un museo de ciencias",
           "bloque": "B010",
-          "claves": {
-            "mas": {
-              "cientifico": 1
-            },
-            "menos": {
-              "mecanico": 1,
-              "persuasivo": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0029",
           "texto": "Visitar una empresa periodística",
           "bloque": "B010",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "mecanico": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0030",
           "texto": "Visitar una fábrica de máquinas de escribir",
           "bloque": "B010",
-          "claves": {
-            "mas": {
-              "mecanico": 1
-            },
-            "menos": {
-              "cientifico": 1,
-              "persuasivo": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -428,34 +248,19 @@
           "id": "A0031",
           "texto": "Leer para distraer a una persona enferma",
           "bloque": "B011",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "mecanico": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0032",
           "texto": "Enseñar tretas a un perro",
           "bloque": "B011",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "mecanico": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0033",
           "texto": "Desarmar un juguete dañado para ver cómo se arregla",
           "bloque": "B011",
-          "claves": {
-            "mas": {
-              "mecanico": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -467,43 +272,19 @@
           "id": "A0034",
           "texto": "Recibir clases de dibujo",
           "bloque": "B012",
-          "claves": {
-            "mas": {
-              "artistico": 1
-            },
-            "menos": {
-              "mecanico": 1,
-              "cientifico": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0035",
           "texto": "Recibir clases de biología",
           "bloque": "B012",
-          "claves": {
-            "mas": {
-              "cientifico": 1
-            },
-            "menos": {
-              "mecanico": 1,
-              "artistico": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0036",
           "texto": "Recibir clases de metalistería",
           "bloque": "B012",
-          "claves": {
-            "mas": {
-              "mecanico": 1
-            },
-            "menos": {
-              "cientifico": 1,
-              "artistico": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -515,34 +296,19 @@
           "id": "A0037",
           "texto": "Constuir pajareras",
           "bloque": "B013",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "artistico": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0038",
           "texto": "Escribir artículos sobre las aves",
           "bloque": "B013",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "artistico": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0039",
           "texto": "Dibujar las aves",
           "bloque": "B013",
-          "claves": {
-            "mas": {
-              "artistico": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -554,43 +320,19 @@
           "id": "A0040",
           "texto": "Tratar de arreglar una máquina de coser dañada",
           "bloque": "B014",
-          "claves": {
-            "mas": {
-              "mecanico": 1
-            },
-            "menos": {
-              "artistico": 1,
-              "musical": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0041",
           "texto": "Tocar el piano",
           "bloque": "B014",
-          "claves": {
-            "mas": {
-              "musical": 1
-            },
-            "menos": {
-              "mecanico": 1,
-              "artistico": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0042",
           "texto": "Hacer el bosquejo de un escena interesante",
           "bloque": "B014",
-          "claves": {
-            "mas": {
-              "artistico": 1
-            },
-            "menos": {
-              "mecanico": 1,
-              "musical": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -602,34 +344,19 @@
           "id": "A0043",
           "texto": "Leer un libro titulado \"Cómo cultivar buenas frutas.\"",
           "bloque": "B015",
-          "claves": {
-            "mas": {
-              "aire_libre": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0044",
           "texto": "Leer un libro titulado \"Cómo trabajar con materiales plásticos.\"",
           "bloque": "B015",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "aire_libre": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0045",
           "texto": "Leer un libro titulado \"Cómo tomar fotos de animales en su ambiente natural.\"",
           "bloque": "B015",
-          "claves": {
-            "mas": {
-              "aire_libre": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -641,34 +368,19 @@
           "id": "A0046",
           "texto": "Tener a su cargo en un periódico la columna de \"Consejeros personales.\"",
           "bloque": "B016",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "aire_libre": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0047",
           "texto": "Criar perros de raza",
           "bloque": "B016",
-          "claves": {
-            "mas": {
-              "aire_libre": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0048",
           "texto": "Investigar la eficiencia de diversos medios de propaganda",
           "bloque": "B016",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "aire_libre": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -680,39 +392,19 @@
           "id": "A0049",
           "texto": "Ser autoridad en el juego de ajedrez",
           "bloque": "B017",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "aire_libre": 1,
-              "persuasivo": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0050",
           "texto": "Ser autoridad en erosión de suelos",
           "bloque": "B017",
-          "claves": {
-            "mas": {
-              "aire_libre": 1
-            },
-            "menos": {
-              "persuasivo": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0051",
           "texto": "Ser autoridad en materia  de propaganda gráfica",
           "bloque": "B017",
-          "claves": {
-            "mas": {
-              "persuasivo": 1
-            },
-            "menos": {
-              "aire_libre": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -724,34 +416,19 @@
           "id": "A0052",
           "texto": "Visitar un estudio cinematográfico",
           "bloque": "B018",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "aire_libre": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0053",
           "texto": "Visitar una región montañosa célebre por sus paisajes",
           "bloque": "B018",
-          "claves": {
-            "mas": {
-              "aire_libre": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0054",
           "texto": "Visitar un antiguo campo de batalla",
           "bloque": "B018",
-          "claves": {
-            "mas": {
-              "aire_libre": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -763,34 +440,19 @@
           "id": "A0055",
           "texto": "Leer sobre las actuaciones de los hombres y mujeres céberes en la vida pública",
           "bloque": "B019",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "aire_libre": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0056",
           "texto": "Leer las opiniones de varios escritores sobre lo que sería el mundo ideal",
           "bloque": "B019",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "aire_libre": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0057",
           "texto": "Leer cómo vivían los primeros colonizadores  del país",
           "bloque": "B019",
-          "claves": {
-            "mas": {
-              "aire_libre": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -802,42 +464,19 @@
           "id": "A0058",
           "texto": "Trabajar como psicólogo profesional atendiendo consultas de carácter personal",
           "bloque": "B020",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "aire_libre": 1,
-              "cientifico": 1,
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0059",
           "texto": "Cazar animales raros para un museo",
           "bloque": "B020",
-          "claves": {
-            "mas": {
-              "aire_libre": 1,
-              "cientifico": 1
-            },
-            "menos": {
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0060",
           "texto": "Pagar cheques al público en un banco",
           "bloque": "B020",
-          "claves": {
-            "mas": {
-              "oficina": 1
-            },
-            "menos": {
-              "aire_libre": 1,
-              "cientifico": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -849,39 +488,19 @@
           "id": "A0061",
           "texto": "Pertenecer a una sociedad que estudie los problemas del mundo contemporáneo",
           "bloque": "B021",
-          "claves": {
-            "mas": {
-              "servicio_social": 1
-            },
-            "menos": {
-              "cientifico": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0062",
           "texto": "Pertenecer a un club literario",
           "bloque": "B021",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "cientifico": 1,
-              "servicio_social": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0063",
           "texto": "Pertenecer a una sociedad de aficionados a los estudios astronómicos",
           "bloque": "B021",
-          "claves": {
-            "mas": {
-              "cientifico": 1
-            },
-            "menos": {
-              "servicio_social": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -893,32 +512,19 @@
           "id": "A0064",
           "texto": "Relacionarse con gente común y corriente",
           "bloque": "B022",
-          "claves": {
-            "mas": {
-              "validez": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0065",
           "texto": "Relacionarse con gente extravagante y de ideas raras",
           "bloque": "B022",
-          "claves": {
-            "mas": {},
-            "menos": {}
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0066",
           "texto": "Relacionarse con gente alegre y despreocupada",
           "bloque": "B022",
-          "claves": {
-            "mas": {
-              "validez": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -930,39 +536,19 @@
           "id": "A0067",
           "texto": "Enseñar castellano a los extranjeros",
           "bloque": "B023",
-          "claves": {
-            "mas": {
-              "servicio_social": 1
-            },
-            "menos": {
-              "persuasivo": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0068",
           "texto": "Vender pólizas de seguros",
           "bloque": "B023",
-          "claves": {
-            "mas": {
-              "persuasivo": 1
-            },
-            "menos": {
-              "servicio_social": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0069",
           "texto": "Ser cocinero jefe de un restaurante de lujo",
           "bloque": "B023",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "persuasivo": 1,
-              "servicio_social": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -974,39 +560,19 @@
           "id": "A0070",
           "texto": "Desarrollar nuevas variedades de flores",
           "bloque": "B024",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "persuasivo": 1,
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0071",
           "texto": "Dirigir la propaganda para floristerías",
           "bloque": "B024",
-          "claves": {
-            "mas": {
-              "persuasivo": 1
-            },
-            "menos": {
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0072",
           "texto": "Atender pedidos telefonicos en una floristería",
           "bloque": "B024",
-          "claves": {
-            "mas": {
-              "oficina": 1
-            },
-            "menos": {
-              "persuasivo": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -1018,35 +584,19 @@
           "id": "A0073",
           "texto": "Dirigir investigaciones sobre los métodos de la propaganda comercial",
           "bloque": "B025",
-          "claves": {
-            "mas": {
-              "persuasivo": 1
-            },
-            "menos": {
-              "artistico": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0074",
           "texto": "Ser Decano de una Facultad Universitaria",
           "bloque": "B025",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "persuasivo": 1,
-              "artistico": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0075",
           "texto": "Ser experto en fotografía de colores",
           "bloque": "B025",
-          "claves": {
-            "mas": {},
-            "menos": {}
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -1058,39 +608,19 @@
           "id": "A0076",
           "texto": "Dibujar cuadros para un libro de historia universal",
           "bloque": "B026",
-          "claves": {
-            "mas": {
-              "artistico": 1
-            },
-            "menos": {
-              "cientifico": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0077",
           "texto": "Producir una nueva variedad de naranjas sin semilla",
           "bloque": "B026",
-          "claves": {
-            "mas": {
-              "cientifico": 1
-            },
-            "menos": {
-              "artistico": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0078",
           "texto": "Entrenar un grupo escénico ganador del primer puesto en un concurso nacional",
           "bloque": "B026",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "cientifico": 1,
-              "artistico": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -1102,43 +632,19 @@
           "id": "A0079",
           "texto": "Costear en parte sus estudios trabajando como ayudante de laboratorio",
           "bloque": "B027",
-          "claves": {
-            "mas": {
-              "cientifico": 1
-            },
-            "menos": {
-              "musical": 1,
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0080",
           "texto": "Costearlos en parte ayudando en la secretaría del plantel donde estudia",
           "bloque": "B027",
-          "claves": {
-            "mas": {
-              "oficina": 1
-            },
-            "menos": {
-              "cientifico": 1,
-              "musical": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0081",
           "texto": "Costear en parte sus estudios tocando en una orquesta",
           "bloque": "B027",
-          "claves": {
-            "mas": {
-              "musical": 1
-            },
-            "menos": {
-              "cientifico": 1,
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -1150,39 +656,19 @@
           "id": "A0082",
           "texto": "Escribir un libro sobre la historia de la Cruz Roja",
           "bloque": "B028",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "cientifico": 1,
-              "musical": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0083",
           "texto": "Buscar datos que arrojen nueva luz sobre un célebre acontecimiento histórico",
           "bloque": "B028",
-          "claves": {
-            "mas": {
-              "cientifico": 1
-            },
-            "menos": {
-              "musical": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0084",
           "texto": "Escribir una comedia musical",
           "bloque": "B028",
-          "claves": {
-            "mas": {
-              "musical": 1
-            },
-            "menos": {
-              "cientifico": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -1194,43 +680,19 @@
           "id": "A0085",
           "texto": "Enseñar castellano",
           "bloque": "B029",
-          "claves": {
-            "mas": {
-              "literario": 1
-            },
-            "menos": {
-              "persuasivo": 1,
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0086",
           "texto": "Atender pedidos telefónicos en un almacén",
           "bloque": "B029",
-          "claves": {
-            "mas": {
-              "oficina": 1
-            },
-            "menos": {
-              "persuasivo": 1,
-              "literario": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0087",
           "texto": "Hacer encuestas de opinión pública sobre temas de actualidad",
           "bloque": "B029",
-          "claves": {
-            "mas": {
-              "persuasivo": 1
-            },
-            "menos": {
-              "literario": 1,
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -1242,34 +704,19 @@
           "id": "A0088",
           "texto": "Estar encargado de compras para un gran almacén",
           "bloque": "B030",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "aire_libre": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0089",
           "texto": "Estar encargado de entrevistar a los aspirantes a empleos en una empresa",
           "bloque": "B030",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "aire_libre": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0090",
           "texto": "Trabajar en una hacienda ganadera",
           "bloque": "B030",
-          "claves": {
-            "mas": {
-              "aire_libre": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -1281,34 +728,19 @@
           "id": "A0091",
           "texto": "Ser jefe de personal en una empresa",
           "bloque": "B031",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "aire_libre": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0092",
           "texto": "Escribir en una revista artículos sobre la vida de animales raros",
           "bloque": "B031",
-          "claves": {
-            "mas": {
-              "aire_libre": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0093",
           "texto": "Escribir la columna \"Consejos personales\" en un periódico",
           "bloque": "B031",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "aire_libre": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -1320,34 +752,19 @@
           "id": "A0094",
           "texto": "Leer sobre métodos modernos empleados en los negocios",
           "bloque": "B032",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "aire_libre": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0095",
           "texto": "Leer sobre las costumbres de los habitantes de otros países",
           "bloque": "B032",
-          "claves": {
-            "mas": {
-              "aire_libre": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0096",
           "texto": "Leer sobre nuevos métodos de explotación agrícola",
           "bloque": "B032",
-          "claves": {
-            "mas": {
-              "aire_libre": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -1359,37 +776,19 @@
           "id": "A0097",
           "texto": "Trabajar en una estación meteorológica en el Ártico",
           "bloque": "B033",
-          "claves": {
-            "mas": {
-              "aire_libre": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0098",
           "texto": "Trabajar en una estación meteorológica en la ciudad",
           "bloque": "B033",
-          "claves": {
-            "mas": {
-              "validez": 1
-            },
-            "menos": {
-              "aire_libre": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0099",
           "texto": "Trabajar en una estación meteorológica en las montañas",
           "bloque": "B033",
-          "claves": {
-            "mas": {
-              "aire_libre": 1,
-              "validez": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -1401,43 +800,19 @@
           "id": "A0100",
           "texto": "Tener fama como director investigaciones científicas",
           "bloque": "B034",
-          "claves": {
-            "mas": {
-              "cientifico": 1
-            },
-            "menos": {
-              "literario": 1,
-              "servicio_social": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0101",
           "texto": "Tener fama como trabajador en el cuerpo de acción social",
           "bloque": "B034",
-          "claves": {
-            "mas": {
-              "servicio_social": 1
-            },
-            "menos": {
-              "cientifico": 1,
-              "literario": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0102",
           "texto": "Tener fama como crítico literario.",
           "bloque": "B034",
-          "claves": {
-            "mas": {
-              "literario": 1
-            },
-            "menos": {
-              "cientifico": 1,
-              "servicio_social": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -1449,34 +824,19 @@
           "id": "A0103",
           "texto": "Diseñar decoraciones para una obra teatral",
           "bloque": "B035",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "cientifico": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0104",
           "texto": "Hacer análisis químico de un nuevo producto",
           "bloque": "B035",
-          "claves": {
-            "mas": {
-              "cientifico": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0105",
           "texto": "Escribir artículos acerca de cómo reparar en casa utensilios domésticos",
           "bloque": "B035",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "cientifico": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -1488,35 +848,19 @@
           "id": "A0106",
           "texto": "Entrevistar a las personas que soliciten la ayuda de la beneficencia",
           "bloque": "B036",
-          "claves": {
-            "mas": {
-              "servicio_social": 1
-            },
-            "menos": {
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0107",
           "texto": "Ensayar varios modelos de cartas de propaganda comercial para ver cual produce mejor resultado",
           "bloque": "B036",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "servicio_social": 1,
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0108",
           "texto": "Perfeccionar los métodos de trabajo de oficina para hacerlos mas efectivos",
           "bloque": "B036",
-          "claves": {
-            "mas": {},
-            "menos": {}
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -1528,40 +872,19 @@
           "id": "A0109",
           "texto": "Redactar la pagina financiera de un periodico",
           "bloque": "B037",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "cientifico": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0110",
           "texto": "Preparar una nueva aleación de metales , más liviana y resistente",
           "bloque": "B037",
-          "claves": {
-            "mas": {
-              "cientifico": 1
-            },
-            "menos": {
-              "servicio_social": 1,
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0111",
           "texto": "Administrar un moderno campamento para obreros.",
           "bloque": "B037",
-          "claves": {
-            "mas": {
-              "servicio_social": 1
-            },
-            "menos": {
-              "cientifico": 1,
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -1573,39 +896,19 @@
           "id": "A0112",
           "texto": "Visitar un museo de bellas artes",
           "bloque": "B038",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "cientifico": 1,
-              "servicio_social": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0113",
           "texto": "Visitar el centro de diverciones  de un barrio popular",
           "bloque": "B038",
-          "claves": {
-            "mas": {
-              "servicio_social": 1
-            },
-            "menos": {
-              "cientifico": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0114",
           "texto": "Visitar un celebre laboratorio de investigaciones médicas",
           "bloque": "B038",
-          "claves": {
-            "mas": {
-              "cientifico": 1
-            },
-            "menos": {
-              "servicio_social": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -1617,32 +920,19 @@
           "id": "A0115",
           "texto": "Asumir la responsabilidad de despedir empleados deficientes en una empresa",
           "bloque": "B039",
-          "claves": {
-            "mas": {},
-            "menos": {}
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0116",
           "texto": "Asumir la responsabilidad para llamar la atención a empleado cuyo rendimiento no es satisfactorio",
           "bloque": "B039",
-          "claves": {
-            "mas": {
-              "validez": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0117",
           "texto": "Asumir la responsabilidad de emplear el personal nuevo en una empresa",
           "bloque": "B039",
-          "claves": {
-            "mas": {
-              "validez": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -1654,39 +944,19 @@
           "id": "A0118",
           "texto": "Hacer un diccionario de dichos populares",
           "bloque": "B040",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "cientifico": 1,
-              "servicio_social": 1,
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0119",
           "texto": "Descubrir un remedio contra el asma",
           "bloque": "B040",
-          "claves": {
-            "mas": {
-              "cientifico": 1,
-              "servicio_social": 1
-            },
-            "menos": {
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0120",
           "texto": "Implantar mejores métodos de trabajo en una empresa grande",
           "bloque": "B040",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "cientifico": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -1698,39 +968,19 @@
           "id": "A0121",
           "texto": "Leer un libro sobre la historia del arte dramático",
           "bloque": "B041",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "cientifico": 1,
-              "musical": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0122",
           "texto": "Leer un libro sobre las primitivas formas de la música",
           "bloque": "B041",
-          "claves": {
-            "mas": {
-              "musical": 1
-            },
-            "menos": {
-              "cientifico": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0123",
           "texto": "Leer un libro sobre la influencia del lenguaje en el comportamiento",
           "bloque": "B041",
-          "claves": {
-            "mas": {
-              "cientifico": 1
-            },
-            "menos": {
-              "musical": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -1742,40 +992,19 @@
           "id": "A0124",
           "texto": "Hacer un análisis químico de nuevos productos comerciales",
           "bloque": "B042",
-          "claves": {
-            "mas": {
-              "cientifico": 1
-            },
-            "menos": {
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0125",
           "texto": "Trabajar en el perfeccionamiento del \"Pulmón artificial\"para que proporcione mayor comodidad al enfermo",
           "bloque": "B042",
-          "claves": {
-            "mas": {
-              "cientifico": 1
-            },
-            "menos": {
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0126",
           "texto": "Confeccionar gráficas del estado financiero de una empresa",
           "bloque": "B042",
-          "claves": {
-            "mas": {
-              "oficina": 1
-            },
-            "menos": {
-              "cientifico": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -1787,34 +1016,19 @@
           "id": "A0127",
           "texto": "Repartir hojas volantes a los automóviles que se detienen en una esquina",
           "bloque": "B043",
-          "claves": {
-            "mas": {
-              "persuasivo": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0128",
           "texto": "Contar el número de automóviles que pasan por una esquina a distintas horas",
           "bloque": "B043",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "persuasivo": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0129",
           "texto": "Dirigir el tráfico en una esquina",
           "bloque": "B043",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "persuasivo": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -1826,34 +1040,19 @@
           "id": "A0130",
           "texto": "Reeducar a los niños lisiados por medio de ejercicios físicos",
           "bloque": "B044",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "aire_libre": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0131",
           "texto": "Cultivar hortalizas para la venta.",
           "bloque": "B044",
-          "claves": {
-            "mas": {
-              "aire_libre": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0132",
           "texto": "Enseñar la confección de objetos de mimbre",
           "bloque": "B044",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "aire_libre": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -1865,43 +1064,19 @@
           "id": "A0133",
           "texto": "Recolectar dinero para una obra de beneficiencia",
           "bloque": "B045",
-          "claves": {
-            "mas": {
-              "persuasivo": 1
-            },
-            "menos": {
-              "literario": 1,
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0134",
           "texto": "Redactar informes diarios sobre el progreso de la campaña de recolección de estos fondos",
           "bloque": "B045",
-          "claves": {
-            "mas": {
-              "literario": 1
-            },
-            "menos": {
-              "persuasivo": 1,
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0135",
           "texto": "Contabilizar los fondos recolectados a medida que estos van ingresando",
           "bloque": "B045",
-          "claves": {
-            "mas": {
-              "oficina": 1
-            },
-            "menos": {
-              "persuasivo": 1,
-              "literario": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -1913,39 +1088,19 @@
           "id": "A0136",
           "texto": "Hacerse cargo de los preparativos para una boda con numerosos invitados",
           "bloque": "B046",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "literario": 1,
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0137",
           "texto": "Repartir las invitaciones para la boda",
           "bloque": "B046",
-          "claves": {
-            "mas": {
-              "oficina": 1
-            },
-            "menos": {
-              "literario": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0138",
           "texto": "Escribir un comentario en la prensa sobre su celebración",
           "bloque": "B046",
-          "claves": {
-            "mas": {
-              "literario": 1
-            },
-            "menos": {
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -1957,34 +1112,19 @@
           "id": "A0139",
           "texto": "Escribir novelas",
           "bloque": "B047",
-          "claves": {
-            "mas": {
-              "literario": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0140",
           "texto": "Dirigir investigaciones sobre los efectos psicológicos de la música",
           "bloque": "B047",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "literario": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0141",
           "texto": "Confeccionar objetos de cerámica",
           "bloque": "B047",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "literario": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -1996,43 +1136,19 @@
           "id": "A0142",
           "texto": "Investigar la eficiencia de los métodos para incrementar ventas",
           "bloque": "B048",
-          "claves": {
-            "mas": {
-              "persuasivo": 1
-            },
-            "menos": {
-              "aire_libre": 1,
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0143",
           "texto": "Clasificar la cartas en una oficina de correos",
           "bloque": "B048",
-          "claves": {
-            "mas": {
-              "oficina": 1
-            },
-            "menos": {
-              "aire_libre": 1,
-              "persuasivo": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0144",
           "texto": "Criar pollos",
           "bloque": "B048",
-          "claves": {
-            "mas": {
-              "aire_libre": 1
-            },
-            "menos": {
-              "persuasivo": 1,
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -2044,43 +1160,19 @@
           "id": "A0145",
           "texto": "Escribir en un periódico la página dedicada a sucesos de actualidad",
           "bloque": "B049",
-          "claves": {
-            "mas": {
-              "literario": 1
-            },
-            "menos": {
-              "cientifico": 1,
-              "servicio_social": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0146",
           "texto": "Dictar conferencias populares sobre química",
           "bloque": "B049",
-          "claves": {
-            "mas": {
-              "cientifico": 1
-            },
-            "menos": {
-              "literario": 1,
-              "servicio_social": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0147",
           "texto": "Ayudar a los jovenes a descubrir su vocación",
           "bloque": "B049",
-          "claves": {
-            "mas": {
-              "servicio_social": 1
-            },
-            "menos": {
-              "cientifico": 1,
-              "literario": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -2092,32 +1184,19 @@
           "id": "A0148",
           "texto": "Tener una persona para que siempre le ayude a resolver sus problemas",
           "bloque": "B050",
-          "claves": {
-            "mas": {},
-            "menos": {}
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0149",
           "texto": "Tener una persona para que ocasionalmente le resuelva sus problemas",
           "bloque": "B050",
-          "claves": {
-            "mas": {
-              "validez": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0150",
           "texto": "Resolver sus problemas sin consultar a nadie",
           "bloque": "B050",
-          "claves": {
-            "mas": {
-              "validez": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -2129,40 +1208,19 @@
           "id": "A0151",
           "texto": "Trabajar como supervisor de ventas en un gran almacén",
           "bloque": "B051",
-          "claves": {
-            "mas": {},
-            "menos": {}
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0152",
           "texto": "Dirigir investigaciones sobre la televisión",
           "bloque": "B051",
-          "claves": {
-            "mas": {
-              "cientifico": 1
-            },
-            "menos": {
-              "persuasivo": 1,
-              "servicio_social": 1,
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0153",
           "texto": "Dirigir programas recreativos en una institución de beneficencia",
           "bloque": "B051",
-          "claves": {
-            "mas": {
-              "servicio_social": 1
-            },
-            "menos": {
-              "cientifico": 1,
-              "persuasivo": 1,
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -2174,39 +1232,19 @@
           "id": "A0154",
           "texto": "Controlar el trabajo de varias mecanógrafas",
           "bloque": "B052",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "persuasivo": 1,
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0155",
           "texto": "Entrevistar personas que hacen solicitud de empleo",
           "bloque": "B052",
-          "claves": {
-            "mas": {
-              "persuasivo": 1
-            },
-            "menos": {
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0156",
           "texto": "Trabajar como secretario(a) privado(a)",
           "bloque": "B052",
-          "claves": {
-            "mas": {
-              "oficina": 1
-            },
-            "menos": {
-              "persuasivo": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -2218,40 +1256,19 @@
           "id": "A0157",
           "texto": "Dibujar tiras cómicas",
           "bloque": "B053",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "aire_libre": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0158",
           "texto": "Redactar propaganda para artículos eléctricos",
           "bloque": "B053",
-          "claves": {
-            "mas": {
-              "persuasivo": 1
-            },
-            "menos": {
-              "aire_libre": 1,
-              "artistico": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0159",
           "texto": "Cultivar una huerta",
           "bloque": "B053",
-          "claves": {
-            "mas": {
-              "aire_libre": 1
-            },
-            "menos": {
-              "persuasivo": 1,
-              "artistico": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -2263,43 +1280,19 @@
           "id": "A0160",
           "texto": "Ensayar la hechura de dulces cuya receta usted no conoce",
           "bloque": "B054",
-          "claves": {
-            "mas": {
-              "cientifico": 1
-            },
-            "menos": {
-              "artistico": 1,
-              "servicio_social": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0161",
           "texto": "Contar cuentos a los niños",
           "bloque": "B054",
-          "claves": {
-            "mas": {
-              "servicio_social": 1
-            },
-            "menos": {
-              "cientifico": 1,
-              "artistico": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0162",
           "texto": "Pintar acuarelas",
           "bloque": "B054",
-          "claves": {
-            "mas": {
-              "artistico": 1
-            },
-            "menos": {
-              "cientifico": 1,
-              "servicio_social": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -2311,39 +1304,19 @@
           "id": "A0163",
           "texto": "Hacer investigaciones químicas",
           "bloque": "B055",
-          "claves": {
-            "mas": {
-              "cientifico": 1
-            },
-            "menos": {
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0164",
           "texto": "Entrevistar la las personas que soliciten empleo",
           "bloque": "B055",
-          "claves": {
-            "mas": {
-              "oficina": 1
-            },
-            "menos": {
-              "cientifico": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0165",
           "texto": "Escribir reportajes para los periódicos",
           "bloque": "B055",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "cientifico": 1,
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -2355,42 +1328,19 @@
           "id": "A0166",
           "texto": "Bosquejar una escena interesante",
           "bloque": "B056",
-          "claves": {
-            "mas": {
-              "artistico": 1
-            },
-            "menos": {
-              "mecanico": 1,
-              "cientifico": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0167",
           "texto": "Ensayar varios tipos de aeromodelos para ver cual resulta mejor",
           "bloque": "B056",
-          "claves": {
-            "mas": {
-              "mecanico": 1,
-              "cientifico": 1
-            },
-            "menos": {
-              "artistico": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0168",
           "texto": "Escribir un ensayo imitando el estilo de un determinado escritor",
           "bloque": "B056",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "mecanico": 1,
-              "cientifico": 1,
-              "artistico": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -2402,39 +1352,19 @@
           "id": "A0169",
           "texto": "Vender boletas para una función de aficionados",
           "bloque": "B057",
-          "claves": {
-            "mas": {
-              "persuasivo": 1
-            },
-            "menos": {
-              "calculo": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0170",
           "texto": "Preparar los programas y boletas para la función",
           "bloque": "B057",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "calculo": 1,
-              "persuasivo": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0171",
           "texto": "Actuar como tesorero de la función",
           "bloque": "B057",
-          "claves": {
-            "mas": {
-              "calculo": 1
-            },
-            "menos": {
-              "persuasivo": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -2446,43 +1376,19 @@
           "id": "A0172",
           "texto": "Calcular el costo de fabricación de un nuevo modelo de lavadoras",
           "bloque": "B058",
-          "claves": {
-            "mas": {
-              "calculo": 1
-            },
-            "menos": {
-              "persuasivo": 1,
-              "servicio_social": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0173",
           "texto": "Convencer a un grupo de capitalistas para que financien la fabricación de estas lavadoras",
           "bloque": "B058",
-          "claves": {
-            "mas": {
-              "persuasivo": 1
-            },
-            "menos": {
-              "calculo": 1,
-              "servicio_social": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0174",
           "texto": "Enseñar a la gente el funcionamiento del nuevo modelo de lavadoras",
           "bloque": "B058",
-          "claves": {
-            "mas": {
-              "servicio_social": 1
-            },
-            "menos": {
-              "calculo": 1,
-              "persuasivo": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -2494,44 +1400,19 @@
           "id": "A0175",
           "texto": "Analizar los resultados de encuestas hechas al público",
           "bloque": "B059",
-          "claves": {
-            "mas": {
-              "calculo": 1
-            },
-            "menos": {
-              "literario": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0176",
           "texto": "Escribir editoriales para un periódico",
           "bloque": "B059",
-          "claves": {
-            "mas": {
-              "literario": 1
-            },
-            "menos": {
-              "calculo": 1,
-              "servicio_social": 1,
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0177",
           "texto": "Enseñar trabajos manuales en un asilo de niños desamparados",
           "bloque": "B059",
-          "claves": {
-            "mas": {
-              "servicio_social": 1
-            },
-            "menos": {
-              "calculo": 1,
-              "literario": 1,
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -2543,43 +1424,19 @@
           "id": "A0178",
           "texto": "Leer acerca de las causas de varias enfermedades",
           "bloque": "B060",
-          "claves": {
-            "mas": {
-              "servicio_social": 1
-            },
-            "menos": {
-              "aire_libre": 1,
-              "persuasivo": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0179",
           "texto": "Leer acerca de cómo lograron éxito los grandes capitanes de la industria",
           "bloque": "B060",
-          "claves": {
-            "mas": {
-              "persuasivo": 1
-            },
-            "menos": {
-              "aire_libre": 1,
-              "servicio_social": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0180",
           "texto": "Leer acerca de los métodos empleados en la cría de ganados",
           "bloque": "B060",
-          "claves": {
-            "mas": {
-              "aire_libre": 1
-            },
-            "menos": {
-              "persuasivo": 1,
-              "servicio_social": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -2591,32 +1448,19 @@
           "id": "A0181",
           "texto": "Asistir a una reunión donde la mayoría de los invitados le es desconocida",
           "bloque": "B061",
-          "claves": {
-            "mas": {},
-            "menos": {}
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0182",
           "texto": "Asistir a una reunión en la que usted conoce a casi todos los invitados",
           "bloque": "B061",
-          "claves": {
-            "mas": {
-              "validez": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0183",
           "texto": "Asistir a una reunión donde solo la mitad de los invitados le es conocida",
           "bloque": "B061",
-          "claves": {
-            "mas": {
-              "validez": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -2628,40 +1472,19 @@
           "id": "A0184",
           "texto": "Vender materiales y equipos para los artistas pintores",
           "bloque": "B062",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "aire_libre": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0185",
           "texto": "Producir semillas para la venta",
           "bloque": "B062",
-          "claves": {
-            "mas": {
-              "aire_libre": 1
-            },
-            "menos": {
-              "cientifico": 1,
-              "persuasivo": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0186",
           "texto": "Criar ratones blancos para usos científicos",
           "bloque": "B062",
-          "claves": {
-            "mas": {
-              "aire_libre": 1,
-              "cientifico": 1
-            },
-            "menos": {
-              "persuasivo": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -2673,35 +1496,19 @@
           "id": "A0187",
           "texto": "Hacer experimentos de laboratorio",
           "bloque": "B063",
-          "claves": {
-            "mas": {
-              "cientifico": 1
-            },
-            "menos": {
-              "persuasivo": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0188",
           "texto": "Confeccionar muebles",
           "bloque": "B063",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "cientifico": 1,
-              "persuasivo": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0189",
           "texto": "Vender pólizas de seguro",
           "bloque": "B063",
-          "claves": {
-            "mas": {},
-            "menos": {}
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -2713,34 +1520,19 @@
           "id": "A0190",
           "texto": "Pesar encomiendas postales para determinar el porte que deben llevar",
           "bloque": "B064",
-          "claves": {
-            "mas": {
-              "oficina": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0191",
           "texto": "Seleccionar manuscritos enviados para publicación en una revista",
           "bloque": "B064",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0192",
           "texto": "Ensayar nuevos modelos de automóviles para intoducirles otras mejoras",
           "bloque": "B064",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -2752,39 +1544,19 @@
           "id": "A0193",
           "texto": "Ser experto en la talla de piedras preciosas",
           "bloque": "B065",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "cientifico": 1,
-              "musical": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0194",
           "texto": "Dirigir investigaciones para encontrar un nuevo sustituto al caucho",
           "bloque": "B065",
-          "claves": {
-            "mas": {
-              "cientifico": 1
-            },
-            "menos": {
-              "musical": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0195",
           "texto": "Ser comentarista musical de una radioemisora",
           "bloque": "B065",
-          "claves": {
-            "mas": {
-              "musical": 1
-            },
-            "menos": {
-              "cientifico": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -2796,43 +1568,19 @@
           "id": "A0196",
           "texto": "Ayudar a cuidar a los enfermos",
           "bloque": "B066",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "mecanico": 1,
-              "persuasivo": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0197",
           "texto": "Vender instrumentos musicales",
           "bloque": "B066",
-          "claves": {
-            "mas": {
-              "persuasivo": 1,
-              "musical": 1
-            },
-            "menos": {
-              "mecanico": 1,
-              "servicio_social": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0198",
           "texto": "Reparar artefactos de uso casero",
           "bloque": "B066",
-          "claves": {
-            "mas": {
-              "mecanico": 1
-            },
-            "menos": {
-              "persuasivo": 1,
-              "musical": 1,
-              "servicio_social": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -2844,37 +1592,19 @@
           "id": "A0199",
           "texto": "Diseñar floreros",
           "bloque": "B067",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "cientifico": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0200",
           "texto": "Dirigir la fabricación de floreros",
           "bloque": "B067",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "artistico": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0201",
           "texto": "Perfeccionar los métodos para la fabricación de floreros",
           "bloque": "B067",
-          "claves": {
-            "mas": {
-              "cientifico": 1
-            },
-            "menos": {
-              "persuasivo": 1,
-              "artistico": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -2886,43 +1616,19 @@
           "id": "A0202",
           "texto": "Trabajar como cajero en un restaurante de gran movimiento",
           "bloque": "B068",
-          "claves": {
-            "mas": {
-              "oficina": 1
-            },
-            "menos": {
-              "mecanico": 1,
-              "cientifico": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0203",
           "texto": "Enseñar a los niños la construcción de aeromodelos",
           "bloque": "B068",
-          "claves": {
-            "mas": {
-              "mecanico": 1
-            },
-            "menos": {
-              "cientifico": 1,
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0204",
           "texto": "Llevar el registro de las investigaciones médicas que adelanta un científico",
           "bloque": "B068",
-          "claves": {
-            "mas": {
-              "cientifico": 1,
-              "oficina": 1
-            },
-            "menos": {
-              "mecanico": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -2934,41 +1640,19 @@
           "id": "A0205",
           "texto": "Dirigir un campo de juegos para niños pobres",
           "bloque": "B069",
-          "claves": {
-            "mas": {
-              "servicio_social": 1,
-              "validez": 1
-            },
-            "menos": {
-              "cientifico": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0206",
           "texto": "Ser cocinero de un restaurante",
           "bloque": "B069",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "cientifico": 1,
-              "servicio_social": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0207",
           "texto": "Vender productos químicos",
           "bloque": "B069",
-          "claves": {
-            "mas": {
-              "cientifico": 1,
-              "validez": 1
-            },
-            "menos": {
-              "servicio_social": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -2980,34 +1664,19 @@
           "id": "A0208",
           "texto": "Reunir un buen equipo de herramientas para trabajar madera",
           "bloque": "B070",
-          "claves": {
-            "mas": {
-              "mecanico": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0209",
           "texto": "Formar un álbum con las reproducciones de sus cuadros favoritos",
           "bloque": "B070",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "mecanico": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0210",
           "texto": "Formar un botiquín para casos de emergencia",
           "bloque": "B070",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "mecanico": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -3019,39 +1688,19 @@
           "id": "A0211",
           "texto": "Dirigir una función teatral de aficionados",
           "bloque": "B071",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "literario": 1,
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0212",
           "texto": "Organizar la impresión de programas y boletas para la función",
           "bloque": "B071",
-          "claves": {
-            "mas": {
-              "oficina": 1
-            },
-            "menos": {
-              "literario": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0213",
           "texto": "Escribir el argumento de la pieza teatral que se va a representa",
           "bloque": "B071",
-          "claves": {
-            "mas": {
-              "literario": 1
-            },
-            "menos": {
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -3063,30 +1712,19 @@
           "id": "A0214",
           "texto": "Jugar a las damas con una persona que generalmente le gana a usted",
           "bloque": "B072",
-          "claves": {
-            "mas": {},
-            "menos": {}
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0215",
           "texto": "Jugar a las damas con una persona que rara vez le gana a usted",
           "bloque": "B072",
-          "claves": {
-            "mas": {},
-            "menos": {}
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0216",
           "texto": "Jugar a las damas con una persona que juegue más o menos como usted",
           "bloque": "B072",
-          "claves": {
-            "mas": {
-              "validez": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -3098,40 +1736,19 @@
           "id": "A0217",
           "texto": "Redactar un aviso de propaganda para un nuevo modelo de lavadoras",
           "bloque": "B073",
-          "claves": {
-            "mas": {
-              "persuasivo": 1
-            },
-            "menos": {
-              "calculo": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0218",
           "texto": "Calcular el precio de costo para la fabricación de esta lavadora",
           "bloque": "B073",
-          "claves": {
-            "mas": {
-              "calculo": 1
-            },
-            "menos": {
-              "persuasivo": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0219",
           "texto": "Vender lavadoras",
           "bloque": "B073",
-          "claves": {
-            "mas": {
-              "persuasivo": 1
-            },
-            "menos": {
-              "calculo": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -3143,34 +1760,19 @@
           "id": "A0220",
           "texto": "Escribir en un periódico la columna \"Se rumora en la ciudad\"",
           "bloque": "B074",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "aire_libre": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0221",
           "texto": "Escribir en un periódico la columna \"Consejos personales\"",
           "bloque": "B074",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "aire_libre": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0222",
           "texto": "Escribir en un periódico la columna \"Cómo cuidar el jardín\"",
           "bloque": "B074",
-          "claves": {
-            "mas": {
-              "aire_libre": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -3182,39 +1784,19 @@
           "id": "A0223",
           "texto": "Ser explorador",
           "bloque": "B075",
-          "claves": {
-            "mas": {
-              "aire_libre": 1
-            },
-            "menos": {
-              "cientifico": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0224",
           "texto": "Ser dibujante proyectista",
           "bloque": "B075",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "aire_libre": 1,
-              "cientifico": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0225",
           "texto": "Ser inventor",
           "bloque": "B075",
-          "claves": {
-            "mas": {
-              "cientifico": 1
-            },
-            "menos": {
-              "aire_libre": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -3226,40 +1808,19 @@
           "id": "A0226",
           "texto": "Trabajar en la cosecha de café",
           "bloque": "B076",
-          "claves": {
-            "mas": {
-              "aire_libre": 1
-            },
-            "menos": {
-              "cientifico": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0227",
           "texto": "Trabajar como tractorista en una hacienda",
           "bloque": "B076",
-          "claves": {
-            "mas": {
-              "aire_libre": 1
-            },
-            "menos": {
-              "cientifico": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0228",
           "texto": "Trabajar en un laboratorio de productos químicos",
           "bloque": "B076",
-          "claves": {
-            "mas": {
-              "cientifico": 1
-            },
-            "menos": {
-              "aire_libre": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -3271,39 +1832,19 @@
           "id": "A0229",
           "texto": "Estudiar el arte de habla en público",
           "bloque": "B077",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "cientifico": 1,
-              "literario": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0230",
           "texto": "Estudiar sociología",
           "bloque": "B077",
-          "claves": {
-            "mas": {
-              "cientifico": 1
-            },
-            "menos": {
-              "literario": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0231",
           "texto": "Estudiar composición literaria",
           "bloque": "B077",
-          "claves": {
-            "mas": {
-              "literario": 1
-            },
-            "menos": {
-              "cientifico": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -3315,44 +1856,19 @@
           "id": "A0232",
           "texto": "Manejar una máquina calculadora",
           "bloque": "B078",
-          "claves": {
-            "mas": {
-              "oficina": 1
-            },
-            "menos": {
-              "persuasivo": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0233",
           "texto": "Ensamblar máquinas calculadoras en una fábrica",
           "bloque": "B078",
-          "claves": {
-            "mas": {
-              "mecanico": 1
-            },
-            "menos": {
-              "calculo": 1,
-              "persuasivo": 1,
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0234",
           "texto": "Vender máquinas calculadoras",
           "bloque": "B078",
-          "claves": {
-            "mas": {
-              "persuasivo": 1
-            },
-            "menos": {
-              "mecanico": 1,
-              "calculo": 1,
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -3364,44 +1880,19 @@
           "id": "A0235",
           "texto": "Construir lanchas",
           "bloque": "B079",
-          "claves": {
-            "mas": {
-              "mecanico": 1
-            },
-            "menos": {
-              "persuasivo": 1,
-              "musical": 1,
-              "servicio_social": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0236",
           "texto": "Intervenir en el arreglo de conflictos laborales",
           "bloque": "B079",
-          "claves": {
-            "mas": {
-              "persuasivo": 1
-            },
-            "menos": {
-              "mecanico": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0237",
           "texto": "Componer música",
           "bloque": "B079",
-          "claves": {
-            "mas": {
-              "musical": 1
-            },
-            "menos": {
-              "mecanico": 1,
-              "persuasivo": 1,
-              "servicio_social": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -3413,37 +1904,19 @@
           "id": "A0238",
           "texto": "Ser el mejor vendedor de tractores y otros implementos agrícolas",
           "bloque": "B080",
-          "claves": {
-            "mas": {
-              "mecanico": 1,
-              "persuasivo": 1
-            },
-            "menos": {
-              "calculo": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0239",
           "texto": "Ser contador público juramentado",
           "bloque": "B080",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "persuasivo": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0240",
           "texto": "Ser autoridad en materia de impuestos",
           "bloque": "B080",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "persuasivo": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -3455,35 +1928,19 @@
           "id": "A0241",
           "texto": "Perfeccionar métodos de trabajo de oficina en empresas importantes",
           "bloque": "B081",
-          "claves": {
-            "mas": {},
-            "menos": {}
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0242",
           "texto": "Ser enfermero (a) de profesión",
           "bloque": "B081",
-          "claves": {
-            "mas": {
-              "servicio_social": 1
-            },
-            "menos": {
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0243",
           "texto": "Hacer ensayos para obtener mejores recetas de pastelería",
           "bloque": "B081",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "servicio_social": 1,
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -3495,39 +1952,19 @@
           "id": "A0244",
           "texto": "Reparar un daño en la plancha eléctrica",
           "bloque": "B082",
-          "claves": {
-            "mas": {
-              "mecanico": 1
-            },
-            "menos": {
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0245",
           "texto": "Cortar la leña para prender la estufa",
           "bloque": "B082",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "mecanico": 1,
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0246",
           "texto": "Escribir una carta a máquina por petición de un amigo",
           "bloque": "B082",
-          "claves": {
-            "mas": {
-              "oficina": 1
-            },
-            "menos": {
-              "mecanico": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -3539,40 +1976,19 @@
           "id": "A0247",
           "texto": "Manejar un almacén de música",
           "bloque": "B083",
-          "claves": {
-            "mas": {
-              "musical": 1
-            },
-            "menos": {
-              "mecanico": 1,
-              "servicio_social": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0248",
           "texto": "Hacer palanos arquitectónicos",
           "bloque": "B083",
-          "claves": {
-            "mas": {
-              "mecanico": 1
-            },
-            "menos": {
-              "musical": 1,
-              "servicio_social": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0249",
           "texto": "Investigar el nivel de vida de distintos barrios de la ciudad",
           "bloque": "B083",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "mecanico": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -3584,34 +2000,19 @@
           "id": "A0250",
           "texto": "Examinar un nuevo juguete mecánico para ver cómo funciona",
           "bloque": "B084",
-          "claves": {
-            "mas": {
-              "mecanico": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0251",
           "texto": "Jugar a las damas",
           "bloque": "B084",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "mecanico": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0252",
           "texto": "Jugar ajedrez",
           "bloque": "B084",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "mecanico": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -3623,44 +2024,19 @@
           "id": "A0253",
           "texto": "Llevar la contabilidad de una empresa importante",
           "bloque": "B085",
-          "claves": {
-            "mas": {
-              "calculo": 1
-            },
-            "menos": {
-              "aire_libre": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0254",
           "texto": "Desarrollar nuevas variedades de flores",
           "bloque": "B085",
-          "claves": {
-            "mas": {
-              "aire_libre": 1
-            },
-            "menos": {
-              "calculo": 1,
-              "servicio_social": 1,
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0255",
           "texto": "Ser psicólogo profesional y atender consultas personales",
           "bloque": "B085",
-          "claves": {
-            "mas": {
-              "servicio_social": 1
-            },
-            "menos": {
-              "aire_libre": 1,
-              "calculo": 1,
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -3672,34 +2048,19 @@
           "id": "A0256",
           "texto": "Hacer de la pesca un medio para ganarse la vida",
           "bloque": "B086",
-          "claves": {
-            "mas": {
-              "aire_libre": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0257",
           "texto": "Seleccionar en un cafetal cafetos viejos para eliminarlos",
           "bloque": "B086",
-          "claves": {
-            "mas": {
-              "aire_libre": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0258",
           "texto": "Pintar automóviles en una fábrica",
           "bloque": "B086",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "aire_libre": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -3711,40 +2072,19 @@
           "id": "A0259",
           "texto": "Ser visitador (a) social",
           "bloque": "B087",
-          "claves": {
-            "mas": {
-              "servicio_social": 1
-            },
-            "menos": {
-              "persuasivo": 1,
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0260",
           "texto": "Ser secretario (a) privado(a) de una persona célebre",
           "bloque": "B087",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "persuasivo": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0261",
           "texto": "Preparar la propaganda para una casa editorial",
           "bloque": "B087",
-          "claves": {
-            "mas": {
-              "persuasivo": 1
-            },
-            "menos": {
-              "servicio_social": 1,
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -3756,34 +2096,19 @@
           "id": "A0262",
           "texto": "Escribir estampas de la  vida real para una revista",
           "bloque": "B088",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "aire_libre": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0263",
           "texto": "Escribir artículos sobre la cría de aves de corral",
           "bloque": "B088",
-          "claves": {
-            "mas": {
-              "aire_libre": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0264",
           "texto": "Escribir artículos sobre la aplicación de primeros auxilios",
           "bloque": "B088",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "aire_libre": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -3795,34 +2120,19 @@
           "id": "A0265",
           "texto": "Trabajar como mesero(a) en un restaurante",
           "bloque": "B089",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0266",
           "texto": "Seleccioinar listas de personas para enviarles propaganda",
           "bloque": "B089",
-          "claves": {
-            "mas": {
-              "oficina": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0267",
           "texto": "Cuidar enfermos",
           "bloque": "B089",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -3834,37 +2144,19 @@
           "id": "A0268",
           "texto": "Modelar objetos de arcilla",
           "bloque": "B090",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "literario": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0269",
           "texto": "Escribir artículos sobre recursos psicológicos para persuadir",
           "bloque": "B090",
-          "claves": {
-            "mas": {
-              "persuasivo": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0270",
           "texto": "Ser apuntador en una obra teatral de aficionados",
           "bloque": "B090",
-          "claves": {
-            "mas": {
-              "persuasivo": 1
-            },
-            "menos": {
-              "artistico": 1,
-              "literario": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -3876,43 +2168,19 @@
           "id": "A0271",
           "texto": "Ser médico",
           "bloque": "B091",
-          "claves": {
-            "mas": {
-              "cientifico": 1,
-              "servicio_social": 1
-            },
-            "menos": {
-              "artistico": 1,
-              "literario": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0272",
           "texto": "Ser escultor",
           "bloque": "B091",
-          "claves": {
-            "mas": {
-              "artistico": 1
-            },
-            "menos": {
-              "cientifico": 1,
-              "literario": 1,
-              "servicio_social": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0273",
           "texto": "Ser periodista",
           "bloque": "B091",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "cientifico": 1,
-              "servicio_social": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -3924,35 +2192,19 @@
           "id": "A0274",
           "texto": "Contestar por escrito consultas sobre máquinas de escribir",
           "bloque": "B092",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "mecanico": 1,
-              "calculo": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0275",
           "texto": "Estudiar la demanda que tienen las máquinas de escribir",
           "bloque": "B092",
-          "claves": {
-            "mas": {},
-            "menos": {}
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0276",
           "texto": "Tener a su cargo la reparación de máquinas de escribir",
           "bloque": "B092",
-          "claves": {
-            "mas": {
-              "mecanico": 1
-            },
-            "menos": {
-              "calculo": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -3964,34 +2216,19 @@
           "id": "A0277",
           "texto": "Estudiar métodos de propaganda usados durante la guerra",
           "bloque": "B093",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0278",
           "texto": "Estudiar sistemas para mejorar los trabajos de oficina",
           "bloque": "B093",
-          "claves": {
-            "mas": {
-              "oficina": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0279",
           "texto": "Hacer un estudio acerca del movimiento demográfico del país",
           "bloque": "B093",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -4003,33 +2240,19 @@
           "id": "A0280",
           "texto": "Corregir una prueba de imprenta",
           "bloque": "B094",
-          "claves": {
-            "mas": {
-              "oficina": 1,
-              "validez": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0281",
           "texto": "Lavar platos",
           "bloque": "B094",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0282",
           "texto": "Preparar la comida",
           "bloque": "B094",
-          "claves": {
-            "mas": {},
-            "menos": {}
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -4041,40 +2264,19 @@
           "id": "A0283",
           "texto": "Enseñar arquitectura",
           "bloque": "B095",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "mecanico": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0284",
           "texto": "Solicitar propaganda para una revista",
           "bloque": "B095",
-          "claves": {
-            "mas": {
-              "persuasivo": 1
-            },
-            "menos": {
-              "mecanico": 1,
-              "artistico": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0285",
           "texto": "Reparar relojes",
           "bloque": "B095",
-          "claves": {
-            "mas": {
-              "mecanico": 1
-            },
-            "menos": {
-              "persuasivo": 1,
-              "artistico": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -4086,34 +2288,19 @@
           "id": "A0286",
           "texto": "Preparar la comida",
           "bloque": "B096",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "mecanico": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0287",
           "texto": "Reparar un juguete dañado",
           "bloque": "B096",
-          "claves": {
-            "mas": {
-              "mecanico": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0288",
           "texto": "Darle un masaje a una persona",
           "bloque": "B096",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "mecanico": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -4125,39 +2312,19 @@
           "id": "A0289",
           "texto": "Tomar parte en una expedición en busca de animales raros",
           "bloque": "B097",
-          "claves": {
-            "mas": {
-              "cientifico": 1
-            },
-            "menos": {
-              "servicio_social": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0290",
           "texto": "Tomar parte en una expedición para combatir epidemias",
           "bloque": "B097",
-          "claves": {
-            "mas": {
-              "cientifico": 1,
-              "servicio_social": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0291",
           "texto": "Trabajar en una entidad de beneficencia",
           "bloque": "B097",
-          "claves": {
-            "mas": {
-              "servicio_social": 1
-            },
-            "menos": {
-              "cientifico": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -4169,43 +2336,19 @@
           "id": "A0292",
           "texto": "Ser pintor - retratista",
           "bloque": "B098",
-          "claves": {
-            "mas": {
-              "artistico": 1
-            },
-            "menos": {
-              "mecanico": 1,
-              "cientifico": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0293",
           "texto": "Dirigir investigaciones sobre las causas de los terremotos",
           "bloque": "B098",
-          "claves": {
-            "mas": {
-              "cientifico": 1
-            },
-            "menos": {
-              "mecanico": 1,
-              "artistico": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0294",
           "texto": "Ser ingeniero mecánico",
           "bloque": "B098",
-          "claves": {
-            "mas": {
-              "mecanico": 1
-            },
-            "menos": {
-              "cientifico": 1,
-              "artistico": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -4217,43 +2360,19 @@
           "id": "A0295",
           "texto": "Ayudar a las familias que reciben asistencia económica, a equilibrar sus propuestas",
           "bloque": "B099",
-          "claves": {
-            "mas": {
-              "calculo": 1,
-              "servicio_social": 1
-            },
-            "menos": {
-              "aire_libre": 1,
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0296",
           "texto": "Catalogar libros en una biblioteca",
           "bloque": "B099",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "aire_libre": 1,
-              "calculo": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0297",
           "texto": "Ser un experto en el cuidado de árboles",
           "bloque": "B099",
-          "claves": {
-            "mas": {
-              "aire_libre": 1
-            },
-            "menos": {
-              "calculo": 1,
-              "servicio_social": 1,
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -4265,38 +2384,19 @@
           "id": "A0298",
           "texto": "Vender en un almacén",
           "bloque": "B100",
-          "claves": {
-            "mas": {
-              "persuasivo": 1,
-              "oficina": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0299",
           "texto": "Trabajar en una hacienda ganadera",
           "bloque": "B100",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "persuasivo": 1,
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0300",
           "texto": "Trabajar en una casa editorial",
           "bloque": "B100",
-          "claves": {
-            "mas": {
-              "oficina": 1
-            },
-            "menos": {
-              "persuasivo": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -4308,39 +2408,19 @@
           "id": "A0301",
           "texto": "Ser profesor de matemáticas",
           "bloque": "B101",
-          "claves": {
-            "mas": {
-              "calculo": 1
-            },
-            "menos": {
-              "persuasivo": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0302",
           "texto": "Ser director de extensión cultural en una gran universidad",
           "bloque": "B101",
-          "claves": {
-            "mas": {
-              "persuasivo": 1
-            },
-            "menos": {
-              "calculo": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0303",
           "texto": "Ser profesor de lenguas extranjeras",
           "bloque": "B101",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "calculo": 1,
-              "persuasivo": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -4352,39 +2432,19 @@
           "id": "A0304",
           "texto": "Tomar un curso de correspondencia comercial",
           "bloque": "B102",
-          "claves": {
-            "mas": {
-              "oficina": 1
-            },
-            "menos": {
-              "persuasivo": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0305",
           "texto": "Tomar un curso de artes gráficas",
           "bloque": "B102",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "persuasivo": 1,
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0306",
           "texto": "Tomar un curso de ventas",
           "bloque": "B102",
-          "claves": {
-            "mas": {
-              "persuasivo": 1
-            },
-            "menos": {
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -4396,34 +2456,19 @@
           "id": "A0307",
           "texto": "Dibujar planos de arquitectura",
           "bloque": "B103",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "persuasivo": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0308",
           "texto": "Elaborar propaganda para una nueva urbanización",
           "bloque": "B103",
-          "claves": {
-            "mas": {
-              "persuasivo": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0309",
           "texto": "Escribir artículos comentando nuevas sobre construcciones",
           "bloque": "B103",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "persuasivo": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -4435,30 +2480,19 @@
           "id": "A0310",
           "texto": "Comprar artículos costosos utilizando el sistema de crédito",
           "bloque": "B104",
-          "claves": {
-            "mas": {},
-            "menos": {}
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0311",
           "texto": "Pedir prestado el dinero para comprar estos artículos",
           "bloque": "B104",
-          "claves": {
-            "mas": {},
-            "menos": {}
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0312",
           "texto": "Economizar el dinero que se necesita para adquirirlos",
           "bloque": "B104",
-          "claves": {
-            "mas": {
-              "validez": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -4470,34 +2504,19 @@
           "id": "A0313",
           "texto": "Decorar muebles",
           "bloque": "B105",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "aire_libre": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0314",
           "texto": "Vigilar a los trabajadores en una plantación de caña de azúcar",
           "bloque": "B105",
-          "claves": {
-            "mas": {
-              "aire_libre": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0315",
           "texto": "Criar  aves de corral",
           "bloque": "B105",
-          "claves": {
-            "mas": {
-              "aire_libre": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -4509,43 +2528,19 @@
           "id": "A0316",
           "texto": "Ayudar a los jóvenes en la elección de su futura carrera",
           "bloque": "B106",
-          "claves": {
-            "mas": {
-              "servicio_social": 1
-            },
-            "menos": {
-              "calculo": 1,
-              "artistico": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0317",
           "texto": "Diseñar motivos para nuevas telas",
           "bloque": "B106",
-          "claves": {
-            "mas": {
-              "artistico": 1
-            },
-            "menos": {
-              "calculo": 1,
-              "servicio_social": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0318",
           "texto": "Elaborar propuestas de costos para impresión de libros y revistas",
           "bloque": "B106",
-          "claves": {
-            "mas": {
-              "calculo": 1
-            },
-            "menos": {
-              "artistico": 1,
-              "servicio_social": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -4557,40 +2552,19 @@
           "id": "A0319",
           "texto": "Construir un telar de mano",
           "bloque": "B107",
-          "claves": {
-            "mas": {
-              "mecanico": 1
-            },
-            "menos": {
-              "calculo": 1,
-              "servicio_social": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0320",
           "texto": "Hacer análisis estadísticos para predecir tendencias del mercado",
           "bloque": "B107",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "servicio_social": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0321",
           "texto": "Hacer encuestas sobre la actitud de los jóvenes hacia la religión",
           "bloque": "B107",
-          "claves": {
-            "mas": {
-              "servicio_social": 1
-            },
-            "menos": {
-              "mecanico": 1,
-              "calculo": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -4602,39 +2576,19 @@
           "id": "A0322",
           "texto": "Modelar en yeso el rostro de un personaje célebre",
           "bloque": "B108",
-          "claves": {
-            "mas": {
-              "artistico": 1
-            },
-            "menos": {
-              "calculo": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0323",
           "texto": "Escribir artículos sobre procedimientos para determinar el precio de venta de las mercancías",
           "bloque": "B108",
-          "claves": {
-            "mas": {
-              "calculo": 1
-            },
-            "menos": {
-              "artistico": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0324",
           "texto": "Escribir el tema músical para un programa radial",
           "bloque": "B108",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "calculo": 1,
-              "artistico": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -4646,37 +2600,19 @@
           "id": "A0325",
           "texto": "Trabajar como comprador de mercancías para una cooperativa",
           "bloque": "B109",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "mecanico": 1,
-              "calculo": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0326",
           "texto": "Encargarse de la publicidad de una empresa importante",
           "bloque": "B109",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "mecanico": 1,
-              "calculo": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0327",
           "texto": "Encargarse del mantenimiento de las máquinas de contabilidad en una empresa comercial",
           "bloque": "B109",
-          "claves": {
-            "mas": {
-              "mecanico": 1,
-              "calculo": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -4688,30 +2624,19 @@
           "id": "A0328",
           "texto": "Lograr que la gente lo trate a usted como a un amigo",
           "bloque": "B110",
-          "claves": {
-            "mas": {
-              "validez": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0329",
           "texto": "Lograr que la gente lo trate a usted como a un superior",
           "bloque": "B110",
-          "claves": {
-            "mas": {},
-            "menos": {}
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0330",
           "texto": "Lograr que nadie se fije en usted",
           "bloque": "B110",
-          "claves": {
-            "mas": {},
-            "menos": {}
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -4723,39 +2648,19 @@
           "id": "A0331",
           "texto": "Ser profesor de música",
           "bloque": "B111",
-          "claves": {
-            "mas": {
-              "musical": 1
-            },
-            "menos": {
-              "artistico": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0332",
           "texto": "Ser diseñador de una casa de publicidad",
           "bloque": "B111",
-          "claves": {
-            "mas": {
-              "artistico": 1
-            },
-            "menos": {
-              "musical": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0333",
           "texto": "Investigar por qué los chistes hacen reír",
           "bloque": "B111",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "artistico": 1,
-              "musical": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -4767,34 +2672,19 @@
           "id": "A0334",
           "texto": "Hacer las compras para una persona enferma",
           "bloque": "B112",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "mecanico": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0335",
           "texto": "Hacer un crucigrama para entretener a un enfermo",
           "bloque": "B112",
-          "claves": {
-            "mas": {
-              "mecanico": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0336",
           "texto": "Leer para distraer a una persona enferma",
           "bloque": "B112",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "mecanico": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -4806,40 +2696,19 @@
           "id": "A0337",
           "texto": "Prestar primeros auxilios en un hospital",
           "bloque": "B113",
-          "claves": {
-            "mas": {
-              "servicio_social": 1
-            },
-            "menos": {
-              "persuasivo": 1,
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0338",
           "texto": "Vender flores en una floristería",
           "bloque": "B113",
-          "claves": {
-            "mas": {
-              "persuasivo": 1
-            },
-            "menos": {
-              "servicio_social": 1,
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0339",
           "texto": "Trabajar como secretario (a) privado (a)",
           "bloque": "B113",
-          "claves": {
-            "mas": {
-              "persuasivo": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -4851,46 +2720,19 @@
           "id": "A0340",
           "texto": "Redactar la página financiera en un periódico",
           "bloque": "B114",
-          "claves": {
-            "mas": {
-              "calculo": 1,
-              "literario": 1
-            },
-            "menos": {
-              "aire_libre": 1,
-              "persuasivo": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0341",
           "texto": "Cultivar una buena extensión de tierra",
           "bloque": "B114",
-          "claves": {
-            "mas": {
-              "aire_libre": 1
-            },
-            "menos": {
-              "calculo": 1,
-              "persuasivo": 1,
-              "literario": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0342",
           "texto": "Ser  corredor de finca raíz",
           "bloque": "B114",
-          "claves": {
-            "mas": {
-              "persuasivo": 1
-            },
-            "menos": {
-              "aire_libre": 1,
-              "calculo": 1,
-              "literario": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -4902,43 +2744,19 @@
           "id": "A0343",
           "texto": "Cuidar a sordomudos en un asilo",
           "bloque": "B115",
-          "claves": {
-            "mas": {
-              "servicio_social": 1
-            },
-            "menos": {
-              "calculo": 1,
-              "persuasivo": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0344",
           "texto": "Dibujar gráficas estadísticas",
           "bloque": "B115",
-          "claves": {
-            "mas": {
-              "calculo": 1
-            },
-            "menos": {
-              "persuasivo": 1,
-              "servicio_social": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0345",
           "texto": "Trabajar como dependiente en un almacén",
           "bloque": "B115",
-          "claves": {
-            "mas": {
-              "persuasivo": 1
-            },
-            "menos": {
-              "calculo": 1,
-              "servicio_social": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -4950,43 +2768,19 @@
           "id": "A0346",
           "texto": "Ser escritor",
           "bloque": "B116",
-          "claves": {
-            "mas": {
-              "literario": 1
-            },
-            "menos": {
-              "persuasivo": 1,
-              "servicio_social": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0347",
           "texto": "Ser autoridad en propaganda",
           "bloque": "B116",
-          "claves": {
-            "mas": {
-              "persuasivo": 1
-            },
-            "menos": {
-              "literario": 1,
-              "servicio_social": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0348",
           "texto": "Ser religioso misionero",
           "bloque": "B116",
-          "claves": {
-            "mas": {
-              "servicio_social": 1
-            },
-            "menos": {
-              "persuasivo": 1,
-              "literario": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -4998,30 +2792,19 @@
           "id": "A0349",
           "texto": "Trabajar en lo que le agrada con un sueldo alto",
           "bloque": "B117",
-          "claves": {
-            "mas": {
-              "validez": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0350",
           "texto": "Trabajar en lo que le agrada con un sueldo bajo",
           "bloque": "B117",
-          "claves": {
-            "mas": {},
-            "menos": {}
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0351",
           "texto": "Trabajar en algo que no le agrada con un sueldo alto",
           "bloque": "B117",
-          "claves": {
-            "mas": {},
-            "menos": {}
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -5033,40 +2816,19 @@
           "id": "A0352",
           "texto": "Enseñar a la gente pobre nociones de higiene",
           "bloque": "B118",
-          "claves": {
-            "mas": {
-              "servicio_social": 1
-            },
-            "menos": {
-              "artistico": 1,
-              "literario": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0353",
           "texto": "Escribir artículos sobre temas de actualidad",
           "bloque": "B118",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "servicio_social": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0354",
           "texto": "Vender objetos de arte",
           "bloque": "B118",
-          "claves": {
-            "mas": {
-              "artistico": 1
-            },
-            "menos": {
-              "literario": 1,
-              "servicio_social": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -5078,43 +2840,19 @@
           "id": "A0355",
           "texto": "Ser secretario (a) de un insigne líder político",
           "bloque": "B119",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "artistico": 1,
-              "literario": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0356",
           "texto": "Enseñar a los niños pintura y modelado",
           "bloque": "B119",
-          "claves": {
-            "mas": {
-              "artistico": 1,
-              "servicio_social": 1
-            },
-            "menos": {
-              "literario": 1,
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0357",
           "texto": "Escribir artículos para una revista de arte",
           "bloque": "B119",
-          "claves": {
-            "mas": {
-              "artistico": 1,
-              "literario": 1
-            },
-            "menos": {
-              "servicio_social": 1,
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -5126,32 +2864,19 @@
           "id": "A0358",
           "texto": "Escoger su ropa siguiendo sus propios gustos",
           "bloque": "B120",
-          "claves": {
-            "mas": {
-              "validez": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0359",
           "texto": "Oír consejos en la elección de su ropa",
           "bloque": "B120",
-          "claves": {
-            "mas": {
-              "validez": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0360",
           "texto": "Dejar que otras personas la escojan para usted",
           "bloque": "B120",
-          "claves": {
-            "mas": {},
-            "menos": {}
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -5163,40 +2888,19 @@
           "id": "A0361",
           "texto": "Diseñar proyectos para la construcción de puentes",
           "bloque": "B121",
-          "claves": {
-            "mas": {
-              "mecanico": 1
-            },
-            "menos": {
-              "calculo": 1,
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0362",
           "texto": "Trabajar en algo que requiere intenso cálculo mental",
           "bloque": "B121",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0363",
           "texto": "Tener a su cargo la correspondencia de una oficina",
           "bloque": "B121",
-          "claves": {
-            "mas": {
-              "oficina": 1
-            },
-            "menos": {
-              "mecanico": 1,
-              "calculo": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -5208,39 +2912,19 @@
           "id": "A0364",
           "texto": "Dirigir la producción de tarjetas de Navidad",
           "bloque": "B122",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "calculo": 1,
-              "artistico": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0365",
           "texto": "Calcular el costo de producción de estas tarjetas",
           "bloque": "B122",
-          "claves": {
-            "mas": {
-              "calculo": 1
-            },
-            "menos": {
-              "artistico": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0366",
           "texto": "Diseñar tarjetas de Navidad",
           "bloque": "B122",
-          "claves": {
-            "mas": {
-              "artistico": 1
-            },
-            "menos": {
-              "calculo": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -5252,40 +2936,19 @@
           "id": "A0367",
           "texto": "Examinar una cerradura dañada para ver cómo se arregla",
           "bloque": "B123",
-          "claves": {
-            "mas": {
-              "mecanico": 1
-            },
-            "menos": {
-              "calculo": 1,
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0368",
           "texto": "Corregir una prueba tipográfica",
           "bloque": "B123",
-          "claves": {
-            "mas": {
-              "oficina": 1
-            },
-            "menos": {
-              "mecanico": 1,
-              "calculo": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0369",
           "texto": "Sumar una columna de cifras",
           "bloque": "B123",
-          "claves": {
-            "mas": {
-              "oficina": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -5297,30 +2960,19 @@
           "id": "A0370",
           "texto": "Tener entre sus amistades a una persona que siempre hace bromas a usted",
           "bloque": "B124",
-          "claves": {
-            "mas": {},
-            "menos": {}
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0371",
           "texto": "Hacer bromas a los otros",
           "bloque": "B124",
-          "claves": {
-            "mas": {},
-            "menos": {}
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0372",
           "texto": "No hacer bromas a nadie",
           "bloque": "B124",
-          "claves": {
-            "mas": {
-              "validez": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -5332,43 +2984,19 @@
           "id": "A0373",
           "texto": "Ser psicólogo profesional",
           "bloque": "B125",
-          "claves": {
-            "mas": {
-              "cientifico": 1
-            },
-            "menos": {
-              "mecanico": 1,
-              "artistico": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0374",
           "texto": "Dirigir la construcción de puentes",
           "bloque": "B125",
-          "claves": {
-            "mas": {
-              "mecanico": 1,
-              "cientifico": 1
-            },
-            "menos": {
-              "artistico": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0375",
           "texto": "Ser arquitecto urbanista",
           "bloque": "B125",
-          "claves": {
-            "mas": {
-              "artistico": 1
-            },
-            "menos": {
-              "mecanico": 1,
-              "cientifico": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -5380,41 +3008,19 @@
           "id": "A0376",
           "texto": "Investigar las causas de las enfermedades mentales",
           "bloque": "B126",
-          "claves": {
-            "mas": {
-              "cientifico": 1
-            },
-            "menos": {
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0377",
           "texto": "Estudiar música",
           "bloque": "B126",
-          "claves": {
-            "mas": {
-              "musical": 1
-            },
-            "menos": {
-              "cientifico": 1,
-              "servicio_social": 1,
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0378",
           "texto": "Estudiar taquigrafía",
           "bloque": "B126",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "cientifico": 1,
-              "musical": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -5426,37 +3032,19 @@
           "id": "A0379",
           "texto": "Trabajar como chofer de taxi",
           "bloque": "B127",
-          "claves": {
-            "mas": {
-              "validez": 1
-            },
-            "menos": {
-              "aire_libre": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0380",
           "texto": "Trabajar como celador en un faro marítimo",
           "bloque": "B127",
-          "claves": {
-            "mas": {
-              "aire_libre": 1,
-              "validez": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0381",
           "texto": "Trabajar como guardián de un paso ferroviario",
           "bloque": "B127",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "aire_libre": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -5468,34 +3056,19 @@
           "id": "A0382",
           "texto": "Redactar avisos de propaganda",
           "bloque": "B128",
-          "claves": {
-            "mas": {
-              "persuasivo": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0383",
           "texto": "Dirigir una biblioteca pública",
           "bloque": "B128",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "persuasivo": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0384",
           "texto": "Editar un períodico",
           "bloque": "B128",
-          "claves": {
-            "mas": {
-              "persuasivo": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -5507,39 +3080,19 @@
           "id": "A0385",
           "texto": "Tomar clases de contabilidad de costos",
           "bloque": "B129",
-          "claves": {
-            "mas": {
-              "calculo": 1
-            },
-            "menos": {
-              "persuasivo": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0386",
           "texto": "Tomar clases sobre el arte de vender",
           "bloque": "B129",
-          "claves": {
-            "mas": {
-              "persuasivo": 1
-            },
-            "menos": {
-              "calculo": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0387",
           "texto": "Tomar clases de correspondencia comercial",
           "bloque": "B129",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "calculo": 1,
-              "persuasivo": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -5551,40 +3104,19 @@
           "id": "A0388",
           "texto": "Escribir una obra teatral",
           "bloque": "B130",
-          "claves": {
-            "mas": {
-              "literario": 1
-            },
-            "menos": {
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0389",
           "texto": "Vender las boletas para una función teatral",
           "bloque": "B130",
-          "claves": {
-            "mas": {
-              "oficina": 1
-            },
-            "menos": {
-              "literario": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0390",
           "texto": "Manejar los fondos de una función teatral",
           "bloque": "B130",
-          "claves": {
-            "mas": {
-              "oficina": 1
-            },
-            "menos": {
-              "literario": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -5596,34 +3128,19 @@
           "id": "A0391",
           "texto": "Hacer caricaturas de personajes célebres",
           "bloque": "B131",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "aire_libre": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0392",
           "texto": "Pintar retratos de personajes célebres",
           "bloque": "B131",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "aire_libre": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0393",
           "texto": "Pintar paisajes",
           "bloque": "B131",
-          "claves": {
-            "mas": {
-              "aire_libre": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -5635,37 +3152,19 @@
           "id": "A0394",
           "texto": "Dibujar ilustraciones para revistas",
           "bloque": "B132",
-          "claves": {
-            "mas": {
-              "artistico": 1
-            },
-            "menos": {
-              "literario": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0395",
           "texto": "Escribir artículos para revistas",
           "bloque": "B132",
-          "claves": {
-            "mas": {},
-            "menos": {}
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0396",
           "texto": "Ser agente distribuidor de una revista",
           "bloque": "B132",
-          "claves": {
-            "mas": {
-              "persuasivo": 1
-            },
-            "menos": {
-              "artistico": 1,
-              "literario": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -5677,34 +3176,19 @@
           "id": "A0397",
           "texto": "Pasar vacaciones en un elegante sitio de veraneo",
           "bloque": "B133",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "aire_libre": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0398",
           "texto": "Pasarlas acompando fuera de la ciudad",
           "bloque": "B133",
-          "claves": {
-            "mas": {
-              "aire_libre": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0399",
           "texto": "Pasarlas viajando por caminos apartados",
           "bloque": "B133",
-          "claves": {
-            "mas": {
-              "aire_libre": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -5716,34 +3200,19 @@
           "id": "A0400",
           "texto": "Vivir con un famoso crítico literario",
           "bloque": "B134",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "servicio_social": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0401",
           "texto": "Vivir con un político destacado",
           "bloque": "B134",
-          "claves": {
-            "mas": {
-              "servicio_social": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0402",
           "texto": "Vivir con un artista célebre",
           "bloque": "B134",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "servicio_social": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -5755,35 +3224,19 @@
           "id": "A0403",
           "texto": "Escribir artículos sobre pasatiempos",
           "bloque": "B135",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "mecanico": 1,
-              "calculo": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0404",
           "texto": "Elaborar  cuadros estadísticos sobre costos de vida",
           "bloque": "B135",
-          "claves": {
-            "mas": {},
-            "menos": {}
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0405",
           "texto": "Reparar y arreglar muebles viejos",
           "bloque": "B135",
-          "claves": {
-            "mas": {
-              "mecanico": 1
-            },
-            "menos": {
-              "calculo": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -5795,40 +3248,19 @@
           "id": "A0406",
           "texto": "Revisar las pruebas tipográficas de libros para niños",
           "bloque": "B136",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "mecanico": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0407",
           "texto": "Contar cuentos a los niños",
           "bloque": "B136",
-          "claves": {
-            "mas": {
-              "servicio_social": 1
-            },
-            "menos": {
-              "mecanico": 1,
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0408",
           "texto": "Confeccionar juguetes para niños",
           "bloque": "B136",
-          "claves": {
-            "mas": {
-              "mecanico": 1
-            },
-            "menos": {
-              "servicio_social": 1,
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -5840,35 +3272,19 @@
           "id": "A0409",
           "texto": "Tomar clases de educación física",
           "bloque": "B137",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "mecanico": 1,
-              "calculo": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0410",
           "texto": "Tomar clases de trabajos manuales",
           "bloque": "B137",
-          "claves": {
-            "mas": {
-              "mecanico": 1
-            },
-            "menos": {
-              "calculo": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0411",
           "texto": "Tomar clases de matemáticas",
           "bloque": "B137",
-          "claves": {
-            "mas": {},
-            "menos": {}
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -5880,34 +3296,19 @@
           "id": "A0412",
           "texto": "Ser profesor de música",
           "bloque": "B138",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0413",
           "texto": "Ser maestro de escuela",
           "bloque": "B138",
-          "claves": {
-            "mas": {
-              "oficina": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0414",
           "texto": "Ser dentista",
           "bloque": "B138",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -5919,37 +3320,19 @@
           "id": "A0415",
           "texto": "Ser Taquígrafo(a) de un tribunal",
           "bloque": "B139",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "musical": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0416",
           "texto": "Ser empresario de un célebre pianista",
           "bloque": "B139",
-          "claves": {
-            "mas": {
-              "musical": 1
-            },
-            "menos": {
-              "servicio_social": 1,
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0417",
           "texto": "Ser consejero vocacional",
           "bloque": "B139",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -5961,39 +3344,19 @@
           "id": "A0418",
           "texto": "Visitar un museo de ciencias naturales",
           "bloque": "B140",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "mecanico": 1,
-              "servicio_social": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0419",
           "texto": "Visitar una fábrica de aviones",
           "bloque": "B140",
-          "claves": {
-            "mas": {
-              "mecanico": 1
-            },
-            "menos": {
-              "servicio_social": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0420",
           "texto": "Visitar los barrios bajos de una ciudad",
           "bloque": "B140",
-          "claves": {
-            "mas": {
-              "servicio_social": 1
-            },
-            "menos": {
-              "mecanico": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -6005,34 +3368,19 @@
           "id": "A0421",
           "texto": "Hacer dibujos para revistas",
           "bloque": "B141",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "aire_libre": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0422",
           "texto": "Criar ganado",
           "bloque": "B141",
-          "claves": {
-            "mas": {
-              "aire_libre": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0423",
           "texto": "Cultivar frutos para la venta",
           "bloque": "B141",
-          "claves": {
-            "mas": {
-              "aire_libre": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -6044,37 +3392,19 @@
           "id": "A0424",
           "texto": "Trabajar como botones en un hotel",
           "bloque": "B142",
-          "claves": {
-            "mas": {
-              "validez": 1
-            },
-            "menos": {
-              "aire_libre": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0425",
           "texto": "Servir como mesero de restaurante",
           "bloque": "B142",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "aire_libre": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0426",
           "texto": "Vivir en un sitioo aislado atendiendo sus propias necesidades",
           "bloque": "B142",
-          "claves": {
-            "mas": {
-              "aire_libre": 1,
-              "validez": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -6086,39 +3416,19 @@
           "id": "A0427",
           "texto": "Ser guía de excursionistas",
           "bloque": "B143",
-          "claves": {
-            "mas": {
-              "aire_libre": 1
-            },
-            "menos": {
-              "persuasivo": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0428",
           "texto": "Diseñar equipos para excursionistas",
           "bloque": "B143",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "aire_libre": 1,
-              "persuasivo": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0429",
           "texto": "Vender equipos para excursionistas",
           "bloque": "B143",
-          "claves": {
-            "mas": {
-              "persuasivo": 1
-            },
-            "menos": {
-              "aire_libre": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -6130,43 +3440,19 @@
           "id": "A0430",
           "texto": "Vender pólizas de seguro de vida",
           "bloque": "B144",
-          "claves": {
-            "mas": {
-              "persuasivo": 1
-            },
-            "menos": {
-              "aire_libre": 1,
-              "literario": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0431",
           "texto": "Escribir artículos para una revista",
           "bloque": "B144",
-          "claves": {
-            "mas": {
-              "literario": 1
-            },
-            "menos": {
-              "aire_libre": 1,
-              "persuasivo": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0432",
           "texto": "Trabajar como jardinero-decorador",
           "bloque": "B144",
-          "claves": {
-            "mas": {
-              "aire_libre": 1
-            },
-            "menos": {
-              "persuasivo": 1,
-              "literario": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -6178,32 +3464,19 @@
           "id": "A0433",
           "texto": "Ser considerado como modesto",
           "bloque": "B145",
-          "claves": {
-            "mas": {},
-            "menos": {}
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0434",
           "texto": "Ser considerado digno de confianza",
           "bloque": "B145",
-          "claves": {
-            "mas": {
-              "validez": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0435",
           "texto": "Ser considerado como poco serio",
           "bloque": "B145",
-          "claves": {
-            "mas": {
-              "validez": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -6215,39 +3488,19 @@
           "id": "A0436",
           "texto": "Enseñar aritmética",
           "bloque": "B146",
-          "claves": {
-            "mas": {
-              "calculo": 1
-            },
-            "menos": {
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0437",
           "texto": "Adiestrar perros para los ciegos",
           "bloque": "B146",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "calculo": 1,
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0438",
           "texto": "Ser secretario de un científico",
           "bloque": "B146",
-          "claves": {
-            "mas": {
-              "oficina": 1
-            },
-            "menos": {
-              "calculo": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -6259,35 +3512,19 @@
           "id": "A0439",
           "texto": "Tomar clases de música moderna",
           "bloque": "B147",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "artistico": 1,
-              "literario": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0440",
           "texto": "Tomar clases de literatura moderna",
           "bloque": "B147",
-          "claves": {
-            "mas": {},
-            "menos": {}
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0441",
           "texto": "Tomar clases de pintura moderna",
           "bloque": "B147",
-          "claves": {
-            "mas": {
-              "artistico": 1
-            },
-            "menos": {
-              "literario": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -6299,32 +3536,19 @@
           "id": "A0442",
           "texto": "Ser considerado como duro",
           "bloque": "B148",
-          "claves": {
-            "mas": {},
-            "menos": {}
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0443",
           "texto": "Ser considerado como justo",
           "bloque": "B148",
-          "claves": {
-            "mas": {
-              "validez": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0444",
           "texto": "Ser considerado como inteligente",
           "bloque": "B148",
-          "claves": {
-            "mas": {
-              "validez": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -6336,37 +3560,19 @@
           "id": "A0445",
           "texto": "Ser director de orquesta",
           "bloque": "B149",
-          "claves": {
-            "mas": {
-              "musical": 1
-            },
-            "menos": {
-              "servicio_social": 1,
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0446",
           "texto": "Ser director de una empresa",
           "bloque": "B149",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "musical": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0447",
           "texto": "Ser director de un plan urbano",
           "bloque": "B149",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -6378,39 +3584,19 @@
           "id": "A0448",
           "texto": "Cultivar flores",
           "bloque": "B150",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "mecanico": 1,
-              "calculo": 1,
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0449",
           "texto": "Manejar el mimeógrafo",
           "bloque": "B150",
-          "claves": {
-            "mas": {
-              "mecanico": 1,
-              "oficina": 1
-            },
-            "menos": {
-              "calculo": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0450",
           "texto": "Llevar la contabilidad",
           "bloque": "B150",
-          "claves": {
-            "mas": {
-              "oficina": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -6422,34 +3608,19 @@
           "id": "A0451",
           "texto": "Trabajar como guía de turistas",
           "bloque": "B151",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "musical": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0452",
           "texto": "Tallar  joyas finas",
           "bloque": "B151",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "musical": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0453",
           "texto": "Arreglar música para orquesta",
           "bloque": "B151",
-          "claves": {
-            "mas": {
-              "musical": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -6461,35 +3632,19 @@
           "id": "A0454",
           "texto": "Trabajar como telefonista",
           "bloque": "B152",
-          "claves": {
-            "mas": {},
-            "menos": {}
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0455",
           "texto": "Diseñar \"Ex-libris\"",
           "bloque": "B152",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "servicio_social": 1,
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0456",
           "texto": "Enseñar juegos a los niños",
           "bloque": "B152",
-          "claves": {
-            "mas": {
-              "servicio_social": 1
-            },
-            "menos": {
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -6501,37 +3656,19 @@
           "id": "A0457",
           "texto": "Reparar un artefacto eléctrico",
           "bloque": "B153",
-          "claves": {
-            "mas": {
-              "mecanico": 1,
-              "validez": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0458",
           "texto": "Ayudar a lavar platos",
           "bloque": "B153",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "mecanico": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0459",
           "texto": "Arreglar un cuarto desordenado",
           "bloque": "B153",
-          "claves": {
-            "mas": {
-              "validez": 1
-            },
-            "menos": {
-              "mecanico": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -6543,39 +3680,19 @@
           "id": "A0460",
           "texto": "Enseñar la construcción de muebles",
           "bloque": "B154",
-          "claves": {
-            "mas": {
-              "mecanico": 1
-            },
-            "menos": {
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0461",
           "texto": "Corregir pruebas tipográficas",
           "bloque": "B154",
-          "claves": {
-            "mas": {
-              "oficina": 1
-            },
-            "menos": {
-              "mecanico": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0462",
           "texto": "Vender curiosidades de Oriente",
           "bloque": "B154",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "mecanico": 1,
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -6587,43 +3704,19 @@
           "id": "A0463",
           "texto": "Ser seccretario (a) privado (a)",
           "bloque": "B155",
-          "claves": {
-            "mas": {
-              "oficina": 1
-            },
-            "menos": {
-              "calculo": 1,
-              "persuasivo": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0464",
           "texto": "Ser contador (a)",
           "bloque": "B155",
-          "claves": {
-            "mas": {
-              "calculo": 1,
-              "oficina": 1
-            },
-            "menos": {
-              "persuasivo": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0465",
           "texto": "Ser vendedor (a)",
           "bloque": "B155",
-          "claves": {
-            "mas": {
-              "persuasivo": 1
-            },
-            "menos": {
-              "calculo": 1,
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -6635,34 +3728,19 @@
           "id": "A0466",
           "texto": "Practicar patinaje de figuras",
           "bloque": "B156",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "aire_libre": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0467",
           "texto": "Jugar tenis",
           "bloque": "B156",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "aire_libre": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0468",
           "texto": "Escalar montañas",
           "bloque": "B156",
-          "claves": {
-            "mas": {
-              "aire_libre": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -6674,43 +3752,19 @@
           "id": "A0469",
           "texto": "Trabajar en una oficina",
           "bloque": "B157",
-          "claves": {
-            "mas": {
-              "oficina": 1,
-              "validez": 1
-            },
-            "menos": {
-              "aire_libre": 1,
-              "persuasivo": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0470",
           "texto": "Trabajar en una hacienda",
           "bloque": "B157",
-          "claves": {
-            "mas": {
-              "aire_libre": 1
-            },
-            "menos": {
-              "persuasivo": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0471",
           "texto": "Trabajar como vendedor de casa en casa",
           "bloque": "B157",
-          "claves": {
-            "mas": {
-              "persuasivo": 1
-            },
-            "menos": {
-              "aire_libre": 1,
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -6722,34 +3776,19 @@
           "id": "A0472",
           "texto": "Trabajar en una fábrica de dulces",
           "bloque": "B158",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "aire_libre": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0473",
           "texto": "Explotar un colmenar",
           "bloque": "B158",
-          "claves": {
-            "mas": {
-              "aire_libre": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0474",
           "texto": "Ser optómetra",
           "bloque": "B158",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "aire_libre": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -6761,39 +3800,19 @@
           "id": "A0475",
           "texto": "Ser agricultor",
           "bloque": "B159",
-          "claves": {
-            "mas": {
-              "aire_libre": 1
-            },
-            "menos": {
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0476",
           "texto": "Ser conductor de tren",
           "bloque": "B159",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "aire_libre": 1,
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0477",
           "texto": "Ser oficinista",
           "bloque": "B159",
-          "claves": {
-            "mas": {
-              "oficina": 1
-            },
-            "menos": {
-              "aire_libre": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -6805,41 +3824,19 @@
           "id": "A0478",
           "texto": "Hacer trabajos de oficina",
           "bloque": "B160",
-          "claves": {
-            "mas": {
-              "oficina": 1
-            },
-            "menos": {
-              "artistico": 1,
-              "literario": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0479",
           "texto": "Enseñar literatura",
           "bloque": "B160",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0480",
           "texto": "Vender objetos de arte",
           "bloque": "B160",
-          "claves": {
-            "mas": {
-              "persuasivo": 1,
-              "artistico": 1
-            },
-            "menos": {
-              "literario": 1,
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -6851,43 +3848,19 @@
           "id": "A0481",
           "texto": "Estudiar contabilidad",
           "bloque": "B161",
-          "claves": {
-            "mas": {
-              "calculo": 1,
-              "oficina": 1
-            },
-            "menos": {
-              "aire_libre": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0482",
           "texto": "Estudiar métodos en irrigación",
           "bloque": "B161",
-          "claves": {
-            "mas": {
-              "aire_libre": 1
-            },
-            "menos": {
-              "calculo": 1,
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0483",
           "texto": "Estudiar taquigrafía",
           "bloque": "B161",
-          "claves": {
-            "mas": {
-              "oficina": 1
-            },
-            "menos": {
-              "aire_libre": 1,
-              "calculo": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -6899,33 +3872,19 @@
           "id": "A0484",
           "texto": "Repartir el correo",
           "bloque": "B162",
-          "claves": {
-            "mas": {},
-            "menos": {}
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0485",
           "texto": "Trabajar en el aseo público",
           "bloque": "B162",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0486",
           "texto": "Clasificar correo en una oficina postal",
           "bloque": "B162",
-          "claves": {
-            "mas": {
-              "oficina": 1,
-              "validez": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -6937,39 +3896,19 @@
           "id": "A0487",
           "texto": "Ser  poeta",
           "bloque": "B163",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "artistico": 1,
-              "servicio_social": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0488",
           "texto": "Ser artista",
           "bloque": "B163",
-          "claves": {
-            "mas": {
-              "artistico": 1
-            },
-            "menos": {
-              "servicio_social": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0489",
           "texto": "Trabajar en la asistencia social",
           "bloque": "B163",
-          "claves": {
-            "mas": {
-              "servicio_social": 1
-            },
-            "menos": {
-              "artistico": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -6981,35 +3920,19 @@
           "id": "A0490",
           "texto": "Resolver rompecabezas numéricos",
           "bloque": "B164",
-          "claves": {
-            "mas": {},
-            "menos": {}
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0491",
           "texto": "Jugar a las damas",
           "bloque": "B164",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "mecanico": 1,
-              "calculo": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0492",
           "texto": "Resolver rompecabezas mecánicos",
           "bloque": "B164",
-          "claves": {
-            "mas": {
-              "mecanico": 1
-            },
-            "menos": {
-              "calculo": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -7021,39 +3944,19 @@
           "id": "A0493",
           "texto": "Fundar un periódico",
           "bloque": "B165",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "artistico": 1,
-              "musical": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0494",
           "texto": "Fundar una escuela de arte",
           "bloque": "B165",
-          "claves": {
-            "mas": {
-              "artistico": 1
-            },
-            "menos": {
-              "musical": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0495",
           "texto": "Fundar una orquesta",
           "bloque": "B165",
-          "claves": {
-            "mas": {
-              "musical": 1
-            },
-            "menos": {
-              "artistico": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -7065,30 +3968,19 @@
           "id": "A0496",
           "texto": "Tener amigos",
           "bloque": "B166",
-          "claves": {
-            "mas": {
-              "validez": 1
-            },
-            "menos": {}
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0497",
           "texto": "Tener poder",
           "bloque": "B166",
-          "claves": {
-            "mas": {},
-            "menos": {}
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0498",
           "texto": "Tener fama",
           "bloque": "B166",
-          "claves": {
-            "mas": {},
-            "menos": {}
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -7100,43 +3992,19 @@
           "id": "A0499",
           "texto": "Ser mecánico",
           "bloque": "B167",
-          "claves": {
-            "mas": {
-              "mecanico": 1
-            },
-            "menos": {
-              "cientifico": 1,
-              "artistico": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0500",
           "texto": "Ser arquitecto",
           "bloque": "B167",
-          "claves": {
-            "mas": {
-              "artistico": 1
-            },
-            "menos": {
-              "mecanico": 1,
-              "cientifico": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0501",
           "texto": "Ser químico",
           "bloque": "B167",
-          "claves": {
-            "mas": {
-              "cientifico": 1
-            },
-            "menos": {
-              "mecanico": 1,
-              "artistico": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     },
@@ -7148,40 +4016,19 @@
           "id": "A0502",
           "texto": "Empastar libros",
           "bloque": "B168",
-          "claves": {
-            "mas": {
-              "mecanico": 1
-            },
-            "menos": {
-              "servicio_social": 1,
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 1
         },
         {
           "id": "A0503",
           "texto": "Cuidar niños enfermos",
           "bloque": "B168",
-          "claves": {
-            "mas": {
-              "servicio_social": 1
-            },
-            "menos": {
-              "mecanico": 1,
-              "oficina": 1
-            }
-          }
+          "indice_en_bloque": 2
         },
         {
           "id": "A0504",
           "texto": "Copiar cartas en máquina",
           "bloque": "B168",
-          "claves": {
-            "mas": {},
-            "menos": {
-              "mecanico": 1
-            }
-          }
+          "indice_en_bloque": 3
         }
       ]
     }
