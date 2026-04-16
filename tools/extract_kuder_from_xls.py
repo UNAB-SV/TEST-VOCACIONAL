@@ -53,18 +53,19 @@ class Ambiguity(Exception):
     pass
 
 
-HEADER_EXCLUSION_PATTERNS = [
-    "prueba",
-    "instrucciones",
-    "marca",
-    "mas",
-    "menos",
-    "nombre",
-    "fecha",
-    "edad",
-    "sexo",
-    "ocupacion",
-    "pagina",
+TRUE_HEADER_PATTERNS = [
+    re.compile(r"^prueba$"),
+    re.compile(r"^instrucciones?$"),
+    re.compile(r"^marca\b"),
+    re.compile(r"^nombre\b"),
+    re.compile(r"^fecha\b"),
+    re.compile(r"^edad\b"),
+    re.compile(r"^sexo\b"),
+    re.compile(r"^ocupacion\b"),
+    re.compile(r"^pagina\b"),
+    re.compile(r"^suma de puta?j?es por escala$"),
+    re.compile(r"^suma de puntajes por escala$"),
+    re.compile(r"^totales?$"),
 ]
 
 
@@ -110,27 +111,40 @@ def clean_activity_text(value: str) -> str:
     return text.strip(" .;:-")
 
 
+def is_true_header_or_auxiliary(text: str) -> bool:
+    normalized = normalize_header(text)
+    if not normalized:
+        return False
+    return any(pattern.search(normalized) for pattern in TRUE_HEADER_PATTERNS)
+
+
 def looks_like_activity_text(text: str) -> tuple[bool, str]:
     normalized = normalize_header(text)
     if not normalized:
         return False, "empty"
     if normalized.isdigit():
         return False, "numeric_only"
-    if len(normalized) < 8:
-        return False, "too_short"
     if not re.search(r"[a-záéíóúñ]", text, flags=re.IGNORECASE):
         return False, "no_letters"
-    if any(pattern in normalized for pattern in HEADER_EXCLUSION_PATTERNS):
+    if is_true_header_or_auxiliary(normalized):
         return False, "header_or_instruction"
+    words = [w for w in re.split(r"\s+", normalized) if w]
+    if len(words) < 3:
+        return False, "too_short_phrase"
+    # Detecta frases de actividad (verbos en infinitivo y narrativas típicas).
+    has_activity_verb = any(
+        re.search(r"(ar|er|ir|arse|erse|irse|ando|iendo)$", w) for w in words
+    )
+    if not has_activity_verb and len(words) < 5:
+        return False, "not_activity_like"
     return True, ""
 
 
-def detect_activity_start_row(rows_candidates: list[list[tuple[int, str]]]) -> int:
-    for idx in range(len(rows_candidates)):
-        window = rows_candidates[idx : idx + 12]
-        total = sum(len(row) for row in window)
-        rich_rows = sum(1 for row in window if len(row) >= 2)
-        if total >= 18 and rich_rows >= 6:
+def detect_activity_start_row(accepted_rows: list[dict[str, Any]]) -> int:
+    for idx in range(len(accepted_rows)):
+        window = accepted_rows[idx : idx + 18]
+        valid = sum(1 for row in window if row.get("accepted_as_activity"))
+        if valid >= 8:
             return idx
     return 0
 
@@ -138,45 +152,69 @@ def detect_activity_start_row(rows_candidates: list[list[tuple[int, str]]]) -> i
 def parse_prueba(
     sheet: "xlrd.sheet.Sheet", ambiguities: list[str], debug: bool = False
 ) -> tuple[list[Activity], dict[str, Any], list[dict[str, Any]]]:
-    rows_candidates: list[list[tuple[int, str]]] = []
     debug_rows: list[dict[str, Any]] = []
+    column_phrase_counter: Counter[int] = Counter()
+    pre_rows: list[dict[str, Any]] = []
 
     for r in range(sheet.nrows):
         raw_values = [cell_text(sheet, r, c) for c in range(sheet.ncols)]
-        row_candidates: list[tuple[int, str]] = []
+        candidate_cells: list[tuple[int, str]] = []
         row_discard_reasons: list[str] = []
-        dedupe_seen: set[str] = set()
 
         for c, raw in enumerate(raw_values):
             cleaned = clean_activity_text(raw)
             accepted, reason = looks_like_activity_text(cleaned)
             if accepted:
-                dedupe_key = normalize_header(cleaned)
-                if dedupe_key in dedupe_seen:
-                    row_discard_reasons.append(f"col={c+1}: duplicated_text")
-                    continue
-                dedupe_seen.add(dedupe_key)
-                row_candidates.append((c, cleaned))
+                candidate_cells.append((c, cleaned))
+                column_phrase_counter[c] += 1
             elif cleaned:
                 row_discard_reasons.append(f"col={c+1}: {reason}")
-
-        row_candidates.sort(key=lambda item: item[0])
-        rows_candidates.append(row_candidates)
-        debug_rows.append(
+        pre_rows.append(
             {
                 "row_index": r + 1,
                 "raw_values": raw_values,
-                "detected_text": [text for _, text in row_candidates],
-                "accepted_as_activity": len(row_candidates) > 0,
-                "discard_reason": "; ".join(row_discard_reasons) if row_discard_reasons else "",
+                "candidate_cells": candidate_cells,
+                "discard_reasons": row_discard_reasons,
             }
         )
 
-    start_row = detect_activity_start_row(rows_candidates)
+    # Determina columna principal de actividades basada en densidad de frases válidas.
+    primary_activity_col = column_phrase_counter.most_common(1)[0][0] if column_phrase_counter else 1
+
+    accepted_rows: list[dict[str, Any]] = []
+    for row in pre_rows:
+        row_candidates = sorted(row["candidate_cells"], key=lambda item: item[0])
+        selected: tuple[int, str] | None = None
+        reason = ""
+        for c, text in row_candidates:
+            if c == primary_activity_col:
+                selected = (c, text)
+                reason = f"accepted_primary_col={c+1}"
+                break
+        if selected is None and row_candidates:
+            selected = row_candidates[0]
+            reason = f"accepted_fallback_col={selected[0]+1}"
+        if selected is None:
+            reason = "; ".join(row["discard_reasons"]) if row["discard_reasons"] else "no_candidate_text"
+
+        accepted_rows.append(
+            {
+                "row_index": row["row_index"],
+                "raw_values": row["raw_values"],
+                "detected_text": [text for _, text in row_candidates],
+                "accepted_as_activity": selected is not None,
+                "selected_col": selected[0] + 1 if selected else None,
+                "selected_text": selected[1] if selected else "",
+                "reason": reason,
+            }
+        )
+        debug_rows.append(accepted_rows[-1])
+
+    start_row = detect_activity_start_row(accepted_rows)
     candidate_cells: list[tuple[int, int, str]] = []
-    for r in range(start_row, len(rows_candidates)):
-        for c, text in rows_candidates[r]:
-            candidate_cells.append((r, c, text))
+    for row in accepted_rows[start_row:]:
+        if row["accepted_as_activity"]:
+            candidate_cells.append((row["row_index"] - 1, (row["selected_col"] - 1), row["selected_text"]))
 
     activities: list[Activity] = []
     for idx, (r, c, text) in enumerate(candidate_cells, start=1):
@@ -214,27 +252,36 @@ def parse_prueba(
             )
         )
 
-    discarded_rows: list[dict[str, Any]] = []
-    for row in debug_rows:
-        if not row["accepted_as_activity"] and row["discard_reason"]:
-            discarded_rows.append(
-                {
-                    "row_index": row["row_index"],
-                    "raw_values": row["raw_values"],
-                    "discard_reason": row["discard_reason"],
-                }
-            )
-        if len(discarded_rows) >= 10:
-            break
+    accepted_rows_list = [
+        {
+            "row_index": row["row_index"],
+            "selected_col": row["selected_col"],
+            "text": row["selected_text"],
+            "reason": row["reason"],
+        }
+        for row in accepted_rows
+        if row["accepted_as_activity"]
+    ]
+    discarded_rows = [
+        {
+            "row_index": row["row_index"],
+            "raw_values": row["raw_values"],
+            "reason": row["reason"],
+        }
+        for row in accepted_rows
+        if not row["accepted_as_activity"]
+    ]
 
     diagnostics = {
         "sheet_name": sheet.name,
         "total_rows_read": sheet.nrows,
         "total_cols_read": sheet.ncols,
+        "primary_activity_col": primary_activity_col + 1,
         "activity_detection_start_row": start_row + 1,
         "detected_activities": len(activities),
-        "first_15_activities": [a.text for a in activities[:15]],
-        "discarded_rows_examples": discarded_rows,
+        "first_30_activities": [a.text for a in activities[:30]],
+        "accepted_rows": accepted_rows_list,
+        "discarded_rows": discarded_rows,
     }
 
     if len(activities) != 504:
@@ -246,21 +293,36 @@ def parse_prueba(
     if debug:
         print(f"[DEBUG] Hoja usada: {sheet.name}")
         print(f"[DEBUG] Columnas totales: {sheet.ncols}")
-        print("[DEBUG] Índices de columnas relevantes (con texto detectado):", sorted({c + 1 for _, c, _ in candidate_cells}))
-        print(f"[DEBUG] Filas detectadas como actividad (desde fila {start_row + 1}):")
-        print([r + 1 for r, _, _ in candidate_cells[:120]])
-        omitted = [row["row_index"] for row in debug_rows if not row["accepted_as_activity"]]
-        print("[DEBUG] Filas omitidas:", omitted[:120])
+        print(f"[DEBUG] Columna principal detectada: {primary_activity_col + 1}")
+        if activities:
+            print(f"[DEBUG] Primera fila válida real: {activities[0].row_index + 1}")
+            print(f"[DEBUG] Última fila válida real: {activities[-1].row_index + 1}")
+        print(f"[DEBUG] Cantidad total de actividades aceptadas: {len(activities)}")
+        print("[DEBUG] Primeras 30 actividades aceptadas:")
+        for idx, activity in enumerate(activities[:30], start=1):
+            print(f"  {idx:02d}. {activity.text}")
 
     return activities, diagnostics, debug_rows
 
 
 def build_questions_blocks(activities: list[Activity]) -> dict[str, Any]:
+    if not activities:
+        raise ValueError("No hay actividades para generar bloques.")
+    remainder = len(activities) % 3
+    if remainder != 0:
+        raise ValueError(
+            "Total de actividades no divisible entre 3. "
+            f"Detectadas={len(activities)}; sobrantes={remainder}."
+        )
     blocks: list[dict[str, Any]] = []
     total_blocks = len(activities) // 3
     for block_num in range(1, total_blocks + 1):
         block_id = f"B{block_num:03d}"
         chunk = activities[(block_num - 1) * 3 : block_num * 3]
+        if len(chunk) != 3:
+            raise ValueError(
+                f"Bloque incompleto detectado: {block_id} con {len(chunk)} actividades."
+            )
         blocks.append(
             {
                 "id": block_id,
@@ -450,15 +512,35 @@ def main() -> int:
             "total_cols_read": 0,
             "activity_detection_start_row": None,
             "detected_activities": 0,
-            "first_15_activities": [],
-            "discarded_rows_examples": [],
+            "first_30_activities": [],
+            "accepted_rows": [],
+            "discarded_rows": [],
         }
         male, female = {"sexo": "M", "percentiles": {}}, {"sexo": "F", "percentiles": {}}
         book = xlrd.open_workbook(str(xls_path), formatting_info=False)
 
     config_dir = Path(args.config_dir)
-    complete_activities = activities[: (len(activities) // 3) * 3]
-    write_json(config_dir / "questions_blocks.json", build_questions_blocks(complete_activities))
+    if len(activities) % 3 != 0:
+        ambiguities.append(
+            "Error de extracción: el total de actividades no es múltiplo de 3. "
+            f"Total={len(activities)}."
+        )
+        report = {
+            "archivo_origen": str(xls_path),
+            "total_hojas_leidas": len(book.sheet_names()),
+            "total_actividades": len(activities),
+            "total_bloques": 0,
+            "diagnostico_prueba": diagnostics,
+            "escalas_detectadas": [],
+            "reglas_por_escala": {"mas": {}, "menos": {}},
+            "ambiguedades": ambiguities,
+        }
+        write_json(Path(args.report), report)
+        write_json(Path("storage/logs/debug_prueba_rows.json"), {"rows": debug_rows})
+        print(json.dumps(report, ensure_ascii=False, indent=2))
+        return 1
+
+    write_json(config_dir / "questions_blocks.json", build_questions_blocks(activities))
     write_json(config_dir / "scoring_rules.json", build_scoring_rules())
     write_json(config_dir / "validity_rules.json", build_validity_rules())
     write_json(config_dir / "percentiles" / "male.json", male)
@@ -469,15 +551,15 @@ def main() -> int:
     report = {
         "archivo_origen": str(xls_path),
         "total_hojas_leidas": len(book.sheet_names()),
-        "total_actividades": len(complete_activities),
-        "total_bloques": len(complete_activities) // 3 if complete_activities else 0,
+        "total_actividades": len(activities),
+        "total_bloques": len(activities) // 3 if activities else 0,
         "diagnostico_prueba": diagnostics,
         "escalas_detectadas": sorted(
-            set().union(*(a.mas.keys() for a in complete_activities), *(a.menos.keys() for a in complete_activities))
+            set().union(*(a.mas.keys() for a in activities), *(a.menos.keys() for a in activities))
         ),
         "reglas_por_escala": {
-            "mas": rules_count(complete_activities, "mas"),
-            "menos": rules_count(complete_activities, "menos"),
+            "mas": rules_count(activities, "mas"),
+            "menos": rules_count(activities, "menos"),
         },
         "ambiguedades": ambiguities,
     }
