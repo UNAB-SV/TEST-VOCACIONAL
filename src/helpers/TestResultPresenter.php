@@ -33,16 +33,24 @@ final class TestResultPresenter
         $percentiles = is_array($result['percentiles'] ?? null) ? $result['percentiles'] : [];
 
         $scaleRows = [];
+        $missingPercentiles = [];
         foreach ($scalesById as $scaleId => $scaleMeta) {
             if (($scaleMeta['grupo'] ?? '') !== 'intereses') {
                 continue;
+            }
+
+            $percentileValue = $percentiles[$scaleId] ?? null;
+            $hasPercentile = is_int($percentileValue);
+            if (!$hasPercentile) {
+                $missingPercentiles[] = $scaleId;
             }
 
             $scaleRows[] = [
                 'id' => $scaleId,
                 'nombre' => $scaleMeta['nombre'] ?? $scaleId,
                 'puntaje_bruto' => (int) ($rawScores[$scaleId] ?? 0),
-                'percentil' => (int) ($percentiles[$scaleId] ?? 0),
+                'percentil' => $hasPercentile ? $percentileValue : null,
+                'percentil_disponible' => $hasPercentile,
             ];
         }
 
@@ -67,6 +75,9 @@ final class TestResultPresenter
             'validez_estado' => $this->mapValidityState((string) ($result['validez_estado'] ?? '')),
             'escalas' => $scaleRows,
             'ranking' => $scaleRows,
+            'alertas_tecnicas' => [
+                'escalas_sin_percentil' => $missingPercentiles,
+            ],
         ];
     }
 

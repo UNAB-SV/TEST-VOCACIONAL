@@ -21,6 +21,24 @@
         "formula": "score('validez')"
       }
     ],
-    "nota": "Reglas de validez psicométrica deben revisarse contra manual; este archivo conserva estructura operativa."
+    "decision": [
+      {
+        "id": "invalido_por_omisiones_o_colision",
+        "si": "omisiones >= 1 or colision_mas_menos >= 1",
+        "estado": "invalido"
+      },
+      {
+        "id": "dudoso_por_indice_fuera_de_rango",
+        "si": "indice_validez < -3 or indice_validez > 3",
+        "estado": "dudoso"
+      },
+      {
+        "id": "valido_default",
+        "si": "default",
+        "estado": "valido"
+      }
+    ],
+    "estado_reglas": "PROVISIONAL",
+    "nota": "REGLA PROVISIONAL: no se localizaron umbrales psicométricos oficiales de decisión en el material fuente versionado. Se aplica decisión operativa mínima basada solo en omisiones, colisión mas/menos e índice de validez."
   }
 }

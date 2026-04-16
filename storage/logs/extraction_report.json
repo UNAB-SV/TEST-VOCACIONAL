@@ -64,5 +64,34 @@
     }
   ],
   "actividades_incompletas_muestra": [],
-  "nota": "La matriz de scoring se exporta por bloque/posición/respuesta usando PRUEBA como única fuente de verdad."
+  "nota": "La matriz de scoring se exporta por bloque/posición/respuesta usando PRUEBA como única fuente de verdad.",
+  "percentiles_extraccion": {
+    "sheet": "ESTTENES Y PERFIL",
+    "base_row_excel_1_indexed": 14,
+    "raw_formula": "bruto = fila_actual - fila_base",
+    "male_scales": {
+      "aire_libre": 76,
+      "mecanico": 53,
+      "calculo": 42,
+      "cientifico": 57,
+      "persuasivo": 63,
+      "artistico": 44,
+      "literario": 31,
+      "musical": 21,
+      "servicio_social": 62,
+      "oficina": 78
+    },
+    "female_scales": {
+      "aire_libre": 75,
+      "mecanico": 55,
+      "calculo": 50,
+      "cientifico": 59,
+      "persuasivo": 61,
+      "artistico": 52,
+      "literario": 36,
+      "musical": 46,
+      "servicio_social": 66,
+      "oficina": 78
+    }
+  }
 }

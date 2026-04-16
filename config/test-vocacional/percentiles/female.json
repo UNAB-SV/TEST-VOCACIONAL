@@ -1,5 +1,2339 @@
 {
   "sexo": "F",
-  "percentiles": {},
-  "nota": "No extraído automáticamente con confiabilidad suficiente."
+  "fuente": "test.xls::ESTTENES Y PERFIL",
+  "lookup_method": "floor",
+  "percentiles": {
+    "aire_libre": [
+      {
+        "bruto": 0,
+        "percentil": 99
+      },
+      {
+        "bruto": 1,
+        "percentil": 99
+      },
+      {
+        "bruto": 2,
+        "percentil": 99
+      },
+      {
+        "bruto": 3,
+        "percentil": 99
+      },
+      {
+        "bruto": 4,
+        "percentil": 98
+      },
+      {
+        "bruto": 5,
+        "percentil": 98
+      },
+      {
+        "bruto": 6,
+        "percentil": 98
+      },
+      {
+        "bruto": 7,
+        "percentil": 98
+      },
+      {
+        "bruto": 8,
+        "percentil": 98
+      },
+      {
+        "bruto": 9,
+        "percentil": 98
+      },
+      {
+        "bruto": 10,
+        "percentil": 98
+      },
+      {
+        "bruto": 11,
+        "percentil": 98
+      },
+      {
+        "bruto": 12,
+        "percentil": 97
+      },
+      {
+        "bruto": 13,
+        "percentil": 97
+      },
+      {
+        "bruto": 14,
+        "percentil": 97
+      },
+      {
+        "bruto": 15,
+        "percentil": 96
+      },
+      {
+        "bruto": 16,
+        "percentil": 95
+      },
+      {
+        "bruto": 17,
+        "percentil": 94
+      },
+      {
+        "bruto": 18,
+        "percentil": 94
+      },
+      {
+        "bruto": 19,
+        "percentil": 93
+      },
+      {
+        "bruto": 20,
+        "percentil": 91
+      },
+      {
+        "bruto": 21,
+        "percentil": 90
+      },
+      {
+        "bruto": 22,
+        "percentil": 87
+      },
+      {
+        "bruto": 23,
+        "percentil": 86
+      },
+      {
+        "bruto": 24,
+        "percentil": 84
+      },
+      {
+        "bruto": 25,
+        "percentil": 83
+      },
+      {
+        "bruto": 26,
+        "percentil": 82
+      },
+      {
+        "bruto": 27,
+        "percentil": 78
+      },
+      {
+        "bruto": 28,
+        "percentil": 76
+      },
+      {
+        "bruto": 29,
+        "percentil": 73
+      },
+      {
+        "bruto": 30,
+        "percentil": 70
+      },
+      {
+        "bruto": 31,
+        "percentil": 68
+      },
+      {
+        "bruto": 32,
+        "percentil": 67
+      },
+      {
+        "bruto": 33,
+        "percentil": 62
+      },
+      {
+        "bruto": 34,
+        "percentil": 59
+      },
+      {
+        "bruto": 35,
+        "percentil": 57
+      },
+      {
+        "bruto": 36,
+        "percentil": 51
+      },
+      {
+        "bruto": 37,
+        "percentil": 50
+      },
+      {
+        "bruto": 38,
+        "percentil": 48
+      },
+      {
+        "bruto": 39,
+        "percentil": 41
+      },
+      {
+        "bruto": 40,
+        "percentil": 39
+      },
+      {
+        "bruto": 41,
+        "percentil": 38
+      },
+      {
+        "bruto": 42,
+        "percentil": 31
+      },
+      {
+        "bruto": 43,
+        "percentil": 30
+      },
+      {
+        "bruto": 44,
+        "percentil": 28
+      },
+      {
+        "bruto": 45,
+        "percentil": 23
+      },
+      {
+        "bruto": 46,
+        "percentil": 22
+      },
+      {
+        "bruto": 47,
+        "percentil": 21
+      },
+      {
+        "bruto": 48,
+        "percentil": 17
+      },
+      {
+        "bruto": 49,
+        "percentil": 16
+      },
+      {
+        "bruto": 50,
+        "percentil": 15
+      },
+      {
+        "bruto": 51,
+        "percentil": 11
+      },
+      {
+        "bruto": 52,
+        "percentil": 11
+      },
+      {
+        "bruto": 53,
+        "percentil": 10
+      },
+      {
+        "bruto": 54,
+        "percentil": 8
+      },
+      {
+        "bruto": 55,
+        "percentil": 7
+      },
+      {
+        "bruto": 56,
+        "percentil": 6
+      },
+      {
+        "bruto": 57,
+        "percentil": 5
+      },
+      {
+        "bruto": 58,
+        "percentil": 5
+      },
+      {
+        "bruto": 59,
+        "percentil": 4
+      },
+      {
+        "bruto": 60,
+        "percentil": 3
+      },
+      {
+        "bruto": 61,
+        "percentil": 3
+      },
+      {
+        "bruto": 62,
+        "percentil": 3
+      },
+      {
+        "bruto": 63,
+        "percentil": 2
+      },
+      {
+        "bruto": 64,
+        "percentil": 2
+      },
+      {
+        "bruto": 65,
+        "percentil": 2
+      },
+      {
+        "bruto": 66,
+        "percentil": 1
+      },
+      {
+        "bruto": 67,
+        "percentil": 1
+      },
+      {
+        "bruto": 68,
+        "percentil": 1
+      },
+      {
+        "bruto": 69,
+        "percentil": 0
+      },
+      {
+        "bruto": 70,
+        "percentil": 0
+      },
+      {
+        "bruto": 71,
+        "percentil": 0
+      },
+      {
+        "bruto": 72,
+        "percentil": 0
+      },
+      {
+        "bruto": 73,
+        "percentil": 0
+      },
+      {
+        "bruto": 74,
+        "percentil": 0
+      }
+    ],
+    "mecanico": [
+      {
+        "bruto": 0,
+        "percentil": 99
+      },
+      {
+        "bruto": 1,
+        "percentil": 99
+      },
+      {
+        "bruto": 2,
+        "percentil": 99
+      },
+      {
+        "bruto": 3,
+        "percentil": 99
+      },
+      {
+        "bruto": 4,
+        "percentil": 98
+      },
+      {
+        "bruto": 5,
+        "percentil": 98
+      },
+      {
+        "bruto": 6,
+        "percentil": 98
+      },
+      {
+        "bruto": 7,
+        "percentil": 97
+      },
+      {
+        "bruto": 8,
+        "percentil": 96
+      },
+      {
+        "bruto": 9,
+        "percentil": 96
+      },
+      {
+        "bruto": 10,
+        "percentil": 95
+      },
+      {
+        "bruto": 11,
+        "percentil": 93
+      },
+      {
+        "bruto": 12,
+        "percentil": 90
+      },
+      {
+        "bruto": 13,
+        "percentil": 89
+      },
+      {
+        "bruto": 14,
+        "percentil": 88
+      },
+      {
+        "bruto": 15,
+        "percentil": 86
+      },
+      {
+        "bruto": 16,
+        "percentil": 82
+      },
+      {
+        "bruto": 17,
+        "percentil": 80
+      },
+      {
+        "bruto": 18,
+        "percentil": 78
+      },
+      {
+        "bruto": 19,
+        "percentil": 71
+      },
+      {
+        "bruto": 20,
+        "percentil": 69
+      },
+      {
+        "bruto": 21,
+        "percentil": 69
+      },
+      {
+        "bruto": 22,
+        "percentil": 55
+      },
+      {
+        "bruto": 23,
+        "percentil": 53
+      },
+      {
+        "bruto": 24,
+        "percentil": 51
+      },
+      {
+        "bruto": 25,
+        "percentil": 45
+      },
+      {
+        "bruto": 26,
+        "percentil": 43
+      },
+      {
+        "bruto": 27,
+        "percentil": 41
+      },
+      {
+        "bruto": 28,
+        "percentil": 34
+      },
+      {
+        "bruto": 29,
+        "percentil": 32
+      },
+      {
+        "bruto": 30,
+        "percentil": 31
+      },
+      {
+        "bruto": 31,
+        "percentil": 23
+      },
+      {
+        "bruto": 32,
+        "percentil": 21
+      },
+      {
+        "bruto": 33,
+        "percentil": 20
+      },
+      {
+        "bruto": 34,
+        "percentil": 14
+      },
+      {
+        "bruto": 35,
+        "percentil": 14
+      },
+      {
+        "bruto": 36,
+        "percentil": 13
+      },
+      {
+        "bruto": 37,
+        "percentil": 8
+      },
+      {
+        "bruto": 38,
+        "percentil": 8
+      },
+      {
+        "bruto": 39,
+        "percentil": 7
+      },
+      {
+        "bruto": 40,
+        "percentil": 4
+      },
+      {
+        "bruto": 41,
+        "percentil": 4
+      },
+      {
+        "bruto": 42,
+        "percentil": 3
+      },
+      {
+        "bruto": 43,
+        "percentil": 2
+      },
+      {
+        "bruto": 44,
+        "percentil": 2
+      },
+      {
+        "bruto": 45,
+        "percentil": 2
+      },
+      {
+        "bruto": 46,
+        "percentil": 1
+      },
+      {
+        "bruto": 47,
+        "percentil": 1
+      },
+      {
+        "bruto": 48,
+        "percentil": 1
+      },
+      {
+        "bruto": 49,
+        "percentil": 0
+      },
+      {
+        "bruto": 50,
+        "percentil": 0
+      },
+      {
+        "bruto": 51,
+        "percentil": 0
+      },
+      {
+        "bruto": 52,
+        "percentil": 0
+      },
+      {
+        "bruto": 53,
+        "percentil": 0
+      },
+      {
+        "bruto": 54,
+        "percentil": 0
+      }
+    ],
+    "calculo": [
+      {
+        "bruto": 0,
+        "percentil": 99
+      },
+      {
+        "bruto": 1,
+        "percentil": 99
+      },
+      {
+        "bruto": 2,
+        "percentil": 99
+      },
+      {
+        "bruto": 3,
+        "percentil": 98
+      },
+      {
+        "bruto": 4,
+        "percentil": 98
+      },
+      {
+        "bruto": 5,
+        "percentil": 98
+      },
+      {
+        "bruto": 6,
+        "percentil": 97
+      },
+      {
+        "bruto": 7,
+        "percentil": 96
+      },
+      {
+        "bruto": 8,
+        "percentil": 96
+      },
+      {
+        "bruto": 9,
+        "percentil": 95
+      },
+      {
+        "bruto": 10,
+        "percentil": 92
+      },
+      {
+        "bruto": 11,
+        "percentil": 90
+      },
+      {
+        "bruto": 12,
+        "percentil": 89
+      },
+      {
+        "bruto": 13,
+        "percentil": 86
+      },
+      {
+        "bruto": 14,
+        "percentil": 84
+      },
+      {
+        "bruto": 15,
+        "percentil": 82
+      },
+      {
+        "bruto": 16,
+        "percentil": 80
+      },
+      {
+        "bruto": 17,
+        "percentil": 76
+      },
+      {
+        "bruto": 18,
+        "percentil": 70
+      },
+      {
+        "bruto": 19,
+        "percentil": 68
+      },
+      {
+        "bruto": 20,
+        "percentil": 67
+      },
+      {
+        "bruto": 21,
+        "percentil": 60
+      },
+      {
+        "bruto": 22,
+        "percentil": 57
+      },
+      {
+        "bruto": 23,
+        "percentil": 51
+      },
+      {
+        "bruto": 24,
+        "percentil": 45
+      },
+      {
+        "bruto": 25,
+        "percentil": 43
+      },
+      {
+        "bruto": 26,
+        "percentil": 41
+      },
+      {
+        "bruto": 27,
+        "percentil": 32
+      },
+      {
+        "bruto": 28,
+        "percentil": 31
+      },
+      {
+        "bruto": 29,
+        "percentil": 30
+      },
+      {
+        "bruto": 30,
+        "percentil": 22
+      },
+      {
+        "bruto": 31,
+        "percentil": 21
+      },
+      {
+        "bruto": 32,
+        "percentil": 19
+      },
+      {
+        "bruto": 33,
+        "percentil": 14
+      },
+      {
+        "bruto": 34,
+        "percentil": 13
+      },
+      {
+        "bruto": 35,
+        "percentil": 12
+      },
+      {
+        "bruto": 36,
+        "percentil": 7
+      },
+      {
+        "bruto": 37,
+        "percentil": 7
+      },
+      {
+        "bruto": 38,
+        "percentil": 6
+      },
+      {
+        "bruto": 39,
+        "percentil": 4
+      },
+      {
+        "bruto": 40,
+        "percentil": 3
+      },
+      {
+        "bruto": 41,
+        "percentil": 3
+      },
+      {
+        "bruto": 42,
+        "percentil": 2
+      },
+      {
+        "bruto": 43,
+        "percentil": 2
+      },
+      {
+        "bruto": 44,
+        "percentil": 2
+      },
+      {
+        "bruto": 45,
+        "percentil": 1
+      },
+      {
+        "bruto": 46,
+        "percentil": 1
+      },
+      {
+        "bruto": 47,
+        "percentil": 0
+      },
+      {
+        "bruto": 48,
+        "percentil": 0
+      },
+      {
+        "bruto": 49,
+        "percentil": 0
+      }
+    ],
+    "cientifico": [
+      {
+        "bruto": 0,
+        "percentil": 62
+      },
+      {
+        "bruto": 1,
+        "percentil": 90
+      },
+      {
+        "bruto": 2,
+        "percentil": 89
+      },
+      {
+        "bruto": 3,
+        "percentil": 87
+      },
+      {
+        "bruto": 4,
+        "percentil": 86
+      },
+      {
+        "bruto": 5,
+        "percentil": 84
+      },
+      {
+        "bruto": 6,
+        "percentil": 82
+      },
+      {
+        "bruto": 7,
+        "percentil": 79
+      },
+      {
+        "bruto": 8,
+        "percentil": 77
+      },
+      {
+        "bruto": 9,
+        "percentil": 72
+      },
+      {
+        "bruto": 10,
+        "percentil": 71
+      },
+      {
+        "bruto": 11,
+        "percentil": 70
+      },
+      {
+        "bruto": 12,
+        "percentil": 65
+      },
+      {
+        "bruto": 13,
+        "percentil": 63
+      },
+      {
+        "bruto": 14,
+        "percentil": 62
+      },
+      {
+        "bruto": 15,
+        "percentil": 55
+      },
+      {
+        "bruto": 16,
+        "percentil": 52
+      },
+      {
+        "bruto": 17,
+        "percentil": 49
+      },
+      {
+        "bruto": 18,
+        "percentil": 43
+      },
+      {
+        "bruto": 19,
+        "percentil": 42
+      },
+      {
+        "bruto": 20,
+        "percentil": 41
+      },
+      {
+        "bruto": 21,
+        "percentil": 34
+      },
+      {
+        "bruto": 22,
+        "percentil": 33
+      },
+      {
+        "bruto": 23,
+        "percentil": 31
+      },
+      {
+        "bruto": 24,
+        "percentil": 23
+      },
+      {
+        "bruto": 25,
+        "percentil": 22
+      },
+      {
+        "bruto": 26,
+        "percentil": 21
+      },
+      {
+        "bruto": 27,
+        "percentil": 17
+      },
+      {
+        "bruto": 28,
+        "percentil": 17
+      },
+      {
+        "bruto": 29,
+        "percentil": 16
+      },
+      {
+        "bruto": 30,
+        "percentil": 12
+      },
+      {
+        "bruto": 31,
+        "percentil": 11
+      },
+      {
+        "bruto": 32,
+        "percentil": 10
+      },
+      {
+        "bruto": 33,
+        "percentil": 8
+      },
+      {
+        "bruto": 34,
+        "percentil": 8
+      },
+      {
+        "bruto": 35,
+        "percentil": 7
+      },
+      {
+        "bruto": 36,
+        "percentil": 5
+      },
+      {
+        "bruto": 37,
+        "percentil": 4
+      },
+      {
+        "bruto": 38,
+        "percentil": 4
+      },
+      {
+        "bruto": 39,
+        "percentil": 3
+      },
+      {
+        "bruto": 40,
+        "percentil": 3
+      },
+      {
+        "bruto": 41,
+        "percentil": 2
+      },
+      {
+        "bruto": 42,
+        "percentil": 2
+      },
+      {
+        "bruto": 43,
+        "percentil": 2
+      },
+      {
+        "bruto": 44,
+        "percentil": 1
+      },
+      {
+        "bruto": 45,
+        "percentil": 1
+      },
+      {
+        "bruto": 46,
+        "percentil": 1
+      },
+      {
+        "bruto": 47,
+        "percentil": 1
+      },
+      {
+        "bruto": 48,
+        "percentil": 1
+      },
+      {
+        "bruto": 49,
+        "percentil": 1
+      },
+      {
+        "bruto": 50,
+        "percentil": 1
+      },
+      {
+        "bruto": 51,
+        "percentil": 0
+      },
+      {
+        "bruto": 52,
+        "percentil": 0
+      },
+      {
+        "bruto": 53,
+        "percentil": 0
+      },
+      {
+        "bruto": 54,
+        "percentil": 0
+      },
+      {
+        "bruto": 55,
+        "percentil": 0
+      },
+      {
+        "bruto": 56,
+        "percentil": 0
+      },
+      {
+        "bruto": 57,
+        "percentil": 0
+      },
+      {
+        "bruto": 58,
+        "percentil": 0
+      }
+    ],
+    "persuasivo": [
+      {
+        "bruto": 0,
+        "percentil": 99
+      },
+      {
+        "bruto": 1,
+        "percentil": 99
+      },
+      {
+        "bruto": 2,
+        "percentil": 99
+      },
+      {
+        "bruto": 3,
+        "percentil": 99
+      },
+      {
+        "bruto": 4,
+        "percentil": 98
+      },
+      {
+        "bruto": 5,
+        "percentil": 98
+      },
+      {
+        "bruto": 6,
+        "percentil": 97
+      },
+      {
+        "bruto": 7,
+        "percentil": 97
+      },
+      {
+        "bruto": 8,
+        "percentil": 96
+      },
+      {
+        "bruto": 9,
+        "percentil": 96
+      },
+      {
+        "bruto": 10,
+        "percentil": 94
+      },
+      {
+        "bruto": 11,
+        "percentil": 93
+      },
+      {
+        "bruto": 12,
+        "percentil": 92
+      },
+      {
+        "bruto": 13,
+        "percentil": 90
+      },
+      {
+        "bruto": 14,
+        "percentil": 88
+      },
+      {
+        "bruto": 15,
+        "percentil": 85
+      },
+      {
+        "bruto": 16,
+        "percentil": 83
+      },
+      {
+        "bruto": 17,
+        "percentil": 81
+      },
+      {
+        "bruto": 18,
+        "percentil": 78
+      },
+      {
+        "bruto": 19,
+        "percentil": 75
+      },
+      {
+        "bruto": 20,
+        "percentil": 71
+      },
+      {
+        "bruto": 21,
+        "percentil": 67
+      },
+      {
+        "bruto": 22,
+        "percentil": 65
+      },
+      {
+        "bruto": 23,
+        "percentil": 64
+      },
+      {
+        "bruto": 24,
+        "percentil": 53
+      },
+      {
+        "bruto": 25,
+        "percentil": 48
+      },
+      {
+        "bruto": 26,
+        "percentil": 45
+      },
+      {
+        "bruto": 27,
+        "percentil": 42
+      },
+      {
+        "bruto": 28,
+        "percentil": 40
+      },
+      {
+        "bruto": 29,
+        "percentil": 39
+      },
+      {
+        "bruto": 30,
+        "percentil": 31
+      },
+      {
+        "bruto": 31,
+        "percentil": 29
+      },
+      {
+        "bruto": 32,
+        "percentil": 28
+      },
+      {
+        "bruto": 33,
+        "percentil": 20
+      },
+      {
+        "bruto": 34,
+        "percentil": 19
+      },
+      {
+        "bruto": 35,
+        "percentil": 18
+      },
+      {
+        "bruto": 36,
+        "percentil": 13
+      },
+      {
+        "bruto": 37,
+        "percentil": 12
+      },
+      {
+        "bruto": 38,
+        "percentil": 11
+      },
+      {
+        "bruto": 39,
+        "percentil": 7
+      },
+      {
+        "bruto": 40,
+        "percentil": 6
+      },
+      {
+        "bruto": 41,
+        "percentil": 6
+      },
+      {
+        "bruto": 42,
+        "percentil": 4
+      },
+      {
+        "bruto": 43,
+        "percentil": 3
+      },
+      {
+        "bruto": 44,
+        "percentil": 3
+      },
+      {
+        "bruto": 45,
+        "percentil": 2
+      },
+      {
+        "bruto": 46,
+        "percentil": 2
+      },
+      {
+        "bruto": 47,
+        "percentil": 2
+      },
+      {
+        "bruto": 48,
+        "percentil": 1
+      },
+      {
+        "bruto": 49,
+        "percentil": 1
+      },
+      {
+        "bruto": 50,
+        "percentil": 1
+      },
+      {
+        "bruto": 51,
+        "percentil": 1
+      },
+      {
+        "bruto": 52,
+        "percentil": 1
+      },
+      {
+        "bruto": 53,
+        "percentil": 0
+      },
+      {
+        "bruto": 54,
+        "percentil": 0
+      },
+      {
+        "bruto": 55,
+        "percentil": 0
+      },
+      {
+        "bruto": 56,
+        "percentil": 0
+      },
+      {
+        "bruto": 57,
+        "percentil": 0
+      },
+      {
+        "bruto": 58,
+        "percentil": 0
+      },
+      {
+        "bruto": 59,
+        "percentil": 0
+      },
+      {
+        "bruto": 60,
+        "percentil": 0
+      }
+    ],
+    "artistico": [
+      {
+        "bruto": 0,
+        "percentil": 99
+      },
+      {
+        "bruto": 1,
+        "percentil": 98
+      },
+      {
+        "bruto": 2,
+        "percentil": 98
+      },
+      {
+        "bruto": 3,
+        "percentil": 98
+      },
+      {
+        "bruto": 4,
+        "percentil": 98
+      },
+      {
+        "bruto": 5,
+        "percentil": 97
+      },
+      {
+        "bruto": 6,
+        "percentil": 97
+      },
+      {
+        "bruto": 7,
+        "percentil": 96
+      },
+      {
+        "bruto": 8,
+        "percentil": 95
+      },
+      {
+        "bruto": 9,
+        "percentil": 94
+      },
+      {
+        "bruto": 10,
+        "percentil": 93
+      },
+      {
+        "bruto": 11,
+        "percentil": 92
+      },
+      {
+        "bruto": 12,
+        "percentil": 90
+      },
+      {
+        "bruto": 13,
+        "percentil": 88
+      },
+      {
+        "bruto": 14,
+        "percentil": 85
+      },
+      {
+        "bruto": 15,
+        "percentil": 82
+      },
+      {
+        "bruto": 16,
+        "percentil": 81
+      },
+      {
+        "bruto": 17,
+        "percentil": 78
+      },
+      {
+        "bruto": 18,
+        "percentil": 72
+      },
+      {
+        "bruto": 19,
+        "percentil": 67
+      },
+      {
+        "bruto": 20,
+        "percentil": 63
+      },
+      {
+        "bruto": 21,
+        "percentil": 60
+      },
+      {
+        "bruto": 22,
+        "percentil": 58
+      },
+      {
+        "bruto": 23,
+        "percentil": 57
+      },
+      {
+        "bruto": 24,
+        "percentil": 45
+      },
+      {
+        "bruto": 25,
+        "percentil": 43
+      },
+      {
+        "bruto": 26,
+        "percentil": 41
+      },
+      {
+        "bruto": 27,
+        "percentil": 33
+      },
+      {
+        "bruto": 28,
+        "percentil": 32
+      },
+      {
+        "bruto": 29,
+        "percentil": 30
+      },
+      {
+        "bruto": 30,
+        "percentil": 22
+      },
+      {
+        "bruto": 31,
+        "percentil": 21
+      },
+      {
+        "bruto": 32,
+        "percentil": 20
+      },
+      {
+        "bruto": 33,
+        "percentil": 12
+      },
+      {
+        "bruto": 34,
+        "percentil": 12
+      },
+      {
+        "bruto": 35,
+        "percentil": 11
+      },
+      {
+        "bruto": 36,
+        "percentil": 7
+      },
+      {
+        "bruto": 37,
+        "percentil": 7
+      },
+      {
+        "bruto": 38,
+        "percentil": 6
+      },
+      {
+        "bruto": 39,
+        "percentil": 4
+      },
+      {
+        "bruto": 40,
+        "percentil": 3
+      },
+      {
+        "bruto": 41,
+        "percentil": 3
+      },
+      {
+        "bruto": 42,
+        "percentil": 3
+      },
+      {
+        "bruto": 43,
+        "percentil": 2
+      },
+      {
+        "bruto": 44,
+        "percentil": 2
+      },
+      {
+        "bruto": 45,
+        "percentil": 1
+      },
+      {
+        "bruto": 46,
+        "percentil": 1
+      },
+      {
+        "bruto": 47,
+        "percentil": 1
+      },
+      {
+        "bruto": 48,
+        "percentil": 0
+      },
+      {
+        "bruto": 49,
+        "percentil": 0
+      },
+      {
+        "bruto": 50,
+        "percentil": 0
+      },
+      {
+        "bruto": 51,
+        "percentil": 0
+      }
+    ],
+    "literario": [
+      {
+        "bruto": 0,
+        "percentil": 99
+      },
+      {
+        "bruto": 1,
+        "percentil": 98
+      },
+      {
+        "bruto": 2,
+        "percentil": 97
+      },
+      {
+        "bruto": 3,
+        "percentil": 96
+      },
+      {
+        "bruto": 4,
+        "percentil": 96
+      },
+      {
+        "bruto": 5,
+        "percentil": 95
+      },
+      {
+        "bruto": 6,
+        "percentil": 92
+      },
+      {
+        "bruto": 7,
+        "percentil": 92
+      },
+      {
+        "bruto": 8,
+        "percentil": 90
+      },
+      {
+        "bruto": 9,
+        "percentil": 87
+      },
+      {
+        "bruto": 10,
+        "percentil": 85
+      },
+      {
+        "bruto": 11,
+        "percentil": 75
+      },
+      {
+        "bruto": 12,
+        "percentil": 70
+      },
+      {
+        "bruto": 13,
+        "percentil": 67
+      },
+      {
+        "bruto": 14,
+        "percentil": 63
+      },
+      {
+        "bruto": 15,
+        "percentil": 58
+      },
+      {
+        "bruto": 16,
+        "percentil": 54
+      },
+      {
+        "bruto": 17,
+        "percentil": 45
+      },
+      {
+        "bruto": 18,
+        "percentil": 41
+      },
+      {
+        "bruto": 19,
+        "percentil": 36
+      },
+      {
+        "bruto": 20,
+        "percentil": 30
+      },
+      {
+        "bruto": 21,
+        "percentil": 27
+      },
+      {
+        "bruto": 22,
+        "percentil": 24
+      },
+      {
+        "bruto": 23,
+        "percentil": 16
+      },
+      {
+        "bruto": 24,
+        "percentil": 14
+      },
+      {
+        "bruto": 25,
+        "percentil": 13
+      },
+      {
+        "bruto": 26,
+        "percentil": 7
+      },
+      {
+        "bruto": 27,
+        "percentil": 6
+      },
+      {
+        "bruto": 28,
+        "percentil": 6
+      },
+      {
+        "bruto": 29,
+        "percentil": 4
+      },
+      {
+        "bruto": 30,
+        "percentil": 3
+      },
+      {
+        "bruto": 31,
+        "percentil": 3
+      },
+      {
+        "bruto": 32,
+        "percentil": 2
+      },
+      {
+        "bruto": 33,
+        "percentil": 2
+      },
+      {
+        "bruto": 34,
+        "percentil": 1
+      },
+      {
+        "bruto": 35,
+        "percentil": 0
+      }
+    ],
+    "musical": [
+      {
+        "bruto": 0,
+        "percentil": 87
+      },
+      {
+        "bruto": 1,
+        "percentil": 85
+      },
+      {
+        "bruto": 2,
+        "percentil": 84
+      },
+      {
+        "bruto": 3,
+        "percentil": 80
+      },
+      {
+        "bruto": 4,
+        "percentil": 79
+      },
+      {
+        "bruto": 5,
+        "percentil": 78
+      },
+      {
+        "bruto": 6,
+        "percentil": 72
+      },
+      {
+        "bruto": 7,
+        "percentil": 71
+      },
+      {
+        "bruto": 8,
+        "percentil": 70
+      },
+      {
+        "bruto": 9,
+        "percentil": 64
+      },
+      {
+        "bruto": 10,
+        "percentil": 62
+      },
+      {
+        "bruto": 11,
+        "percentil": 61
+      },
+      {
+        "bruto": 12,
+        "percentil": 56
+      },
+      {
+        "bruto": 13,
+        "percentil": 52
+      },
+      {
+        "bruto": 14,
+        "percentil": 48
+      },
+      {
+        "bruto": 15,
+        "percentil": 45
+      },
+      {
+        "bruto": 16,
+        "percentil": 43
+      },
+      {
+        "bruto": 17,
+        "percentil": 41
+      },
+      {
+        "bruto": 18,
+        "percentil": 36
+      },
+      {
+        "bruto": 19,
+        "percentil": 32
+      },
+      {
+        "bruto": 20,
+        "percentil": 28
+      },
+      {
+        "bruto": 21,
+        "percentil": 24
+      },
+      {
+        "bruto": 22,
+        "percentil": 23
+      },
+      {
+        "bruto": 23,
+        "percentil": 22
+      },
+      {
+        "bruto": 24,
+        "percentil": 19
+      },
+      {
+        "bruto": 25,
+        "percentil": 18
+      },
+      {
+        "bruto": 26,
+        "percentil": 17
+      },
+      {
+        "bruto": 27,
+        "percentil": 12
+      },
+      {
+        "bruto": 28,
+        "percentil": 12
+      },
+      {
+        "bruto": 29,
+        "percentil": 11
+      },
+      {
+        "bruto": 30,
+        "percentil": 10
+      },
+      {
+        "bruto": 31,
+        "percentil": 9
+      },
+      {
+        "bruto": 32,
+        "percentil": 8
+      },
+      {
+        "bruto": 33,
+        "percentil": 7
+      },
+      {
+        "bruto": 34,
+        "percentil": 6
+      },
+      {
+        "bruto": 35,
+        "percentil": 5
+      },
+      {
+        "bruto": 36,
+        "percentil": 4
+      },
+      {
+        "bruto": 37,
+        "percentil": 3
+      },
+      {
+        "bruto": 38,
+        "percentil": 3
+      },
+      {
+        "bruto": 39,
+        "percentil": 2
+      },
+      {
+        "bruto": 40,
+        "percentil": 2
+      },
+      {
+        "bruto": 41,
+        "percentil": 2
+      },
+      {
+        "bruto": 42,
+        "percentil": 1
+      },
+      {
+        "bruto": 43,
+        "percentil": 1
+      },
+      {
+        "bruto": 44,
+        "percentil": 1
+      },
+      {
+        "bruto": 45,
+        "percentil": 0
+      }
+    ],
+    "servicio_social": [
+      {
+        "bruto": 0,
+        "percentil": 87
+      },
+      {
+        "bruto": 1,
+        "percentil": 86
+      },
+      {
+        "bruto": 2,
+        "percentil": 85
+      },
+      {
+        "bruto": 3,
+        "percentil": 81
+      },
+      {
+        "bruto": 4,
+        "percentil": 79
+      },
+      {
+        "bruto": 5,
+        "percentil": 78
+      },
+      {
+        "bruto": 6,
+        "percentil": 72
+      },
+      {
+        "bruto": 7,
+        "percentil": 71
+      },
+      {
+        "bruto": 8,
+        "percentil": 70
+      },
+      {
+        "bruto": 9,
+        "percentil": 65
+      },
+      {
+        "bruto": 10,
+        "percentil": 63
+      },
+      {
+        "bruto": 11,
+        "percentil": 62
+      },
+      {
+        "bruto": 12,
+        "percentil": 55
+      },
+      {
+        "bruto": 13,
+        "percentil": 54
+      },
+      {
+        "bruto": 14,
+        "percentil": 53
+      },
+      {
+        "bruto": 15,
+        "percentil": 45
+      },
+      {
+        "bruto": 16,
+        "percentil": 43
+      },
+      {
+        "bruto": 17,
+        "percentil": 42
+      },
+      {
+        "bruto": 18,
+        "percentil": 38
+      },
+      {
+        "bruto": 19,
+        "percentil": 36
+      },
+      {
+        "bruto": 20,
+        "percentil": 34
+      },
+      {
+        "bruto": 21,
+        "percentil": 27
+      },
+      {
+        "bruto": 22,
+        "percentil": 26
+      },
+      {
+        "bruto": 23,
+        "percentil": 25
+      },
+      {
+        "bruto": 24,
+        "percentil": 20
+      },
+      {
+        "bruto": 25,
+        "percentil": 19
+      },
+      {
+        "bruto": 26,
+        "percentil": 18
+      },
+      {
+        "bruto": 27,
+        "percentil": 15
+      },
+      {
+        "bruto": 28,
+        "percentil": 14
+      },
+      {
+        "bruto": 29,
+        "percentil": 12
+      },
+      {
+        "bruto": 30,
+        "percentil": 9
+      },
+      {
+        "bruto": 31,
+        "percentil": 9
+      },
+      {
+        "bruto": 32,
+        "percentil": 8
+      },
+      {
+        "bruto": 33,
+        "percentil": 6
+      },
+      {
+        "bruto": 34,
+        "percentil": 6
+      },
+      {
+        "bruto": 35,
+        "percentil": 5
+      },
+      {
+        "bruto": 36,
+        "percentil": 4
+      },
+      {
+        "bruto": 37,
+        "percentil": 4
+      },
+      {
+        "bruto": 38,
+        "percentil": 3
+      },
+      {
+        "bruto": 39,
+        "percentil": 3
+      },
+      {
+        "bruto": 40,
+        "percentil": 2
+      },
+      {
+        "bruto": 41,
+        "percentil": 2
+      },
+      {
+        "bruto": 42,
+        "percentil": 2
+      },
+      {
+        "bruto": 43,
+        "percentil": 2
+      },
+      {
+        "bruto": 44,
+        "percentil": 2
+      },
+      {
+        "bruto": 45,
+        "percentil": 2
+      },
+      {
+        "bruto": 46,
+        "percentil": 2
+      },
+      {
+        "bruto": 47,
+        "percentil": 2
+      },
+      {
+        "bruto": 48,
+        "percentil": 1
+      },
+      {
+        "bruto": 49,
+        "percentil": 1
+      },
+      {
+        "bruto": 50,
+        "percentil": 1
+      },
+      {
+        "bruto": 51,
+        "percentil": 1
+      },
+      {
+        "bruto": 52,
+        "percentil": 1
+      },
+      {
+        "bruto": 53,
+        "percentil": 1
+      },
+      {
+        "bruto": 54,
+        "percentil": 1
+      },
+      {
+        "bruto": 55,
+        "percentil": 1
+      },
+      {
+        "bruto": 56,
+        "percentil": 1
+      },
+      {
+        "bruto": 57,
+        "percentil": 1
+      },
+      {
+        "bruto": 58,
+        "percentil": 1
+      },
+      {
+        "bruto": 59,
+        "percentil": 1
+      },
+      {
+        "bruto": 60,
+        "percentil": 1
+      },
+      {
+        "bruto": 61,
+        "percentil": 0
+      },
+      {
+        "bruto": 62,
+        "percentil": 0
+      },
+      {
+        "bruto": 63,
+        "percentil": 0
+      },
+      {
+        "bruto": 64,
+        "percentil": 0
+      },
+      {
+        "bruto": 65,
+        "percentil": 0
+      }
+    ],
+    "oficina": [
+      {
+        "bruto": 0,
+        "percentil": 97
+      },
+      {
+        "bruto": 1,
+        "percentil": 96
+      },
+      {
+        "bruto": 2,
+        "percentil": 95
+      },
+      {
+        "bruto": 3,
+        "percentil": 94
+      },
+      {
+        "bruto": 4,
+        "percentil": 93
+      },
+      {
+        "bruto": 5,
+        "percentil": 92
+      },
+      {
+        "bruto": 6,
+        "percentil": 91
+      },
+      {
+        "bruto": 7,
+        "percentil": 89
+      },
+      {
+        "bruto": 8,
+        "percentil": 88
+      },
+      {
+        "bruto": 9,
+        "percentil": 86
+      },
+      {
+        "bruto": 10,
+        "percentil": 85
+      },
+      {
+        "bruto": 11,
+        "percentil": 83
+      },
+      {
+        "bruto": 12,
+        "percentil": 82
+      },
+      {
+        "bruto": 13,
+        "percentil": 80
+      },
+      {
+        "bruto": 14,
+        "percentil": 78
+      },
+      {
+        "bruto": 15,
+        "percentil": 75
+      },
+      {
+        "bruto": 16,
+        "percentil": 72
+      },
+      {
+        "bruto": 17,
+        "percentil": 69
+      },
+      {
+        "bruto": 18,
+        "percentil": 67
+      },
+      {
+        "bruto": 19,
+        "percentil": 65
+      },
+      {
+        "bruto": 20,
+        "percentil": 64
+      },
+      {
+        "bruto": 21,
+        "percentil": 59
+      },
+      {
+        "bruto": 22,
+        "percentil": 57
+      },
+      {
+        "bruto": 23,
+        "percentil": 56
+      },
+      {
+        "bruto": 24,
+        "percentil": 52
+      },
+      {
+        "bruto": 25,
+        "percentil": 50
+      },
+      {
+        "bruto": 26,
+        "percentil": 48
+      },
+      {
+        "bruto": 27,
+        "percentil": 42
+      },
+      {
+        "bruto": 28,
+        "percentil": 41
+      },
+      {
+        "bruto": 29,
+        "percentil": 40
+      },
+      {
+        "bruto": 30,
+        "percentil": 34
+      },
+      {
+        "bruto": 31,
+        "percentil": 33
+      },
+      {
+        "bruto": 32,
+        "percentil": 31
+      },
+      {
+        "bruto": 33,
+        "percentil": 27
+      },
+      {
+        "bruto": 34,
+        "percentil": 26
+      },
+      {
+        "bruto": 35,
+        "percentil": 25
+      },
+      {
+        "bruto": 36,
+        "percentil": 20
+      },
+      {
+        "bruto": 37,
+        "percentil": 19
+      },
+      {
+        "bruto": 38,
+        "percentil": 18
+      },
+      {
+        "bruto": 39,
+        "percentil": 17
+      },
+      {
+        "bruto": 40,
+        "percentil": 16
+      },
+      {
+        "bruto": 41,
+        "percentil": 15
+      },
+      {
+        "bruto": 42,
+        "percentil": 10
+      },
+      {
+        "bruto": 43,
+        "percentil": 10
+      },
+      {
+        "bruto": 44,
+        "percentil": 9
+      },
+      {
+        "bruto": 45,
+        "percentil": 7
+      },
+      {
+        "bruto": 46,
+        "percentil": 7
+      },
+      {
+        "bruto": 47,
+        "percentil": 6
+      },
+      {
+        "bruto": 48,
+        "percentil": 4
+      },
+      {
+        "bruto": 49,
+        "percentil": 4
+      },
+      {
+        "bruto": 50,
+        "percentil": 3
+      },
+      {
+        "bruto": 51,
+        "percentil": 3
+      },
+      {
+        "bruto": 52,
+        "percentil": 3
+      },
+      {
+        "bruto": 53,
+        "percentil": 3
+      },
+      {
+        "bruto": 54,
+        "percentil": 2
+      },
+      {
+        "bruto": 55,
+        "percentil": 2
+      },
+      {
+        "bruto": 56,
+        "percentil": 2
+      },
+      {
+        "bruto": 57,
+        "percentil": 2
+      },
+      {
+        "bruto": 58,
+        "percentil": 2
+      },
+      {
+        "bruto": 59,
+        "percentil": 1
+      },
+      {
+        "bruto": 60,
+        "percentil": 1
+      },
+      {
+        "bruto": 61,
+        "percentil": 1
+      },
+      {
+        "bruto": 62,
+        "percentil": 1
+      },
+      {
+        "bruto": 63,
+        "percentil": 1
+      },
+      {
+        "bruto": 64,
+        "percentil": 1
+      },
+      {
+        "bruto": 65,
+        "percentil": 1
+      },
+      {
+        "bruto": 66,
+        "percentil": 1
+      },
+      {
+        "bruto": 67,
+        "percentil": 1
+      },
+      {
+        "bruto": 68,
+        "percentil": 1
+      },
+      {
+        "bruto": 69,
+        "percentil": 1
+      },
+      {
+        "bruto": 70,
+        "percentil": 0
+      },
+      {
+        "bruto": 71,
+        "percentil": 0
+      },
+      {
+        "bruto": 72,
+        "percentil": 0
+      },
+      {
+        "bruto": 73,
+        "percentil": 0
+      },
+      {
+        "bruto": 74,
+        "percentil": 0
+      },
+      {
+        "bruto": 75,
+        "percentil": 0
+      },
+      {
+        "bruto": 76,
+        "percentil": 0
+      },
+      {
+        "bruto": 77,
+        "percentil": 0
+      }
+    ]
+  }
 }

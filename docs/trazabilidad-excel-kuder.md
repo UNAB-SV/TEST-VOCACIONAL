@@ -26,6 +26,7 @@ Este documento registra cómo se refleja la lógica de la hoja de cálculo en el
 - **PHP:**
   - `calculateValidityMetrics()` calcula métricas configuradas.
   - `resolveValidityState()` evalúa reglas declarativas (`and` / `or`) en el orden definido.
+- **Estado actual de decisión:** configuración **PROVISIONAL** documentada en `docs/reporte-tecnico-normativas.md` hasta contar con umbrales psicométricos oficiales del manual.
 - **Resultado:** `validez_puntaje`, `detalles_validez` y `validez_estado`.
 
 ## 4) Conversión a percentiles por sexo
