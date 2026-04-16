@@ -23,22 +23,22 @@
     ],
     "decision": [
       {
-        "id": "invalido_por_omisiones_o_colision",
-        "si": "omisiones >= 1 or colision_mas_menos >= 1",
+        "id": "no_valida_por_indice_menor_a_32",
+        "si": "indice_validez < 32",
         "estado": "invalido"
       },
       {
-        "id": "dudoso_por_indice_fuera_de_rango",
-        "si": "indice_validez < -3 or indice_validez > 3",
-        "estado": "dudoso"
+        "id": "valida_por_indice_mayor_a_35",
+        "si": "indice_validez > 35",
+        "estado": "valido"
       },
       {
-        "id": "valido_default",
+        "id": "dudosa_por_indice_entre_32_y_35",
         "si": "default",
-        "estado": "valido"
+        "estado": "dudoso"
       }
     ],
-    "estado_reglas": "PROVISIONAL",
-    "nota": "REGLA PROVISIONAL: no se localizaron umbrales psicométricos oficiales de decisión en el material fuente versionado. Se aplica decisión operativa mínima basada solo en omisiones, colisión mas/menos e índice de validez."
+    "estado_reglas": "CONFIRMADO_EXCEL",
+    "nota": "Regla tomada de la fórmula de la hoja \"Grafica de Resultados\" (celda D7): SI(B7<32,\"PRUEBA NO VÁLIDA\",SI(B7>35,\"PRUEBA VÁLIDA\",\"PRUEBA DUDOSA\")). Umbrales exactos: <32 inválido, 32..35 dudoso, >35 válido."
   }
 }

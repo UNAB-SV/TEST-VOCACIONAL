@@ -29,12 +29,17 @@ Este supuesto se registra en `storage/logs/extraction_report.json` dentro de `pe
 
 ## 4) Estado de reglas de validez
 
-No se localizaron en el repositorio umbrales psicométricos oficiales de decisión (manual/tabla de corte) para estado final de validez.  
-Por ello, `config/test-vocacional/validity_rules.json` quedó con estado **PROVISIONAL** y reglas operativas mínimas:
+Se confirmó la regla directamente desde el Excel (`Grafica de Resultados`, fórmula en `D7`):
 
-1. `invalido` si `omisiones >= 1` o `colision_mas_menos >= 1`
-2. `dudoso` si `indice_validez < -3` o `indice_validez > 3`
-3. `valido` en caso contrario
+`SI(B7<32,"PRUEBA NO VÁLIDA",SI(B7>35,"PRUEBA VÁLIDA","PRUEBA DUDOSA"))`
+
+Mapeo aplicado en `config/test-vocacional/validity_rules.json`:
+
+1. `invalido` si `indice_validez < 32`
+2. `valido` si `indice_validez > 35`
+3. `dudoso` en caso contrario (`32..35`)
+
+Nota: no se cambió el cálculo de `indice_validez`; solo la interpretación final (`decision`).
 
 ## 5) Manejo de percentiles faltantes
 
