@@ -7,13 +7,13 @@ return [
     'environment' => 'development',
     'debug' => true,
     'base_path' => dirname(__DIR__),
-    'timezone' => 'UTC',
+    'timezone' => 'America/El_Salvador',
     'session' => [
         'enabled' => true,
         'name' => 'test_vocacional_session',
     ],
     'database' => [
-        'enabled' => false,
+        'enabled' => true,
         'host' => '127.0.0.1',
         'port' => 3306,
         'database' => 'test_vocacional',
