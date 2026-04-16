@@ -21,7 +21,7 @@ final class PdoEvaluationRepository implements EvaluationRepository
             $this->pdo->beginTransaction();
 
             $participantId = $this->upsertParticipant($participant);
-            $evaluationId = $this->insertEvaluation($participantId, $result, $appliedAt);
+            $evaluationId = $this->insertEvaluation($participantId, $participant, $result, $appliedAt);
             $this->insertAnswers($evaluationId, $answers);
             $this->insertScaleScores($evaluationId, $result);
             $this->insertPercentiles($evaluationId, $result);
@@ -318,9 +318,10 @@ SQL;
     }
 
     /**
+     * @param array<string, string> $participant
      * @param array<string, mixed> $result
      */
-    private function insertEvaluation(int $participantId, array $result, string $appliedAt): int
+    private function insertEvaluation(int $participantId, array $participant, array $result, string $appliedAt): int
     {
         $sql = <<<SQL
 INSERT INTO evaluations (
@@ -350,7 +351,7 @@ SQL;
         $statement->bindValue(':participant_id', $participantId, PDO::PARAM_INT);
         $statement->bindValue(':applied_at', $appliedAt);
         $statement->bindValue(':sex', strtoupper((string) ($result['sexo_evaluado'] ?? '')));
-        $statement->bindValue(':group_name', (string) ($result['grupo'] ?? ''));
+        $statement->bindValue(':group_name', $this->resolveGroupName($participant, $result));
         $statement->bindValue(':validity_score', (int) ($result['validez_puntaje'] ?? 0), PDO::PARAM_INT);
         $statement->bindValue(':validity_state', (string) ($result['validez_estado'] ?? 'invalido'));
         $statement->bindValue(':validity_details_json', json_encode($result['detalles_validez'] ?? [], JSON_UNESCAPED_UNICODE));
@@ -358,6 +359,21 @@ SQL;
         $statement->execute();
 
         return (int) $this->pdo->lastInsertId();
+    }
+
+
+    /**
+     * @param array<string, string> $participant
+     * @param array<string, mixed> $result
+     */
+    private function resolveGroupName(array $participant, array $result): string
+    {
+        $participantGroup = trim((string) ($participant['grupo'] ?? ''));
+        if ($participantGroup !== '') {
+            return $participantGroup;
+        }
+
+        return trim((string) ($result['grupo'] ?? ''));
     }
 
     /**
