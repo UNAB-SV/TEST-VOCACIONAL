@@ -1,0 +1,5700 @@
+{
+  "source_of_truth": "test.xls / hoja PRUEBA",
+  "totals": {
+    "blocks": 168,
+    "activities": 504,
+    "with_mas": 320,
+    "with_menos": 386,
+    "without_keys": 33,
+    "only_mas": 85,
+    "only_menos": 151,
+    "both_keys": 235
+  },
+  "explanations": {
+    "without_keys": "La fila de Excel no contiene ningún marcador '1' en columnas de MAS ni MENOS.",
+    "only_mas": "La fila de Excel contiene marcador '1' para MAS y ninguno para MENOS.",
+    "only_menos": "La fila de Excel contiene marcador '1' para MENOS y ninguno para MAS.",
+    "both_keys": "La fila de Excel contiene al menos un marcador '1' en MAS y al menos uno en MENOS."
+  },
+  "activities_without_keys": [
+    {
+      "activity_id": "A0065",
+      "block_id": "B022",
+      "excel_row": 68,
+      "text": "Relacionarse con gente extravagante y de ideas raras",
+      "mas_scales": [],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0075",
+      "block_id": "B025",
+      "excel_row": 78,
+      "text": "Ser experto en fotografía de colores",
+      "mas_scales": [],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0108",
+      "block_id": "B036",
+      "excel_row": 111,
+      "text": "Perfeccionar los métodos de trabajo de oficina para hacerlos mas efectivos",
+      "mas_scales": [],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0115",
+      "block_id": "B039",
+      "excel_row": 118,
+      "text": "Asumir la responsabilidad de despedir empleados deficientes en una empresa",
+      "mas_scales": [],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0148",
+      "block_id": "B050",
+      "excel_row": 151,
+      "text": "Tener una persona para que siempre le ayude a resolver sus problemas",
+      "mas_scales": [],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0151",
+      "block_id": "B051",
+      "excel_row": 154,
+      "text": "Trabajar como supervisor de ventas en un gran almacén",
+      "mas_scales": [],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0181",
+      "block_id": "B061",
+      "excel_row": 184,
+      "text": "Asistir a una reunión donde la mayoría de los invitados le es desconocida",
+      "mas_scales": [],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0189",
+      "block_id": "B063",
+      "excel_row": 192,
+      "text": "Vender pólizas de seguro",
+      "mas_scales": [],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0214",
+      "block_id": "B072",
+      "excel_row": 217,
+      "text": "Jugar a las damas con una persona que generalmente le gana a usted",
+      "mas_scales": [],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0215",
+      "block_id": "B072",
+      "excel_row": 218,
+      "text": "Jugar a las damas con una persona que rara vez le gana a usted",
+      "mas_scales": [],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0241",
+      "block_id": "B081",
+      "excel_row": 244,
+      "text": "Perfeccionar métodos de trabajo de oficina en empresas importantes",
+      "mas_scales": [],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0275",
+      "block_id": "B092",
+      "excel_row": 278,
+      "text": "Estudiar la demanda que tienen las máquinas de escribir",
+      "mas_scales": [],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0282",
+      "block_id": "B094",
+      "excel_row": 285,
+      "text": "Preparar la comida",
+      "mas_scales": [],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0310",
+      "block_id": "B104",
+      "excel_row": 313,
+      "text": "Comprar artículos costosos utilizando el sistema de crédito",
+      "mas_scales": [],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0311",
+      "block_id": "B104",
+      "excel_row": 314,
+      "text": "Pedir prestado el dinero para comprar estos artículos",
+      "mas_scales": [],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0329",
+      "block_id": "B110",
+      "excel_row": 332,
+      "text": "Lograr que la gente lo trate a usted como a un superior",
+      "mas_scales": [],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0330",
+      "block_id": "B110",
+      "excel_row": 333,
+      "text": "Lograr que nadie se fije en usted",
+      "mas_scales": [],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0350",
+      "block_id": "B117",
+      "excel_row": 353,
+      "text": "Trabajar en lo que le agrada con un sueldo bajo",
+      "mas_scales": [],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0351",
+      "block_id": "B117",
+      "excel_row": 354,
+      "text": "Trabajar en algo que no le agrada con un sueldo alto",
+      "mas_scales": [],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0360",
+      "block_id": "B120",
+      "excel_row": 363,
+      "text": "Dejar que otras personas la escojan para usted",
+      "mas_scales": [],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0370",
+      "block_id": "B124",
+      "excel_row": 373,
+      "text": "Tener entre sus amistades a una persona que siempre hace bromas a usted",
+      "mas_scales": [],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0371",
+      "block_id": "B124",
+      "excel_row": 374,
+      "text": "Hacer bromas a los otros",
+      "mas_scales": [],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0395",
+      "block_id": "B132",
+      "excel_row": 398,
+      "text": "Escribir artículos para revistas",
+      "mas_scales": [],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0404",
+      "block_id": "B135",
+      "excel_row": 407,
+      "text": "Elaborar  cuadros estadísticos sobre costos de vida",
+      "mas_scales": [],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0411",
+      "block_id": "B137",
+      "excel_row": 414,
+      "text": "Tomar clases de matemáticas",
+      "mas_scales": [],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0433",
+      "block_id": "B145",
+      "excel_row": 436,
+      "text": "Ser considerado como modesto",
+      "mas_scales": [],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0440",
+      "block_id": "B147",
+      "excel_row": 443,
+      "text": "Tomar clases de literatura moderna",
+      "mas_scales": [],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0442",
+      "block_id": "B148",
+      "excel_row": 445,
+      "text": "Ser considerado como duro",
+      "mas_scales": [],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0454",
+      "block_id": "B152",
+      "excel_row": 457,
+      "text": "Trabajar como telefonista",
+      "mas_scales": [],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0484",
+      "block_id": "B162",
+      "excel_row": 487,
+      "text": "Repartir el correo",
+      "mas_scales": [],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0490",
+      "block_id": "B164",
+      "excel_row": 493,
+      "text": "Resolver rompecabezas numéricos",
+      "mas_scales": [],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0497",
+      "block_id": "B166",
+      "excel_row": 500,
+      "text": "Tener poder",
+      "mas_scales": [],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0498",
+      "block_id": "B166",
+      "excel_row": 501,
+      "text": "Tener fama",
+      "mas_scales": [],
+      "menos_scales": []
+    }
+  ],
+  "activities_only_mas": [
+    {
+      "activity_id": "A0002",
+      "block_id": "B001",
+      "excel_row": 5,
+      "text": "En sus viajes observar de preferencia los paisajes",
+      "mas_scales": [
+        "aire_libre",
+        "validez"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0003",
+      "block_id": "B001",
+      "excel_row": 6,
+      "text": "En sus viajes observar de preferencia los cultivos",
+      "mas_scales": [
+        "aire_libre"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0009",
+      "block_id": "B003",
+      "excel_row": 12,
+      "text": "Visitar la exposición de ganado en una feria de pueblo",
+      "mas_scales": [
+        "aire_libre",
+        "validez"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0011",
+      "block_id": "B004",
+      "excel_row": 14,
+      "text": "Ir a pescar",
+      "mas_scales": [
+        "aire_libre"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0013",
+      "block_id": "B005",
+      "excel_row": 16,
+      "text": "Hojear libros y revistas en una librería",
+      "mas_scales": [
+        "literario"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0017",
+      "block_id": "B006",
+      "excel_row": 20,
+      "text": "Coleccionar mariposas",
+      "mas_scales": [
+        "aire_libre"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0018",
+      "block_id": "B006",
+      "excel_row": 21,
+      "text": "Coleccionar muestras de maderas",
+      "mas_scales": [
+        "aire_libre"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0021",
+      "block_id": "B007",
+      "excel_row": 24,
+      "text": "Visitar una exposición de equipos de laboratorio",
+      "mas_scales": [
+        "cientifico"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0027",
+      "block_id": "B009",
+      "excel_row": 30,
+      "text": "Repartir las invitaciones para la fiesta",
+      "mas_scales": [
+        "oficina"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0033",
+      "block_id": "B011",
+      "excel_row": 36,
+      "text": "Desarmar un juguete dañado para ver cómo se arregla",
+      "mas_scales": [
+        "mecanico"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0039",
+      "block_id": "B013",
+      "excel_row": 42,
+      "text": "Dibujar las aves",
+      "mas_scales": [
+        "artistico"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0043",
+      "block_id": "B015",
+      "excel_row": 46,
+      "text": "Leer un libro titulado \"Cómo cultivar buenas frutas.\"",
+      "mas_scales": [
+        "aire_libre"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0045",
+      "block_id": "B015",
+      "excel_row": 48,
+      "text": "Leer un libro titulado \"Cómo tomar fotos de animales en su ambiente natural.\"",
+      "mas_scales": [
+        "aire_libre"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0047",
+      "block_id": "B016",
+      "excel_row": 50,
+      "text": "Criar perros de raza",
+      "mas_scales": [
+        "aire_libre"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0053",
+      "block_id": "B018",
+      "excel_row": 56,
+      "text": "Visitar una región montañosa célebre por sus paisajes",
+      "mas_scales": [
+        "aire_libre"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0054",
+      "block_id": "B018",
+      "excel_row": 57,
+      "text": "Visitar un antiguo campo de batalla",
+      "mas_scales": [
+        "aire_libre"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0057",
+      "block_id": "B019",
+      "excel_row": 60,
+      "text": "Leer cómo vivían los primeros colonizadores  del país",
+      "mas_scales": [
+        "aire_libre"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0064",
+      "block_id": "B022",
+      "excel_row": 67,
+      "text": "Relacionarse con gente común y corriente",
+      "mas_scales": [
+        "validez"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0066",
+      "block_id": "B022",
+      "excel_row": 69,
+      "text": "Relacionarse con gente alegre y despreocupada",
+      "mas_scales": [
+        "validez"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0090",
+      "block_id": "B030",
+      "excel_row": 93,
+      "text": "Trabajar en una hacienda ganadera",
+      "mas_scales": [
+        "aire_libre"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0092",
+      "block_id": "B031",
+      "excel_row": 95,
+      "text": "Escribir en una revista artículos sobre la vida de animales raros",
+      "mas_scales": [
+        "aire_libre"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0095",
+      "block_id": "B032",
+      "excel_row": 98,
+      "text": "Leer sobre las costumbres de los habitantes de otros países",
+      "mas_scales": [
+        "aire_libre"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0096",
+      "block_id": "B032",
+      "excel_row": 99,
+      "text": "Leer sobre nuevos métodos de explotación agrícola",
+      "mas_scales": [
+        "aire_libre"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0097",
+      "block_id": "B033",
+      "excel_row": 100,
+      "text": "Trabajar en una estación meteorológica en el Ártico",
+      "mas_scales": [
+        "aire_libre"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0099",
+      "block_id": "B033",
+      "excel_row": 102,
+      "text": "Trabajar en una estación meteorológica en las montañas",
+      "mas_scales": [
+        "aire_libre",
+        "validez"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0104",
+      "block_id": "B035",
+      "excel_row": 107,
+      "text": "Hacer análisis químico de un nuevo producto",
+      "mas_scales": [
+        "cientifico"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0116",
+      "block_id": "B039",
+      "excel_row": 119,
+      "text": "Asumir la responsabilidad para llamar la atención a empleado cuyo rendimiento no es satisfactorio",
+      "mas_scales": [
+        "validez"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0117",
+      "block_id": "B039",
+      "excel_row": 120,
+      "text": "Asumir la responsabilidad de emplear el personal nuevo en una empresa",
+      "mas_scales": [
+        "validez"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0127",
+      "block_id": "B043",
+      "excel_row": 130,
+      "text": "Repartir hojas volantes a los automóviles que se detienen en una esquina",
+      "mas_scales": [
+        "persuasivo"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0131",
+      "block_id": "B044",
+      "excel_row": 134,
+      "text": "Cultivar hortalizas para la venta.",
+      "mas_scales": [
+        "aire_libre"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0139",
+      "block_id": "B047",
+      "excel_row": 142,
+      "text": "Escribir novelas",
+      "mas_scales": [
+        "literario"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0149",
+      "block_id": "B050",
+      "excel_row": 152,
+      "text": "Tener una persona para que ocasionalmente le resuelva sus problemas",
+      "mas_scales": [
+        "validez"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0150",
+      "block_id": "B050",
+      "excel_row": 153,
+      "text": "Resolver sus problemas sin consultar a nadie",
+      "mas_scales": [
+        "validez"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0182",
+      "block_id": "B061",
+      "excel_row": 185,
+      "text": "Asistir a una reunión en la que usted conoce a casi todos los invitados",
+      "mas_scales": [
+        "validez"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0183",
+      "block_id": "B061",
+      "excel_row": 186,
+      "text": "Asistir a una reunión donde solo la mitad de los invitados le es conocida",
+      "mas_scales": [
+        "validez"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0190",
+      "block_id": "B064",
+      "excel_row": 193,
+      "text": "Pesar encomiendas postales para determinar el porte que deben llevar",
+      "mas_scales": [
+        "oficina"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0208",
+      "block_id": "B070",
+      "excel_row": 211,
+      "text": "Reunir un buen equipo de herramientas para trabajar madera",
+      "mas_scales": [
+        "mecanico"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0216",
+      "block_id": "B072",
+      "excel_row": 219,
+      "text": "Jugar a las damas con una persona que juegue más o menos como usted",
+      "mas_scales": [
+        "validez"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0222",
+      "block_id": "B074",
+      "excel_row": 225,
+      "text": "Escribir en un periódico la columna \"Cómo cuidar el jardín\"",
+      "mas_scales": [
+        "aire_libre"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0250",
+      "block_id": "B084",
+      "excel_row": 253,
+      "text": "Examinar un nuevo juguete mecánico para ver cómo funciona",
+      "mas_scales": [
+        "mecanico"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0256",
+      "block_id": "B086",
+      "excel_row": 259,
+      "text": "Hacer de la pesca un medio para ganarse la vida",
+      "mas_scales": [
+        "aire_libre"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0257",
+      "block_id": "B086",
+      "excel_row": 260,
+      "text": "Seleccionar en un cafetal cafetos viejos para eliminarlos",
+      "mas_scales": [
+        "aire_libre"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0263",
+      "block_id": "B088",
+      "excel_row": 266,
+      "text": "Escribir artículos sobre la cría de aves de corral",
+      "mas_scales": [
+        "aire_libre"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0266",
+      "block_id": "B089",
+      "excel_row": 269,
+      "text": "Seleccioinar listas de personas para enviarles propaganda",
+      "mas_scales": [
+        "oficina"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0269",
+      "block_id": "B090",
+      "excel_row": 272,
+      "text": "Escribir artículos sobre recursos psicológicos para persuadir",
+      "mas_scales": [
+        "persuasivo"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0278",
+      "block_id": "B093",
+      "excel_row": 281,
+      "text": "Estudiar sistemas para mejorar los trabajos de oficina",
+      "mas_scales": [
+        "oficina"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0280",
+      "block_id": "B094",
+      "excel_row": 283,
+      "text": "Corregir una prueba de imprenta",
+      "mas_scales": [
+        "oficina",
+        "validez"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0287",
+      "block_id": "B096",
+      "excel_row": 290,
+      "text": "Reparar un juguete dañado",
+      "mas_scales": [
+        "mecanico"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0290",
+      "block_id": "B097",
+      "excel_row": 293,
+      "text": "Tomar parte en una expedición para combatir epidemias",
+      "mas_scales": [
+        "cientifico",
+        "servicio_social"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0298",
+      "block_id": "B100",
+      "excel_row": 301,
+      "text": "Vender en un almacén",
+      "mas_scales": [
+        "persuasivo",
+        "oficina"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0308",
+      "block_id": "B103",
+      "excel_row": 311,
+      "text": "Elaborar propaganda para una nueva urbanización",
+      "mas_scales": [
+        "persuasivo"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0312",
+      "block_id": "B104",
+      "excel_row": 315,
+      "text": "Economizar el dinero que se necesita para adquirirlos",
+      "mas_scales": [
+        "validez"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0314",
+      "block_id": "B105",
+      "excel_row": 317,
+      "text": "Vigilar a los trabajadores en una plantación de caña de azúcar",
+      "mas_scales": [
+        "aire_libre"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0315",
+      "block_id": "B105",
+      "excel_row": 318,
+      "text": "Criar  aves de corral",
+      "mas_scales": [
+        "aire_libre"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0327",
+      "block_id": "B109",
+      "excel_row": 330,
+      "text": "Encargarse del mantenimiento de las máquinas de contabilidad en una empresa comercial",
+      "mas_scales": [
+        "mecanico",
+        "calculo"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0328",
+      "block_id": "B110",
+      "excel_row": 331,
+      "text": "Lograr que la gente lo trate a usted como a un amigo",
+      "mas_scales": [
+        "validez"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0335",
+      "block_id": "B112",
+      "excel_row": 338,
+      "text": "Hacer un crucigrama para entretener a un enfermo",
+      "mas_scales": [
+        "mecanico"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0339",
+      "block_id": "B113",
+      "excel_row": 342,
+      "text": "Trabajar como secretario (a) privado (a)",
+      "mas_scales": [
+        "persuasivo"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0349",
+      "block_id": "B117",
+      "excel_row": 352,
+      "text": "Trabajar en lo que le agrada con un sueldo alto",
+      "mas_scales": [
+        "validez"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0358",
+      "block_id": "B120",
+      "excel_row": 361,
+      "text": "Escoger su ropa siguiendo sus propios gustos",
+      "mas_scales": [
+        "validez"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0359",
+      "block_id": "B120",
+      "excel_row": 362,
+      "text": "Oír consejos en la elección de su ropa",
+      "mas_scales": [
+        "validez"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0369",
+      "block_id": "B123",
+      "excel_row": 372,
+      "text": "Sumar una columna de cifras",
+      "mas_scales": [
+        "oficina"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0372",
+      "block_id": "B124",
+      "excel_row": 375,
+      "text": "No hacer bromas a nadie",
+      "mas_scales": [
+        "validez"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0380",
+      "block_id": "B127",
+      "excel_row": 383,
+      "text": "Trabajar como celador en un faro marítimo",
+      "mas_scales": [
+        "aire_libre",
+        "validez"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0382",
+      "block_id": "B128",
+      "excel_row": 385,
+      "text": "Redactar avisos de propaganda",
+      "mas_scales": [
+        "persuasivo"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0384",
+      "block_id": "B128",
+      "excel_row": 387,
+      "text": "Editar un períodico",
+      "mas_scales": [
+        "persuasivo"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0393",
+      "block_id": "B131",
+      "excel_row": 396,
+      "text": "Pintar paisajes",
+      "mas_scales": [
+        "aire_libre"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0398",
+      "block_id": "B133",
+      "excel_row": 401,
+      "text": "Pasarlas acompando fuera de la ciudad",
+      "mas_scales": [
+        "aire_libre"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0399",
+      "block_id": "B133",
+      "excel_row": 402,
+      "text": "Pasarlas viajando por caminos apartados",
+      "mas_scales": [
+        "aire_libre"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0401",
+      "block_id": "B134",
+      "excel_row": 404,
+      "text": "Vivir con un político destacado",
+      "mas_scales": [
+        "servicio_social"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0413",
+      "block_id": "B138",
+      "excel_row": 416,
+      "text": "Ser maestro de escuela",
+      "mas_scales": [
+        "oficina"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0422",
+      "block_id": "B141",
+      "excel_row": 425,
+      "text": "Criar ganado",
+      "mas_scales": [
+        "aire_libre"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0423",
+      "block_id": "B141",
+      "excel_row": 426,
+      "text": "Cultivar frutos para la venta",
+      "mas_scales": [
+        "aire_libre"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0426",
+      "block_id": "B142",
+      "excel_row": 429,
+      "text": "Vivir en un sitioo aislado atendiendo sus propias necesidades",
+      "mas_scales": [
+        "aire_libre",
+        "validez"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0434",
+      "block_id": "B145",
+      "excel_row": 437,
+      "text": "Ser considerado digno de confianza",
+      "mas_scales": [
+        "validez"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0435",
+      "block_id": "B145",
+      "excel_row": 438,
+      "text": "Ser considerado como poco serio",
+      "mas_scales": [
+        "validez"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0443",
+      "block_id": "B148",
+      "excel_row": 446,
+      "text": "Ser considerado como justo",
+      "mas_scales": [
+        "validez"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0444",
+      "block_id": "B148",
+      "excel_row": 447,
+      "text": "Ser considerado como inteligente",
+      "mas_scales": [
+        "validez"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0450",
+      "block_id": "B150",
+      "excel_row": 453,
+      "text": "Llevar la contabilidad",
+      "mas_scales": [
+        "oficina"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0453",
+      "block_id": "B151",
+      "excel_row": 456,
+      "text": "Arreglar música para orquesta",
+      "mas_scales": [
+        "musical"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0457",
+      "block_id": "B153",
+      "excel_row": 460,
+      "text": "Reparar un artefacto eléctrico",
+      "mas_scales": [
+        "mecanico",
+        "validez"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0468",
+      "block_id": "B156",
+      "excel_row": 471,
+      "text": "Escalar montañas",
+      "mas_scales": [
+        "aire_libre"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0473",
+      "block_id": "B158",
+      "excel_row": 476,
+      "text": "Explotar un colmenar",
+      "mas_scales": [
+        "aire_libre"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0486",
+      "block_id": "B162",
+      "excel_row": 489,
+      "text": "Clasificar correo en una oficina postal",
+      "mas_scales": [
+        "oficina",
+        "validez"
+      ],
+      "menos_scales": []
+    },
+    {
+      "activity_id": "A0496",
+      "block_id": "B166",
+      "excel_row": 499,
+      "text": "Tener amigos",
+      "mas_scales": [
+        "validez"
+      ],
+      "menos_scales": []
+    }
+  ],
+  "activities_only_menos": [
+    {
+      "activity_id": "A0008",
+      "block_id": "B003",
+      "excel_row": 11,
+      "text": "Visitar la exposición de productos alimenticios caseros en una feria de pueblo",
+      "mas_scales": [],
+      "menos_scales": [
+        "aire_libre"
+      ]
+    },
+    {
+      "activity_id": "A0010",
+      "block_id": "B004",
+      "excel_row": 13,
+      "text": "Hacer ejercicios de atletismo",
+      "mas_scales": [],
+      "menos_scales": [
+        "aire_libre"
+      ]
+    },
+    {
+      "activity_id": "A0012",
+      "block_id": "B004",
+      "excel_row": 15,
+      "text": "Jugar fútbol",
+      "mas_scales": [],
+      "menos_scales": [
+        "aire_libre"
+      ]
+    },
+    {
+      "activity_id": "A0014",
+      "block_id": "B005",
+      "excel_row": 17,
+      "text": "Presenciar el ensayo de una orquesta",
+      "mas_scales": [],
+      "menos_scales": [
+        "literario"
+      ]
+    },
+    {
+      "activity_id": "A0015",
+      "block_id": "B005",
+      "excel_row": 18,
+      "text": "Visitar un jardin zoológico",
+      "mas_scales": [],
+      "menos_scales": [
+        "literario"
+      ]
+    },
+    {
+      "activity_id": "A0016",
+      "block_id": "B006",
+      "excel_row": 19,
+      "text": "Coleccionar autógrafos de personajes célebres",
+      "mas_scales": [],
+      "menos_scales": [
+        "aire_libre"
+      ]
+    },
+    {
+      "activity_id": "A0019",
+      "block_id": "B007",
+      "excel_row": 22,
+      "text": "Visitar una exposición de cuadros famosos",
+      "mas_scales": [],
+      "menos_scales": [
+        "cientifico"
+      ]
+    },
+    {
+      "activity_id": "A0020",
+      "block_id": "B007",
+      "excel_row": 23,
+      "text": "Visitar una exposición de distintos medios de transporte",
+      "mas_scales": [],
+      "menos_scales": [
+        "cientifico"
+      ]
+    },
+    {
+      "activity_id": "A0025",
+      "block_id": "B009",
+      "excel_row": 28,
+      "text": "Dirigir la organización de una fiesta en un club social",
+      "mas_scales": [],
+      "menos_scales": [
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0026",
+      "block_id": "B009",
+      "excel_row": 29,
+      "text": "Decorar el salón para la fiesta",
+      "mas_scales": [],
+      "menos_scales": [
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0029",
+      "block_id": "B010",
+      "excel_row": 32,
+      "text": "Visitar una empresa periodística",
+      "mas_scales": [],
+      "menos_scales": [
+        "mecanico"
+      ]
+    },
+    {
+      "activity_id": "A0031",
+      "block_id": "B011",
+      "excel_row": 34,
+      "text": "Leer para distraer a una persona enferma",
+      "mas_scales": [],
+      "menos_scales": [
+        "mecanico"
+      ]
+    },
+    {
+      "activity_id": "A0032",
+      "block_id": "B011",
+      "excel_row": 35,
+      "text": "Enseñar tretas a un perro",
+      "mas_scales": [],
+      "menos_scales": [
+        "mecanico"
+      ]
+    },
+    {
+      "activity_id": "A0037",
+      "block_id": "B013",
+      "excel_row": 40,
+      "text": "Constuir pajareras",
+      "mas_scales": [],
+      "menos_scales": [
+        "artistico"
+      ]
+    },
+    {
+      "activity_id": "A0038",
+      "block_id": "B013",
+      "excel_row": 41,
+      "text": "Escribir artículos sobre las aves",
+      "mas_scales": [],
+      "menos_scales": [
+        "artistico"
+      ]
+    },
+    {
+      "activity_id": "A0044",
+      "block_id": "B015",
+      "excel_row": 47,
+      "text": "Leer un libro titulado \"Cómo trabajar con materiales plásticos.\"",
+      "mas_scales": [],
+      "menos_scales": [
+        "aire_libre"
+      ]
+    },
+    {
+      "activity_id": "A0046",
+      "block_id": "B016",
+      "excel_row": 49,
+      "text": "Tener a su cargo en un periódico la columna de \"Consejeros personales.\"",
+      "mas_scales": [],
+      "menos_scales": [
+        "aire_libre"
+      ]
+    },
+    {
+      "activity_id": "A0048",
+      "block_id": "B016",
+      "excel_row": 51,
+      "text": "Investigar la eficiencia de diversos medios de propaganda",
+      "mas_scales": [],
+      "menos_scales": [
+        "aire_libre"
+      ]
+    },
+    {
+      "activity_id": "A0049",
+      "block_id": "B017",
+      "excel_row": 52,
+      "text": "Ser autoridad en el juego de ajedrez",
+      "mas_scales": [],
+      "menos_scales": [
+        "aire_libre",
+        "persuasivo"
+      ]
+    },
+    {
+      "activity_id": "A0052",
+      "block_id": "B018",
+      "excel_row": 55,
+      "text": "Visitar un estudio cinematográfico",
+      "mas_scales": [],
+      "menos_scales": [
+        "aire_libre"
+      ]
+    },
+    {
+      "activity_id": "A0055",
+      "block_id": "B019",
+      "excel_row": 58,
+      "text": "Leer sobre las actuaciones de los hombres y mujeres céberes en la vida pública",
+      "mas_scales": [],
+      "menos_scales": [
+        "aire_libre"
+      ]
+    },
+    {
+      "activity_id": "A0056",
+      "block_id": "B019",
+      "excel_row": 59,
+      "text": "Leer las opiniones de varios escritores sobre lo que sería el mundo ideal",
+      "mas_scales": [],
+      "menos_scales": [
+        "aire_libre"
+      ]
+    },
+    {
+      "activity_id": "A0058",
+      "block_id": "B020",
+      "excel_row": 61,
+      "text": "Trabajar como psicólogo profesional atendiendo consultas de carácter personal",
+      "mas_scales": [],
+      "menos_scales": [
+        "aire_libre",
+        "cientifico",
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0062",
+      "block_id": "B021",
+      "excel_row": 65,
+      "text": "Pertenecer a un club literario",
+      "mas_scales": [],
+      "menos_scales": [
+        "cientifico",
+        "servicio_social"
+      ]
+    },
+    {
+      "activity_id": "A0069",
+      "block_id": "B023",
+      "excel_row": 72,
+      "text": "Ser cocinero jefe de un restaurante de lujo",
+      "mas_scales": [],
+      "menos_scales": [
+        "persuasivo",
+        "servicio_social"
+      ]
+    },
+    {
+      "activity_id": "A0070",
+      "block_id": "B024",
+      "excel_row": 73,
+      "text": "Desarrollar nuevas variedades de flores",
+      "mas_scales": [],
+      "menos_scales": [
+        "persuasivo",
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0074",
+      "block_id": "B025",
+      "excel_row": 77,
+      "text": "Ser Decano de una Facultad Universitaria",
+      "mas_scales": [],
+      "menos_scales": [
+        "persuasivo",
+        "artistico"
+      ]
+    },
+    {
+      "activity_id": "A0078",
+      "block_id": "B026",
+      "excel_row": 81,
+      "text": "Entrenar un grupo escénico ganador del primer puesto en un concurso nacional",
+      "mas_scales": [],
+      "menos_scales": [
+        "cientifico",
+        "artistico"
+      ]
+    },
+    {
+      "activity_id": "A0082",
+      "block_id": "B028",
+      "excel_row": 85,
+      "text": "Escribir un libro sobre la historia de la Cruz Roja",
+      "mas_scales": [],
+      "menos_scales": [
+        "cientifico",
+        "musical"
+      ]
+    },
+    {
+      "activity_id": "A0088",
+      "block_id": "B030",
+      "excel_row": 91,
+      "text": "Estar encargado de compras para un gran almacén",
+      "mas_scales": [],
+      "menos_scales": [
+        "aire_libre"
+      ]
+    },
+    {
+      "activity_id": "A0089",
+      "block_id": "B030",
+      "excel_row": 92,
+      "text": "Estar encargado de entrevistar a los aspirantes a empleos en una empresa",
+      "mas_scales": [],
+      "menos_scales": [
+        "aire_libre"
+      ]
+    },
+    {
+      "activity_id": "A0091",
+      "block_id": "B031",
+      "excel_row": 94,
+      "text": "Ser jefe de personal en una empresa",
+      "mas_scales": [],
+      "menos_scales": [
+        "aire_libre"
+      ]
+    },
+    {
+      "activity_id": "A0093",
+      "block_id": "B031",
+      "excel_row": 96,
+      "text": "Escribir la columna \"Consejos personales\" en un periódico",
+      "mas_scales": [],
+      "menos_scales": [
+        "aire_libre"
+      ]
+    },
+    {
+      "activity_id": "A0094",
+      "block_id": "B032",
+      "excel_row": 97,
+      "text": "Leer sobre métodos modernos empleados en los negocios",
+      "mas_scales": [],
+      "menos_scales": [
+        "aire_libre"
+      ]
+    },
+    {
+      "activity_id": "A0103",
+      "block_id": "B035",
+      "excel_row": 106,
+      "text": "Diseñar decoraciones para una obra teatral",
+      "mas_scales": [],
+      "menos_scales": [
+        "cientifico"
+      ]
+    },
+    {
+      "activity_id": "A0105",
+      "block_id": "B035",
+      "excel_row": 108,
+      "text": "Escribir artículos acerca de cómo reparar en casa utensilios domésticos",
+      "mas_scales": [],
+      "menos_scales": [
+        "cientifico"
+      ]
+    },
+    {
+      "activity_id": "A0107",
+      "block_id": "B036",
+      "excel_row": 110,
+      "text": "Ensayar varios modelos de cartas de propaganda comercial para ver cual produce mejor resultado",
+      "mas_scales": [],
+      "menos_scales": [
+        "servicio_social",
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0109",
+      "block_id": "B037",
+      "excel_row": 112,
+      "text": "Redactar la pagina financiera de un periodico",
+      "mas_scales": [],
+      "menos_scales": [
+        "cientifico"
+      ]
+    },
+    {
+      "activity_id": "A0112",
+      "block_id": "B038",
+      "excel_row": 115,
+      "text": "Visitar un museo de bellas artes",
+      "mas_scales": [],
+      "menos_scales": [
+        "cientifico",
+        "servicio_social"
+      ]
+    },
+    {
+      "activity_id": "A0118",
+      "block_id": "B040",
+      "excel_row": 121,
+      "text": "Hacer un diccionario de dichos populares",
+      "mas_scales": [],
+      "menos_scales": [
+        "cientifico",
+        "servicio_social",
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0120",
+      "block_id": "B040",
+      "excel_row": 123,
+      "text": "Implantar mejores métodos de trabajo en una empresa grande",
+      "mas_scales": [],
+      "menos_scales": [
+        "cientifico"
+      ]
+    },
+    {
+      "activity_id": "A0121",
+      "block_id": "B041",
+      "excel_row": 124,
+      "text": "Leer un libro sobre la historia del arte dramático",
+      "mas_scales": [],
+      "menos_scales": [
+        "cientifico",
+        "musical"
+      ]
+    },
+    {
+      "activity_id": "A0128",
+      "block_id": "B043",
+      "excel_row": 131,
+      "text": "Contar el número de automóviles que pasan por una esquina a distintas horas",
+      "mas_scales": [],
+      "menos_scales": [
+        "persuasivo"
+      ]
+    },
+    {
+      "activity_id": "A0129",
+      "block_id": "B043",
+      "excel_row": 132,
+      "text": "Dirigir el tráfico en una esquina",
+      "mas_scales": [],
+      "menos_scales": [
+        "persuasivo"
+      ]
+    },
+    {
+      "activity_id": "A0130",
+      "block_id": "B044",
+      "excel_row": 133,
+      "text": "Reeducar a los niños lisiados por medio de ejercicios físicos",
+      "mas_scales": [],
+      "menos_scales": [
+        "aire_libre"
+      ]
+    },
+    {
+      "activity_id": "A0132",
+      "block_id": "B044",
+      "excel_row": 135,
+      "text": "Enseñar la confección de objetos de mimbre",
+      "mas_scales": [],
+      "menos_scales": [
+        "aire_libre"
+      ]
+    },
+    {
+      "activity_id": "A0136",
+      "block_id": "B046",
+      "excel_row": 139,
+      "text": "Hacerse cargo de los preparativos para una boda con numerosos invitados",
+      "mas_scales": [],
+      "menos_scales": [
+        "literario",
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0140",
+      "block_id": "B047",
+      "excel_row": 143,
+      "text": "Dirigir investigaciones sobre los efectos psicológicos de la música",
+      "mas_scales": [],
+      "menos_scales": [
+        "literario"
+      ]
+    },
+    {
+      "activity_id": "A0141",
+      "block_id": "B047",
+      "excel_row": 144,
+      "text": "Confeccionar objetos de cerámica",
+      "mas_scales": [],
+      "menos_scales": [
+        "literario"
+      ]
+    },
+    {
+      "activity_id": "A0154",
+      "block_id": "B052",
+      "excel_row": 157,
+      "text": "Controlar el trabajo de varias mecanógrafas",
+      "mas_scales": [],
+      "menos_scales": [
+        "persuasivo",
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0157",
+      "block_id": "B053",
+      "excel_row": 160,
+      "text": "Dibujar tiras cómicas",
+      "mas_scales": [],
+      "menos_scales": [
+        "aire_libre"
+      ]
+    },
+    {
+      "activity_id": "A0165",
+      "block_id": "B055",
+      "excel_row": 168,
+      "text": "Escribir reportajes para los periódicos",
+      "mas_scales": [],
+      "menos_scales": [
+        "cientifico",
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0168",
+      "block_id": "B056",
+      "excel_row": 171,
+      "text": "Escribir un ensayo imitando el estilo de un determinado escritor",
+      "mas_scales": [],
+      "menos_scales": [
+        "mecanico",
+        "cientifico",
+        "artistico"
+      ]
+    },
+    {
+      "activity_id": "A0170",
+      "block_id": "B057",
+      "excel_row": 173,
+      "text": "Preparar los programas y boletas para la función",
+      "mas_scales": [],
+      "menos_scales": [
+        "calculo",
+        "persuasivo"
+      ]
+    },
+    {
+      "activity_id": "A0184",
+      "block_id": "B062",
+      "excel_row": 187,
+      "text": "Vender materiales y equipos para los artistas pintores",
+      "mas_scales": [],
+      "menos_scales": [
+        "aire_libre"
+      ]
+    },
+    {
+      "activity_id": "A0188",
+      "block_id": "B063",
+      "excel_row": 191,
+      "text": "Confeccionar muebles",
+      "mas_scales": [],
+      "menos_scales": [
+        "cientifico",
+        "persuasivo"
+      ]
+    },
+    {
+      "activity_id": "A0191",
+      "block_id": "B064",
+      "excel_row": 194,
+      "text": "Seleccionar manuscritos enviados para publicación en una revista",
+      "mas_scales": [],
+      "menos_scales": [
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0192",
+      "block_id": "B064",
+      "excel_row": 195,
+      "text": "Ensayar nuevos modelos de automóviles para intoducirles otras mejoras",
+      "mas_scales": [],
+      "menos_scales": [
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0193",
+      "block_id": "B065",
+      "excel_row": 196,
+      "text": "Ser experto en la talla de piedras preciosas",
+      "mas_scales": [],
+      "menos_scales": [
+        "cientifico",
+        "musical"
+      ]
+    },
+    {
+      "activity_id": "A0196",
+      "block_id": "B066",
+      "excel_row": 199,
+      "text": "Ayudar a cuidar a los enfermos",
+      "mas_scales": [],
+      "menos_scales": [
+        "mecanico",
+        "persuasivo"
+      ]
+    },
+    {
+      "activity_id": "A0199",
+      "block_id": "B067",
+      "excel_row": 202,
+      "text": "Diseñar floreros",
+      "mas_scales": [],
+      "menos_scales": [
+        "cientifico"
+      ]
+    },
+    {
+      "activity_id": "A0200",
+      "block_id": "B067",
+      "excel_row": 203,
+      "text": "Dirigir la fabricación de floreros",
+      "mas_scales": [],
+      "menos_scales": [
+        "artistico"
+      ]
+    },
+    {
+      "activity_id": "A0206",
+      "block_id": "B069",
+      "excel_row": 209,
+      "text": "Ser cocinero de un restaurante",
+      "mas_scales": [],
+      "menos_scales": [
+        "cientifico",
+        "servicio_social"
+      ]
+    },
+    {
+      "activity_id": "A0209",
+      "block_id": "B070",
+      "excel_row": 212,
+      "text": "Formar un álbum con las reproducciones de sus cuadros favoritos",
+      "mas_scales": [],
+      "menos_scales": [
+        "mecanico"
+      ]
+    },
+    {
+      "activity_id": "A0210",
+      "block_id": "B070",
+      "excel_row": 213,
+      "text": "Formar un botiquín para casos de emergencia",
+      "mas_scales": [],
+      "menos_scales": [
+        "mecanico"
+      ]
+    },
+    {
+      "activity_id": "A0211",
+      "block_id": "B071",
+      "excel_row": 214,
+      "text": "Dirigir una función teatral de aficionados",
+      "mas_scales": [],
+      "menos_scales": [
+        "literario",
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0220",
+      "block_id": "B074",
+      "excel_row": 223,
+      "text": "Escribir en un periódico la columna \"Se rumora en la ciudad\"",
+      "mas_scales": [],
+      "menos_scales": [
+        "aire_libre"
+      ]
+    },
+    {
+      "activity_id": "A0221",
+      "block_id": "B074",
+      "excel_row": 224,
+      "text": "Escribir en un periódico la columna \"Consejos personales\"",
+      "mas_scales": [],
+      "menos_scales": [
+        "aire_libre"
+      ]
+    },
+    {
+      "activity_id": "A0224",
+      "block_id": "B075",
+      "excel_row": 227,
+      "text": "Ser dibujante proyectista",
+      "mas_scales": [],
+      "menos_scales": [
+        "aire_libre",
+        "cientifico"
+      ]
+    },
+    {
+      "activity_id": "A0229",
+      "block_id": "B077",
+      "excel_row": 232,
+      "text": "Estudiar el arte de habla en público",
+      "mas_scales": [],
+      "menos_scales": [
+        "cientifico",
+        "literario"
+      ]
+    },
+    {
+      "activity_id": "A0239",
+      "block_id": "B080",
+      "excel_row": 242,
+      "text": "Ser contador público juramentado",
+      "mas_scales": [],
+      "menos_scales": [
+        "persuasivo"
+      ]
+    },
+    {
+      "activity_id": "A0240",
+      "block_id": "B080",
+      "excel_row": 243,
+      "text": "Ser autoridad en materia de impuestos",
+      "mas_scales": [],
+      "menos_scales": [
+        "persuasivo"
+      ]
+    },
+    {
+      "activity_id": "A0243",
+      "block_id": "B081",
+      "excel_row": 246,
+      "text": "Hacer ensayos para obtener mejores recetas de pastelería",
+      "mas_scales": [],
+      "menos_scales": [
+        "servicio_social",
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0245",
+      "block_id": "B082",
+      "excel_row": 248,
+      "text": "Cortar la leña para prender la estufa",
+      "mas_scales": [],
+      "menos_scales": [
+        "mecanico",
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0249",
+      "block_id": "B083",
+      "excel_row": 252,
+      "text": "Investigar el nivel de vida de distintos barrios de la ciudad",
+      "mas_scales": [],
+      "menos_scales": [
+        "mecanico"
+      ]
+    },
+    {
+      "activity_id": "A0251",
+      "block_id": "B084",
+      "excel_row": 254,
+      "text": "Jugar a las damas",
+      "mas_scales": [],
+      "menos_scales": [
+        "mecanico"
+      ]
+    },
+    {
+      "activity_id": "A0252",
+      "block_id": "B084",
+      "excel_row": 255,
+      "text": "Jugar ajedrez",
+      "mas_scales": [],
+      "menos_scales": [
+        "mecanico"
+      ]
+    },
+    {
+      "activity_id": "A0258",
+      "block_id": "B086",
+      "excel_row": 261,
+      "text": "Pintar automóviles en una fábrica",
+      "mas_scales": [],
+      "menos_scales": [
+        "aire_libre"
+      ]
+    },
+    {
+      "activity_id": "A0260",
+      "block_id": "B087",
+      "excel_row": 263,
+      "text": "Ser secretario (a) privado(a) de una persona célebre",
+      "mas_scales": [],
+      "menos_scales": [
+        "persuasivo"
+      ]
+    },
+    {
+      "activity_id": "A0262",
+      "block_id": "B088",
+      "excel_row": 265,
+      "text": "Escribir estampas de la  vida real para una revista",
+      "mas_scales": [],
+      "menos_scales": [
+        "aire_libre"
+      ]
+    },
+    {
+      "activity_id": "A0264",
+      "block_id": "B088",
+      "excel_row": 267,
+      "text": "Escribir artículos sobre la aplicación de primeros auxilios",
+      "mas_scales": [],
+      "menos_scales": [
+        "aire_libre"
+      ]
+    },
+    {
+      "activity_id": "A0265",
+      "block_id": "B089",
+      "excel_row": 268,
+      "text": "Trabajar como mesero(a) en un restaurante",
+      "mas_scales": [],
+      "menos_scales": [
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0267",
+      "block_id": "B089",
+      "excel_row": 270,
+      "text": "Cuidar enfermos",
+      "mas_scales": [],
+      "menos_scales": [
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0268",
+      "block_id": "B090",
+      "excel_row": 271,
+      "text": "Modelar objetos de arcilla",
+      "mas_scales": [],
+      "menos_scales": [
+        "literario"
+      ]
+    },
+    {
+      "activity_id": "A0273",
+      "block_id": "B091",
+      "excel_row": 276,
+      "text": "Ser periodista",
+      "mas_scales": [],
+      "menos_scales": [
+        "cientifico",
+        "servicio_social"
+      ]
+    },
+    {
+      "activity_id": "A0274",
+      "block_id": "B092",
+      "excel_row": 277,
+      "text": "Contestar por escrito consultas sobre máquinas de escribir",
+      "mas_scales": [],
+      "menos_scales": [
+        "mecanico",
+        "calculo"
+      ]
+    },
+    {
+      "activity_id": "A0277",
+      "block_id": "B093",
+      "excel_row": 280,
+      "text": "Estudiar métodos de propaganda usados durante la guerra",
+      "mas_scales": [],
+      "menos_scales": [
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0279",
+      "block_id": "B093",
+      "excel_row": 282,
+      "text": "Hacer un estudio acerca del movimiento demográfico del país",
+      "mas_scales": [],
+      "menos_scales": [
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0281",
+      "block_id": "B094",
+      "excel_row": 284,
+      "text": "Lavar platos",
+      "mas_scales": [],
+      "menos_scales": [
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0283",
+      "block_id": "B095",
+      "excel_row": 286,
+      "text": "Enseñar arquitectura",
+      "mas_scales": [],
+      "menos_scales": [
+        "mecanico"
+      ]
+    },
+    {
+      "activity_id": "A0286",
+      "block_id": "B096",
+      "excel_row": 289,
+      "text": "Preparar la comida",
+      "mas_scales": [],
+      "menos_scales": [
+        "mecanico"
+      ]
+    },
+    {
+      "activity_id": "A0288",
+      "block_id": "B096",
+      "excel_row": 291,
+      "text": "Darle un masaje a una persona",
+      "mas_scales": [],
+      "menos_scales": [
+        "mecanico"
+      ]
+    },
+    {
+      "activity_id": "A0296",
+      "block_id": "B099",
+      "excel_row": 299,
+      "text": "Catalogar libros en una biblioteca",
+      "mas_scales": [],
+      "menos_scales": [
+        "aire_libre",
+        "calculo"
+      ]
+    },
+    {
+      "activity_id": "A0299",
+      "block_id": "B100",
+      "excel_row": 302,
+      "text": "Trabajar en una hacienda ganadera",
+      "mas_scales": [],
+      "menos_scales": [
+        "persuasivo",
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0303",
+      "block_id": "B101",
+      "excel_row": 306,
+      "text": "Ser profesor de lenguas extranjeras",
+      "mas_scales": [],
+      "menos_scales": [
+        "calculo",
+        "persuasivo"
+      ]
+    },
+    {
+      "activity_id": "A0305",
+      "block_id": "B102",
+      "excel_row": 308,
+      "text": "Tomar un curso de artes gráficas",
+      "mas_scales": [],
+      "menos_scales": [
+        "persuasivo",
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0307",
+      "block_id": "B103",
+      "excel_row": 310,
+      "text": "Dibujar planos de arquitectura",
+      "mas_scales": [],
+      "menos_scales": [
+        "persuasivo"
+      ]
+    },
+    {
+      "activity_id": "A0309",
+      "block_id": "B103",
+      "excel_row": 312,
+      "text": "Escribir artículos comentando nuevas sobre construcciones",
+      "mas_scales": [],
+      "menos_scales": [
+        "persuasivo"
+      ]
+    },
+    {
+      "activity_id": "A0313",
+      "block_id": "B105",
+      "excel_row": 316,
+      "text": "Decorar muebles",
+      "mas_scales": [],
+      "menos_scales": [
+        "aire_libre"
+      ]
+    },
+    {
+      "activity_id": "A0320",
+      "block_id": "B107",
+      "excel_row": 323,
+      "text": "Hacer análisis estadísticos para predecir tendencias del mercado",
+      "mas_scales": [],
+      "menos_scales": [
+        "servicio_social"
+      ]
+    },
+    {
+      "activity_id": "A0324",
+      "block_id": "B108",
+      "excel_row": 327,
+      "text": "Escribir el tema músical para un programa radial",
+      "mas_scales": [],
+      "menos_scales": [
+        "calculo",
+        "artistico"
+      ]
+    },
+    {
+      "activity_id": "A0325",
+      "block_id": "B109",
+      "excel_row": 328,
+      "text": "Trabajar como comprador de mercancías para una cooperativa",
+      "mas_scales": [],
+      "menos_scales": [
+        "mecanico",
+        "calculo"
+      ]
+    },
+    {
+      "activity_id": "A0326",
+      "block_id": "B109",
+      "excel_row": 329,
+      "text": "Encargarse de la publicidad de una empresa importante",
+      "mas_scales": [],
+      "menos_scales": [
+        "mecanico",
+        "calculo"
+      ]
+    },
+    {
+      "activity_id": "A0333",
+      "block_id": "B111",
+      "excel_row": 336,
+      "text": "Investigar por qué los chistes hacen reír",
+      "mas_scales": [],
+      "menos_scales": [
+        "artistico",
+        "musical"
+      ]
+    },
+    {
+      "activity_id": "A0334",
+      "block_id": "B112",
+      "excel_row": 337,
+      "text": "Hacer las compras para una persona enferma",
+      "mas_scales": [],
+      "menos_scales": [
+        "mecanico"
+      ]
+    },
+    {
+      "activity_id": "A0336",
+      "block_id": "B112",
+      "excel_row": 339,
+      "text": "Leer para distraer a una persona enferma",
+      "mas_scales": [],
+      "menos_scales": [
+        "mecanico"
+      ]
+    },
+    {
+      "activity_id": "A0353",
+      "block_id": "B118",
+      "excel_row": 356,
+      "text": "Escribir artículos sobre temas de actualidad",
+      "mas_scales": [],
+      "menos_scales": [
+        "servicio_social"
+      ]
+    },
+    {
+      "activity_id": "A0355",
+      "block_id": "B119",
+      "excel_row": 358,
+      "text": "Ser secretario (a) de un insigne líder político",
+      "mas_scales": [],
+      "menos_scales": [
+        "artistico",
+        "literario"
+      ]
+    },
+    {
+      "activity_id": "A0362",
+      "block_id": "B121",
+      "excel_row": 365,
+      "text": "Trabajar en algo que requiere intenso cálculo mental",
+      "mas_scales": [],
+      "menos_scales": [
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0364",
+      "block_id": "B122",
+      "excel_row": 367,
+      "text": "Dirigir la producción de tarjetas de Navidad",
+      "mas_scales": [],
+      "menos_scales": [
+        "calculo",
+        "artistico"
+      ]
+    },
+    {
+      "activity_id": "A0378",
+      "block_id": "B126",
+      "excel_row": 381,
+      "text": "Estudiar taquigrafía",
+      "mas_scales": [],
+      "menos_scales": [
+        "cientifico",
+        "musical"
+      ]
+    },
+    {
+      "activity_id": "A0381",
+      "block_id": "B127",
+      "excel_row": 384,
+      "text": "Trabajar como guardián de un paso ferroviario",
+      "mas_scales": [],
+      "menos_scales": [
+        "aire_libre"
+      ]
+    },
+    {
+      "activity_id": "A0383",
+      "block_id": "B128",
+      "excel_row": 386,
+      "text": "Dirigir una biblioteca pública",
+      "mas_scales": [],
+      "menos_scales": [
+        "persuasivo"
+      ]
+    },
+    {
+      "activity_id": "A0387",
+      "block_id": "B129",
+      "excel_row": 390,
+      "text": "Tomar clases de correspondencia comercial",
+      "mas_scales": [],
+      "menos_scales": [
+        "calculo",
+        "persuasivo"
+      ]
+    },
+    {
+      "activity_id": "A0391",
+      "block_id": "B131",
+      "excel_row": 394,
+      "text": "Hacer caricaturas de personajes célebres",
+      "mas_scales": [],
+      "menos_scales": [
+        "aire_libre"
+      ]
+    },
+    {
+      "activity_id": "A0392",
+      "block_id": "B131",
+      "excel_row": 395,
+      "text": "Pintar retratos de personajes célebres",
+      "mas_scales": [],
+      "menos_scales": [
+        "aire_libre"
+      ]
+    },
+    {
+      "activity_id": "A0397",
+      "block_id": "B133",
+      "excel_row": 400,
+      "text": "Pasar vacaciones en un elegante sitio de veraneo",
+      "mas_scales": [],
+      "menos_scales": [
+        "aire_libre"
+      ]
+    },
+    {
+      "activity_id": "A0400",
+      "block_id": "B134",
+      "excel_row": 403,
+      "text": "Vivir con un famoso crítico literario",
+      "mas_scales": [],
+      "menos_scales": [
+        "servicio_social"
+      ]
+    },
+    {
+      "activity_id": "A0402",
+      "block_id": "B134",
+      "excel_row": 405,
+      "text": "Vivir con un artista célebre",
+      "mas_scales": [],
+      "menos_scales": [
+        "servicio_social"
+      ]
+    },
+    {
+      "activity_id": "A0403",
+      "block_id": "B135",
+      "excel_row": 406,
+      "text": "Escribir artículos sobre pasatiempos",
+      "mas_scales": [],
+      "menos_scales": [
+        "mecanico",
+        "calculo"
+      ]
+    },
+    {
+      "activity_id": "A0406",
+      "block_id": "B136",
+      "excel_row": 409,
+      "text": "Revisar las pruebas tipográficas de libros para niños",
+      "mas_scales": [],
+      "menos_scales": [
+        "mecanico"
+      ]
+    },
+    {
+      "activity_id": "A0409",
+      "block_id": "B137",
+      "excel_row": 412,
+      "text": "Tomar clases de educación física",
+      "mas_scales": [],
+      "menos_scales": [
+        "mecanico",
+        "calculo"
+      ]
+    },
+    {
+      "activity_id": "A0412",
+      "block_id": "B138",
+      "excel_row": 415,
+      "text": "Ser profesor de música",
+      "mas_scales": [],
+      "menos_scales": [
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0414",
+      "block_id": "B138",
+      "excel_row": 417,
+      "text": "Ser dentista",
+      "mas_scales": [],
+      "menos_scales": [
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0415",
+      "block_id": "B139",
+      "excel_row": 418,
+      "text": "Ser Taquígrafo(a) de un tribunal",
+      "mas_scales": [],
+      "menos_scales": [
+        "musical"
+      ]
+    },
+    {
+      "activity_id": "A0417",
+      "block_id": "B139",
+      "excel_row": 420,
+      "text": "Ser consejero vocacional",
+      "mas_scales": [],
+      "menos_scales": [
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0418",
+      "block_id": "B140",
+      "excel_row": 421,
+      "text": "Visitar un museo de ciencias naturales",
+      "mas_scales": [],
+      "menos_scales": [
+        "mecanico",
+        "servicio_social"
+      ]
+    },
+    {
+      "activity_id": "A0421",
+      "block_id": "B141",
+      "excel_row": 424,
+      "text": "Hacer dibujos para revistas",
+      "mas_scales": [],
+      "menos_scales": [
+        "aire_libre"
+      ]
+    },
+    {
+      "activity_id": "A0425",
+      "block_id": "B142",
+      "excel_row": 428,
+      "text": "Servir como mesero de restaurante",
+      "mas_scales": [],
+      "menos_scales": [
+        "aire_libre"
+      ]
+    },
+    {
+      "activity_id": "A0428",
+      "block_id": "B143",
+      "excel_row": 431,
+      "text": "Diseñar equipos para excursionistas",
+      "mas_scales": [],
+      "menos_scales": [
+        "aire_libre",
+        "persuasivo"
+      ]
+    },
+    {
+      "activity_id": "A0437",
+      "block_id": "B146",
+      "excel_row": 440,
+      "text": "Adiestrar perros para los ciegos",
+      "mas_scales": [],
+      "menos_scales": [
+        "calculo",
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0439",
+      "block_id": "B147",
+      "excel_row": 442,
+      "text": "Tomar clases de música moderna",
+      "mas_scales": [],
+      "menos_scales": [
+        "artistico",
+        "literario"
+      ]
+    },
+    {
+      "activity_id": "A0446",
+      "block_id": "B149",
+      "excel_row": 449,
+      "text": "Ser director de una empresa",
+      "mas_scales": [],
+      "menos_scales": [
+        "musical"
+      ]
+    },
+    {
+      "activity_id": "A0447",
+      "block_id": "B149",
+      "excel_row": 450,
+      "text": "Ser director de un plan urbano",
+      "mas_scales": [],
+      "menos_scales": [
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0448",
+      "block_id": "B150",
+      "excel_row": 451,
+      "text": "Cultivar flores",
+      "mas_scales": [],
+      "menos_scales": [
+        "mecanico",
+        "calculo",
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0451",
+      "block_id": "B151",
+      "excel_row": 454,
+      "text": "Trabajar como guía de turistas",
+      "mas_scales": [],
+      "menos_scales": [
+        "musical"
+      ]
+    },
+    {
+      "activity_id": "A0452",
+      "block_id": "B151",
+      "excel_row": 455,
+      "text": "Tallar  joyas finas",
+      "mas_scales": [],
+      "menos_scales": [
+        "musical"
+      ]
+    },
+    {
+      "activity_id": "A0455",
+      "block_id": "B152",
+      "excel_row": 458,
+      "text": "Diseñar \"Ex-libris\"",
+      "mas_scales": [],
+      "menos_scales": [
+        "servicio_social",
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0458",
+      "block_id": "B153",
+      "excel_row": 461,
+      "text": "Ayudar a lavar platos",
+      "mas_scales": [],
+      "menos_scales": [
+        "mecanico"
+      ]
+    },
+    {
+      "activity_id": "A0462",
+      "block_id": "B154",
+      "excel_row": 465,
+      "text": "Vender curiosidades de Oriente",
+      "mas_scales": [],
+      "menos_scales": [
+        "mecanico",
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0466",
+      "block_id": "B156",
+      "excel_row": 469,
+      "text": "Practicar patinaje de figuras",
+      "mas_scales": [],
+      "menos_scales": [
+        "aire_libre"
+      ]
+    },
+    {
+      "activity_id": "A0467",
+      "block_id": "B156",
+      "excel_row": 470,
+      "text": "Jugar tenis",
+      "mas_scales": [],
+      "menos_scales": [
+        "aire_libre"
+      ]
+    },
+    {
+      "activity_id": "A0472",
+      "block_id": "B158",
+      "excel_row": 475,
+      "text": "Trabajar en una fábrica de dulces",
+      "mas_scales": [],
+      "menos_scales": [
+        "aire_libre"
+      ]
+    },
+    {
+      "activity_id": "A0474",
+      "block_id": "B158",
+      "excel_row": 477,
+      "text": "Ser optómetra",
+      "mas_scales": [],
+      "menos_scales": [
+        "aire_libre"
+      ]
+    },
+    {
+      "activity_id": "A0476",
+      "block_id": "B159",
+      "excel_row": 479,
+      "text": "Ser conductor de tren",
+      "mas_scales": [],
+      "menos_scales": [
+        "aire_libre",
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0479",
+      "block_id": "B160",
+      "excel_row": 482,
+      "text": "Enseñar literatura",
+      "mas_scales": [],
+      "menos_scales": [
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0485",
+      "block_id": "B162",
+      "excel_row": 488,
+      "text": "Trabajar en el aseo público",
+      "mas_scales": [],
+      "menos_scales": [
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0487",
+      "block_id": "B163",
+      "excel_row": 490,
+      "text": "Ser  poeta",
+      "mas_scales": [],
+      "menos_scales": [
+        "artistico",
+        "servicio_social"
+      ]
+    },
+    {
+      "activity_id": "A0491",
+      "block_id": "B164",
+      "excel_row": 494,
+      "text": "Jugar a las damas",
+      "mas_scales": [],
+      "menos_scales": [
+        "mecanico",
+        "calculo"
+      ]
+    },
+    {
+      "activity_id": "A0493",
+      "block_id": "B165",
+      "excel_row": 496,
+      "text": "Fundar un periódico",
+      "mas_scales": [],
+      "menos_scales": [
+        "artistico",
+        "musical"
+      ]
+    },
+    {
+      "activity_id": "A0504",
+      "block_id": "B168",
+      "excel_row": 507,
+      "text": "Copiar cartas en máquina",
+      "mas_scales": [],
+      "menos_scales": [
+        "mecanico"
+      ]
+    }
+  ],
+  "activities_with_both_keys": [
+    {
+      "activity_id": "A0001",
+      "block_id": "B001",
+      "excel_row": 4,
+      "text": "En sus viajes observar de preferencia la gente",
+      "mas_scales": [
+        "validez"
+      ],
+      "menos_scales": [
+        "aire_libre"
+      ]
+    },
+    {
+      "activity_id": "A0004",
+      "block_id": "B002",
+      "excel_row": 7,
+      "text": "Ayudarse económicamente dedicando varias horas a un ciego",
+      "mas_scales": [
+        "servicio_social"
+      ],
+      "menos_scales": [
+        "calculo",
+        "persuasivo"
+      ]
+    },
+    {
+      "activity_id": "A0005",
+      "block_id": "B002",
+      "excel_row": 8,
+      "text": "Ayudarse económicamente llevando la estadística de vehiculos que pasan por un retén",
+      "mas_scales": [
+        "calculo"
+      ],
+      "menos_scales": [
+        "persuasivo",
+        "servicio_social"
+      ]
+    },
+    {
+      "activity_id": "A0006",
+      "block_id": "B002",
+      "excel_row": 9,
+      "text": "Ayudarse económicamente haciendo encuestas entre el público",
+      "mas_scales": [
+        "persuasivo"
+      ],
+      "menos_scales": [
+        "calculo",
+        "servicio_social"
+      ]
+    },
+    {
+      "activity_id": "A0007",
+      "block_id": "B003",
+      "excel_row": 10,
+      "text": "Visitar lugares de diversión en una feria de pueblo",
+      "mas_scales": [
+        "validez"
+      ],
+      "menos_scales": [
+        "aire_libre"
+      ]
+    },
+    {
+      "activity_id": "A0022",
+      "block_id": "B008",
+      "excel_row": 25,
+      "text": "Vender frutas",
+      "mas_scales": [
+        "persuasivo"
+      ],
+      "menos_scales": [
+        "aire_libre",
+        "musical"
+      ]
+    },
+    {
+      "activity_id": "A0023",
+      "block_id": "B008",
+      "excel_row": 26,
+      "text": "Ser un pianista profesional",
+      "mas_scales": [
+        "musical"
+      ],
+      "menos_scales": [
+        "aire_libre",
+        "persuasivo"
+      ]
+    },
+    {
+      "activity_id": "A0024",
+      "block_id": "B008",
+      "excel_row": 27,
+      "text": "Cultivar hortalizas",
+      "mas_scales": [
+        "aire_libre"
+      ],
+      "menos_scales": [
+        "persuasivo",
+        "musical"
+      ]
+    },
+    {
+      "activity_id": "A0028",
+      "block_id": "B010",
+      "excel_row": 31,
+      "text": "Visitar un museo de ciencias",
+      "mas_scales": [
+        "cientifico"
+      ],
+      "menos_scales": [
+        "mecanico",
+        "persuasivo"
+      ]
+    },
+    {
+      "activity_id": "A0030",
+      "block_id": "B010",
+      "excel_row": 33,
+      "text": "Visitar una fábrica de máquinas de escribir",
+      "mas_scales": [
+        "mecanico"
+      ],
+      "menos_scales": [
+        "cientifico",
+        "persuasivo"
+      ]
+    },
+    {
+      "activity_id": "A0034",
+      "block_id": "B012",
+      "excel_row": 37,
+      "text": "Recibir clases de dibujo",
+      "mas_scales": [
+        "artistico"
+      ],
+      "menos_scales": [
+        "mecanico",
+        "cientifico"
+      ]
+    },
+    {
+      "activity_id": "A0035",
+      "block_id": "B012",
+      "excel_row": 38,
+      "text": "Recibir clases de biología",
+      "mas_scales": [
+        "cientifico"
+      ],
+      "menos_scales": [
+        "mecanico",
+        "artistico"
+      ]
+    },
+    {
+      "activity_id": "A0036",
+      "block_id": "B012",
+      "excel_row": 39,
+      "text": "Recibir clases de metalistería",
+      "mas_scales": [
+        "mecanico"
+      ],
+      "menos_scales": [
+        "cientifico",
+        "artistico"
+      ]
+    },
+    {
+      "activity_id": "A0040",
+      "block_id": "B014",
+      "excel_row": 43,
+      "text": "Tratar de arreglar una máquina de coser dañada",
+      "mas_scales": [
+        "mecanico"
+      ],
+      "menos_scales": [
+        "artistico",
+        "musical"
+      ]
+    },
+    {
+      "activity_id": "A0041",
+      "block_id": "B014",
+      "excel_row": 44,
+      "text": "Tocar el piano",
+      "mas_scales": [
+        "musical"
+      ],
+      "menos_scales": [
+        "mecanico",
+        "artistico"
+      ]
+    },
+    {
+      "activity_id": "A0042",
+      "block_id": "B014",
+      "excel_row": 45,
+      "text": "Hacer el bosquejo de un escena interesante",
+      "mas_scales": [
+        "artistico"
+      ],
+      "menos_scales": [
+        "mecanico",
+        "musical"
+      ]
+    },
+    {
+      "activity_id": "A0050",
+      "block_id": "B017",
+      "excel_row": 53,
+      "text": "Ser autoridad en erosión de suelos",
+      "mas_scales": [
+        "aire_libre"
+      ],
+      "menos_scales": [
+        "persuasivo"
+      ]
+    },
+    {
+      "activity_id": "A0051",
+      "block_id": "B017",
+      "excel_row": 54,
+      "text": "Ser autoridad en materia  de propaganda gráfica",
+      "mas_scales": [
+        "persuasivo"
+      ],
+      "menos_scales": [
+        "aire_libre"
+      ]
+    },
+    {
+      "activity_id": "A0059",
+      "block_id": "B020",
+      "excel_row": 62,
+      "text": "Cazar animales raros para un museo",
+      "mas_scales": [
+        "aire_libre",
+        "cientifico"
+      ],
+      "menos_scales": [
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0060",
+      "block_id": "B020",
+      "excel_row": 63,
+      "text": "Pagar cheques al público en un banco",
+      "mas_scales": [
+        "oficina"
+      ],
+      "menos_scales": [
+        "aire_libre",
+        "cientifico"
+      ]
+    },
+    {
+      "activity_id": "A0061",
+      "block_id": "B021",
+      "excel_row": 64,
+      "text": "Pertenecer a una sociedad que estudie los problemas del mundo contemporáneo",
+      "mas_scales": [
+        "servicio_social"
+      ],
+      "menos_scales": [
+        "cientifico"
+      ]
+    },
+    {
+      "activity_id": "A0063",
+      "block_id": "B021",
+      "excel_row": 66,
+      "text": "Pertenecer a una sociedad de aficionados a los estudios astronómicos",
+      "mas_scales": [
+        "cientifico"
+      ],
+      "menos_scales": [
+        "servicio_social"
+      ]
+    },
+    {
+      "activity_id": "A0067",
+      "block_id": "B023",
+      "excel_row": 70,
+      "text": "Enseñar castellano a los extranjeros",
+      "mas_scales": [
+        "servicio_social"
+      ],
+      "menos_scales": [
+        "persuasivo"
+      ]
+    },
+    {
+      "activity_id": "A0068",
+      "block_id": "B023",
+      "excel_row": 71,
+      "text": "Vender pólizas de seguros",
+      "mas_scales": [
+        "persuasivo"
+      ],
+      "menos_scales": [
+        "servicio_social"
+      ]
+    },
+    {
+      "activity_id": "A0071",
+      "block_id": "B024",
+      "excel_row": 74,
+      "text": "Dirigir la propaganda para floristerías",
+      "mas_scales": [
+        "persuasivo"
+      ],
+      "menos_scales": [
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0072",
+      "block_id": "B024",
+      "excel_row": 75,
+      "text": "Atender pedidos telefonicos en una floristería",
+      "mas_scales": [
+        "oficina"
+      ],
+      "menos_scales": [
+        "persuasivo"
+      ]
+    },
+    {
+      "activity_id": "A0073",
+      "block_id": "B025",
+      "excel_row": 76,
+      "text": "Dirigir investigaciones sobre los métodos de la propaganda comercial",
+      "mas_scales": [
+        "persuasivo"
+      ],
+      "menos_scales": [
+        "artistico"
+      ]
+    },
+    {
+      "activity_id": "A0076",
+      "block_id": "B026",
+      "excel_row": 79,
+      "text": "Dibujar cuadros para un libro de historia universal",
+      "mas_scales": [
+        "artistico"
+      ],
+      "menos_scales": [
+        "cientifico"
+      ]
+    },
+    {
+      "activity_id": "A0077",
+      "block_id": "B026",
+      "excel_row": 80,
+      "text": "Producir una nueva variedad de naranjas sin semilla",
+      "mas_scales": [
+        "cientifico"
+      ],
+      "menos_scales": [
+        "artistico"
+      ]
+    },
+    {
+      "activity_id": "A0079",
+      "block_id": "B027",
+      "excel_row": 82,
+      "text": "Costear en parte sus estudios trabajando como ayudante de laboratorio",
+      "mas_scales": [
+        "cientifico"
+      ],
+      "menos_scales": [
+        "musical",
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0080",
+      "block_id": "B027",
+      "excel_row": 83,
+      "text": "Costearlos en parte ayudando en la secretaría del plantel donde estudia",
+      "mas_scales": [
+        "oficina"
+      ],
+      "menos_scales": [
+        "cientifico",
+        "musical"
+      ]
+    },
+    {
+      "activity_id": "A0081",
+      "block_id": "B027",
+      "excel_row": 84,
+      "text": "Costear en parte sus estudios tocando en una orquesta",
+      "mas_scales": [
+        "musical"
+      ],
+      "menos_scales": [
+        "cientifico",
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0083",
+      "block_id": "B028",
+      "excel_row": 86,
+      "text": "Buscar datos que arrojen nueva luz sobre un célebre acontecimiento histórico",
+      "mas_scales": [
+        "cientifico"
+      ],
+      "menos_scales": [
+        "musical"
+      ]
+    },
+    {
+      "activity_id": "A0084",
+      "block_id": "B028",
+      "excel_row": 87,
+      "text": "Escribir una comedia musical",
+      "mas_scales": [
+        "musical"
+      ],
+      "menos_scales": [
+        "cientifico"
+      ]
+    },
+    {
+      "activity_id": "A0085",
+      "block_id": "B029",
+      "excel_row": 88,
+      "text": "Enseñar castellano",
+      "mas_scales": [
+        "literario"
+      ],
+      "menos_scales": [
+        "persuasivo",
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0086",
+      "block_id": "B029",
+      "excel_row": 89,
+      "text": "Atender pedidos telefónicos en un almacén",
+      "mas_scales": [
+        "oficina"
+      ],
+      "menos_scales": [
+        "persuasivo",
+        "literario"
+      ]
+    },
+    {
+      "activity_id": "A0087",
+      "block_id": "B029",
+      "excel_row": 90,
+      "text": "Hacer encuestas de opinión pública sobre temas de actualidad",
+      "mas_scales": [
+        "persuasivo"
+      ],
+      "menos_scales": [
+        "literario",
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0098",
+      "block_id": "B033",
+      "excel_row": 101,
+      "text": "Trabajar en una estación meteorológica en la ciudad",
+      "mas_scales": [
+        "validez"
+      ],
+      "menos_scales": [
+        "aire_libre"
+      ]
+    },
+    {
+      "activity_id": "A0100",
+      "block_id": "B034",
+      "excel_row": 103,
+      "text": "Tener fama como director investigaciones científicas",
+      "mas_scales": [
+        "cientifico"
+      ],
+      "menos_scales": [
+        "literario",
+        "servicio_social"
+      ]
+    },
+    {
+      "activity_id": "A0101",
+      "block_id": "B034",
+      "excel_row": 104,
+      "text": "Tener fama como trabajador en el cuerpo de acción social",
+      "mas_scales": [
+        "servicio_social"
+      ],
+      "menos_scales": [
+        "cientifico",
+        "literario"
+      ]
+    },
+    {
+      "activity_id": "A0102",
+      "block_id": "B034",
+      "excel_row": 105,
+      "text": "Tener fama como crítico literario.",
+      "mas_scales": [
+        "literario"
+      ],
+      "menos_scales": [
+        "cientifico",
+        "servicio_social"
+      ]
+    },
+    {
+      "activity_id": "A0106",
+      "block_id": "B036",
+      "excel_row": 109,
+      "text": "Entrevistar a las personas que soliciten la ayuda de la beneficencia",
+      "mas_scales": [
+        "servicio_social"
+      ],
+      "menos_scales": [
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0110",
+      "block_id": "B037",
+      "excel_row": 113,
+      "text": "Preparar una nueva aleación de metales , más liviana y resistente",
+      "mas_scales": [
+        "cientifico"
+      ],
+      "menos_scales": [
+        "servicio_social",
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0111",
+      "block_id": "B037",
+      "excel_row": 114,
+      "text": "Administrar un moderno campamento para obreros.",
+      "mas_scales": [
+        "servicio_social"
+      ],
+      "menos_scales": [
+        "cientifico",
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0113",
+      "block_id": "B038",
+      "excel_row": 116,
+      "text": "Visitar el centro de diverciones  de un barrio popular",
+      "mas_scales": [
+        "servicio_social"
+      ],
+      "menos_scales": [
+        "cientifico"
+      ]
+    },
+    {
+      "activity_id": "A0114",
+      "block_id": "B038",
+      "excel_row": 117,
+      "text": "Visitar un celebre laboratorio de investigaciones médicas",
+      "mas_scales": [
+        "cientifico"
+      ],
+      "menos_scales": [
+        "servicio_social"
+      ]
+    },
+    {
+      "activity_id": "A0119",
+      "block_id": "B040",
+      "excel_row": 122,
+      "text": "Descubrir un remedio contra el asma",
+      "mas_scales": [
+        "cientifico",
+        "servicio_social"
+      ],
+      "menos_scales": [
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0122",
+      "block_id": "B041",
+      "excel_row": 125,
+      "text": "Leer un libro sobre las primitivas formas de la música",
+      "mas_scales": [
+        "musical"
+      ],
+      "menos_scales": [
+        "cientifico"
+      ]
+    },
+    {
+      "activity_id": "A0123",
+      "block_id": "B041",
+      "excel_row": 126,
+      "text": "Leer un libro sobre la influencia del lenguaje en el comportamiento",
+      "mas_scales": [
+        "cientifico"
+      ],
+      "menos_scales": [
+        "musical"
+      ]
+    },
+    {
+      "activity_id": "A0124",
+      "block_id": "B042",
+      "excel_row": 127,
+      "text": "Hacer un análisis químico de nuevos productos comerciales",
+      "mas_scales": [
+        "cientifico"
+      ],
+      "menos_scales": [
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0125",
+      "block_id": "B042",
+      "excel_row": 128,
+      "text": "Trabajar en el perfeccionamiento del \"Pulmón artificial\"para que proporcione mayor comodidad al enfermo",
+      "mas_scales": [
+        "cientifico"
+      ],
+      "menos_scales": [
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0126",
+      "block_id": "B042",
+      "excel_row": 129,
+      "text": "Confeccionar gráficas del estado financiero de una empresa",
+      "mas_scales": [
+        "oficina"
+      ],
+      "menos_scales": [
+        "cientifico"
+      ]
+    },
+    {
+      "activity_id": "A0133",
+      "block_id": "B045",
+      "excel_row": 136,
+      "text": "Recolectar dinero para una obra de beneficiencia",
+      "mas_scales": [
+        "persuasivo"
+      ],
+      "menos_scales": [
+        "literario",
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0134",
+      "block_id": "B045",
+      "excel_row": 137,
+      "text": "Redactar informes diarios sobre el progreso de la campaña de recolección de estos fondos",
+      "mas_scales": [
+        "literario"
+      ],
+      "menos_scales": [
+        "persuasivo",
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0135",
+      "block_id": "B045",
+      "excel_row": 138,
+      "text": "Contabilizar los fondos recolectados a medida que estos van ingresando",
+      "mas_scales": [
+        "oficina"
+      ],
+      "menos_scales": [
+        "persuasivo",
+        "literario"
+      ]
+    },
+    {
+      "activity_id": "A0137",
+      "block_id": "B046",
+      "excel_row": 140,
+      "text": "Repartir las invitaciones para la boda",
+      "mas_scales": [
+        "oficina"
+      ],
+      "menos_scales": [
+        "literario"
+      ]
+    },
+    {
+      "activity_id": "A0138",
+      "block_id": "B046",
+      "excel_row": 141,
+      "text": "Escribir un comentario en la prensa sobre su celebración",
+      "mas_scales": [
+        "literario"
+      ],
+      "menos_scales": [
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0142",
+      "block_id": "B048",
+      "excel_row": 145,
+      "text": "Investigar la eficiencia de los métodos para incrementar ventas",
+      "mas_scales": [
+        "persuasivo"
+      ],
+      "menos_scales": [
+        "aire_libre",
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0143",
+      "block_id": "B048",
+      "excel_row": 146,
+      "text": "Clasificar la cartas en una oficina de correos",
+      "mas_scales": [
+        "oficina"
+      ],
+      "menos_scales": [
+        "aire_libre",
+        "persuasivo"
+      ]
+    },
+    {
+      "activity_id": "A0144",
+      "block_id": "B048",
+      "excel_row": 147,
+      "text": "Criar pollos",
+      "mas_scales": [
+        "aire_libre"
+      ],
+      "menos_scales": [
+        "persuasivo",
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0145",
+      "block_id": "B049",
+      "excel_row": 148,
+      "text": "Escribir en un periódico la página dedicada a sucesos de actualidad",
+      "mas_scales": [
+        "literario"
+      ],
+      "menos_scales": [
+        "cientifico",
+        "servicio_social"
+      ]
+    },
+    {
+      "activity_id": "A0146",
+      "block_id": "B049",
+      "excel_row": 149,
+      "text": "Dictar conferencias populares sobre química",
+      "mas_scales": [
+        "cientifico"
+      ],
+      "menos_scales": [
+        "literario",
+        "servicio_social"
+      ]
+    },
+    {
+      "activity_id": "A0147",
+      "block_id": "B049",
+      "excel_row": 150,
+      "text": "Ayudar a los jovenes a descubrir su vocación",
+      "mas_scales": [
+        "servicio_social"
+      ],
+      "menos_scales": [
+        "cientifico",
+        "literario"
+      ]
+    },
+    {
+      "activity_id": "A0152",
+      "block_id": "B051",
+      "excel_row": 155,
+      "text": "Dirigir investigaciones sobre la televisión",
+      "mas_scales": [
+        "cientifico"
+      ],
+      "menos_scales": [
+        "persuasivo",
+        "servicio_social",
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0153",
+      "block_id": "B051",
+      "excel_row": 156,
+      "text": "Dirigir programas recreativos en una institución de beneficencia",
+      "mas_scales": [
+        "servicio_social"
+      ],
+      "menos_scales": [
+        "cientifico",
+        "persuasivo",
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0155",
+      "block_id": "B052",
+      "excel_row": 158,
+      "text": "Entrevistar personas que hacen solicitud de empleo",
+      "mas_scales": [
+        "persuasivo"
+      ],
+      "menos_scales": [
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0156",
+      "block_id": "B052",
+      "excel_row": 159,
+      "text": "Trabajar como secretario(a) privado(a)",
+      "mas_scales": [
+        "oficina"
+      ],
+      "menos_scales": [
+        "persuasivo"
+      ]
+    },
+    {
+      "activity_id": "A0158",
+      "block_id": "B053",
+      "excel_row": 161,
+      "text": "Redactar propaganda para artículos eléctricos",
+      "mas_scales": [
+        "persuasivo"
+      ],
+      "menos_scales": [
+        "aire_libre",
+        "artistico"
+      ]
+    },
+    {
+      "activity_id": "A0159",
+      "block_id": "B053",
+      "excel_row": 162,
+      "text": "Cultivar una huerta",
+      "mas_scales": [
+        "aire_libre"
+      ],
+      "menos_scales": [
+        "persuasivo",
+        "artistico"
+      ]
+    },
+    {
+      "activity_id": "A0160",
+      "block_id": "B054",
+      "excel_row": 163,
+      "text": "Ensayar la hechura de dulces cuya receta usted no conoce",
+      "mas_scales": [
+        "cientifico"
+      ],
+      "menos_scales": [
+        "artistico",
+        "servicio_social"
+      ]
+    },
+    {
+      "activity_id": "A0161",
+      "block_id": "B054",
+      "excel_row": 164,
+      "text": "Contar cuentos a los niños",
+      "mas_scales": [
+        "servicio_social"
+      ],
+      "menos_scales": [
+        "cientifico",
+        "artistico"
+      ]
+    },
+    {
+      "activity_id": "A0162",
+      "block_id": "B054",
+      "excel_row": 165,
+      "text": "Pintar acuarelas",
+      "mas_scales": [
+        "artistico"
+      ],
+      "menos_scales": [
+        "cientifico",
+        "servicio_social"
+      ]
+    },
+    {
+      "activity_id": "A0163",
+      "block_id": "B055",
+      "excel_row": 166,
+      "text": "Hacer investigaciones químicas",
+      "mas_scales": [
+        "cientifico"
+      ],
+      "menos_scales": [
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0164",
+      "block_id": "B055",
+      "excel_row": 167,
+      "text": "Entrevistar la las personas que soliciten empleo",
+      "mas_scales": [
+        "oficina"
+      ],
+      "menos_scales": [
+        "cientifico"
+      ]
+    },
+    {
+      "activity_id": "A0166",
+      "block_id": "B056",
+      "excel_row": 169,
+      "text": "Bosquejar una escena interesante",
+      "mas_scales": [
+        "artistico"
+      ],
+      "menos_scales": [
+        "mecanico",
+        "cientifico"
+      ]
+    },
+    {
+      "activity_id": "A0167",
+      "block_id": "B056",
+      "excel_row": 170,
+      "text": "Ensayar varios tipos de aeromodelos para ver cual resulta mejor",
+      "mas_scales": [
+        "mecanico",
+        "cientifico"
+      ],
+      "menos_scales": [
+        "artistico"
+      ]
+    },
+    {
+      "activity_id": "A0169",
+      "block_id": "B057",
+      "excel_row": 172,
+      "text": "Vender boletas para una función de aficionados",
+      "mas_scales": [
+        "persuasivo"
+      ],
+      "menos_scales": [
+        "calculo"
+      ]
+    },
+    {
+      "activity_id": "A0171",
+      "block_id": "B057",
+      "excel_row": 174,
+      "text": "Actuar como tesorero de la función",
+      "mas_scales": [
+        "calculo"
+      ],
+      "menos_scales": [
+        "persuasivo"
+      ]
+    },
+    {
+      "activity_id": "A0172",
+      "block_id": "B058",
+      "excel_row": 175,
+      "text": "Calcular el costo de fabricación de un nuevo modelo de lavadoras",
+      "mas_scales": [
+        "calculo"
+      ],
+      "menos_scales": [
+        "persuasivo",
+        "servicio_social"
+      ]
+    },
+    {
+      "activity_id": "A0173",
+      "block_id": "B058",
+      "excel_row": 176,
+      "text": "Convencer a un grupo de capitalistas para que financien la fabricación de estas lavadoras",
+      "mas_scales": [
+        "persuasivo"
+      ],
+      "menos_scales": [
+        "calculo",
+        "servicio_social"
+      ]
+    },
+    {
+      "activity_id": "A0174",
+      "block_id": "B058",
+      "excel_row": 177,
+      "text": "Enseñar a la gente el funcionamiento del nuevo modelo de lavadoras",
+      "mas_scales": [
+        "servicio_social"
+      ],
+      "menos_scales": [
+        "calculo",
+        "persuasivo"
+      ]
+    },
+    {
+      "activity_id": "A0175",
+      "block_id": "B059",
+      "excel_row": 178,
+      "text": "Analizar los resultados de encuestas hechas al público",
+      "mas_scales": [
+        "calculo"
+      ],
+      "menos_scales": [
+        "literario"
+      ]
+    },
+    {
+      "activity_id": "A0176",
+      "block_id": "B059",
+      "excel_row": 179,
+      "text": "Escribir editoriales para un periódico",
+      "mas_scales": [
+        "literario"
+      ],
+      "menos_scales": [
+        "calculo",
+        "servicio_social",
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0177",
+      "block_id": "B059",
+      "excel_row": 180,
+      "text": "Enseñar trabajos manuales en un asilo de niños desamparados",
+      "mas_scales": [
+        "servicio_social"
+      ],
+      "menos_scales": [
+        "calculo",
+        "literario",
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0178",
+      "block_id": "B060",
+      "excel_row": 181,
+      "text": "Leer acerca de las causas de varias enfermedades",
+      "mas_scales": [
+        "servicio_social"
+      ],
+      "menos_scales": [
+        "aire_libre",
+        "persuasivo"
+      ]
+    },
+    {
+      "activity_id": "A0179",
+      "block_id": "B060",
+      "excel_row": 182,
+      "text": "Leer acerca de cómo lograron éxito los grandes capitanes de la industria",
+      "mas_scales": [
+        "persuasivo"
+      ],
+      "menos_scales": [
+        "aire_libre",
+        "servicio_social"
+      ]
+    },
+    {
+      "activity_id": "A0180",
+      "block_id": "B060",
+      "excel_row": 183,
+      "text": "Leer acerca de los métodos empleados en la cría de ganados",
+      "mas_scales": [
+        "aire_libre"
+      ],
+      "menos_scales": [
+        "persuasivo",
+        "servicio_social"
+      ]
+    },
+    {
+      "activity_id": "A0185",
+      "block_id": "B062",
+      "excel_row": 188,
+      "text": "Producir semillas para la venta",
+      "mas_scales": [
+        "aire_libre"
+      ],
+      "menos_scales": [
+        "cientifico",
+        "persuasivo"
+      ]
+    },
+    {
+      "activity_id": "A0186",
+      "block_id": "B062",
+      "excel_row": 189,
+      "text": "Criar ratones blancos para usos científicos",
+      "mas_scales": [
+        "aire_libre",
+        "cientifico"
+      ],
+      "menos_scales": [
+        "persuasivo"
+      ]
+    },
+    {
+      "activity_id": "A0187",
+      "block_id": "B063",
+      "excel_row": 190,
+      "text": "Hacer experimentos de laboratorio",
+      "mas_scales": [
+        "cientifico"
+      ],
+      "menos_scales": [
+        "persuasivo"
+      ]
+    },
+    {
+      "activity_id": "A0194",
+      "block_id": "B065",
+      "excel_row": 197,
+      "text": "Dirigir investigaciones para encontrar un nuevo sustituto al caucho",
+      "mas_scales": [
+        "cientifico"
+      ],
+      "menos_scales": [
+        "musical"
+      ]
+    },
+    {
+      "activity_id": "A0195",
+      "block_id": "B065",
+      "excel_row": 198,
+      "text": "Ser comentarista musical de una radioemisora",
+      "mas_scales": [
+        "musical"
+      ],
+      "menos_scales": [
+        "cientifico"
+      ]
+    },
+    {
+      "activity_id": "A0197",
+      "block_id": "B066",
+      "excel_row": 200,
+      "text": "Vender instrumentos musicales",
+      "mas_scales": [
+        "persuasivo",
+        "musical"
+      ],
+      "menos_scales": [
+        "mecanico",
+        "servicio_social"
+      ]
+    },
+    {
+      "activity_id": "A0198",
+      "block_id": "B066",
+      "excel_row": 201,
+      "text": "Reparar artefactos de uso casero",
+      "mas_scales": [
+        "mecanico"
+      ],
+      "menos_scales": [
+        "persuasivo",
+        "musical",
+        "servicio_social"
+      ]
+    },
+    {
+      "activity_id": "A0201",
+      "block_id": "B067",
+      "excel_row": 204,
+      "text": "Perfeccionar los métodos para la fabricación de floreros",
+      "mas_scales": [
+        "cientifico"
+      ],
+      "menos_scales": [
+        "persuasivo",
+        "artistico"
+      ]
+    },
+    {
+      "activity_id": "A0202",
+      "block_id": "B068",
+      "excel_row": 205,
+      "text": "Trabajar como cajero en un restaurante de gran movimiento",
+      "mas_scales": [
+        "oficina"
+      ],
+      "menos_scales": [
+        "mecanico",
+        "cientifico"
+      ]
+    },
+    {
+      "activity_id": "A0203",
+      "block_id": "B068",
+      "excel_row": 206,
+      "text": "Enseñar a los niños la construcción de aeromodelos",
+      "mas_scales": [
+        "mecanico"
+      ],
+      "menos_scales": [
+        "cientifico",
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0204",
+      "block_id": "B068",
+      "excel_row": 207,
+      "text": "Llevar el registro de las investigaciones médicas que adelanta un científico",
+      "mas_scales": [
+        "cientifico",
+        "oficina"
+      ],
+      "menos_scales": [
+        "mecanico"
+      ]
+    },
+    {
+      "activity_id": "A0205",
+      "block_id": "B069",
+      "excel_row": 208,
+      "text": "Dirigir un campo de juegos para niños pobres",
+      "mas_scales": [
+        "servicio_social",
+        "validez"
+      ],
+      "menos_scales": [
+        "cientifico"
+      ]
+    },
+    {
+      "activity_id": "A0207",
+      "block_id": "B069",
+      "excel_row": 210,
+      "text": "Vender productos químicos",
+      "mas_scales": [
+        "cientifico",
+        "validez"
+      ],
+      "menos_scales": [
+        "servicio_social"
+      ]
+    },
+    {
+      "activity_id": "A0212",
+      "block_id": "B071",
+      "excel_row": 215,
+      "text": "Organizar la impresión de programas y boletas para la función",
+      "mas_scales": [
+        "oficina"
+      ],
+      "menos_scales": [
+        "literario"
+      ]
+    },
+    {
+      "activity_id": "A0213",
+      "block_id": "B071",
+      "excel_row": 216,
+      "text": "Escribir el argumento de la pieza teatral que se va a representa",
+      "mas_scales": [
+        "literario"
+      ],
+      "menos_scales": [
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0217",
+      "block_id": "B073",
+      "excel_row": 220,
+      "text": "Redactar un aviso de propaganda para un nuevo modelo de lavadoras",
+      "mas_scales": [
+        "persuasivo"
+      ],
+      "menos_scales": [
+        "calculo"
+      ]
+    },
+    {
+      "activity_id": "A0218",
+      "block_id": "B073",
+      "excel_row": 221,
+      "text": "Calcular el precio de costo para la fabricación de esta lavadora",
+      "mas_scales": [
+        "calculo"
+      ],
+      "menos_scales": [
+        "persuasivo"
+      ]
+    },
+    {
+      "activity_id": "A0219",
+      "block_id": "B073",
+      "excel_row": 222,
+      "text": "Vender lavadoras",
+      "mas_scales": [
+        "persuasivo"
+      ],
+      "menos_scales": [
+        "calculo"
+      ]
+    },
+    {
+      "activity_id": "A0223",
+      "block_id": "B075",
+      "excel_row": 226,
+      "text": "Ser explorador",
+      "mas_scales": [
+        "aire_libre"
+      ],
+      "menos_scales": [
+        "cientifico"
+      ]
+    },
+    {
+      "activity_id": "A0225",
+      "block_id": "B075",
+      "excel_row": 228,
+      "text": "Ser inventor",
+      "mas_scales": [
+        "cientifico"
+      ],
+      "menos_scales": [
+        "aire_libre"
+      ]
+    },
+    {
+      "activity_id": "A0226",
+      "block_id": "B076",
+      "excel_row": 229,
+      "text": "Trabajar en la cosecha de café",
+      "mas_scales": [
+        "aire_libre"
+      ],
+      "menos_scales": [
+        "cientifico"
+      ]
+    },
+    {
+      "activity_id": "A0227",
+      "block_id": "B076",
+      "excel_row": 230,
+      "text": "Trabajar como tractorista en una hacienda",
+      "mas_scales": [
+        "aire_libre"
+      ],
+      "menos_scales": [
+        "cientifico"
+      ]
+    },
+    {
+      "activity_id": "A0228",
+      "block_id": "B076",
+      "excel_row": 231,
+      "text": "Trabajar en un laboratorio de productos químicos",
+      "mas_scales": [
+        "cientifico"
+      ],
+      "menos_scales": [
+        "aire_libre"
+      ]
+    },
+    {
+      "activity_id": "A0230",
+      "block_id": "B077",
+      "excel_row": 233,
+      "text": "Estudiar sociología",
+      "mas_scales": [
+        "cientifico"
+      ],
+      "menos_scales": [
+        "literario"
+      ]
+    },
+    {
+      "activity_id": "A0231",
+      "block_id": "B077",
+      "excel_row": 234,
+      "text": "Estudiar composición literaria",
+      "mas_scales": [
+        "literario"
+      ],
+      "menos_scales": [
+        "cientifico"
+      ]
+    },
+    {
+      "activity_id": "A0232",
+      "block_id": "B078",
+      "excel_row": 235,
+      "text": "Manejar una máquina calculadora",
+      "mas_scales": [
+        "oficina"
+      ],
+      "menos_scales": [
+        "persuasivo"
+      ]
+    },
+    {
+      "activity_id": "A0233",
+      "block_id": "B078",
+      "excel_row": 236,
+      "text": "Ensamblar máquinas calculadoras en una fábrica",
+      "mas_scales": [
+        "mecanico"
+      ],
+      "menos_scales": [
+        "calculo",
+        "persuasivo",
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0234",
+      "block_id": "B078",
+      "excel_row": 237,
+      "text": "Vender máquinas calculadoras",
+      "mas_scales": [
+        "persuasivo"
+      ],
+      "menos_scales": [
+        "mecanico",
+        "calculo",
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0235",
+      "block_id": "B079",
+      "excel_row": 238,
+      "text": "Construir lanchas",
+      "mas_scales": [
+        "mecanico"
+      ],
+      "menos_scales": [
+        "persuasivo",
+        "musical",
+        "servicio_social"
+      ]
+    },
+    {
+      "activity_id": "A0236",
+      "block_id": "B079",
+      "excel_row": 239,
+      "text": "Intervenir en el arreglo de conflictos laborales",
+      "mas_scales": [
+        "persuasivo"
+      ],
+      "menos_scales": [
+        "mecanico"
+      ]
+    },
+    {
+      "activity_id": "A0237",
+      "block_id": "B079",
+      "excel_row": 240,
+      "text": "Componer música",
+      "mas_scales": [
+        "musical"
+      ],
+      "menos_scales": [
+        "mecanico",
+        "persuasivo",
+        "servicio_social"
+      ]
+    },
+    {
+      "activity_id": "A0238",
+      "block_id": "B080",
+      "excel_row": 241,
+      "text": "Ser el mejor vendedor de tractores y otros implementos agrícolas",
+      "mas_scales": [
+        "mecanico",
+        "persuasivo"
+      ],
+      "menos_scales": [
+        "calculo"
+      ]
+    },
+    {
+      "activity_id": "A0242",
+      "block_id": "B081",
+      "excel_row": 245,
+      "text": "Ser enfermero (a) de profesión",
+      "mas_scales": [
+        "servicio_social"
+      ],
+      "menos_scales": [
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0244",
+      "block_id": "B082",
+      "excel_row": 247,
+      "text": "Reparar un daño en la plancha eléctrica",
+      "mas_scales": [
+        "mecanico"
+      ],
+      "menos_scales": [
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0246",
+      "block_id": "B082",
+      "excel_row": 249,
+      "text": "Escribir una carta a máquina por petición de un amigo",
+      "mas_scales": [
+        "oficina"
+      ],
+      "menos_scales": [
+        "mecanico"
+      ]
+    },
+    {
+      "activity_id": "A0247",
+      "block_id": "B083",
+      "excel_row": 250,
+      "text": "Manejar un almacén de música",
+      "mas_scales": [
+        "musical"
+      ],
+      "menos_scales": [
+        "mecanico",
+        "servicio_social"
+      ]
+    },
+    {
+      "activity_id": "A0248",
+      "block_id": "B083",
+      "excel_row": 251,
+      "text": "Hacer palanos arquitectónicos",
+      "mas_scales": [
+        "mecanico"
+      ],
+      "menos_scales": [
+        "musical",
+        "servicio_social"
+      ]
+    },
+    {
+      "activity_id": "A0253",
+      "block_id": "B085",
+      "excel_row": 256,
+      "text": "Llevar la contabilidad de una empresa importante",
+      "mas_scales": [
+        "calculo"
+      ],
+      "menos_scales": [
+        "aire_libre"
+      ]
+    },
+    {
+      "activity_id": "A0254",
+      "block_id": "B085",
+      "excel_row": 257,
+      "text": "Desarrollar nuevas variedades de flores",
+      "mas_scales": [
+        "aire_libre"
+      ],
+      "menos_scales": [
+        "calculo",
+        "servicio_social",
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0255",
+      "block_id": "B085",
+      "excel_row": 258,
+      "text": "Ser psicólogo profesional y atender consultas personales",
+      "mas_scales": [
+        "servicio_social"
+      ],
+      "menos_scales": [
+        "aire_libre",
+        "calculo",
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0259",
+      "block_id": "B087",
+      "excel_row": 262,
+      "text": "Ser visitador (a) social",
+      "mas_scales": [
+        "servicio_social"
+      ],
+      "menos_scales": [
+        "persuasivo",
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0261",
+      "block_id": "B087",
+      "excel_row": 264,
+      "text": "Preparar la propaganda para una casa editorial",
+      "mas_scales": [
+        "persuasivo"
+      ],
+      "menos_scales": [
+        "servicio_social",
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0270",
+      "block_id": "B090",
+      "excel_row": 273,
+      "text": "Ser apuntador en una obra teatral de aficionados",
+      "mas_scales": [
+        "persuasivo"
+      ],
+      "menos_scales": [
+        "artistico",
+        "literario"
+      ]
+    },
+    {
+      "activity_id": "A0271",
+      "block_id": "B091",
+      "excel_row": 274,
+      "text": "Ser médico",
+      "mas_scales": [
+        "cientifico",
+        "servicio_social"
+      ],
+      "menos_scales": [
+        "artistico",
+        "literario"
+      ]
+    },
+    {
+      "activity_id": "A0272",
+      "block_id": "B091",
+      "excel_row": 275,
+      "text": "Ser escultor",
+      "mas_scales": [
+        "artistico"
+      ],
+      "menos_scales": [
+        "cientifico",
+        "literario",
+        "servicio_social"
+      ]
+    },
+    {
+      "activity_id": "A0276",
+      "block_id": "B092",
+      "excel_row": 279,
+      "text": "Tener a su cargo la reparación de máquinas de escribir",
+      "mas_scales": [
+        "mecanico"
+      ],
+      "menos_scales": [
+        "calculo"
+      ]
+    },
+    {
+      "activity_id": "A0284",
+      "block_id": "B095",
+      "excel_row": 287,
+      "text": "Solicitar propaganda para una revista",
+      "mas_scales": [
+        "persuasivo"
+      ],
+      "menos_scales": [
+        "mecanico",
+        "artistico"
+      ]
+    },
+    {
+      "activity_id": "A0285",
+      "block_id": "B095",
+      "excel_row": 288,
+      "text": "Reparar relojes",
+      "mas_scales": [
+        "mecanico"
+      ],
+      "menos_scales": [
+        "persuasivo",
+        "artistico"
+      ]
+    },
+    {
+      "activity_id": "A0289",
+      "block_id": "B097",
+      "excel_row": 292,
+      "text": "Tomar parte en una expedición en busca de animales raros",
+      "mas_scales": [
+        "cientifico"
+      ],
+      "menos_scales": [
+        "servicio_social"
+      ]
+    },
+    {
+      "activity_id": "A0291",
+      "block_id": "B097",
+      "excel_row": 294,
+      "text": "Trabajar en una entidad de beneficencia",
+      "mas_scales": [
+        "servicio_social"
+      ],
+      "menos_scales": [
+        "cientifico"
+      ]
+    },
+    {
+      "activity_id": "A0292",
+      "block_id": "B098",
+      "excel_row": 295,
+      "text": "Ser pintor - retratista",
+      "mas_scales": [
+        "artistico"
+      ],
+      "menos_scales": [
+        "mecanico",
+        "cientifico"
+      ]
+    },
+    {
+      "activity_id": "A0293",
+      "block_id": "B098",
+      "excel_row": 296,
+      "text": "Dirigir investigaciones sobre las causas de los terremotos",
+      "mas_scales": [
+        "cientifico"
+      ],
+      "menos_scales": [
+        "mecanico",
+        "artistico"
+      ]
+    },
+    {
+      "activity_id": "A0294",
+      "block_id": "B098",
+      "excel_row": 297,
+      "text": "Ser ingeniero mecánico",
+      "mas_scales": [
+        "mecanico"
+      ],
+      "menos_scales": [
+        "cientifico",
+        "artistico"
+      ]
+    },
+    {
+      "activity_id": "A0295",
+      "block_id": "B099",
+      "excel_row": 298,
+      "text": "Ayudar a las familias que reciben asistencia económica, a equilibrar sus propuestas",
+      "mas_scales": [
+        "calculo",
+        "servicio_social"
+      ],
+      "menos_scales": [
+        "aire_libre",
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0297",
+      "block_id": "B099",
+      "excel_row": 300,
+      "text": "Ser un experto en el cuidado de árboles",
+      "mas_scales": [
+        "aire_libre"
+      ],
+      "menos_scales": [
+        "calculo",
+        "servicio_social",
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0300",
+      "block_id": "B100",
+      "excel_row": 303,
+      "text": "Trabajar en una casa editorial",
+      "mas_scales": [
+        "oficina"
+      ],
+      "menos_scales": [
+        "persuasivo"
+      ]
+    },
+    {
+      "activity_id": "A0301",
+      "block_id": "B101",
+      "excel_row": 304,
+      "text": "Ser profesor de matemáticas",
+      "mas_scales": [
+        "calculo"
+      ],
+      "menos_scales": [
+        "persuasivo"
+      ]
+    },
+    {
+      "activity_id": "A0302",
+      "block_id": "B101",
+      "excel_row": 305,
+      "text": "Ser director de extensión cultural en una gran universidad",
+      "mas_scales": [
+        "persuasivo"
+      ],
+      "menos_scales": [
+        "calculo"
+      ]
+    },
+    {
+      "activity_id": "A0304",
+      "block_id": "B102",
+      "excel_row": 307,
+      "text": "Tomar un curso de correspondencia comercial",
+      "mas_scales": [
+        "oficina"
+      ],
+      "menos_scales": [
+        "persuasivo"
+      ]
+    },
+    {
+      "activity_id": "A0306",
+      "block_id": "B102",
+      "excel_row": 309,
+      "text": "Tomar un curso de ventas",
+      "mas_scales": [
+        "persuasivo"
+      ],
+      "menos_scales": [
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0316",
+      "block_id": "B106",
+      "excel_row": 319,
+      "text": "Ayudar a los jóvenes en la elección de su futura carrera",
+      "mas_scales": [
+        "servicio_social"
+      ],
+      "menos_scales": [
+        "calculo",
+        "artistico"
+      ]
+    },
+    {
+      "activity_id": "A0317",
+      "block_id": "B106",
+      "excel_row": 320,
+      "text": "Diseñar motivos para nuevas telas",
+      "mas_scales": [
+        "artistico"
+      ],
+      "menos_scales": [
+        "calculo",
+        "servicio_social"
+      ]
+    },
+    {
+      "activity_id": "A0318",
+      "block_id": "B106",
+      "excel_row": 321,
+      "text": "Elaborar propuestas de costos para impresión de libros y revistas",
+      "mas_scales": [
+        "calculo"
+      ],
+      "menos_scales": [
+        "artistico",
+        "servicio_social"
+      ]
+    },
+    {
+      "activity_id": "A0319",
+      "block_id": "B107",
+      "excel_row": 322,
+      "text": "Construir un telar de mano",
+      "mas_scales": [
+        "mecanico"
+      ],
+      "menos_scales": [
+        "calculo",
+        "servicio_social"
+      ]
+    },
+    {
+      "activity_id": "A0321",
+      "block_id": "B107",
+      "excel_row": 324,
+      "text": "Hacer encuestas sobre la actitud de los jóvenes hacia la religión",
+      "mas_scales": [
+        "servicio_social"
+      ],
+      "menos_scales": [
+        "mecanico",
+        "calculo"
+      ]
+    },
+    {
+      "activity_id": "A0322",
+      "block_id": "B108",
+      "excel_row": 325,
+      "text": "Modelar en yeso el rostro de un personaje célebre",
+      "mas_scales": [
+        "artistico"
+      ],
+      "menos_scales": [
+        "calculo"
+      ]
+    },
+    {
+      "activity_id": "A0323",
+      "block_id": "B108",
+      "excel_row": 326,
+      "text": "Escribir artículos sobre procedimientos para determinar el precio de venta de las mercancías",
+      "mas_scales": [
+        "calculo"
+      ],
+      "menos_scales": [
+        "artistico"
+      ]
+    },
+    {
+      "activity_id": "A0331",
+      "block_id": "B111",
+      "excel_row": 334,
+      "text": "Ser profesor de música",
+      "mas_scales": [
+        "musical"
+      ],
+      "menos_scales": [
+        "artistico"
+      ]
+    },
+    {
+      "activity_id": "A0332",
+      "block_id": "B111",
+      "excel_row": 335,
+      "text": "Ser diseñador de una casa de publicidad",
+      "mas_scales": [
+        "artistico"
+      ],
+      "menos_scales": [
+        "musical"
+      ]
+    },
+    {
+      "activity_id": "A0337",
+      "block_id": "B113",
+      "excel_row": 340,
+      "text": "Prestar primeros auxilios en un hospital",
+      "mas_scales": [
+        "servicio_social"
+      ],
+      "menos_scales": [
+        "persuasivo",
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0338",
+      "block_id": "B113",
+      "excel_row": 341,
+      "text": "Vender flores en una floristería",
+      "mas_scales": [
+        "persuasivo"
+      ],
+      "menos_scales": [
+        "servicio_social",
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0340",
+      "block_id": "B114",
+      "excel_row": 343,
+      "text": "Redactar la página financiera en un periódico",
+      "mas_scales": [
+        "calculo",
+        "literario"
+      ],
+      "menos_scales": [
+        "aire_libre",
+        "persuasivo"
+      ]
+    },
+    {
+      "activity_id": "A0341",
+      "block_id": "B114",
+      "excel_row": 344,
+      "text": "Cultivar una buena extensión de tierra",
+      "mas_scales": [
+        "aire_libre"
+      ],
+      "menos_scales": [
+        "calculo",
+        "persuasivo",
+        "literario"
+      ]
+    },
+    {
+      "activity_id": "A0342",
+      "block_id": "B114",
+      "excel_row": 345,
+      "text": "Ser  corredor de finca raíz",
+      "mas_scales": [
+        "persuasivo"
+      ],
+      "menos_scales": [
+        "aire_libre",
+        "calculo",
+        "literario"
+      ]
+    },
+    {
+      "activity_id": "A0343",
+      "block_id": "B115",
+      "excel_row": 346,
+      "text": "Cuidar a sordomudos en un asilo",
+      "mas_scales": [
+        "servicio_social"
+      ],
+      "menos_scales": [
+        "calculo",
+        "persuasivo"
+      ]
+    },
+    {
+      "activity_id": "A0344",
+      "block_id": "B115",
+      "excel_row": 347,
+      "text": "Dibujar gráficas estadísticas",
+      "mas_scales": [
+        "calculo"
+      ],
+      "menos_scales": [
+        "persuasivo",
+        "servicio_social"
+      ]
+    },
+    {
+      "activity_id": "A0345",
+      "block_id": "B115",
+      "excel_row": 348,
+      "text": "Trabajar como dependiente en un almacén",
+      "mas_scales": [
+        "persuasivo"
+      ],
+      "menos_scales": [
+        "calculo",
+        "servicio_social"
+      ]
+    },
+    {
+      "activity_id": "A0346",
+      "block_id": "B116",
+      "excel_row": 349,
+      "text": "Ser escritor",
+      "mas_scales": [
+        "literario"
+      ],
+      "menos_scales": [
+        "persuasivo",
+        "servicio_social"
+      ]
+    },
+    {
+      "activity_id": "A0347",
+      "block_id": "B116",
+      "excel_row": 350,
+      "text": "Ser autoridad en propaganda",
+      "mas_scales": [
+        "persuasivo"
+      ],
+      "menos_scales": [
+        "literario",
+        "servicio_social"
+      ]
+    },
+    {
+      "activity_id": "A0348",
+      "block_id": "B116",
+      "excel_row": 351,
+      "text": "Ser religioso misionero",
+      "mas_scales": [
+        "servicio_social"
+      ],
+      "menos_scales": [
+        "persuasivo",
+        "literario"
+      ]
+    },
+    {
+      "activity_id": "A0352",
+      "block_id": "B118",
+      "excel_row": 355,
+      "text": "Enseñar a la gente pobre nociones de higiene",
+      "mas_scales": [
+        "servicio_social"
+      ],
+      "menos_scales": [
+        "artistico",
+        "literario"
+      ]
+    },
+    {
+      "activity_id": "A0354",
+      "block_id": "B118",
+      "excel_row": 357,
+      "text": "Vender objetos de arte",
+      "mas_scales": [
+        "artistico"
+      ],
+      "menos_scales": [
+        "literario",
+        "servicio_social"
+      ]
+    },
+    {
+      "activity_id": "A0356",
+      "block_id": "B119",
+      "excel_row": 359,
+      "text": "Enseñar a los niños pintura y modelado",
+      "mas_scales": [
+        "artistico",
+        "servicio_social"
+      ],
+      "menos_scales": [
+        "literario",
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0357",
+      "block_id": "B119",
+      "excel_row": 360,
+      "text": "Escribir artículos para una revista de arte",
+      "mas_scales": [
+        "artistico",
+        "literario"
+      ],
+      "menos_scales": [
+        "servicio_social",
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0361",
+      "block_id": "B121",
+      "excel_row": 364,
+      "text": "Diseñar proyectos para la construcción de puentes",
+      "mas_scales": [
+        "mecanico"
+      ],
+      "menos_scales": [
+        "calculo",
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0363",
+      "block_id": "B121",
+      "excel_row": 366,
+      "text": "Tener a su cargo la correspondencia de una oficina",
+      "mas_scales": [
+        "oficina"
+      ],
+      "menos_scales": [
+        "mecanico",
+        "calculo"
+      ]
+    },
+    {
+      "activity_id": "A0365",
+      "block_id": "B122",
+      "excel_row": 368,
+      "text": "Calcular el costo de producción de estas tarjetas",
+      "mas_scales": [
+        "calculo"
+      ],
+      "menos_scales": [
+        "artistico"
+      ]
+    },
+    {
+      "activity_id": "A0366",
+      "block_id": "B122",
+      "excel_row": 369,
+      "text": "Diseñar tarjetas de Navidad",
+      "mas_scales": [
+        "artistico"
+      ],
+      "menos_scales": [
+        "calculo"
+      ]
+    },
+    {
+      "activity_id": "A0367",
+      "block_id": "B123",
+      "excel_row": 370,
+      "text": "Examinar una cerradura dañada para ver cómo se arregla",
+      "mas_scales": [
+        "mecanico"
+      ],
+      "menos_scales": [
+        "calculo",
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0368",
+      "block_id": "B123",
+      "excel_row": 371,
+      "text": "Corregir una prueba tipográfica",
+      "mas_scales": [
+        "oficina"
+      ],
+      "menos_scales": [
+        "mecanico",
+        "calculo"
+      ]
+    },
+    {
+      "activity_id": "A0373",
+      "block_id": "B125",
+      "excel_row": 376,
+      "text": "Ser psicólogo profesional",
+      "mas_scales": [
+        "cientifico"
+      ],
+      "menos_scales": [
+        "mecanico",
+        "artistico"
+      ]
+    },
+    {
+      "activity_id": "A0374",
+      "block_id": "B125",
+      "excel_row": 377,
+      "text": "Dirigir la construcción de puentes",
+      "mas_scales": [
+        "mecanico",
+        "cientifico"
+      ],
+      "menos_scales": [
+        "artistico"
+      ]
+    },
+    {
+      "activity_id": "A0375",
+      "block_id": "B125",
+      "excel_row": 378,
+      "text": "Ser arquitecto urbanista",
+      "mas_scales": [
+        "artistico"
+      ],
+      "menos_scales": [
+        "mecanico",
+        "cientifico"
+      ]
+    },
+    {
+      "activity_id": "A0376",
+      "block_id": "B126",
+      "excel_row": 379,
+      "text": "Investigar las causas de las enfermedades mentales",
+      "mas_scales": [
+        "cientifico"
+      ],
+      "menos_scales": [
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0377",
+      "block_id": "B126",
+      "excel_row": 380,
+      "text": "Estudiar música",
+      "mas_scales": [
+        "musical"
+      ],
+      "menos_scales": [
+        "cientifico",
+        "servicio_social",
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0379",
+      "block_id": "B127",
+      "excel_row": 382,
+      "text": "Trabajar como chofer de taxi",
+      "mas_scales": [
+        "validez"
+      ],
+      "menos_scales": [
+        "aire_libre"
+      ]
+    },
+    {
+      "activity_id": "A0385",
+      "block_id": "B129",
+      "excel_row": 388,
+      "text": "Tomar clases de contabilidad de costos",
+      "mas_scales": [
+        "calculo"
+      ],
+      "menos_scales": [
+        "persuasivo"
+      ]
+    },
+    {
+      "activity_id": "A0386",
+      "block_id": "B129",
+      "excel_row": 389,
+      "text": "Tomar clases sobre el arte de vender",
+      "mas_scales": [
+        "persuasivo"
+      ],
+      "menos_scales": [
+        "calculo"
+      ]
+    },
+    {
+      "activity_id": "A0388",
+      "block_id": "B130",
+      "excel_row": 391,
+      "text": "Escribir una obra teatral",
+      "mas_scales": [
+        "literario"
+      ],
+      "menos_scales": [
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0389",
+      "block_id": "B130",
+      "excel_row": 392,
+      "text": "Vender las boletas para una función teatral",
+      "mas_scales": [
+        "oficina"
+      ],
+      "menos_scales": [
+        "literario"
+      ]
+    },
+    {
+      "activity_id": "A0390",
+      "block_id": "B130",
+      "excel_row": 393,
+      "text": "Manejar los fondos de una función teatral",
+      "mas_scales": [
+        "oficina"
+      ],
+      "menos_scales": [
+        "literario"
+      ]
+    },
+    {
+      "activity_id": "A0394",
+      "block_id": "B132",
+      "excel_row": 397,
+      "text": "Dibujar ilustraciones para revistas",
+      "mas_scales": [
+        "artistico"
+      ],
+      "menos_scales": [
+        "literario"
+      ]
+    },
+    {
+      "activity_id": "A0396",
+      "block_id": "B132",
+      "excel_row": 399,
+      "text": "Ser agente distribuidor de una revista",
+      "mas_scales": [
+        "persuasivo"
+      ],
+      "menos_scales": [
+        "artistico",
+        "literario"
+      ]
+    },
+    {
+      "activity_id": "A0405",
+      "block_id": "B135",
+      "excel_row": 408,
+      "text": "Reparar y arreglar muebles viejos",
+      "mas_scales": [
+        "mecanico"
+      ],
+      "menos_scales": [
+        "calculo"
+      ]
+    },
+    {
+      "activity_id": "A0407",
+      "block_id": "B136",
+      "excel_row": 410,
+      "text": "Contar cuentos a los niños",
+      "mas_scales": [
+        "servicio_social"
+      ],
+      "menos_scales": [
+        "mecanico",
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0408",
+      "block_id": "B136",
+      "excel_row": 411,
+      "text": "Confeccionar juguetes para niños",
+      "mas_scales": [
+        "mecanico"
+      ],
+      "menos_scales": [
+        "servicio_social",
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0410",
+      "block_id": "B137",
+      "excel_row": 413,
+      "text": "Tomar clases de trabajos manuales",
+      "mas_scales": [
+        "mecanico"
+      ],
+      "menos_scales": [
+        "calculo"
+      ]
+    },
+    {
+      "activity_id": "A0416",
+      "block_id": "B139",
+      "excel_row": 419,
+      "text": "Ser empresario de un célebre pianista",
+      "mas_scales": [
+        "musical"
+      ],
+      "menos_scales": [
+        "servicio_social",
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0419",
+      "block_id": "B140",
+      "excel_row": 422,
+      "text": "Visitar una fábrica de aviones",
+      "mas_scales": [
+        "mecanico"
+      ],
+      "menos_scales": [
+        "servicio_social"
+      ]
+    },
+    {
+      "activity_id": "A0420",
+      "block_id": "B140",
+      "excel_row": 423,
+      "text": "Visitar los barrios bajos de una ciudad",
+      "mas_scales": [
+        "servicio_social"
+      ],
+      "menos_scales": [
+        "mecanico"
+      ]
+    },
+    {
+      "activity_id": "A0424",
+      "block_id": "B142",
+      "excel_row": 427,
+      "text": "Trabajar como botones en un hotel",
+      "mas_scales": [
+        "validez"
+      ],
+      "menos_scales": [
+        "aire_libre"
+      ]
+    },
+    {
+      "activity_id": "A0427",
+      "block_id": "B143",
+      "excel_row": 430,
+      "text": "Ser guía de excursionistas",
+      "mas_scales": [
+        "aire_libre"
+      ],
+      "menos_scales": [
+        "persuasivo"
+      ]
+    },
+    {
+      "activity_id": "A0429",
+      "block_id": "B143",
+      "excel_row": 432,
+      "text": "Vender equipos para excursionistas",
+      "mas_scales": [
+        "persuasivo"
+      ],
+      "menos_scales": [
+        "aire_libre"
+      ]
+    },
+    {
+      "activity_id": "A0430",
+      "block_id": "B144",
+      "excel_row": 433,
+      "text": "Vender pólizas de seguro de vida",
+      "mas_scales": [
+        "persuasivo"
+      ],
+      "menos_scales": [
+        "aire_libre",
+        "literario"
+      ]
+    },
+    {
+      "activity_id": "A0431",
+      "block_id": "B144",
+      "excel_row": 434,
+      "text": "Escribir artículos para una revista",
+      "mas_scales": [
+        "literario"
+      ],
+      "menos_scales": [
+        "aire_libre",
+        "persuasivo"
+      ]
+    },
+    {
+      "activity_id": "A0432",
+      "block_id": "B144",
+      "excel_row": 435,
+      "text": "Trabajar como jardinero-decorador",
+      "mas_scales": [
+        "aire_libre"
+      ],
+      "menos_scales": [
+        "persuasivo",
+        "literario"
+      ]
+    },
+    {
+      "activity_id": "A0436",
+      "block_id": "B146",
+      "excel_row": 439,
+      "text": "Enseñar aritmética",
+      "mas_scales": [
+        "calculo"
+      ],
+      "menos_scales": [
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0438",
+      "block_id": "B146",
+      "excel_row": 441,
+      "text": "Ser secretario de un científico",
+      "mas_scales": [
+        "oficina"
+      ],
+      "menos_scales": [
+        "calculo"
+      ]
+    },
+    {
+      "activity_id": "A0441",
+      "block_id": "B147",
+      "excel_row": 444,
+      "text": "Tomar clases de pintura moderna",
+      "mas_scales": [
+        "artistico"
+      ],
+      "menos_scales": [
+        "literario"
+      ]
+    },
+    {
+      "activity_id": "A0445",
+      "block_id": "B149",
+      "excel_row": 448,
+      "text": "Ser director de orquesta",
+      "mas_scales": [
+        "musical"
+      ],
+      "menos_scales": [
+        "servicio_social",
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0449",
+      "block_id": "B150",
+      "excel_row": 452,
+      "text": "Manejar el mimeógrafo",
+      "mas_scales": [
+        "mecanico",
+        "oficina"
+      ],
+      "menos_scales": [
+        "calculo"
+      ]
+    },
+    {
+      "activity_id": "A0456",
+      "block_id": "B152",
+      "excel_row": 459,
+      "text": "Enseñar juegos a los niños",
+      "mas_scales": [
+        "servicio_social"
+      ],
+      "menos_scales": [
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0459",
+      "block_id": "B153",
+      "excel_row": 462,
+      "text": "Arreglar un cuarto desordenado",
+      "mas_scales": [
+        "validez"
+      ],
+      "menos_scales": [
+        "mecanico"
+      ]
+    },
+    {
+      "activity_id": "A0460",
+      "block_id": "B154",
+      "excel_row": 463,
+      "text": "Enseñar la construcción de muebles",
+      "mas_scales": [
+        "mecanico"
+      ],
+      "menos_scales": [
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0461",
+      "block_id": "B154",
+      "excel_row": 464,
+      "text": "Corregir pruebas tipográficas",
+      "mas_scales": [
+        "oficina"
+      ],
+      "menos_scales": [
+        "mecanico"
+      ]
+    },
+    {
+      "activity_id": "A0463",
+      "block_id": "B155",
+      "excel_row": 466,
+      "text": "Ser seccretario (a) privado (a)",
+      "mas_scales": [
+        "oficina"
+      ],
+      "menos_scales": [
+        "calculo",
+        "persuasivo"
+      ]
+    },
+    {
+      "activity_id": "A0464",
+      "block_id": "B155",
+      "excel_row": 467,
+      "text": "Ser contador (a)",
+      "mas_scales": [
+        "calculo",
+        "oficina"
+      ],
+      "menos_scales": [
+        "persuasivo"
+      ]
+    },
+    {
+      "activity_id": "A0465",
+      "block_id": "B155",
+      "excel_row": 468,
+      "text": "Ser vendedor (a)",
+      "mas_scales": [
+        "persuasivo"
+      ],
+      "menos_scales": [
+        "calculo",
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0469",
+      "block_id": "B157",
+      "excel_row": 472,
+      "text": "Trabajar en una oficina",
+      "mas_scales": [
+        "oficina",
+        "validez"
+      ],
+      "menos_scales": [
+        "aire_libre",
+        "persuasivo"
+      ]
+    },
+    {
+      "activity_id": "A0470",
+      "block_id": "B157",
+      "excel_row": 473,
+      "text": "Trabajar en una hacienda",
+      "mas_scales": [
+        "aire_libre"
+      ],
+      "menos_scales": [
+        "persuasivo"
+      ]
+    },
+    {
+      "activity_id": "A0471",
+      "block_id": "B157",
+      "excel_row": 474,
+      "text": "Trabajar como vendedor de casa en casa",
+      "mas_scales": [
+        "persuasivo"
+      ],
+      "menos_scales": [
+        "aire_libre",
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0475",
+      "block_id": "B159",
+      "excel_row": 478,
+      "text": "Ser agricultor",
+      "mas_scales": [
+        "aire_libre"
+      ],
+      "menos_scales": [
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0477",
+      "block_id": "B159",
+      "excel_row": 480,
+      "text": "Ser oficinista",
+      "mas_scales": [
+        "oficina"
+      ],
+      "menos_scales": [
+        "aire_libre"
+      ]
+    },
+    {
+      "activity_id": "A0478",
+      "block_id": "B160",
+      "excel_row": 481,
+      "text": "Hacer trabajos de oficina",
+      "mas_scales": [
+        "oficina"
+      ],
+      "menos_scales": [
+        "artistico",
+        "literario"
+      ]
+    },
+    {
+      "activity_id": "A0480",
+      "block_id": "B160",
+      "excel_row": 483,
+      "text": "Vender objetos de arte",
+      "mas_scales": [
+        "persuasivo",
+        "artistico"
+      ],
+      "menos_scales": [
+        "literario",
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0481",
+      "block_id": "B161",
+      "excel_row": 484,
+      "text": "Estudiar contabilidad",
+      "mas_scales": [
+        "calculo",
+        "oficina"
+      ],
+      "menos_scales": [
+        "aire_libre"
+      ]
+    },
+    {
+      "activity_id": "A0482",
+      "block_id": "B161",
+      "excel_row": 485,
+      "text": "Estudiar métodos en irrigación",
+      "mas_scales": [
+        "aire_libre"
+      ],
+      "menos_scales": [
+        "calculo",
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0483",
+      "block_id": "B161",
+      "excel_row": 486,
+      "text": "Estudiar taquigrafía",
+      "mas_scales": [
+        "oficina"
+      ],
+      "menos_scales": [
+        "aire_libre",
+        "calculo"
+      ]
+    },
+    {
+      "activity_id": "A0488",
+      "block_id": "B163",
+      "excel_row": 491,
+      "text": "Ser artista",
+      "mas_scales": [
+        "artistico"
+      ],
+      "menos_scales": [
+        "servicio_social"
+      ]
+    },
+    {
+      "activity_id": "A0489",
+      "block_id": "B163",
+      "excel_row": 492,
+      "text": "Trabajar en la asistencia social",
+      "mas_scales": [
+        "servicio_social"
+      ],
+      "menos_scales": [
+        "artistico"
+      ]
+    },
+    {
+      "activity_id": "A0492",
+      "block_id": "B164",
+      "excel_row": 495,
+      "text": "Resolver rompecabezas mecánicos",
+      "mas_scales": [
+        "mecanico"
+      ],
+      "menos_scales": [
+        "calculo"
+      ]
+    },
+    {
+      "activity_id": "A0494",
+      "block_id": "B165",
+      "excel_row": 497,
+      "text": "Fundar una escuela de arte",
+      "mas_scales": [
+        "artistico"
+      ],
+      "menos_scales": [
+        "musical"
+      ]
+    },
+    {
+      "activity_id": "A0495",
+      "block_id": "B165",
+      "excel_row": 498,
+      "text": "Fundar una orquesta",
+      "mas_scales": [
+        "musical"
+      ],
+      "menos_scales": [
+        "artistico"
+      ]
+    },
+    {
+      "activity_id": "A0499",
+      "block_id": "B167",
+      "excel_row": 502,
+      "text": "Ser mecánico",
+      "mas_scales": [
+        "mecanico"
+      ],
+      "menos_scales": [
+        "cientifico",
+        "artistico"
+      ]
+    },
+    {
+      "activity_id": "A0500",
+      "block_id": "B167",
+      "excel_row": 503,
+      "text": "Ser arquitecto",
+      "mas_scales": [
+        "artistico"
+      ],
+      "menos_scales": [
+        "mecanico",
+        "cientifico"
+      ]
+    },
+    {
+      "activity_id": "A0501",
+      "block_id": "B167",
+      "excel_row": 504,
+      "text": "Ser químico",
+      "mas_scales": [
+        "cientifico"
+      ],
+      "menos_scales": [
+        "mecanico",
+        "artistico"
+      ]
+    },
+    {
+      "activity_id": "A0502",
+      "block_id": "B168",
+      "excel_row": 505,
+      "text": "Empastar libros",
+      "mas_scales": [
+        "mecanico"
+      ],
+      "menos_scales": [
+        "servicio_social",
+        "oficina"
+      ]
+    },
+    {
+      "activity_id": "A0503",
+      "block_id": "B168",
+      "excel_row": 506,
+      "text": "Cuidar niños enfermos",
+      "mas_scales": [
+        "servicio_social"
+      ],
+      "menos_scales": [
+        "mecanico",
+        "oficina"
+      ]
+    }
+  ]
+}
