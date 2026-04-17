@@ -14,7 +14,7 @@
     <?= $content ?? ''; ?>
 </main>
 <footer>
-    <small>Plantilla base - PHP 8.3 puro</small>
+    <small>Universidad Dr. Andrés Bello, 2026</small>
 </footer>
 </body>
 </html>

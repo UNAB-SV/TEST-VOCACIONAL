@@ -15,8 +15,6 @@ $sexOptions = [
 <section class="card">
     <h2>Datos iniciales del participante</h2>
     <p class="subtitle">Completa la información para comenzar el test vocacional.</p>
-    <p class="session-note no-print"><a href="/admin/evaluaciones">Ir al módulo administrativo</a></p>
-
     <?php if ($errors !== []): ?>
         <div class="alert" role="alert">
             <strong>Corrige los campos marcados para continuar.</strong>
