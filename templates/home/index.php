@@ -15,7 +15,9 @@ $countries = is_array($countries ?? null) ? $countries : [];
 $departments = is_array($departments ?? null) ? $departments : [];
 $municipalities = is_array($municipalities ?? null) ? $municipalities : [];
 $elSalvadorCountryId = (int) ($elSalvadorCountryId ?? 15);
-$selectedCountryId = (int) ($formData['pais_id'] ?? 0);
+$selectedCountryId = isset($formData['pais_id']) && (int) $formData['pais_id'] > 0
+    ? (int) $formData['pais_id']
+    : $elSalvadorCountryId;
 $selectedDepartmentId = (int) ($formData['departamento_id'] ?? 0);
 
 $sexOptions = [

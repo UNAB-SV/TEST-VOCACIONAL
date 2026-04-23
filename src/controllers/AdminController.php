@@ -85,6 +85,7 @@ final class AdminController
             'edad' => (string) ($detail['age'] ?? ''),
             'sexo' => strtolower((string) ($detail['sex'] ?? '')),
             'colegio_nombre' => (string) (($detail['colegio_nombre'] ?? '') !== '' ? $detail['colegio_nombre'] : ($detail['group_name'] ?? '')),
+            'applied_at' => (string) ($detail['applied_at'] ?? ''),
         ];
 
         $rawScores = [];
@@ -111,7 +112,7 @@ final class AdminController
                 'validez_puntaje' => (int) ($detail['validity_score'] ?? 0),
                 'validez_estado' => (string) ($detail['validity_state'] ?? 'invalido'),
             ],
-        ]);
+        ], (string) ($detail['applied_at'] ?? ''));
 
         View::render('home/test-finished', [
             'title' => 'Reimpresión de evaluación #' . $evaluationId,

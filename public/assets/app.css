@@ -26,6 +26,20 @@ header h1 {
     letter-spacing: 0.02em;
 }
 
+.brand-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.brand-logo {
+    width: clamp(140px, 25vw, 220px);
+    height: auto;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+}
+
 main {
     max-width: 920px;
     margin: 2rem auto;
@@ -156,6 +170,12 @@ select:focus {
 @media (max-width: 768px) {
     .field-grid {
         grid-template-columns: 1fr;
+    }
+
+    .brand-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.65rem;
     }
 }
 

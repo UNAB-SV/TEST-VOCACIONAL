@@ -8,7 +8,16 @@
 </head>
 <body>
 <header>
-    <h1>Test Vocacional</h1>
+    <div class="brand-header">
+        <img
+            class="brand-logo"
+            src="/assets/img/logo-unab-blanco.png"
+            alt="Logo institucional de la Universidad Dr. Andrés Bello"
+            width="220"
+            height="64"
+        >
+        <h1>Test Vocacional</h1>
+    </div>
 </header>
 <main>
     <?= $content ?? ''; ?>

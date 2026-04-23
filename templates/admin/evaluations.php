@@ -6,6 +6,19 @@ $total = (int) ($total ?? 0);
 $page = max(1, (int) ($page ?? 1));
 $perPage = max(1, (int) ($perPage ?? 10));
 $totalPages = max(1, (int) ceil($total / $perPage));
+$formatAppliedAt = static function (?string $value): string {
+    $raw = trim((string) $value);
+    if ($raw === '') {
+        return '';
+    }
+
+    $date = date_create($raw, new DateTimeZone('UTC'));
+    if ($date === false) {
+        return $raw;
+    }
+
+    return $date->format('d/m/Y H:i') . ' UTC';
+};
 
 $buildUrl = static function (int $targetPage) use ($filters): string {
     $query = [
@@ -62,7 +75,7 @@ $buildUrl = static function (int $targetPage) use ($filters): string {
             <th>Nombre</th>
             <th>Institución</th>
             <th>Ubicación</th>
-            <th>Fecha</th>
+            <th>Fecha de aplicación</th>
             <th>Validez</th>
             <th>Acciones</th>
         </tr>
@@ -87,7 +100,7 @@ $buildUrl = static function (int $targetPage) use ($filters): string {
                     <td><?= htmlspecialchars($fullName, ENT_QUOTES, 'UTF-8'); ?></td>
                     <td><?= htmlspecialchars((string) (($item['colegio_nombre'] ?? '') !== '' ? $item['colegio_nombre'] : ($item['group_name'] ?? '')), ENT_QUOTES, 'UTF-8'); ?></td>
                     <td><?= htmlspecialchars(trim(implode(' / ', array_filter([(string) ($item['pais_nombre'] ?? ''), (string) ($item['departamento_nombre'] ?? ''), (string) ($item['municipio_nombre'] ?? '')]))), ENT_QUOTES, 'UTF-8'); ?></td>
-                    <td><?= htmlspecialchars((string) ($item['applied_at'] ?? ''), ENT_QUOTES, 'UTF-8'); ?></td>
+                    <td><?= htmlspecialchars($formatAppliedAt((string) ($item['applied_at'] ?? '')), ENT_QUOTES, 'UTF-8'); ?></td>
                     <td><?= htmlspecialchars((string) ($item['validity_state'] ?? ''), ENT_QUOTES, 'UTF-8'); ?></td>
                     <td class="admin-actions">
                         <a href="/admin/evaluaciones/detalle?id=<?= (int) ($item['id'] ?? 0); ?>">Ver detalle</a>

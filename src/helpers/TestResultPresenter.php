@@ -17,7 +17,7 @@ final class TestResultPresenter
      * @param array<string, mixed> $calculationPayload
      * @return array<string, mixed>
      */
-    public function present(array $participant, array $calculationPayload): array
+    public function present(array $participant, array $calculationPayload, ?string $appliedAt = null): array
     {
         $result = $calculationPayload['resultado'] ?? [];
         if (!is_array($result)) {
@@ -71,6 +71,7 @@ final class TestResultPresenter
                 'sexo' => strtoupper((string) ($participant['sexo'] ?? '')),
                 'institucion' => (string) (($participant['colegio_nombre'] ?? '') !== '' ? $participant['colegio_nombre'] : ($participant['grupo'] ?? '')),
             ],
+            'applied_at' => $this->resolveAppliedAt($participant, $appliedAt),
             'validez_puntaje' => (int) ($result['validez_puntaje'] ?? 0),
             'validez_estado' => $this->mapValidityState((string) ($result['validez_estado'] ?? '')),
             'escalas' => $scaleRows,
@@ -119,6 +120,12 @@ final class TestResultPresenter
             'dudoso' => ['codigo' => 'dudoso', 'etiqueta' => 'Prueba dudosa', 'es_valida' => false],
             default => ['codigo' => 'invalido', 'etiqueta' => 'Prueba no válida', 'es_valida' => false],
         };
+    }
+
+    private function resolveAppliedAt(array $participant, ?string $appliedAt): string
+    {
+        $source = $appliedAt ?? (string) ($participant['applied_at'] ?? '');
+        return trim($source);
     }
 
     /**
