@@ -21,4 +21,7 @@ return [
         'password' => '',
         'charset' => 'utf8mb4',
     ],
+    'catalog_ids' => [
+        'el_salvador_country_id' => 15,
+    ],
 ];

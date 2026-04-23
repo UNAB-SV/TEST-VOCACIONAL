@@ -8,10 +8,13 @@ use App\Helpers\Router;
 use App\Helpers\ServiceContainer;
 use App\Helpers\TestResultPresenter;
 use App\Repositories\EvaluationRepository;
+use App\Repositories\GeoCatalogRepository;
 use App\Repositories\NullEvaluationRepository;
+use App\Repositories\NullGeoCatalogRepository;
 use App\Repositories\NullSchoolRepository;
 use App\Repositories\PdoConnectionFactory;
 use App\Repositories\PdoEvaluationRepository;
+use App\Repositories\PdoGeoCatalogRepository;
 use App\Repositories\PdoSchoolRepository;
 use App\Repositories\QuestionsBlockRepository;
 use App\Repositories\SchoolRepository;
@@ -54,9 +57,25 @@ $container->set('school_repository', static function () use ($config): SchoolRep
 
     return new PdoSchoolRepository($pdo);
 });
-$container->set('participant_validator', static fn (ServiceContainer $c): ParticipantDataValidator => new ParticipantDataValidator(
-    $c->get('school_repository')
-));
+$container->set('geo_catalog_repository', static function () use ($config): GeoCatalogRepository {
+    $dbConfig = is_array($config['database'] ?? null) ? $config['database'] : [];
+    $enabled = (bool) ($dbConfig['enabled'] ?? false);
+
+    if (!$enabled) {
+        return new NullGeoCatalogRepository();
+    }
+
+    $pdo = PdoConnectionFactory::create($dbConfig);
+
+    return new PdoGeoCatalogRepository($pdo);
+});
+$container->set('participant_validator', static function (ServiceContainer $c) use ($config): ParticipantDataValidator {
+    return new ParticipantDataValidator(
+        $c->get('school_repository'),
+        $c->get('geo_catalog_repository'),
+        (int) ($config['catalog_ids']['el_salvador_country_id'] ?? 15)
+    );
+});
 $container->set('participant_session_store', static fn (): ParticipantSessionStore => new ParticipantSessionStore());
 $container->set('questions_block_repository', static fn (): QuestionsBlockRepository => new QuestionsBlockRepository());
 $container->set('test_session_store', static fn (): TestSessionStore => new TestSessionStore());
@@ -84,6 +103,8 @@ $container->set('evaluation_repository', static function () use ($config): Evalu
 $container->set('home_controller', static fn (ServiceContainer $c): HomeController => new HomeController(
     $c->get('participant_validator'),
     $c->get('school_repository'),
+    $c->get('geo_catalog_repository'),
+    (int) ($config['catalog_ids']['el_salvador_country_id'] ?? 15),
     $c->get('participant_session_store'),
     $c->get('questions_block_repository'),
     $c->get('test_session_store'),
@@ -112,6 +133,16 @@ $router->get('/colegios/buscar', static function () use ($container): void {
     /** @var HomeController $controller */
     $controller = $container->get('home_controller');
     $controller->searchSchools();
+});
+$router->get('/catalogos/departamentos', static function () use ($container): void {
+    /** @var HomeController $controller */
+    $controller = $container->get('home_controller');
+    $controller->listDepartments();
+});
+$router->get('/catalogos/municipios', static function () use ($container): void {
+    /** @var HomeController $controller */
+    $controller = $container->get('home_controller');
+    $controller->listMunicipalities();
 });
 $router->get('/instrucciones', static function () use ($container): void {
     /** @var HomeController $controller */
