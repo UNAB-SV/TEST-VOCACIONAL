@@ -8,6 +8,14 @@ $fullName = trim(sprintf(
 ));
 $scales = is_array($detail['scales'] ?? null) ? $detail['scales'] : [];
 $answers = is_array($detail['answers'] ?? null) ? $detail['answers'] : [];
+$appliedAtRaw = trim((string) ($detail['applied_at'] ?? ''));
+$formattedAppliedAt = $appliedAtRaw;
+if ($appliedAtRaw !== '') {
+    $date = date_create($appliedAtRaw, new DateTimeZone('UTC'));
+    if ($date !== false) {
+        $formattedAppliedAt = $date->format('d/m/Y H:i') . ' UTC';
+    }
+}
 ?>
 <section class="card admin-card">
     <h2>Detalle de evaluación #<?= (int) ($detail['id'] ?? 0); ?></h2>
@@ -20,7 +28,7 @@ $answers = is_array($detail['answers'] ?? null) ? $detail['answers'] : [];
         <p><strong>País:</strong> <?= htmlspecialchars((string) ($detail['pais_nombre'] ?? ''), ENT_QUOTES, 'UTF-8'); ?></p>
         <p><strong>Departamento:</strong> <?= htmlspecialchars((string) ($detail['departamento_nombre'] ?? ''), ENT_QUOTES, 'UTF-8'); ?></p>
         <p><strong>Municipio / Distrito:</strong> <?= htmlspecialchars((string) ($detail['municipio_nombre'] ?? ''), ENT_QUOTES, 'UTF-8'); ?></p>
-        <p><strong>Fecha:</strong> <?= htmlspecialchars((string) ($detail['applied_at'] ?? ''), ENT_QUOTES, 'UTF-8'); ?></p>
+        <p><strong>Fecha de aplicación:</strong> <?= htmlspecialchars($formattedAppliedAt, ENT_QUOTES, 'UTF-8'); ?></p>
         <p><strong>Validez:</strong> <?= htmlspecialchars((string) ($detail['validity_state'] ?? ''), ENT_QUOTES, 'UTF-8'); ?> (<?= (int) ($detail['validity_score'] ?? 0); ?>)</p>
     </div>
 

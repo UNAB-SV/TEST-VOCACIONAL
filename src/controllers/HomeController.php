@@ -36,6 +36,10 @@ final class HomeController
     public function index(array $oldInput = [], array $errors = []): void
     {
         $formData = $oldInput !== [] ? $oldInput : $this->sessionStore->get();
+        if (!array_key_exists('pais_id', $formData) || (int) ($formData['pais_id'] ?? 0) <= 0) {
+            $formData['pais_id'] = (string) $this->elSalvadorCountryId;
+        }
+
         $selectedSchool = null;
         $selectedSchoolId = (int) ($formData['colegio_id'] ?? 0);
         $selectedCountryId = (int) ($formData['pais_id'] ?? 0);
@@ -226,7 +230,7 @@ final class HomeController
 
         View::render('home/test-finished', [
             'title' => 'Prueba finalizada',
-            'report' => $this->resultPresenter->present($participant, $result),
+            'report' => $this->resultPresenter->present($participant, $result, $appliedAt),
         ]);
     }
 

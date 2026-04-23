@@ -10,6 +10,14 @@ $escalasSinPercentil = is_array($alertasTecnicas['escalas_sin_percentil'] ?? nul
 $estadoCodigo = (string) ($validezEstado['codigo'] ?? 'invalido');
 $estadoEtiqueta = (string) ($validezEstado['etiqueta'] ?? 'Prueba no válida');
 $esValida = (bool) ($validezEstado['es_valida'] ?? false);
+$appliedAtRaw = trim((string) ($report['applied_at'] ?? ''));
+$formattedAppliedAt = $appliedAtRaw;
+if ($appliedAtRaw !== '') {
+    $date = date_create($appliedAtRaw, new DateTimeZone('UTC'));
+    if ($date !== false) {
+        $formattedAppliedAt = $date->format('d/m/Y H:i') . ' UTC';
+    }
+}
 $chartData = json_encode($ranking, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 ?>
 <section class="card result-card" id="results-app"
@@ -36,6 +44,7 @@ $chartData = json_encode($ranking, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASH
         <p><strong>Edad:</strong> <?= htmlspecialchars((string) ($evaluado['edad'] ?? ''), ENT_QUOTES, 'UTF-8'); ?></p>
         <p><strong>Sexo:</strong> <?= htmlspecialchars((string) ($evaluado['sexo'] ?? ''), ENT_QUOTES, 'UTF-8'); ?></p>
         <p><strong>Institución:</strong> <?= htmlspecialchars((string) ($evaluado['institucion'] ?? ''), ENT_QUOTES, 'UTF-8'); ?></p>
+        <p><strong>Fecha de aplicación:</strong> <?= htmlspecialchars($formattedAppliedAt, ENT_QUOTES, 'UTF-8'); ?></p>
         <p><strong>Puntaje de validez:</strong> <?= (int) ($report['validez_puntaje'] ?? 0); ?></p>
         <p><strong>Estado de validez:</strong> <span class="badge badge-<?= htmlspecialchars($estadoCodigo, ENT_QUOTES, 'UTF-8'); ?>"><?= htmlspecialchars($estadoEtiqueta, ENT_QUOTES, 'UTF-8'); ?></span></p>
     </div>
