@@ -197,8 +197,8 @@ $sexOptions = [
             municipalitySelect.disabled = true;
         };
 
-        const loadDepartments = function () {
-            return fetch('/catalogos/departamentos', { headers: { 'Accept': 'application/json' } })
+        const loadDepartments = function (countryId) {
+            return fetch('/catalogos/departamentos?pais_id=' + encodeURIComponent(String(countryId)), { headers: { 'Accept': 'application/json' } })
                 .then(function (response) { return response.json(); })
                 .then(function (payload) {
                     fillSelect(departmentSelect, payload.items || [], 'Selecciona un departamento');
@@ -225,7 +225,7 @@ $sexOptions = [
             }
 
             toggleGeoRequired(true);
-            loadDepartments().catch(function () {
+            loadDepartments(countryId).catch(function () {
                 departmentSelect.disabled = true;
                 municipalitySelect.disabled = true;
             });
