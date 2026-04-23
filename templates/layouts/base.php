@@ -13,10 +13,10 @@
             class="brand-logo"
             src="/assets/img/logo-unab-blanco.png"
             alt="Logo institucional de la Universidad Dr. Andrés Bello"
-            width="220"
-            height="64"
+            width="190"
+            height="56"
         >
-        <h1>Test Vocacional</h1>
+        <h1 class="brand-title">Test Vocacional</h1>
     </div>
 </header>
 <main>

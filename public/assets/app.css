@@ -17,27 +17,34 @@ header,
 footer {
     background: #2b3b57;
     color: #ffffff;
-    padding: 1rem 1.25rem;
-}
-
-header h1 {
-    margin: 0;
-    font-size: 1.35rem;
-    letter-spacing: 0.02em;
+    padding: 0.65rem 1.25rem;
 }
 
 .brand-header {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    justify-content: center;
+    gap: 0.7rem;
+    min-height: 54px;
+    margin: 0 auto;
+    width: min(100%, 920px);
 }
 
 .brand-logo {
-    width: clamp(140px, 25vw, 220px);
+    width: clamp(126px, 18vw, 190px);
     height: auto;
     max-width: 100%;
     object-fit: contain;
     display: block;
+    flex-shrink: 0;
+}
+
+.brand-title {
+    margin: 0;
+    font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+    font-weight: 700;
+    letter-spacing: 0.015em;
+    line-height: 1.15;
 }
 
 main {
@@ -173,9 +180,17 @@ select:focus {
     }
 
     .brand-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.65rem;
+        justify-content: center;
+        gap: 0.55rem;
+        min-height: 48px;
+    }
+
+    .brand-logo {
+        width: clamp(108px, 34vw, 155px);
+    }
+
+    .brand-title {
+        font-size: clamp(0.95rem, 4.3vw, 1.15rem);
     }
 }
 
