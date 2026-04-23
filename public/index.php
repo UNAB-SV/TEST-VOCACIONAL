@@ -9,9 +9,12 @@ use App\Helpers\ServiceContainer;
 use App\Helpers\TestResultPresenter;
 use App\Repositories\EvaluationRepository;
 use App\Repositories\NullEvaluationRepository;
+use App\Repositories\NullSchoolRepository;
 use App\Repositories\PdoConnectionFactory;
 use App\Repositories\PdoEvaluationRepository;
+use App\Repositories\PdoSchoolRepository;
 use App\Repositories\QuestionsBlockRepository;
+use App\Repositories\SchoolRepository;
 use App\Services\CalculationEngine;
 use App\Services\ParticipantSessionStore;
 use App\Services\ScoreService;
@@ -39,7 +42,21 @@ if (($config['session']['enabled'] ?? false) === true) {
 }
 
 $container = new ServiceContainer();
-$container->set('participant_validator', static fn (): ParticipantDataValidator => new ParticipantDataValidator());
+$container->set('school_repository', static function () use ($config): SchoolRepository {
+    $dbConfig = is_array($config['database'] ?? null) ? $config['database'] : [];
+    $enabled = (bool) ($dbConfig['enabled'] ?? false);
+
+    if (!$enabled) {
+        return new NullSchoolRepository();
+    }
+
+    $pdo = PdoConnectionFactory::create($dbConfig);
+
+    return new PdoSchoolRepository($pdo);
+});
+$container->set('participant_validator', static fn (ServiceContainer $c): ParticipantDataValidator => new ParticipantDataValidator(
+    $c->get('school_repository')
+));
 $container->set('participant_session_store', static fn (): ParticipantSessionStore => new ParticipantSessionStore());
 $container->set('questions_block_repository', static fn (): QuestionsBlockRepository => new QuestionsBlockRepository());
 $container->set('test_session_store', static fn (): TestSessionStore => new TestSessionStore());
@@ -66,6 +83,7 @@ $container->set('evaluation_repository', static function () use ($config): Evalu
 });
 $container->set('home_controller', static fn (ServiceContainer $c): HomeController => new HomeController(
     $c->get('participant_validator'),
+    $c->get('school_repository'),
     $c->get('participant_session_store'),
     $c->get('questions_block_repository'),
     $c->get('test_session_store'),
@@ -89,6 +107,11 @@ $router->post('/', static function () use ($container): void {
     /** @var HomeController $controller */
     $controller = $container->get('home_controller');
     $controller->submit();
+});
+$router->get('/colegios/buscar', static function () use ($container): void {
+    /** @var HomeController $controller */
+    $controller = $container->get('home_controller');
+    $controller->searchSchools();
 });
 $router->get('/instrucciones', static function () use ($container): void {
     /** @var HomeController $controller */

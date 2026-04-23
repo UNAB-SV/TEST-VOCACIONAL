@@ -35,7 +35,7 @@ $chartData = json_encode($ranking, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASH
         <p><strong>Nombre completo:</strong> <?= htmlspecialchars((string) ($evaluado['nombre_completo'] ?? ''), ENT_QUOTES, 'UTF-8'); ?></p>
         <p><strong>Edad:</strong> <?= htmlspecialchars((string) ($evaluado['edad'] ?? ''), ENT_QUOTES, 'UTF-8'); ?></p>
         <p><strong>Sexo:</strong> <?= htmlspecialchars((string) ($evaluado['sexo'] ?? ''), ENT_QUOTES, 'UTF-8'); ?></p>
-        <p><strong>Grupo:</strong> <?= htmlspecialchars((string) ($evaluado['grupo'] ?? ''), ENT_QUOTES, 'UTF-8'); ?></p>
+        <p><strong>Institución:</strong> <?= htmlspecialchars((string) ($evaluado['institucion'] ?? ''), ENT_QUOTES, 'UTF-8'); ?></p>
         <p><strong>Puntaje de validez:</strong> <?= (int) ($report['validez_puntaje'] ?? 0); ?></p>
         <p><strong>Estado de validez:</strong> <span class="badge badge-<?= htmlspecialchars($estadoCodigo, ENT_QUOTES, 'UTF-8'); ?>"><?= htmlspecialchars($estadoEtiqueta, ENT_QUOTES, 'UTF-8'); ?></span></p>
     </div>

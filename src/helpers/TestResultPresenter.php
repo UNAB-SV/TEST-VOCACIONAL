@@ -69,7 +69,7 @@ final class TestResultPresenter
                 )),
                 'edad' => (string) ($participant['edad'] ?? ''),
                 'sexo' => strtoupper((string) ($participant['sexo'] ?? '')),
-                'grupo' => (string) ($participant['grupo'] ?? ''),
+                'institucion' => (string) (($participant['colegio_nombre'] ?? '') !== '' ? $participant['colegio_nombre'] : ($participant['grupo'] ?? '')),
             ],
             'validez_puntaje' => (int) ($result['validez_puntaje'] ?? 0),
             'validez_estado' => $this->mapValidityState((string) ($result['validez_estado'] ?? '')),

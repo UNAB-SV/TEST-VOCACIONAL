@@ -4,8 +4,14 @@ declare(strict_types=1);
 
 namespace App\Validators;
 
+use App\Repositories\SchoolRepository;
+
 final class ParticipantDataValidator
 {
+    public function __construct(private readonly SchoolRepository $schoolRepository)
+    {
+    }
+
     /**
      * @param array<string, mixed> $input
      * @return array<string, string>
@@ -19,7 +25,7 @@ final class ParticipantDataValidator
         $apellidoMaterno = trim((string) ($input['apellido_materno'] ?? ''));
         $edad = trim((string) ($input['edad'] ?? ''));
         $sexo = trim((string) ($input['sexo'] ?? ''));
-        $grupo = trim((string) ($input['grupo'] ?? ''));
+        $colegioIdRaw = trim((string) ($input['colegio_id'] ?? ''));
 
         if ($nombres === '') {
             $errors['nombres'] = 'Ingresa tus nombres.';
@@ -57,10 +63,12 @@ final class ParticipantDataValidator
             $errors['sexo'] = 'El sexo seleccionado no es válido.';
         }
 
-        if ($grupo === '') {
-            $errors['grupo'] = 'Ingresa tu grupo.';
-        } elseif (!$this->isValidGroup($grupo)) {
-            $errors['grupo'] = 'El grupo puede contener letras, números, espacios y guiones.';
+        if ($colegioIdRaw === '') {
+            $errors['colegio_id'] = 'Selecciona tu institución de procedencia.';
+        } elseif (!ctype_digit($colegioIdRaw) || (int) $colegioIdRaw <= 0) {
+            $errors['colegio_id'] = 'La institución seleccionada no es válida.';
+        } elseif (!$this->schoolRepository->existsById((int) $colegioIdRaw)) {
+            $errors['colegio_id'] = 'La institución seleccionada no existe.';
         }
 
         return $errors;
@@ -69,10 +77,5 @@ final class ParticipantDataValidator
     private function isValidName(string $value): bool
     {
         return (bool) preg_match('/^[\p{L} ]+$/u', $value);
-    }
-
-    private function isValidGroup(string $value): bool
-    {
-        return (bool) preg_match('/^[\p{L}\d\- ]+$/u', $value);
     }
 }

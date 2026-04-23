@@ -8,7 +8,7 @@ $fullName = trim(($participant['nombres'] ?? '') . ' ' . ($participant['apellido
     <p class="subtitle">Bienvenido(a), <strong><?= htmlspecialchars($fullName, ENT_QUOTES, 'UTF-8'); ?></strong>.</p>
 
     <div class="participant-summary">
-        <p><strong>Grupo:</strong> <?= htmlspecialchars($participant['grupo'] ?? '', ENT_QUOTES, 'UTF-8'); ?></p>
+        <p><strong>Institución:</strong> <?= htmlspecialchars((string) (($participant['colegio_nombre'] ?? '') !== '' ? $participant['colegio_nombre'] : ($participant['grupo'] ?? '')), ENT_QUOTES, 'UTF-8'); ?></p>
         <p><strong>Edad:</strong> <?= htmlspecialchars($participant['edad'] ?? '', ENT_QUOTES, 'UTF-8'); ?> años</p>
         <p><strong>Sexo:</strong> <?= htmlspecialchars($participant['sexo'] ?? '', ENT_QUOTES, 'UTF-8'); ?></p>
     </div>

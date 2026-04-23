@@ -2,9 +2,11 @@
 /**
  * @var array<string, string> $errors
  * @var array<string, string> $formData
+ * @var array{id: int, nombre: string, tipo_institucion: int|null}|null $selectedSchool
  */
 $errors = $errors ?? [];
 $formData = $formData ?? [];
+$selectedSchool = is_array($selectedSchool ?? null) ? $selectedSchool : null;
 
 $sexOptions = [
     'F' => 'Femenino',
@@ -71,11 +73,13 @@ $sexOptions = [
         </div>
 
         <div class="field">
-            <label for="grupo">Grupo</label>
-            <input type="text" id="grupo" name="grupo" maxlength="20" required pattern="[A-Za-z0-9\- ]+"
-                   value="<?= htmlspecialchars($formData['grupo'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
-            <small class="hint">Ejemplo: 6A, 5B-M, 3 C.</small>
-            <?php if (isset($errors['grupo'])): ?><p class="error"><?= htmlspecialchars($errors['grupo'], ENT_QUOTES, 'UTF-8'); ?></p><?php endif; ?>
+            <label for="colegio_search">Institución de procedencia</label>
+            <input type="hidden" id="colegio_id" name="colegio_id" required value="<?= htmlspecialchars((string) ($formData['colegio_id'] ?? ''), ENT_QUOTES, 'UTF-8'); ?>">
+            <input type="text" id="colegio_search" autocomplete="off" placeholder="Escribe para buscar tu institución"
+                   value="<?= htmlspecialchars((string) (($selectedSchool['nombre'] ?? '') !== '' ? $selectedSchool['nombre'] : ($formData['colegio_nombre'] ?? '')), ENT_QUOTES, 'UTF-8'); ?>">
+            <small class="hint">Selecciona una institución existente de la lista.</small>
+            <ul id="colegio_results" class="autocomplete-list" hidden></ul>
+            <?php if (isset($errors['colegio_id'])): ?><p class="error"><?= htmlspecialchars($errors['colegio_id'], ENT_QUOTES, 'UTF-8'); ?></p><?php endif; ?>
         </div>
 
         <button class="btn-primary" type="submit">Continuar a instrucciones</button>
@@ -98,4 +102,79 @@ $sexOptions = [
             alert('Por favor completa correctamente los campos requeridos.');
         }
     });
+
+    (function () {
+        const searchInput = document.getElementById('colegio_search');
+        const hiddenIdInput = document.getElementById('colegio_id');
+        const resultsNode = document.getElementById('colegio_results');
+        if (!(searchInput instanceof HTMLInputElement) || !(hiddenIdInput instanceof HTMLInputElement) || !(resultsNode instanceof HTMLUListElement)) {
+            return;
+        }
+
+        let lastTerm = '';
+
+        const typeLabel = function (value) {
+            if (Number(value) === 1) return 'Pública';
+            if (Number(value) === 2) return 'Privada';
+            return '';
+        };
+
+        const renderResults = function (items) {
+            resultsNode.innerHTML = '';
+            if (!Array.isArray(items) || items.length === 0) {
+                resultsNode.hidden = true;
+                return;
+            }
+
+            items.forEach(function (item) {
+                const option = document.createElement('li');
+                option.className = 'autocomplete-item';
+                option.tabIndex = 0;
+                option.setAttribute('role', 'button');
+
+                const tag = typeLabel(item.tipo_institucion);
+                option.textContent = tag ? item.nombre + ' (' + tag + ')' : item.nombre;
+                option.addEventListener('click', function () {
+                    hiddenIdInput.value = String(item.id || '');
+                    searchInput.value = String(item.nombre || '');
+                    resultsNode.hidden = true;
+                });
+                resultsNode.appendChild(option);
+            });
+
+            resultsNode.hidden = false;
+        };
+
+        searchInput.addEventListener('input', function () {
+            const term = searchInput.value.trim();
+            hiddenIdInput.value = '';
+            if (term.length < 2) {
+                resultsNode.hidden = true;
+                resultsNode.innerHTML = '';
+                return;
+            }
+
+            lastTerm = term;
+            fetch('/colegios/buscar?q=' + encodeURIComponent(term), {
+                headers: { 'Accept': 'application/json' }
+            })
+                .then(function (response) { return response.json(); })
+                .then(function (payload) {
+                    if (term !== lastTerm) {
+                        return;
+                    }
+                    renderResults(payload.items || []);
+                })
+                .catch(function () {
+                    resultsNode.hidden = true;
+                });
+        });
+
+        document.addEventListener('click', function (event) {
+            if (!(event.target instanceof Node)) return;
+            if (!resultsNode.contains(event.target) && event.target !== searchInput) {
+                resultsNode.hidden = true;
+            }
+        });
+    })();
 </script>

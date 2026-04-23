@@ -30,9 +30,9 @@ $buildUrl = static function (int $targetPage) use ($filters): string {
             </div>
 
             <div class="field">
-                <label for="grupo">Filtrar por grupo</label>
+                <label for="grupo">Filtrar por institución</label>
                 <select id="grupo" name="grupo">
-                    <option value="">Todos los grupos</option>
+                    <option value="">Todas las instituciones</option>
                     <?php foreach ($groups as $group): ?>
                         <option value="<?= htmlspecialchars((string) $group, ENT_QUOTES, 'UTF-8'); ?>" <?= ((string) ($filters['grupo'] ?? '') === (string) $group) ? 'selected' : ''; ?>>
                             <?= htmlspecialchars((string) $group, ENT_QUOTES, 'UTF-8'); ?>
@@ -60,7 +60,7 @@ $buildUrl = static function (int $targetPage) use ($filters): string {
         <tr>
             <th>ID</th>
             <th>Nombre</th>
-            <th>Grupo</th>
+            <th>Institución</th>
             <th>Fecha</th>
             <th>Validez</th>
             <th>Acciones</th>
@@ -84,7 +84,7 @@ $buildUrl = static function (int $targetPage) use ($filters): string {
                 <tr>
                     <td>#<?= (int) ($item['id'] ?? 0); ?></td>
                     <td><?= htmlspecialchars($fullName, ENT_QUOTES, 'UTF-8'); ?></td>
-                    <td><?= htmlspecialchars((string) ($item['group_name'] ?? ''), ENT_QUOTES, 'UTF-8'); ?></td>
+                    <td><?= htmlspecialchars((string) (($item['colegio_nombre'] ?? '') !== '' ? $item['colegio_nombre'] : ($item['group_name'] ?? '')), ENT_QUOTES, 'UTF-8'); ?></td>
                     <td><?= htmlspecialchars((string) ($item['applied_at'] ?? ''), ENT_QUOTES, 'UTF-8'); ?></td>
                     <td><?= htmlspecialchars((string) ($item['validity_state'] ?? ''), ENT_QUOTES, 'UTF-8'); ?></td>
                     <td class="admin-actions">
