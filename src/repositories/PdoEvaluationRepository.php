@@ -355,21 +355,21 @@ SQL;
         } else {
             $statement->bindValue(':pais_id', null, PDO::PARAM_NULL);
         }
-        $statement->bindValue(':pais_nombre', (string) ($participant['pais_nombre'] ?? ''));
+        $this->bindNullableString($statement, ':pais_nombre', $participant['pais_nombre'] ?? null);
         $departamentoId = (int) ($participant['departamento_id'] ?? 0);
         if ($departamentoId > 0) {
             $statement->bindValue(':departamento_id', $departamentoId, PDO::PARAM_INT);
         } else {
             $statement->bindValue(':departamento_id', null, PDO::PARAM_NULL);
         }
-        $statement->bindValue(':departamento_nombre', (string) ($participant['departamento_nombre'] ?? ''));
+        $this->bindNullableString($statement, ':departamento_nombre', $participant['departamento_nombre'] ?? null);
         $municipioId = (int) ($participant['municipio_id'] ?? 0);
         if ($municipioId > 0) {
             $statement->bindValue(':municipio_id', $municipioId, PDO::PARAM_INT);
         } else {
             $statement->bindValue(':municipio_id', null, PDO::PARAM_NULL);
         }
-        $statement->bindValue(':municipio_nombre', (string) ($participant['municipio_nombre'] ?? ''));
+        $this->bindNullableString($statement, ':municipio_nombre', $participant['municipio_nombre'] ?? null);
         $statement->execute();
 
         $lastInsertId = (int) $this->pdo->lastInsertId();
@@ -457,21 +457,21 @@ SQL;
         } else {
             $statement->bindValue(':pais_id', null, PDO::PARAM_NULL);
         }
-        $statement->bindValue(':pais_nombre', (string) ($participant['pais_nombre'] ?? ''));
+        $this->bindNullableString($statement, ':pais_nombre', $participant['pais_nombre'] ?? null);
         $departamentoId = (int) ($participant['departamento_id'] ?? 0);
         if ($departamentoId > 0) {
             $statement->bindValue(':departamento_id', $departamentoId, PDO::PARAM_INT);
         } else {
             $statement->bindValue(':departamento_id', null, PDO::PARAM_NULL);
         }
-        $statement->bindValue(':departamento_nombre', (string) ($participant['departamento_nombre'] ?? ''));
+        $this->bindNullableString($statement, ':departamento_nombre', $participant['departamento_nombre'] ?? null);
         $municipioId = (int) ($participant['municipio_id'] ?? 0);
         if ($municipioId > 0) {
             $statement->bindValue(':municipio_id', $municipioId, PDO::PARAM_INT);
         } else {
             $statement->bindValue(':municipio_id', null, PDO::PARAM_NULL);
         }
-        $statement->bindValue(':municipio_nombre', (string) ($participant['municipio_nombre'] ?? ''));
+        $this->bindNullableString($statement, ':municipio_nombre', $participant['municipio_nombre'] ?? null);
         $statement->bindValue(':validity_score', (int) ($result['validez_puntaje'] ?? 0), PDO::PARAM_INT);
         $statement->bindValue(':validity_state', (string) ($result['validez_estado'] ?? 'invalido'));
         $statement->bindValue(':validity_details_json', json_encode($result['detalles_validez'] ?? [], JSON_UNESCAPED_UNICODE));
@@ -513,6 +513,17 @@ SQL;
         }
 
         return trim((string) ($result['colegio_nombre'] ?? ''));
+    }
+
+    private function bindNullableString(\PDOStatement $statement, string $param, mixed $value): void
+    {
+        $stringValue = trim((string) $value);
+        if ($stringValue === '') {
+            $statement->bindValue($param, null, PDO::PARAM_NULL);
+            return;
+        }
+
+        $statement->bindValue($param, $stringValue);
     }
 
     /**

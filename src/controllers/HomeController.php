@@ -269,6 +269,15 @@ final class HomeController
 
     public function listDepartments(): void
     {
+        $countryId = (int) ($_GET['pais_id'] ?? 0);
+        if ($countryId !== $this->elSalvadorCountryId) {
+            $this->jsonResponse(200, [
+                'status' => 'ok',
+                'items' => [],
+            ]);
+            return;
+        }
+
         $items = $this->geoCatalogRepository->listDepartments();
         $this->jsonResponse(200, [
             'status' => 'ok',
@@ -283,6 +292,15 @@ final class HomeController
             $this->jsonResponse(422, [
                 'status' => 'error',
                 'message' => 'Debes indicar un departamento válido.',
+                'items' => [],
+            ]);
+            return;
+        }
+
+        if ($this->geoCatalogRepository->findDepartmentById($departmentId) === null) {
+            $this->jsonResponse(422, [
+                'status' => 'error',
+                'message' => 'El departamento seleccionado no existe.',
                 'items' => [],
             ]);
             return;
@@ -306,10 +324,10 @@ final class HomeController
         $input['pais_nombre'] = (string) ($country['nombre'] ?? '');
 
         if ($countryId !== $this->elSalvadorCountryId) {
-            $input['departamento_id'] = '';
-            $input['departamento_nombre'] = '';
-            $input['municipio_id'] = '';
-            $input['municipio_nombre'] = '';
+            $input['departamento_id'] = null;
+            $input['departamento_nombre'] = null;
+            $input['municipio_id'] = null;
+            $input['municipio_nombre'] = null;
             return $input;
         }
 
