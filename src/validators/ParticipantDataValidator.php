@@ -4,12 +4,16 @@ declare(strict_types=1);
 
 namespace App\Validators;
 
+use App\Repositories\GeoCatalogRepository;
 use App\Repositories\SchoolRepository;
 
 final class ParticipantDataValidator
 {
-    public function __construct(private readonly SchoolRepository $schoolRepository)
-    {
+    public function __construct(
+        private readonly SchoolRepository $schoolRepository,
+        private readonly GeoCatalogRepository $geoCatalogRepository,
+        private readonly int $elSalvadorCountryId
+    ) {
     }
 
     /**
@@ -26,6 +30,9 @@ final class ParticipantDataValidator
         $edad = trim((string) ($input['edad'] ?? ''));
         $sexo = trim((string) ($input['sexo'] ?? ''));
         $colegioIdRaw = trim((string) ($input['colegio_id'] ?? ''));
+        $countryIdRaw = trim((string) ($input['pais_id'] ?? ''));
+        $departmentIdRaw = trim((string) ($input['departamento_id'] ?? ''));
+        $municipalityIdRaw = trim((string) ($input['municipio_id'] ?? ''));
 
         if ($nombres === '') {
             $errors['nombres'] = 'Ingresa tus nombres.';
@@ -69,6 +76,59 @@ final class ParticipantDataValidator
             $errors['colegio_id'] = 'La institución seleccionada no es válida.';
         } elseif (!$this->schoolRepository->existsById((int) $colegioIdRaw)) {
             $errors['colegio_id'] = 'La institución seleccionada no existe.';
+        }
+
+        if ($countryIdRaw === '') {
+            $errors['pais_id'] = 'Selecciona un país.';
+            return $errors;
+        }
+
+        if (!ctype_digit($countryIdRaw) || (int) $countryIdRaw <= 0) {
+            $errors['pais_id'] = 'El país seleccionado no es válido.';
+            return $errors;
+        }
+
+        $countryId = (int) $countryIdRaw;
+        $country = $this->geoCatalogRepository->findCountryById($countryId);
+        if ($country === null) {
+            $errors['pais_id'] = 'El país seleccionado no existe.';
+            return $errors;
+        }
+
+        if ($countryId !== $this->elSalvadorCountryId) {
+            return $errors;
+        }
+
+        if ($departmentIdRaw === '') {
+            $errors['departamento_id'] = 'Selecciona un departamento.';
+            return $errors;
+        }
+
+        if (!ctype_digit($departmentIdRaw) || (int) $departmentIdRaw <= 0) {
+            $errors['departamento_id'] = 'El departamento seleccionado no es válido.';
+            return $errors;
+        }
+
+        $departmentId = (int) $departmentIdRaw;
+        $department = $this->geoCatalogRepository->findDepartmentById($departmentId);
+        if ($department === null) {
+            $errors['departamento_id'] = 'El departamento seleccionado no existe.';
+            return $errors;
+        }
+
+        if ($municipalityIdRaw === '') {
+            $errors['municipio_id'] = 'Selecciona un municipio o distrito.';
+            return $errors;
+        }
+
+        if (!ctype_digit($municipalityIdRaw) || (int) $municipalityIdRaw <= 0) {
+            $errors['municipio_id'] = 'El municipio o distrito seleccionado no es válido.';
+            return $errors;
+        }
+
+        $municipality = $this->geoCatalogRepository->findMunicipalityByDepartmentAndId($departmentId, (int) $municipalityIdRaw);
+        if ($municipality === null) {
+            $errors['municipio_id'] = 'El municipio o distrito no corresponde al departamento seleccionado.';
         }
 
         return $errors;

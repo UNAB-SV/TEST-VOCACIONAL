@@ -7,6 +7,7 @@ namespace App\Controllers;
 use App\Helpers\TestResultPresenter;
 use App\Helpers\View;
 use App\Repositories\EvaluationRepository;
+use App\Repositories\GeoCatalogRepository;
 use App\Repositories\QuestionsBlockRepository;
 use App\Repositories\SchoolRepository;
 use App\Services\CalculationEngine;
@@ -20,6 +21,8 @@ final class HomeController
     public function __construct(
         private readonly ParticipantDataValidator $validator,
         private readonly SchoolRepository $schoolRepository,
+        private readonly GeoCatalogRepository $geoCatalogRepository,
+        private readonly int $elSalvadorCountryId,
         private readonly ParticipantSessionStore $sessionStore,
         private readonly QuestionsBlockRepository $questionsRepository,
         private readonly TestSessionStore $testSessionStore,
@@ -35,6 +38,14 @@ final class HomeController
         $formData = $oldInput !== [] ? $oldInput : $this->sessionStore->get();
         $selectedSchool = null;
         $selectedSchoolId = (int) ($formData['colegio_id'] ?? 0);
+        $selectedCountryId = (int) ($formData['pais_id'] ?? 0);
+        $selectedDepartmentId = (int) ($formData['departamento_id'] ?? 0);
+        $departments = $selectedCountryId === $this->elSalvadorCountryId
+            ? $this->geoCatalogRepository->listDepartments()
+            : [];
+        $municipalities = ($selectedCountryId === $this->elSalvadorCountryId && $selectedDepartmentId > 0)
+            ? $this->geoCatalogRepository->listMunicipalitiesByDepartment($selectedDepartmentId)
+            : [];
         if ($selectedSchoolId > 0) {
             $selectedSchool = $this->schoolRepository->findById($selectedSchoolId);
         }
@@ -44,6 +55,10 @@ final class HomeController
             'errors' => $errors,
             'formData' => $formData,
             'selectedSchool' => $selectedSchool,
+            'countries' => $this->geoCatalogRepository->listCountries(),
+            'departments' => $departments,
+            'municipalities' => $municipalities,
+            'elSalvadorCountryId' => $this->elSalvadorCountryId,
         ]);
     }
 
@@ -56,6 +71,9 @@ final class HomeController
             'edad' => $_POST['edad'] ?? '',
             'sexo' => $_POST['sexo'] ?? '',
             'colegio_id' => $_POST['colegio_id'] ?? '',
+            'pais_id' => $_POST['pais_id'] ?? '',
+            'departamento_id' => $_POST['departamento_id'] ?? '',
+            'municipio_id' => $_POST['municipio_id'] ?? '',
         ];
 
         $errors = $this->validator->validate($input);
@@ -68,6 +86,7 @@ final class HomeController
 
         $school = $this->schoolRepository->findById((int) $input['colegio_id']);
         $input['colegio_nombre'] = (string) ($school['nombre'] ?? '');
+        $input = $this->resolveGeoNames($input);
 
         $this->sessionStore->save($input);
         $this->testSessionStore->clearAnswers();
@@ -246,6 +265,63 @@ final class HomeController
                 ];
             }, $items),
         ]);
+    }
+
+    public function listDepartments(): void
+    {
+        $items = $this->geoCatalogRepository->listDepartments();
+        $this->jsonResponse(200, [
+            'status' => 'ok',
+            'items' => $items,
+        ]);
+    }
+
+    public function listMunicipalities(): void
+    {
+        $departmentId = (int) ($_GET['departamento_id'] ?? 0);
+        if ($departmentId <= 0) {
+            $this->jsonResponse(422, [
+                'status' => 'error',
+                'message' => 'Debes indicar un departamento válido.',
+                'items' => [],
+            ]);
+            return;
+        }
+
+        $items = $this->geoCatalogRepository->listMunicipalitiesByDepartment($departmentId);
+        $this->jsonResponse(200, [
+            'status' => 'ok',
+            'items' => $items,
+        ]);
+    }
+
+    /**
+     * @param array<string, mixed> $input
+     * @return array<string, mixed>
+     */
+    private function resolveGeoNames(array $input): array
+    {
+        $countryId = (int) ($input['pais_id'] ?? 0);
+        $country = $this->geoCatalogRepository->findCountryById($countryId);
+        $input['pais_nombre'] = (string) ($country['nombre'] ?? '');
+
+        if ($countryId !== $this->elSalvadorCountryId) {
+            $input['departamento_id'] = '';
+            $input['departamento_nombre'] = '';
+            $input['municipio_id'] = '';
+            $input['municipio_nombre'] = '';
+            return $input;
+        }
+
+        $departmentId = (int) ($input['departamento_id'] ?? 0);
+        $department = $this->geoCatalogRepository->findDepartmentById($departmentId);
+        $input['departamento_nombre'] = (string) ($department['nombre'] ?? '');
+
+        $municipalityId = (int) ($input['municipio_id'] ?? 0);
+        $municipality = $this->geoCatalogRepository->findMunicipalityByDepartmentAndId($departmentId, $municipalityId);
+        $input['municipio_nombre'] = (string) ($municipality['nombre'] ?? '');
+
+        return $input;
     }
 
     /**

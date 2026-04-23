@@ -17,6 +17,9 @@ $answers = is_array($detail['answers'] ?? null) ? $detail['answers'] : [];
         <p><strong>Edad:</strong> <?= (int) ($detail['age'] ?? 0); ?></p>
         <p><strong>Sexo:</strong> <?= htmlspecialchars((string) ($detail['sex'] ?? ''), ENT_QUOTES, 'UTF-8'); ?></p>
         <p><strong>Institución:</strong> <?= htmlspecialchars((string) (($detail['colegio_nombre'] ?? '') !== '' ? $detail['colegio_nombre'] : ($detail['group_name'] ?? '')), ENT_QUOTES, 'UTF-8'); ?></p>
+        <p><strong>País:</strong> <?= htmlspecialchars((string) ($detail['pais_nombre'] ?? ''), ENT_QUOTES, 'UTF-8'); ?></p>
+        <p><strong>Departamento:</strong> <?= htmlspecialchars((string) ($detail['departamento_nombre'] ?? ''), ENT_QUOTES, 'UTF-8'); ?></p>
+        <p><strong>Municipio / Distrito:</strong> <?= htmlspecialchars((string) ($detail['municipio_nombre'] ?? ''), ENT_QUOTES, 'UTF-8'); ?></p>
         <p><strong>Fecha:</strong> <?= htmlspecialchars((string) ($detail['applied_at'] ?? ''), ENT_QUOTES, 'UTF-8'); ?></p>
         <p><strong>Validez:</strong> <?= htmlspecialchars((string) ($detail['validity_state'] ?? ''), ENT_QUOTES, 'UTF-8'); ?> (<?= (int) ($detail['validity_score'] ?? 0); ?>)</p>
     </div>

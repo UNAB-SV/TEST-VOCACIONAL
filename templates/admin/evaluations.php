@@ -61,6 +61,7 @@ $buildUrl = static function (int $targetPage) use ($filters): string {
             <th>ID</th>
             <th>Nombre</th>
             <th>Institución</th>
+            <th>Ubicación</th>
             <th>Fecha</th>
             <th>Validez</th>
             <th>Acciones</th>
@@ -69,7 +70,7 @@ $buildUrl = static function (int $targetPage) use ($filters): string {
         <tbody>
         <?php if ($items === []): ?>
             <tr>
-                <td colspan="6">No hay evaluaciones con los filtros seleccionados.</td>
+                <td colspan="7">No hay evaluaciones con los filtros seleccionados.</td>
             </tr>
         <?php else: ?>
             <?php foreach ($items as $item): ?>
@@ -85,6 +86,7 @@ $buildUrl = static function (int $targetPage) use ($filters): string {
                     <td>#<?= (int) ($item['id'] ?? 0); ?></td>
                     <td><?= htmlspecialchars($fullName, ENT_QUOTES, 'UTF-8'); ?></td>
                     <td><?= htmlspecialchars((string) (($item['colegio_nombre'] ?? '') !== '' ? $item['colegio_nombre'] : ($item['group_name'] ?? '')), ENT_QUOTES, 'UTF-8'); ?></td>
+                    <td><?= htmlspecialchars(trim(implode(' / ', array_filter([(string) ($item['pais_nombre'] ?? ''), (string) ($item['departamento_nombre'] ?? ''), (string) ($item['municipio_nombre'] ?? '')]))), ENT_QUOTES, 'UTF-8'); ?></td>
                     <td><?= htmlspecialchars((string) ($item['applied_at'] ?? ''), ENT_QUOTES, 'UTF-8'); ?></td>
                     <td><?= htmlspecialchars((string) ($item['validity_state'] ?? ''), ENT_QUOTES, 'UTF-8'); ?></td>
                     <td class="admin-actions">

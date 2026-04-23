@@ -51,6 +51,12 @@ SELECT
     e.sex,
     e.group_name,
     e.colegio_nombre,
+    e.pais_id,
+    e.pais_nombre,
+    e.departamento_id,
+    e.departamento_nombre,
+    e.municipio_id,
+    e.municipio_nombre,
     p.first_name,
     p.last_name,
     p.middle_name,
@@ -151,6 +157,9 @@ SELECT
     e.applied_at,
     e.group_name,
     e.colegio_nombre,
+    e.pais_nombre,
+    e.departamento_nombre,
+    e.municipio_nombre,
     e.validity_state,
     p.first_name,
     p.last_name,
@@ -209,6 +218,12 @@ SELECT
     e.group_name,
     e.colegio_id,
     e.colegio_nombre,
+    e.pais_id,
+    e.pais_nombre,
+    e.departamento_id,
+    e.departamento_nombre,
+    e.municipio_id,
+    e.municipio_nombre,
     e.validity_score,
     e.validity_state,
     e.raw_scores_json,
@@ -279,6 +294,12 @@ INSERT INTO participants (
     group_name,
     colegio_id,
     colegio_nombre,
+    pais_id,
+    pais_nombre,
+    departamento_id,
+    departamento_nombre,
+    municipio_id,
+    municipio_nombre,
     created_at,
     updated_at
 ) VALUES (
@@ -290,6 +311,12 @@ INSERT INTO participants (
     :group_name,
     :colegio_id,
     :colegio_nombre,
+    :pais_id,
+    :pais_nombre,
+    :departamento_id,
+    :departamento_nombre,
+    :municipio_id,
+    :municipio_nombre,
     NOW(),
     NOW()
 )
@@ -299,6 +326,12 @@ ON DUPLICATE KEY UPDATE
     group_name = VALUES(group_name),
     colegio_id = VALUES(colegio_id),
     colegio_nombre = VALUES(colegio_nombre),
+    pais_id = VALUES(pais_id),
+    pais_nombre = VALUES(pais_nombre),
+    departamento_id = VALUES(departamento_id),
+    departamento_nombre = VALUES(departamento_nombre),
+    municipio_id = VALUES(municipio_id),
+    municipio_nombre = VALUES(municipio_nombre),
     updated_at = NOW()
 SQL;
 
@@ -316,6 +349,27 @@ SQL;
             $statement->bindValue(':colegio_id', null, PDO::PARAM_NULL);
         }
         $statement->bindValue(':colegio_nombre', (string) ($participant['colegio_nombre'] ?? ''));
+        $paisId = (int) ($participant['pais_id'] ?? 0);
+        if ($paisId > 0) {
+            $statement->bindValue(':pais_id', $paisId, PDO::PARAM_INT);
+        } else {
+            $statement->bindValue(':pais_id', null, PDO::PARAM_NULL);
+        }
+        $statement->bindValue(':pais_nombre', (string) ($participant['pais_nombre'] ?? ''));
+        $departamentoId = (int) ($participant['departamento_id'] ?? 0);
+        if ($departamentoId > 0) {
+            $statement->bindValue(':departamento_id', $departamentoId, PDO::PARAM_INT);
+        } else {
+            $statement->bindValue(':departamento_id', null, PDO::PARAM_NULL);
+        }
+        $statement->bindValue(':departamento_nombre', (string) ($participant['departamento_nombre'] ?? ''));
+        $municipioId = (int) ($participant['municipio_id'] ?? 0);
+        if ($municipioId > 0) {
+            $statement->bindValue(':municipio_id', $municipioId, PDO::PARAM_INT);
+        } else {
+            $statement->bindValue(':municipio_id', null, PDO::PARAM_NULL);
+        }
+        $statement->bindValue(':municipio_nombre', (string) ($participant['municipio_nombre'] ?? ''));
         $statement->execute();
 
         $lastInsertId = (int) $this->pdo->lastInsertId();
@@ -353,6 +407,12 @@ INSERT INTO evaluations (
     group_name,
     colegio_id,
     colegio_nombre,
+    pais_id,
+    pais_nombre,
+    departamento_id,
+    departamento_nombre,
+    municipio_id,
+    municipio_nombre,
     validity_score,
     validity_state,
     validity_details_json,
@@ -365,6 +425,12 @@ INSERT INTO evaluations (
     :group_name,
     :colegio_id,
     :colegio_nombre,
+    :pais_id,
+    :pais_nombre,
+    :departamento_id,
+    :departamento_nombre,
+    :municipio_id,
+    :municipio_nombre,
     :validity_score,
     :validity_state,
     :validity_details_json,
@@ -385,6 +451,27 @@ SQL;
             $statement->bindValue(':colegio_id', null, PDO::PARAM_NULL);
         }
         $statement->bindValue(':colegio_nombre', $this->resolveSchoolName($participant, $result));
+        $paisId = (int) ($participant['pais_id'] ?? 0);
+        if ($paisId > 0) {
+            $statement->bindValue(':pais_id', $paisId, PDO::PARAM_INT);
+        } else {
+            $statement->bindValue(':pais_id', null, PDO::PARAM_NULL);
+        }
+        $statement->bindValue(':pais_nombre', (string) ($participant['pais_nombre'] ?? ''));
+        $departamentoId = (int) ($participant['departamento_id'] ?? 0);
+        if ($departamentoId > 0) {
+            $statement->bindValue(':departamento_id', $departamentoId, PDO::PARAM_INT);
+        } else {
+            $statement->bindValue(':departamento_id', null, PDO::PARAM_NULL);
+        }
+        $statement->bindValue(':departamento_nombre', (string) ($participant['departamento_nombre'] ?? ''));
+        $municipioId = (int) ($participant['municipio_id'] ?? 0);
+        if ($municipioId > 0) {
+            $statement->bindValue(':municipio_id', $municipioId, PDO::PARAM_INT);
+        } else {
+            $statement->bindValue(':municipio_id', null, PDO::PARAM_NULL);
+        }
+        $statement->bindValue(':municipio_nombre', (string) ($participant['municipio_nombre'] ?? ''));
         $statement->bindValue(':validity_score', (int) ($result['validez_puntaje'] ?? 0), PDO::PARAM_INT);
         $statement->bindValue(':validity_state', (string) ($result['validez_estado'] ?? 'invalido'));
         $statement->bindValue(':validity_details_json', json_encode($result['detalles_validez'] ?? [], JSON_UNESCAPED_UNICODE));
