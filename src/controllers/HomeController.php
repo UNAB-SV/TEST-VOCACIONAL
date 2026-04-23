@@ -8,6 +8,7 @@ use App\Helpers\TestResultPresenter;
 use App\Helpers\View;
 use App\Repositories\EvaluationRepository;
 use App\Repositories\QuestionsBlockRepository;
+use App\Repositories\SchoolRepository;
 use App\Services\CalculationEngine;
 use App\Services\ParticipantSessionStore;
 use App\Services\TestSessionStore;
@@ -18,6 +19,7 @@ final class HomeController
 {
     public function __construct(
         private readonly ParticipantDataValidator $validator,
+        private readonly SchoolRepository $schoolRepository,
         private readonly ParticipantSessionStore $sessionStore,
         private readonly QuestionsBlockRepository $questionsRepository,
         private readonly TestSessionStore $testSessionStore,
@@ -31,11 +33,17 @@ final class HomeController
     public function index(array $oldInput = [], array $errors = []): void
     {
         $formData = $oldInput !== [] ? $oldInput : $this->sessionStore->get();
+        $selectedSchool = null;
+        $selectedSchoolId = (int) ($formData['colegio_id'] ?? 0);
+        if ($selectedSchoolId > 0) {
+            $selectedSchool = $this->schoolRepository->findById($selectedSchoolId);
+        }
 
         View::render('home/index', [
             'title' => 'Inicio del test',
             'errors' => $errors,
             'formData' => $formData,
+            'selectedSchool' => $selectedSchool,
         ]);
     }
 
@@ -47,7 +55,7 @@ final class HomeController
             'apellido_materno' => $_POST['apellido_materno'] ?? '',
             'edad' => $_POST['edad'] ?? '',
             'sexo' => $_POST['sexo'] ?? '',
-            'grupo' => $_POST['grupo'] ?? '',
+            'colegio_id' => $_POST['colegio_id'] ?? '',
         ];
 
         $errors = $this->validator->validate($input);
@@ -57,6 +65,9 @@ final class HomeController
             $this->index($input, $errors);
             return;
         }
+
+        $school = $this->schoolRepository->findById((int) $input['colegio_id']);
+        $input['colegio_nombre'] = (string) ($school['nombre'] ?? '');
 
         $this->sessionStore->save($input);
         $this->testSessionStore->clearAnswers();
@@ -217,6 +228,23 @@ final class HomeController
             'status' => 'ok',
             'participant' => $participant,
             'evaluations' => $history,
+        ]);
+    }
+
+    public function searchSchools(): void
+    {
+        $query = trim((string) ($_GET['q'] ?? ''));
+        $items = $this->schoolRepository->searchByName($query, 15);
+
+        $this->jsonResponse(200, [
+            'status' => 'ok',
+            'items' => array_map(static function (array $item): array {
+                return [
+                    'id' => (int) ($item['id'] ?? 0),
+                    'nombre' => (string) ($item['nombre'] ?? ''),
+                    'tipo_institucion' => (int) ($item['tipo_institucion'] ?? 0),
+                ];
+            }, $items),
         ]);
     }
 

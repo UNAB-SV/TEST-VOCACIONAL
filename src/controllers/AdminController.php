@@ -84,7 +84,7 @@ final class AdminController
             'apellido_materno' => (string) ($detail['middle_name'] ?? ''),
             'edad' => (string) ($detail['age'] ?? ''),
             'sexo' => strtolower((string) ($detail['sex'] ?? '')),
-            'grupo' => (string) ($detail['group_name'] ?? ''),
+            'colegio_nombre' => (string) (($detail['colegio_nombre'] ?? '') !== '' ? $detail['colegio_nombre'] : ($detail['group_name'] ?? '')),
         ];
 
         $rawScores = [];

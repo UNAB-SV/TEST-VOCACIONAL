@@ -6,9 +6,17 @@ CREATE TABLE IF NOT EXISTS participants (
     age TINYINT UNSIGNED NOT NULL,
     sex CHAR(1) NOT NULL,
     group_name VARCHAR(120) NOT NULL,
+    colegio_id INT NULL,
+    colegio_nombre VARCHAR(255) NULL,
     created_at DATETIME NOT NULL,
     updated_at DATETIME NOT NULL,
     UNIQUE KEY uq_participant_identity (first_name, last_name, middle_name)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS colegios (
+    id INT NOT NULL PRIMARY KEY,
+    nombre VARCHAR(255) NULL,
+    tipo_institucion INT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS evaluations (
@@ -17,6 +25,8 @@ CREATE TABLE IF NOT EXISTS evaluations (
     applied_at DATETIME NOT NULL,
     sex CHAR(1) NOT NULL,
     group_name VARCHAR(120) NOT NULL,
+    colegio_id INT NULL,
+    colegio_nombre VARCHAR(255) NULL,
     validity_score SMALLINT NOT NULL,
     validity_state VARCHAR(20) NOT NULL,
     validity_details_json JSON NOT NULL,

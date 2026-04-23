@@ -50,6 +50,7 @@ SELECT
     e.validity_state,
     e.sex,
     e.group_name,
+    e.colegio_nombre,
     p.first_name,
     p.last_name,
     p.middle_name,
@@ -117,10 +118,10 @@ SQL;
             $bindings[':nombre'] = '%' . $search . '%';
         }
 
-        $group = trim((string) ($filters['grupo'] ?? ''));
-        if ($group !== '') {
-            $where[] = 'e.group_name = :grupo';
-            $bindings[':grupo'] = $group;
+        $school = trim((string) ($filters['grupo'] ?? ''));
+        if ($school !== '') {
+            $where[] = 'COALESCE(NULLIF(e.colegio_nombre, \'\'), e.group_name) = :grupo';
+            $bindings[':grupo'] = $school;
         }
 
         $date = trim((string) ($filters['fecha'] ?? ''));
@@ -149,6 +150,7 @@ SELECT
     e.id,
     e.applied_at,
     e.group_name,
+    e.colegio_nombre,
     e.validity_state,
     p.first_name,
     p.last_name,
@@ -182,7 +184,12 @@ SQL;
 
     public function listGroups(): array
     {
-        $statement = $this->pdo->query('SELECT DISTINCT group_name FROM evaluations WHERE group_name <> \'\' ORDER BY group_name ASC');
+        $statement = $this->pdo->query(
+            'SELECT DISTINCT COALESCE(NULLIF(colegio_nombre, \'\'), group_name) AS institution_name
+             FROM evaluations
+             WHERE COALESCE(NULLIF(colegio_nombre, \'\'), group_name) <> \'\'
+             ORDER BY institution_name ASC'
+        );
         $rows = $statement->fetchAll(PDO::FETCH_COLUMN);
 
         if (!is_array($rows)) {
@@ -200,6 +207,8 @@ SELECT
     e.applied_at,
     e.sex,
     e.group_name,
+    e.colegio_id,
+    e.colegio_nombre,
     e.validity_score,
     e.validity_state,
     e.raw_scores_json,
@@ -268,6 +277,8 @@ INSERT INTO participants (
     age,
     sex,
     group_name,
+    colegio_id,
+    colegio_nombre,
     created_at,
     updated_at
 ) VALUES (
@@ -277,6 +288,8 @@ INSERT INTO participants (
     :age,
     :sex,
     :group_name,
+    :colegio_id,
+    :colegio_nombre,
     NOW(),
     NOW()
 )
@@ -284,6 +297,8 @@ ON DUPLICATE KEY UPDATE
     age = VALUES(age),
     sex = VALUES(sex),
     group_name = VALUES(group_name),
+    colegio_id = VALUES(colegio_id),
+    colegio_nombre = VALUES(colegio_nombre),
     updated_at = NOW()
 SQL;
 
@@ -293,7 +308,14 @@ SQL;
         $statement->bindValue(':middle_name', (string) ($participant['apellido_materno'] ?? ''));
         $statement->bindValue(':age', (int) ($participant['edad'] ?? 0), PDO::PARAM_INT);
         $statement->bindValue(':sex', strtoupper((string) ($participant['sexo'] ?? '')));
-        $statement->bindValue(':group_name', (string) ($participant['grupo'] ?? ''));
+        $statement->bindValue(':group_name', $this->resolveGroupName($participant, []));
+        $colegioId = (int) ($participant['colegio_id'] ?? 0);
+        if ($colegioId > 0) {
+            $statement->bindValue(':colegio_id', $colegioId, PDO::PARAM_INT);
+        } else {
+            $statement->bindValue(':colegio_id', null, PDO::PARAM_NULL);
+        }
+        $statement->bindValue(':colegio_nombre', (string) ($participant['colegio_nombre'] ?? ''));
         $statement->execute();
 
         $lastInsertId = (int) $this->pdo->lastInsertId();
@@ -329,6 +351,8 @@ INSERT INTO evaluations (
     applied_at,
     sex,
     group_name,
+    colegio_id,
+    colegio_nombre,
     validity_score,
     validity_state,
     validity_details_json,
@@ -339,6 +363,8 @@ INSERT INTO evaluations (
     :applied_at,
     :sex,
     :group_name,
+    :colegio_id,
+    :colegio_nombre,
     :validity_score,
     :validity_state,
     :validity_details_json,
@@ -352,6 +378,13 @@ SQL;
         $statement->bindValue(':applied_at', $appliedAt);
         $statement->bindValue(':sex', strtoupper((string) ($result['sexo_evaluado'] ?? '')));
         $statement->bindValue(':group_name', $this->resolveGroupName($participant, $result));
+        $colegioId = (int) ($participant['colegio_id'] ?? 0);
+        if ($colegioId > 0) {
+            $statement->bindValue(':colegio_id', $colegioId, PDO::PARAM_INT);
+        } else {
+            $statement->bindValue(':colegio_id', null, PDO::PARAM_NULL);
+        }
+        $statement->bindValue(':colegio_nombre', $this->resolveSchoolName($participant, $result));
         $statement->bindValue(':validity_score', (int) ($result['validez_puntaje'] ?? 0), PDO::PARAM_INT);
         $statement->bindValue(':validity_state', (string) ($result['validez_estado'] ?? 'invalido'));
         $statement->bindValue(':validity_details_json', json_encode($result['detalles_validez'] ?? [], JSON_UNESCAPED_UNICODE));
@@ -373,7 +406,26 @@ SQL;
             return $participantGroup;
         }
 
+        $schoolName = trim((string) ($participant['colegio_nombre'] ?? ''));
+        if ($schoolName !== '') {
+            return $schoolName;
+        }
+
         return trim((string) ($result['grupo'] ?? ''));
+    }
+
+    /**
+     * @param array<string, string> $participant
+     * @param array<string, mixed> $result
+     */
+    private function resolveSchoolName(array $participant, array $result): string
+    {
+        $participantSchool = trim((string) ($participant['colegio_nombre'] ?? ''));
+        if ($participantSchool !== '') {
+            return $participantSchool;
+        }
+
+        return trim((string) ($result['colegio_nombre'] ?? ''));
     }
 
     /**
