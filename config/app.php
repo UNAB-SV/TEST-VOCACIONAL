@@ -23,7 +23,8 @@ return [
     ],
     'catalog' => [
         // Opciones: mysql, json, mysql_with_json_fallback.
-        'source' => 'mysql_with_json_fallback',
+        //'source' => 'mysql_with_json_fallback',
+	'source' => 'mysql',
         // current-json corresponde a la versión cargada por scripts/import_test_catalog.php.
         'version_key' => 'current-json',
     ],

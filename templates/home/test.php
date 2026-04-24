@@ -40,12 +40,10 @@ $serverErrors = $serverErrors ?? [];
 
     <div class="test-actions">
         <button type="button" class="btn-secondary" id="btn-prev">Anterior</button>
-        <button type="button" class="btn-primary" id="btn-next">Guardar y continuar</button>
+        <button type="button" class="btn-primary" id="btn-next">Continuar</button>
     </div>
 
-    <form method="post" action="/prueba/finalizar" id="finish-form" class="finish-form" hidden>
-        <button type="submit" class="btn-primary">Finalizar y enviar respuestas</button>
-    </form>
+    <form method="post" action="/prueba/finalizar" id="finish-form" class="finish-form" hidden></form>
 </section>
 
 <script>
@@ -167,11 +165,7 @@ $serverErrors = $serverErrors ?? [];
         }
 
         if (nextButton instanceof HTMLButtonElement) {
-            nextButton.textContent = currentIndex === blocks.length - 1 ? 'Guardar último bloque' : 'Guardar y continuar';
-        }
-
-        if (finishForm instanceof HTMLFormElement) {
-            finishForm.hidden = currentIndex !== blocks.length - 1;
+            nextButton.textContent = currentIndex === blocks.length - 1 ? 'Finalizar y enviar respuestas' : 'Continuar';
         }
     }
 
@@ -239,19 +233,44 @@ $serverErrors = $serverErrors ?? [];
 
     nextButton?.addEventListener('click', async function () {
         clearAlert();
-        const result = await saveCurrentBlockOnServer();
-        if (!result.ok) {
-            showAlert(result.message || 'Debes corregir el bloque antes de continuar.');
-            return;
+        if (nextButton instanceof HTMLButtonElement) {
+            nextButton.disabled = true;
         }
 
-        if (currentIndex < blocks.length - 1) {
-            currentIndex += 1;
-            renderBlock();
-            return;
-        }
+        try {
+            const result = await saveCurrentBlockOnServer();
+            if (!result.ok) {
+                showAlert(result.message || 'Debes corregir el bloque antes de continuar.');
+                if (nextButton instanceof HTMLButtonElement) {
+                    nextButton.disabled = false;
+                }
+                return;
+            }
 
-        showAlert('Último bloque guardado. Ahora puedes finalizar y enviar respuestas.');
+            if (currentIndex < blocks.length - 1) {
+                currentIndex += 1;
+                renderBlock();
+                if (nextButton instanceof HTMLButtonElement) {
+                    nextButton.disabled = false;
+                }
+                return;
+            }
+
+            if (finishForm instanceof HTMLFormElement) {
+                finishForm.submit();
+                return;
+            }
+
+            showAlert('No se pudo finalizar la prueba. Intenta nuevamente.');
+            if (nextButton instanceof HTMLButtonElement) {
+                nextButton.disabled = false;
+            }
+        } catch (error) {
+            showAlert('No se pudo guardar el bloque. Revisa tu conexión e intenta nuevamente.');
+            if (nextButton instanceof HTMLButtonElement) {
+                nextButton.disabled = false;
+            }
+        }
     });
 
     recoverLocal();
