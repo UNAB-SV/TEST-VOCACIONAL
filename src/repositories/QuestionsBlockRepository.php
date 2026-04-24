@@ -6,27 +6,16 @@ namespace App\Repositories;
 
 final class QuestionsBlockRepository
 {
+    public function __construct(private readonly CatalogRepository $catalogRepository)
+    {
+    }
+
     /**
      * @return array<int, array<string, mixed>>
      */
     public function allBlocks(): array
     {
-        $path = dirname(__DIR__, 2) . '/config/test-vocacional/questions_blocks.json';
-
-        if (!is_readable($path)) {
-            return [];
-        }
-
-        $json = file_get_contents($path);
-        if ($json === false) {
-            return [];
-        }
-
-        $data = json_decode($json, true);
-        if (!is_array($data)) {
-            return [];
-        }
-
+        $data = $this->catalogRepository->questionsDefinition();
         $blocks = $data['blocks'] ?? [];
         if (!is_array($blocks)) {
             return [];

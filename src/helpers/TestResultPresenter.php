@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace App\Helpers;
 
+use App\Repositories\CatalogRepository;
 use RuntimeException;
 
 final class TestResultPresenter
 {
-    public function __construct(private readonly string $catalogPath)
+    public function __construct(private readonly CatalogRepository $catalogRepository)
     {
     }
 
@@ -24,11 +25,7 @@ final class TestResultPresenter
             throw new RuntimeException('El resultado de cálculo no tiene la estructura esperada.');
         }
 
-        $catalog = $this->loadPhpConfig($this->catalogPath);
-        $scalesConfigPath = (string) ($catalog['files']['scales'] ?? '');
-        $scalesConfig = $this->loadJsonConfig($scalesConfigPath);
-
-        $scalesById = $this->indexScales($scalesConfig);
+        $scalesById = $this->indexScales($this->catalogRepository->scalesConfig());
         $rawScores = is_array($result['puntajes_brutos'] ?? null) ? $result['puntajes_brutos'] : [];
         $percentiles = is_array($result['percentiles'] ?? null) ? $result['percentiles'] : [];
 
@@ -146,42 +143,4 @@ final class TestResultPresenter
         return trim((string) ($participant['grupo'] ?? ''));
     }
 
-    /**
-     * @return array<string, mixed>
-     */
-    private function loadPhpConfig(string $path): array
-    {
-        if ($path === '' || !is_file($path)) {
-            throw new RuntimeException(sprintf('No se encontró el archivo de catálogo: %s', $path));
-        }
-
-        $config = require $path;
-        if (!is_array($config)) {
-            throw new RuntimeException(sprintf('El catálogo no devolvió un arreglo válido: %s', $path));
-        }
-
-        return $config;
-    }
-
-    /**
-     * @return array<string, mixed>
-     */
-    private function loadJsonConfig(string $path): array
-    {
-        if ($path === '' || !is_file($path)) {
-            throw new RuntimeException(sprintf('No se encontró el archivo de configuración: %s', $path));
-        }
-
-        $content = file_get_contents($path);
-        if ($content === false) {
-            throw new RuntimeException(sprintf('No se pudo leer el archivo de configuración: %s', $path));
-        }
-
-        $decoded = json_decode($content, true);
-        if (!is_array($decoded)) {
-            throw new RuntimeException(sprintf('JSON inválido en archivo de configuración: %s', $path));
-        }
-
-        return $decoded;
-    }
 }
