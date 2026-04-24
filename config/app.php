@@ -21,6 +21,12 @@ return [
         'password' => '',
         'charset' => 'utf8mb4',
     ],
+    'catalog' => [
+        // Opciones: mysql, json, mysql_with_json_fallback.
+        'source' => 'mysql_with_json_fallback',
+        // current-json corresponde a la versión cargada por scripts/import_test_catalog.php.
+        'version_key' => 'current-json',
+    ],
     'catalog_ids' => [
         'el_salvador_country_id' => 15,
     ],

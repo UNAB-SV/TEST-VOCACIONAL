@@ -7,8 +7,13 @@ use App\Controllers\AdminController;
 use App\Helpers\Router;
 use App\Helpers\ServiceContainer;
 use App\Helpers\TestResultPresenter;
+use App\Repositories\CatalogRepository;
 use App\Repositories\EvaluationRepository;
+use App\Repositories\FallbackCatalogRepository;
 use App\Repositories\GeoCatalogRepository;
+use App\Repositories\JsonCatalogRepository;
+use App\Repositories\LazyCatalogRepository;
+use App\Repositories\MysqlCatalogRepository;
 use App\Repositories\NullEvaluationRepository;
 use App\Repositories\NullGeoCatalogRepository;
 use App\Repositories\NullSchoolRepository;
@@ -77,16 +82,43 @@ $container->set('participant_validator', static function (ServiceContainer $c) u
     );
 });
 $container->set('participant_session_store', static fn (): ParticipantSessionStore => new ParticipantSessionStore());
-$container->set('questions_block_repository', static fn (): QuestionsBlockRepository => new QuestionsBlockRepository());
+$container->set('json_catalog_repository', static fn (): JsonCatalogRepository => new JsonCatalogRepository(
+    BASE_PATH . '/config/test-vocacional/catalog.php'
+));
+$container->set('mysql_catalog_repository', static function () use ($config): MysqlCatalogRepository {
+    $dbConfig = is_array($config['database'] ?? null) ? $config['database'] : [];
+    $catalogConfig = is_array($config['catalog'] ?? null) ? $config['catalog'] : [];
+
+    return new MysqlCatalogRepository(
+        PdoConnectionFactory::create($dbConfig),
+        isset($catalogConfig['version_key']) ? (string) $catalogConfig['version_key'] : null
+    );
+});
+$container->set('catalog_repository', static function (ServiceContainer $c) use ($config): CatalogRepository {
+    $catalogConfig = is_array($config['catalog'] ?? null) ? $config['catalog'] : [];
+    $source = strtolower((string) ($catalogConfig['source'] ?? 'mysql_with_json_fallback'));
+
+    return match ($source) {
+        'json' => $c->get('json_catalog_repository'),
+        'mysql' => $c->get('mysql_catalog_repository'),
+        default => new FallbackCatalogRepository(
+            new LazyCatalogRepository(static fn (): CatalogRepository => $c->get('mysql_catalog_repository')),
+            $c->get('json_catalog_repository')
+        ),
+    };
+});
+$container->set('questions_block_repository', static fn (ServiceContainer $c): QuestionsBlockRepository => new QuestionsBlockRepository(
+    $c->get('catalog_repository')
+));
 $container->set('test_session_store', static fn (): TestSessionStore => new TestSessionStore());
 $container->set('test_response_validator', static fn (): TestResponseValidator => new TestResponseValidator());
 $container->set('score_service', static fn (): ScoreService => new ScoreService());
 $container->set('calculation_engine', static fn (ServiceContainer $c): CalculationEngine => new CalculationEngine(
     $c->get('score_service'),
-    BASE_PATH . '/config/test-vocacional/catalog.php'
+    $c->get('catalog_repository')
 ));
-$container->set('test_result_presenter', static fn (): TestResultPresenter => new TestResultPresenter(
-    BASE_PATH . '/config/test-vocacional/catalog.php'
+$container->set('test_result_presenter', static fn (ServiceContainer $c): TestResultPresenter => new TestResultPresenter(
+    $c->get('catalog_repository')
 ));
 $container->set('evaluation_repository', static function () use ($config): EvaluationRepository {
     $dbConfig = is_array($config['database'] ?? null) ? $config['database'] : [];
