@@ -337,7 +337,15 @@ select:focus {
 
 .activities-table .center {
     text-align: center;
-    width: 90px;
+    width: 6.25rem;
+    white-space: nowrap;
+}
+
+.activities-table th:nth-child(2),
+.activities-table th:nth-child(3) {
+    width: 6.25rem;
+    text-align: center;
+    white-space: nowrap;
 }
 
 .test-actions {
