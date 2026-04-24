@@ -348,7 +348,7 @@ SQL;
         } else {
             $statement->bindValue(':colegio_id', null, PDO::PARAM_NULL);
         }
-        $statement->bindValue(':colegio_nombre', (string) ($participant['colegio_nombre'] ?? ''));
+        $statement->bindValue(':colegio_nombre', $this->resolveSchoolName($participant, []));
         $paisId = (int) ($participant['pais_id'] ?? 0);
         if ($paisId > 0) {
             $statement->bindValue(':pais_id', $paisId, PDO::PARAM_INT);
@@ -493,9 +493,9 @@ SQL;
             return $participantGroup;
         }
 
-        $schoolName = trim((string) ($participant['colegio_nombre'] ?? ''));
-        if ($schoolName !== '') {
-            return $schoolName;
+        $participantGroupName = trim((string) ($participant['group_name'] ?? ''));
+        if ($participantGroupName !== '') {
+            return $participantGroupName;
         }
 
         return trim((string) ($result['grupo'] ?? ''));
@@ -512,7 +512,17 @@ SQL;
             return $participantSchool;
         }
 
-        return trim((string) ($result['colegio_nombre'] ?? ''));
+        $resultSchool = trim((string) ($result['colegio_nombre'] ?? ''));
+        if ($resultSchool !== '') {
+            return $resultSchool;
+        }
+
+        $participantGroupName = trim((string) ($participant['group_name'] ?? ''));
+        if ($participantGroupName !== '') {
+            return $participantGroupName;
+        }
+
+        return trim((string) ($participant['grupo'] ?? ''));
     }
 
     private function bindNullableString(\PDOStatement $statement, string $param, mixed $value): void

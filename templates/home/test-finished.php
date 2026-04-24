@@ -11,6 +11,11 @@ $estadoCodigo = (string) ($validezEstado['codigo'] ?? 'invalido');
 $estadoEtiqueta = (string) ($validezEstado['etiqueta'] ?? 'Prueba no válida');
 $esValida = (bool) ($validezEstado['es_valida'] ?? false);
 $appliedAtRaw = trim((string) ($report['applied_at'] ?? ''));
+$institutionName = trim((string) ($evaluado['institucion'] ?? ''));
+$countryName = trim((string) ($evaluado['pais_nombre'] ?? ''));
+$departmentName = trim((string) ($evaluado['departamento_nombre'] ?? ''));
+$municipalityName = trim((string) ($evaluado['municipio_nombre'] ?? ''));
+$isElSalvador = strcasecmp($countryName, 'El Salvador') === 0;
 $formattedAppliedAt = $appliedAtRaw;
 if ($appliedAtRaw !== '') {
     $date = date_create($appliedAtRaw, new DateTimeZone('UTC'));
@@ -40,13 +45,52 @@ $chartData = json_encode($ranking, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASH
     <?php endif; ?>
 
     <div class="result-meta-grid">
-        <p><strong>Nombre completo:</strong> <?= htmlspecialchars((string) ($evaluado['nombre_completo'] ?? ''), ENT_QUOTES, 'UTF-8'); ?></p>
-        <p><strong>Edad:</strong> <?= htmlspecialchars((string) ($evaluado['edad'] ?? ''), ENT_QUOTES, 'UTF-8'); ?></p>
-        <p><strong>Sexo:</strong> <?= htmlspecialchars((string) ($evaluado['sexo'] ?? ''), ENT_QUOTES, 'UTF-8'); ?></p>
-        <p><strong>Institución:</strong> <?= htmlspecialchars((string) ($evaluado['institucion'] ?? ''), ENT_QUOTES, 'UTF-8'); ?></p>
-        <p><strong>Fecha de aplicación:</strong> <?= htmlspecialchars($formattedAppliedAt, ENT_QUOTES, 'UTF-8'); ?></p>
-        <p><strong>Puntaje de validez:</strong> <?= (int) ($report['validez_puntaje'] ?? 0); ?></p>
-        <p><strong>Estado de validez:</strong> <span class="badge badge-<?= htmlspecialchars($estadoCodigo, ENT_QUOTES, 'UTF-8'); ?>"><?= htmlspecialchars($estadoEtiqueta, ENT_QUOTES, 'UTF-8'); ?></span></p>
+        <div class="meta-item">
+            <span class="meta-label">Nombre completo:</span>
+            <span class="meta-value"><?= htmlspecialchars((string) ($evaluado['nombre_completo'] ?? ''), ENT_QUOTES, 'UTF-8'); ?></span>
+        </div>
+        <div class="meta-item">
+            <span class="meta-label">Edad:</span>
+            <span class="meta-value"><?= htmlspecialchars((string) ($evaluado['edad'] ?? ''), ENT_QUOTES, 'UTF-8'); ?></span>
+        </div>
+        <div class="meta-item">
+            <span class="meta-label">Sexo:</span>
+            <span class="meta-value"><?= htmlspecialchars((string) ($evaluado['sexo'] ?? ''), ENT_QUOTES, 'UTF-8'); ?></span>
+        </div>
+        <div class="meta-item meta-item-wide">
+            <span class="meta-label">Institución:</span>
+            <span class="meta-value"><?= htmlspecialchars($institutionName, ENT_QUOTES, 'UTF-8'); ?></span>
+        </div>
+        <?php if ($countryName !== ''): ?>
+            <div class="meta-item">
+                <span class="meta-label">País:</span>
+                <span class="meta-value"><?= htmlspecialchars($countryName, ENT_QUOTES, 'UTF-8'); ?></span>
+            </div>
+        <?php endif; ?>
+        <?php if ($isElSalvador && $departmentName !== ''): ?>
+            <div class="meta-item">
+                <span class="meta-label">Departamento:</span>
+                <span class="meta-value"><?= htmlspecialchars($departmentName, ENT_QUOTES, 'UTF-8'); ?></span>
+            </div>
+        <?php endif; ?>
+        <?php if ($isElSalvador && $municipalityName !== ''): ?>
+            <div class="meta-item">
+                <span class="meta-label">Municipio / Distrito:</span>
+                <span class="meta-value"><?= htmlspecialchars($municipalityName, ENT_QUOTES, 'UTF-8'); ?></span>
+            </div>
+        <?php endif; ?>
+        <div class="meta-item">
+            <span class="meta-label">Fecha de aplicación:</span>
+            <span class="meta-value"><?= htmlspecialchars($formattedAppliedAt, ENT_QUOTES, 'UTF-8'); ?></span>
+        </div>
+        <div class="meta-item">
+            <span class="meta-label">Puntaje de validez:</span>
+            <span class="meta-value"><?= (int) ($report['validez_puntaje'] ?? 0); ?></span>
+        </div>
+        <div class="meta-item">
+            <span class="meta-label">Estado de validez:</span>
+            <span class="meta-value"><span class="badge badge-<?= htmlspecialchars($estadoCodigo, ENT_QUOTES, 'UTF-8'); ?>"><?= htmlspecialchars($estadoEtiqueta, ENT_QUOTES, 'UTF-8'); ?></span></span>
+        </div>
     </div>
 
     <h3>Escalas de interés (10)</h3>

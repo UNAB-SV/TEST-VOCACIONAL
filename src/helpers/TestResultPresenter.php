@@ -69,7 +69,10 @@ final class TestResultPresenter
                 )),
                 'edad' => (string) ($participant['edad'] ?? ''),
                 'sexo' => strtoupper((string) ($participant['sexo'] ?? '')),
-                'institucion' => (string) (($participant['colegio_nombre'] ?? '') !== '' ? $participant['colegio_nombre'] : ($participant['grupo'] ?? '')),
+                'institucion' => $this->resolveInstitutionName($participant),
+                'pais_nombre' => trim((string) ($participant['pais_nombre'] ?? '')),
+                'departamento_nombre' => trim((string) ($participant['departamento_nombre'] ?? '')),
+                'municipio_nombre' => trim((string) ($participant['municipio_nombre'] ?? '')),
             ],
             'applied_at' => $this->resolveAppliedAt($participant, $appliedAt),
             'validez_puntaje' => (int) ($result['validez_puntaje'] ?? 0),
@@ -126,6 +129,21 @@ final class TestResultPresenter
     {
         $source = $appliedAt ?? (string) ($participant['applied_at'] ?? '');
         return trim($source);
+    }
+
+    private function resolveInstitutionName(array $participant): string
+    {
+        $schoolName = trim((string) ($participant['colegio_nombre'] ?? ''));
+        if ($schoolName !== '') {
+            return $schoolName;
+        }
+
+        $groupName = trim((string) ($participant['group_name'] ?? ''));
+        if ($groupName !== '') {
+            return $groupName;
+        }
+
+        return trim((string) ($participant['grupo'] ?? ''));
     }
 
     /**

@@ -94,11 +94,15 @@ $buildUrl = static function (int $targetPage) use ($filters): string {
                     (string) ($item['last_name'] ?? ''),
                     (string) ($item['middle_name'] ?? '')
                 ));
+                $institutionName = trim((string) ($item['colegio_nombre'] ?? ''));
+                if ($institutionName === '') {
+                    $institutionName = trim((string) ($item['group_name'] ?? ''));
+                }
                 ?>
                 <tr>
                     <td>#<?= (int) ($item['id'] ?? 0); ?></td>
                     <td><?= htmlspecialchars($fullName, ENT_QUOTES, 'UTF-8'); ?></td>
-                    <td><?= htmlspecialchars((string) (($item['colegio_nombre'] ?? '') !== '' ? $item['colegio_nombre'] : ($item['group_name'] ?? '')), ENT_QUOTES, 'UTF-8'); ?></td>
+                    <td class="institution-cell"><?= htmlspecialchars($institutionName, ENT_QUOTES, 'UTF-8'); ?></td>
                     <td><?= htmlspecialchars(trim(implode(' / ', array_filter([(string) ($item['pais_nombre'] ?? ''), (string) ($item['departamento_nombre'] ?? ''), (string) ($item['municipio_nombre'] ?? '')]))), ENT_QUOTES, 'UTF-8'); ?></td>
                     <td><?= htmlspecialchars($formatAppliedAt((string) ($item['applied_at'] ?? '')), ENT_QUOTES, 'UTF-8'); ?></td>
                     <td><?= htmlspecialchars((string) ($item['validity_state'] ?? ''), ENT_QUOTES, 'UTF-8'); ?></td>

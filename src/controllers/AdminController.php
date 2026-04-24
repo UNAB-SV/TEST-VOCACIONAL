@@ -84,7 +84,11 @@ final class AdminController
             'apellido_materno' => (string) ($detail['middle_name'] ?? ''),
             'edad' => (string) ($detail['age'] ?? ''),
             'sexo' => strtolower((string) ($detail['sex'] ?? '')),
-            'colegio_nombre' => (string) (($detail['colegio_nombre'] ?? '') !== '' ? $detail['colegio_nombre'] : ($detail['group_name'] ?? '')),
+            'colegio_nombre' => (string) ($detail['colegio_nombre'] ?? ''),
+            'group_name' => (string) ($detail['group_name'] ?? ''),
+            'pais_nombre' => (string) ($detail['pais_nombre'] ?? ''),
+            'departamento_nombre' => (string) ($detail['departamento_nombre'] ?? ''),
+            'municipio_nombre' => (string) ($detail['municipio_nombre'] ?? ''),
             'applied_at' => (string) ($detail['applied_at'] ?? ''),
         ];
 

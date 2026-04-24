@@ -9,6 +9,10 @@ $fullName = trim(sprintf(
 $scales = is_array($detail['scales'] ?? null) ? $detail['scales'] : [];
 $answers = is_array($detail['answers'] ?? null) ? $detail['answers'] : [];
 $appliedAtRaw = trim((string) ($detail['applied_at'] ?? ''));
+$institutionName = trim((string) ($detail['colegio_nombre'] ?? ''));
+if ($institutionName === '') {
+    $institutionName = trim((string) ($detail['group_name'] ?? ''));
+}
 $formattedAppliedAt = $appliedAtRaw;
 if ($appliedAtRaw !== '') {
     $date = date_create($appliedAtRaw, new DateTimeZone('UTC'));
@@ -21,15 +25,42 @@ if ($appliedAtRaw !== '') {
     <h2>Detalle de evaluación #<?= (int) ($detail['id'] ?? 0); ?></h2>
 
     <div class="result-meta-grid">
-        <p><strong>Nombre:</strong> <?= htmlspecialchars($fullName, ENT_QUOTES, 'UTF-8'); ?></p>
-        <p><strong>Edad:</strong> <?= (int) ($detail['age'] ?? 0); ?></p>
-        <p><strong>Sexo:</strong> <?= htmlspecialchars((string) ($detail['sex'] ?? ''), ENT_QUOTES, 'UTF-8'); ?></p>
-        <p><strong>Institución:</strong> <?= htmlspecialchars((string) (($detail['colegio_nombre'] ?? '') !== '' ? $detail['colegio_nombre'] : ($detail['group_name'] ?? '')), ENT_QUOTES, 'UTF-8'); ?></p>
-        <p><strong>País:</strong> <?= htmlspecialchars((string) ($detail['pais_nombre'] ?? ''), ENT_QUOTES, 'UTF-8'); ?></p>
-        <p><strong>Departamento:</strong> <?= htmlspecialchars((string) ($detail['departamento_nombre'] ?? ''), ENT_QUOTES, 'UTF-8'); ?></p>
-        <p><strong>Municipio / Distrito:</strong> <?= htmlspecialchars((string) ($detail['municipio_nombre'] ?? ''), ENT_QUOTES, 'UTF-8'); ?></p>
-        <p><strong>Fecha de aplicación:</strong> <?= htmlspecialchars($formattedAppliedAt, ENT_QUOTES, 'UTF-8'); ?></p>
-        <p><strong>Validez:</strong> <?= htmlspecialchars((string) ($detail['validity_state'] ?? ''), ENT_QUOTES, 'UTF-8'); ?> (<?= (int) ($detail['validity_score'] ?? 0); ?>)</p>
+        <div class="meta-item">
+            <span class="meta-label">Nombre:</span>
+            <span class="meta-value"><?= htmlspecialchars($fullName, ENT_QUOTES, 'UTF-8'); ?></span>
+        </div>
+        <div class="meta-item">
+            <span class="meta-label">Edad:</span>
+            <span class="meta-value"><?= (int) ($detail['age'] ?? 0); ?></span>
+        </div>
+        <div class="meta-item">
+            <span class="meta-label">Sexo:</span>
+            <span class="meta-value"><?= htmlspecialchars((string) ($detail['sex'] ?? ''), ENT_QUOTES, 'UTF-8'); ?></span>
+        </div>
+        <div class="meta-item meta-item-wide">
+            <span class="meta-label">Institución:</span>
+            <span class="meta-value"><?= htmlspecialchars($institutionName, ENT_QUOTES, 'UTF-8'); ?></span>
+        </div>
+        <div class="meta-item">
+            <span class="meta-label">País:</span>
+            <span class="meta-value"><?= htmlspecialchars((string) ($detail['pais_nombre'] ?? ''), ENT_QUOTES, 'UTF-8'); ?></span>
+        </div>
+        <div class="meta-item">
+            <span class="meta-label">Departamento:</span>
+            <span class="meta-value"><?= htmlspecialchars((string) ($detail['departamento_nombre'] ?? ''), ENT_QUOTES, 'UTF-8'); ?></span>
+        </div>
+        <div class="meta-item">
+            <span class="meta-label">Municipio / Distrito:</span>
+            <span class="meta-value"><?= htmlspecialchars((string) ($detail['municipio_nombre'] ?? ''), ENT_QUOTES, 'UTF-8'); ?></span>
+        </div>
+        <div class="meta-item">
+            <span class="meta-label">Fecha de aplicación:</span>
+            <span class="meta-value"><?= htmlspecialchars($formattedAppliedAt, ENT_QUOTES, 'UTF-8'); ?></span>
+        </div>
+        <div class="meta-item">
+            <span class="meta-label">Validez:</span>
+            <span class="meta-value"><?= htmlspecialchars((string) ($detail['validity_state'] ?? ''), ENT_QUOTES, 'UTF-8'); ?> (<?= (int) ($detail['validity_score'] ?? 0); ?>)</span>
+        </div>
     </div>
 
     <h3>Escalas registradas</h3>

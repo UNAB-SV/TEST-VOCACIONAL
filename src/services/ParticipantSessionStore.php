@@ -21,6 +21,14 @@ final class ParticipantSessionStore
             'edad' => (string) ((int) ($data['edad'] ?? 0)),
             'sexo' => trim((string) ($data['sexo'] ?? '')),
             'grupo' => trim((string) ($data['grupo'] ?? '')),
+            'colegio_id' => trim((string) ($data['colegio_id'] ?? '')),
+            'colegio_nombre' => trim((string) ($data['colegio_nombre'] ?? '')),
+            'pais_id' => trim((string) ($data['pais_id'] ?? '')),
+            'pais_nombre' => trim((string) ($data['pais_nombre'] ?? '')),
+            'departamento_id' => trim((string) ($data['departamento_id'] ?? '')),
+            'departamento_nombre' => trim((string) ($data['departamento_nombre'] ?? '')),
+            'municipio_id' => trim((string) ($data['municipio_id'] ?? '')),
+            'municipio_nombre' => trim((string) ($data['municipio_nombre'] ?? '')),
         ];
 
         $this->resetFlow();
@@ -40,6 +48,14 @@ final class ParticipantSessionStore
             'edad' => (string) ($sessionData['edad'] ?? ''),
             'sexo' => (string) ($sessionData['sexo'] ?? ''),
             'grupo' => (string) ($sessionData['grupo'] ?? ''),
+            'colegio_id' => (string) ($sessionData['colegio_id'] ?? ''),
+            'colegio_nombre' => (string) ($sessionData['colegio_nombre'] ?? ''),
+            'pais_id' => (string) ($sessionData['pais_id'] ?? ''),
+            'pais_nombre' => (string) ($sessionData['pais_nombre'] ?? ''),
+            'departamento_id' => (string) ($sessionData['departamento_id'] ?? ''),
+            'departamento_nombre' => (string) ($sessionData['departamento_nombre'] ?? ''),
+            'municipio_id' => (string) ($sessionData['municipio_id'] ?? ''),
+            'municipio_nombre' => (string) ($sessionData['municipio_nombre'] ?? ''),
         ];
     }
 
