@@ -111,6 +111,7 @@ final class HomeController
         View::render('home/instructions', [
             'title' => 'Instrucciones',
             'participant' => $participant,
+            'elSalvadorCountryId' => $this->elSalvadorCountryId,
         ]);
     }
 
